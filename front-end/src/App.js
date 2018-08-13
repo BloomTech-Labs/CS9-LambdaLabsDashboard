@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import './App.css';
 import { Route } from 'react-router-dom';
 import Classes from './Components/Classes/classes.js';
@@ -10,8 +11,9 @@ import Billing from './Components/Billing/Billing.js'
 
 
 class App extends Component {
-  render() {
+  render = () => {
     return (
+
       <div>
         <Route exact path="/" component={LandingPage} />
         <Route path="/classes" component={Classes} />
