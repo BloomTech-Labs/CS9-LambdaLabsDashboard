@@ -5,37 +5,40 @@ export default class Billing extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      checkBox: false;
+      monthly: false,
+      annual: false
     };
   }
 
   //TODO i dont know how to set state with checkboxes
 
-  submitForm(event) {
-    event.preventDefault();
-    console.log(this.state);
-  }
+  onChange = event => {
+    this.setState({
+      [event.target.name]: true
+    });
+  };
+
   render() {
     return (
       <div>
-        <form onSubmit={this.submitForm.bind(this)}>
+        <form>
           <fieldset>
             <legend>Choose Your Subscription</legend>
             <div>
               <input
-                name="subscriptionType"
-                value="monthly"
+                name="monthly"
                 id="monthly"
                 type="checkbox"
+                onChange={this.onChange}
               />
               <label for="monthly">1 Year Subscription - $9.99</label>
             </div>
             <div>
               <input
-                name="subscriptionType"
-                value="annual"
+                name="annual"
                 id="annual"
                 type="checkbox"
+                onChange={this.onChange}
               />
               <label for="annual">1 Year Premium Subscription - $29.99</label>
             </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import "./Settings.css";
+//import Sidenav from "../Sidenav/sidenav";
 
 export default class Billing extends React.Component {
   constructor(props) {
@@ -11,35 +12,44 @@ export default class Billing extends React.Component {
     };
   }
 
-  submitForm(event) {
+  onChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  };
+
+  onSubmit = event => {
     event.preventDefault();
-    console.log(this.state);
-  }
+  };
 
   render() {
     return (
       <div>
-        <form className="settings" onSubmit={this.submitForm.bind(this)}>
+        {/* <Sidenav /> */}
+        <form className="settings">
           <br />
           <label>Email:</label>{" "}
           <input
             type="text"
             name="email"
-            onChange={event => this.setState({ email: event.target.value })}
+            value={this.state.email}
+            onChange={this.onChange}
           />
           <br />
           <label>Old Password:</label>{" "}
           <input
-            type="text"
+            type="password"
             name="oldPw"
-            onChange={event => this.setState({ oldPw: event.target.value })}
+            value={this.state.oldPw}
+            onChange={this.onChange}
           />
           <br />
           <label>New password:</label>{" "}
           <input
-            type="text"
+            type="password"
             name="newPw"
-            onChange={event => this.setState({ newPw: event.target.value })}
+            value={this.state.newPw}
+            onChange={this.onChange}
           />
           <br />
           <p>
