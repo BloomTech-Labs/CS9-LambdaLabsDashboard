@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-//import Settings from "./Components/Settings/Settings";
-import Billing from "./Components/Billing/Billing";
+//import Settings from "./Components/Settings/settings";
+import Billing from "./Components/Billing/billing";
 
 class App extends Component {
   render() {
