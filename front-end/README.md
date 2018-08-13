@@ -33,24 +33,24 @@
 ``` 
 
 .header {
-      width: 100%;
-      height: 50px;
-      @include center;
-      position: fixed;
-      top: 0;
-      left: 0;
-      @include headerShadow;
-      z-index: 400;
-      background: #263346;
-      transition-duration: 0.225s;
-      transform: translate3d(0, 0, 0);
-      @media #{$mq-670} {
-        height: 80px;
-      }
-      @media #{$mq-1070} {
-        height: 120px;
-      }
-    } 
+  width: 100%;
+  height: 50px;
+  @include center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  @include headerShadow;
+  z-index: 400;
+  background: #263346;
+  transition-duration: 0.225s;
+  transform: translate3d(0, 0, 0);
+  @media #{$mq-670} {
+    height: 80px;
+  }
+  @media #{$mq-1070} {
+    height: 120px;
+  }
+} 
     
 ```
 
