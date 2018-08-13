@@ -22,14 +22,17 @@
       * This will create a cohesive design that allows us to use the same colors and styles across our components!
       * To use a media query from the variables file: 
         - In your own scss file you can require the variable with interpolation: #{$_myvariable_} {}
-``` @media #{$mq-670} {
-      //Your styles here
-    } 
+``` 
+@media #{$mq-670} {
+  //Your styles here
+} 
 ```
       
   - These media queries can live within the styles of the component you are working on. Gone are the days of writing tons of CSS beneath a single media query!:
 
-``` .header {
+``` 
+
+.header {
       width: 100%;
       height: 50px;
       @include center;
@@ -48,6 +51,7 @@
         height: 120px;
       }
     } 
+    
 ```
 
   * This example header class changes height at a tablet screen with and again at a larger desktop screen width! 
