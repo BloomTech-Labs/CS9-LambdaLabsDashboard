@@ -5,9 +5,44 @@
 	background: $darkgray;
 	&>div {
 		@include center;
-		&>h1 {
-			font-weight: 200;
-			color: #fff;
+		min-height: 100vh;
+		width: 100%;
+		flex-direction: column;
+		justify-content: flex-start;
+		margin-top: 50px;
+		&>.top-panel {
+			width: 100%;
+			@include center;
+			margin-bottom: 1em;
+			&>h1 {
+				font-size: 7.5vh;
+				font-weight: 200;
+				@include backgroundTop;
+			    -webkit-background-clip: text;
+			    -webkit-text-fill-color: transparent;
+			    margin: 0;
+			}
+		}
+		.boxes {
+			@include center;
+			width: 100%;
+			flex-direction: column;
+			@media #{$mq-670} {
+				flex-direction: row;
+				flex-wrap: wrap;
+			}
+			&>.box {
+				height: 100%;
+				width: 100%;
+				@include center;
+				background: $darkergray;
+				@media #{$mq-670} {
+					width: 50%;
+				}
+			}
 		}
 	}
 }
+
+@import 'CircleGraph/circle-graph.scss';
+@import 'Team/team.scss';

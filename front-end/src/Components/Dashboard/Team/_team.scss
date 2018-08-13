@@ -1,0 +1,21 @@
+.team {
+	width: 80%;
+	height: auto;
+	@include center;
+	flex-direction: column;
+	&>h2 {
+		color: #fff;
+		font-size: 5vh;
+		font-weight: 100;
+	}
+	&>div {
+		width: 100%;
+		@include center;
+		flex-direction: column;
+		&>.team-member {
+			@include center;
+			font-weight: 400;
+			color: #fff;
+		}
+	}
+}
