@@ -7,7 +7,7 @@ export default class Dashboard extends Component {
     return (
       <div className='Dashboard'>
         <div>
-          <h1>Hello everyone</h1>
+          <h1>Hello everyone, I'm a dashboard</h1>
         </div>
       </div>
     );

@@ -15,7 +15,7 @@
     + When writing some css for your component you can create a _mycomponent.scss file next to your JS component
       * Prefixing scss files with an underscore is important. It allows us to control the order in which our cascade occurs
       * Write some scss or css!
-      * Import your new scss file into the App.scss using the syntax already existing in the file. Simply copy one of the pre existing import statements and replace the relative path in quotations with a path to your new file. 
+      * Import your new scss file into the App.scss file using the syntax already existing in the file. Simply copy one of the pre existing import statements and replace the relative path in quotations with a path to your new file. 
       * Boom! Your changes are visible in the browser and your CSS/SASS is compiled into the main App.css file in the base of the SRC folder.
   - The first two sass files are CSS resets and a set of variables for using colors and media queries. 
       * I hope to see Jacky and Amanda take the lead on creating new variables and colors for us to use throughout our components
@@ -24,9 +24,11 @@
         - In your own scss file you can require the variable with interpolation: #{$_myvariable_} {}
 ``` @media #{$mq-670} {
       //Your styles here
-    }
+    } 
 ```
-      * These media queries can live within the styles of the component you are working on. Gone are the days of writing tons of CSS beneath a single media query!:
+      
+  - These media queries can live within the styles of the component you are working on. Gone are the days of writing tons of CSS beneath a single media query!:
+
 ``` .header {
       width: 100%;
       height: 50px;
@@ -45,7 +47,8 @@
       @media #{$mq-1070} {
         height: 120px;
       }
-    }
+    } 
 ```
-    * This example header class changes height at a tablet screen with and again at a larger desktop screen width! 
-    * The styles that are dependent on different screen sizes live with the original declaration! Yay!!!
+
+  * This example header class changes height at a tablet screen with and again at a larger desktop screen width! 
+  * The styles that are dependent on different screen sizes live with the original declaration! Yay!!!
