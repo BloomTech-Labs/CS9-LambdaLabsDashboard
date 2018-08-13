@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-//import Billing from "./Components/Billing/Billing";
 import Settings from "./Components/Settings/Settings";
 
 class App extends Component {
@@ -15,6 +14,7 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        <Settings />
       </div>
     );
   }

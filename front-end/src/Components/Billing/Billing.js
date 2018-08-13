@@ -2,19 +2,23 @@ import React from "react";
 import "./Billing.css";
 
 export default class Billing extends React.Component {
-  // static propTypes = {
-  //   name: React.PropTypes.string
-  // };
-  // constructor(props) {
-  //   super(props);
-  //   state = {
+  constructor(props) {
+    super(props);
+    this.state = {
+      checkBox: false;
+    };
+  }
 
-  //   }
-  // }
+  //TODO i dont know how to set state with checkboxes
+
+  submitForm(event) {
+    event.preventDefault();
+    console.log(this.state);
+  }
   render() {
     return (
       <div>
-        <form>
+        <form onSubmit={this.submitForm.bind(this)}>
           <fieldset>
             <legend>Choose Your Subscription</legend>
             <div>
@@ -37,7 +41,7 @@ export default class Billing extends React.Component {
             </div>
           </fieldset>
           <p>
-            <button class="styled">Buy Now</button>
+            <button className="styled">Buy Now</button>
           </p>
         </form>
       </div>

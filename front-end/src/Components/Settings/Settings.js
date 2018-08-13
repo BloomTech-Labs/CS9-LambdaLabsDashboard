@@ -2,28 +2,48 @@ import React from "react";
 import "./Settings.css";
 
 export default class Billing extends React.Component {
-  // static propTypes = {
-  //   name: React.PropTypes.string
-  // };
-  // constructor(props) {
-  //   super(props);
-  //   state = {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+      oldPw: "",
+      newPw: ""
+    };
+  }
 
-  //   }
-  // }
+  submitForm(event) {
+    event.preventDefault();
+    console.log(this.state);
+  }
+
   render() {
     return (
       <div>
-        <form class="settings">
+        <form className="settings" onSubmit={this.submitForm.bind(this)}>
           <br />
-          <label>Email:</label> <input type="text" name="email" />
+          <label>Email:</label>{" "}
+          <input
+            type="text"
+            name="email"
+            onChange={event => this.setState({ email: event.target.value })}
+          />
           <br />
-          <label>Old Password:</label> <input type="text" name="oldPw" />
+          <label>Old Password:</label>{" "}
+          <input
+            type="text"
+            name="oldPw"
+            onChange={event => this.setState({ oldPw: event.target.value })}
+          />
           <br />
-          <label>New password:</label> <input type="text" name="lastname" />
+          <label>New password:</label>{" "}
+          <input
+            type="text"
+            name="newPw"
+            onChange={event => this.setState({ newPw: event.target.value })}
+          />
           <br />
           <p>
-            <button class="styled">Save</button>
+            <button className="styled">Save</button>
           </p>
         </form>
       </div>
