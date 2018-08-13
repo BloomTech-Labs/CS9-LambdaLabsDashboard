@@ -1,14 +1,24 @@
 import React, { Component } from 'react';
-import Dashboard from './Components/Dashboard/Dashboard';
+
 import './App.css';
+import { Route } from 'react-router-dom';
+import Classes from './Components/Classes/classes.js';
+import LandingPage from './Components/LandingPage/LandingPage.js';
+import Projects from './Components/Projects/projects.js'
+import Billing from './Components/Billing/Billing.js'
+// import Settings from './Components/Settings/settings.js'
+
+
 
 class App extends Component {
   render = () => {
     return (
-      <div className="App">
-        {/*Comment my componenet out if you're working on your own feature 
-        at the base level! - Love Alex */}
-        <Dashboard />
+
+      <div>
+        <Route exact path="/" component={LandingPage} />
+        <Route path="/classes" component={Classes} />
+        <Route path="/projects" component={Projects} />
+        <Route path="/Billing" component={Billing} />
       </div>
     );
   }
