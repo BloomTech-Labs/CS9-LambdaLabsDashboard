@@ -1,6 +1,8 @@
 import React from "react";
 import "./Billing.css";
 
+//import Sidenav from "../Sidenav/sidenav";
+
 export default class Billing extends React.Component {
   constructor(props) {
     super(props);
@@ -9,8 +11,6 @@ export default class Billing extends React.Component {
       annual: false
     };
   }
-
-  //TODO i dont know how to set state with checkboxes
 
   onChange = event => {
     this.setState({
@@ -21,6 +21,7 @@ export default class Billing extends React.Component {
   render() {
     return (
       <div>
+        {/* <Sidenav /> */}
         <form>
           <fieldset>
             <legend>Choose Your Subscription</legend>
