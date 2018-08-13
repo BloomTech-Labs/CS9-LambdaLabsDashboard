@@ -1,0 +1,13 @@
+.Dashboard {
+	@include center;
+	min-height: 100vh; 
+	width: 100%;
+	background: $darkgray;
+	&>div {
+		@include center;
+		&>h1 {
+			font-weight: 200;
+			color: #fff;
+		}
+	}
+}
