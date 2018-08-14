@@ -1,4 +1,3 @@
-
 import React from "react";
 import "./billing.css";
 
@@ -49,7 +48,6 @@ export default class Billing extends React.Component {
             <button className="styled">Buy Now</button>
           </p>
         </form>
-
       </div>
     );
   }
