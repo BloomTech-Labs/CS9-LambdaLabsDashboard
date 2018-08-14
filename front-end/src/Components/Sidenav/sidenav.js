@@ -12,9 +12,9 @@ class Sidenav extends Component {
                 <Link to="/billing">
                     <li>Billing</li>
                 </Link>
-                {/* <Link to="/settings">
+                <Link to="/settings">
                     <li>Settings</li>
-                </Link> */}
+                </Link>
                 <Link to="/projects">
                     <li>Projects</li>
                 </Link>
