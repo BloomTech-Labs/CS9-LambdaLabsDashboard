@@ -1,14 +1,15 @@
-import React from 'react';
-export default class Dashboard extends React.Component {
-  static propTypes = {
-    name: React.PropTypes.string,
-  };
+import React, { Component } from 'react';
+export default class Dashboard extends Component {
   constructor(props) {
     super(props);
   }
-  render() {
+  render = () => {
     return (
-      <div></div>
+      <div className='Dashboard'>
+        <div>
+          <h1>Hello everyone, I'm a dashboard</h1>
+        </div>
+      </div>
     );
   }
 }
