@@ -1,0 +1,7 @@
+.projects {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  margin-left: 300px;
+  border: 1px solid red;
+}
