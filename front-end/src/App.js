@@ -7,7 +7,7 @@ import Projects from "./Components/Projects/projects.js";
 import Billing from "./Components/Billing/billing.js";
 import CreateProject from "./Components/CreateProject/createProject.js";
 import EditProject from "./Components/EditProject/editProject.js";
-// import Settings from './Components/Settings/settings.js'
+import Settings from "./Components/Settings/settings.js";
 
 class App extends Component {
   render() {
@@ -16,7 +16,8 @@ class App extends Component {
         <Route exact path="/" component={LandingPage} />
         <Route path="/classes" component={Classes} />
         <Route path="/projects" component={Projects} />
-        <Route path="/Billing" component={Billing} />
+        <Route path="/billing" component={Billing} />
+        <Route path="/settings" component={Settings} />
         <Route
           exact
           path="/createProject"
