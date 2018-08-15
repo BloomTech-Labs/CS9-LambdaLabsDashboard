@@ -2,11 +2,17 @@
 	@include center;
 	width: 90%;
 	margin-bottom: 5%;
+	@media #{$mq-670} {
+		margin-bottom: 0;
+	}
 	&>.stat-wrapper {
 		@include center;
 		flex-direction: row;
 		justify-content: space-between;
 		width: 100%;
+		@media #{$mq-670} {
+			max-width: 300px;
+		}
 		&>div {
 			@include center;
 			flex-direction: column;

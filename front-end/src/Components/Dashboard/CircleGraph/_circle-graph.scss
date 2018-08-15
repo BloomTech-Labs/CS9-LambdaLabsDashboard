@@ -3,8 +3,8 @@
 	width: 80%;
 	height: auto;
 	@media #{$mq-670} {
-		margin-bottom: 15%;
-		max-width: 300px;
+		max-width: 250px;
+		margin-top: -5%;
 	}
 	&>.circle-center {
 		@include center;

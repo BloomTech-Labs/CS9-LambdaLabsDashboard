@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Header from '../Header/Header';
 import CircleGraph from './CircleGraph/CircleGraph';
 import CircleDetails from './CircleGraph/CircleDetails/CircleDetails';
 import Team from './Team/Team';
@@ -63,7 +64,7 @@ export default class Dashboard extends Component {
     setTimeout(() => {
       this.setState({ completeness: Math.PI * (2 * 50)});  
       setTimeout(() => this.setState({countUp: true}), 500);
-    }, 1000);
+    }, 500);
   }
 
   setHeight = height => this.setState({boxHeight: height});
@@ -72,13 +73,14 @@ export default class Dashboard extends Component {
     const { project, team, completeness, trello, boxHeight, countUp } = this.state;
     return (
       <div className='Dashboard'>
+{/*        <Header />*/}
         <div>
           <div className='top-panel'>
             <h1>{project}</h1>
           </div>
           <div className='boxes'>
             <div 
-              className='box'
+              className='box circle-box'
               style={{height: boxHeight ? boxHeight : 'auto'}}>
               <CircleGraph completeness={completeness} />
               <CircleDetails 

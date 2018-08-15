@@ -3,13 +3,23 @@
 	min-height: 100vh; 
 	width: 100%;
 	background: $darkergray;
+	position: relative;
+	@media #{$mq-1070} {
+		width: calc(100% - 200px);
+	}
 	&>div {
 		@include center;
 		min-height: 100vh;
 		width: 100%;
 		flex-direction: column;
 		justify-content: flex-start;
-		margin-top: 50px;
+		margin-top: 70px;
+		@media #{$mq-670} {
+			margin-top: 100px;
+		}
+		@media #{$mq-1070} {
+			margin-top: 2.5%;
+		}
 		&>.top-panel {
 			width: 100%;
 			@include center;
@@ -20,7 +30,11 @@
 			width: 90%;
 			border-radius: 10px;
 			@media #{$mq-670} {
-				padding: 2.5%;
+				padding: 2.5% 0;
+				width: 95%;
+			}
+			@media #{$mq-1070} {
+				width: 90%;
 			}
 			&>h1 {
 				font-size: 6.5vh;
@@ -39,7 +53,6 @@
 			@include center;
 			width: 100%;
 			flex-direction: column;
-			@include headerShadow;
 			@media #{$mq-670} {
 				flex-direction: row;
 				flex-wrap: wrap;
@@ -64,6 +77,21 @@
 					&:nth-of-type(even) {
 						margin-left: 2.5%;
 					}
+				}
+				@media #{$mq-1070} {
+					width: 43%;
+					margin: 3vh 0;
+					&:nth-of-type(odd) {
+						margin-right: 2%;
+					}
+					&:nth-of-type(even) {
+						margin-left: 2%;
+					}
+				}
+			}
+			&>.circle-box {
+				@media #{$mq-670} {
+					justify-content: space-around;
 				}
 			}
 		}

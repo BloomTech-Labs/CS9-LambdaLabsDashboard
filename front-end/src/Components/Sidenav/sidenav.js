@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 class Sidenav extends Component {
     render() {
         return (
-            <div>
-                <ul className="sidenav">
+            <div className="side-nav">
+                <ul>
                     <Link to="/classes">
                         <li>Classes</li>
                     </Link>
