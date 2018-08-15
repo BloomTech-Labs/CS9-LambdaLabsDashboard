@@ -23,16 +23,15 @@
 				padding: 2.5%;
 			}
 			&>h1 {
-<<<<<<< HEAD
-				font-size: 6vh;
-=======
 				font-size: 6.5vh;
->>>>>>> master
 				font-weight: 200;
 				@include backgroundTop;
 			    -webkit-background-clip: text;
 			    -webkit-text-fill-color: transparent;
 			    margin: 0;
+			    @media #{$mq-iphoneX} {
+					font-size: 6vh;
+			    }
 			    @media #{$mq-670} {
 					font-size: 7.5vh;
 				}
@@ -42,10 +41,7 @@
 			@include center;
 			width: 100%;
 			flex-direction: column;
-<<<<<<< HEAD
-=======
 			@include headerShadow;
->>>>>>> master
 			@media #{$mq-670} {
 				flex-direction: row;
 				flex-wrap: wrap;
@@ -56,20 +52,14 @@
 				border-radius: 10px;
 				@include center;
 				background: $darkgray;
-<<<<<<< HEAD
 				margin: 3vh 0 1vh 0;
-=======
 				margin: 3vh 0;
->>>>>>> master
 				padding: 2.5% 0;
 				@include headerShadow;
 				flex-direction: column;
 				@media #{$mq-670} {
 					width: 45%;
-<<<<<<< HEAD
 					margin: 3vh 0;
-=======
->>>>>>> master
 					&:nth-of-type(odd) {
 						margin-right: 2.5%;
 					}

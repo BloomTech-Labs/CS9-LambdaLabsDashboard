@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import "./App.css";
 import { Route } from "react-router-dom";
-import Classes from "./Components/Classes/classes.js";
-import LandingPage from "./Components/LandingPage/LandingPage.js";
-import Projects from "./Components/Projects/projects.js";
-import Billing from "./Components/Billing/billing.js";
-import CreateProject from "./Components/CreateProject/createProject.js";
-import EditProject from "./Components/EditProject/editProject.js";
-import Settings from "./Components/Settings/settings.js";
+import Classes from "./Components/Classes/classes";
+import LandingPage from "./Components/LandingPage/LandingPage";
+import Projects from "./Components/Projects/projects";
+import Billing from "./Components/Billing/billing";
+import CreateProject from "./Components/CreateProject/createProject";
+import EditProject from "./Components/EditProject/editProject";
+import Settings from "./Components/Settings/settings";
+import Dashboard from './Components/Dashboard/Dashboard';
 
 class App extends Component {
   render() {
@@ -18,6 +19,7 @@ class App extends Component {
         <Route path="/projects" component={Projects} />
         <Route path="/billing" component={Billing} />
         <Route path="/settings" component={Settings} />
+        <Route path="/project-dashboard" component={Dashboard} />
         <Route
           exact
           path="/createProject"
