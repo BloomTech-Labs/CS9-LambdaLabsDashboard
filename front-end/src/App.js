@@ -8,7 +8,7 @@ import Projects from "./Components/Projects/projects";
 import Billing from "./Components/Billing/billing";
 import CreateProject from "./Components/CreateProject/createProject";
 import EditProject from "./Components/EditProject/editProject";
-import Settings from "./Components/Settings/settings";
+import Settings from "./Components/Settings/Settings";
 import Dashboard from './Components/Dashboard/Dashboard';
 import Menu from './Components/Menu/Menu';
 import Header from './Components/Header/Header';
