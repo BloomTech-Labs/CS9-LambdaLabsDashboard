@@ -1,0 +1,6 @@
+.createProject {
+  display: flex;
+  flex-direction: column;
+  margin-left: 250px;
+  width: 70%;
+}
