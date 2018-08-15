@@ -2,6 +2,10 @@
 	@include center;
 	width: 80%;
 	height: auto;
+	@media #{$mq-670} {
+		margin-bottom: 15%;
+		max-width: 300px;
+	}
 	&>.circle-center {
 		@include center;
 		position: relative;
@@ -33,15 +37,21 @@
 			flex-direction: column;
 			&>h3 {
 				color: #74E0FF;
-				font-size: 3vh;
+				font-size: 2.5vh;
 				margin: 0;
 				font-weight: 900;
+				@media #{$mq-670} {
+					font-size: 2.25vh;
+				}
 			}
 			&>h4 {
 				color: #74E0FF;
-				font-size: 13.5vh;
+				font-size: 10vh;
 				font-weight: 100;
 				margin: 0;
+				@media #{$mq-670} {
+					font-size: 9vh;
+				}
 			}
 		}
 	}

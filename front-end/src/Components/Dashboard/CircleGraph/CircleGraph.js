@@ -4,21 +4,14 @@ import TopCircle from './TopCircle/TopCircle';
 import CountUp from 'react-countup';
 
 export default class CircleGraph extends Component {
-	constructor(props) {
-	  super(props);
-	  this.state = {
-	  	completeness: Math.PI * (2 * 199)
-	  }
-	}
-
-	componentDidMount = () => {
-		setTimeout(() => {
-			this.setState({ completeness: Math.PI * (2 * 50) });	
-		}, 1000);
+	
+	shouldComponentUpdate = ({completeness}) => {
+		if(completeness !== this.props.completeness) return true;
+		return false;
 	}
 
   render = () => {
-  	const { completeness } = this.state; 
+  	const { completeness } = this.props; 
     return (
       <div className='circle-graph'>
 				<div className='circle-center'>

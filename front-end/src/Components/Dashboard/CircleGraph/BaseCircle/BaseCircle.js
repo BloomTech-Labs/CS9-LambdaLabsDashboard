@@ -8,7 +8,7 @@ export default class BaseCircle extends Component {
     return (
       <circle
 				stroke="#19202D"
-				strokeWidth="20" 
+				strokeWidth="15" 
 				fill='transparent' 
 				cx="250" 
 				cy="250" 
