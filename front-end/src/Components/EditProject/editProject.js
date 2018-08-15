@@ -23,9 +23,9 @@ class EditProject extends Component {
       numberOfStudents: this.state.numberOfStudents,
       dueDate: this.state.dueDate
     };
+    const id = this.props.match.params.id;
     console.log(object);
-    const id = "";
-    const promise = axios.put(`http://localhost:4000/projects/:${id}`, object);
+    const promise = axios.put(`http://localhost:4000/projects/${id}`, object);
     promise
       .then(response => {
         console.log(response.data);
@@ -36,6 +36,7 @@ class EditProject extends Component {
   };
 
   render() {
+    console.log(this.props.match.params.id);
     return (
       <div className="createProject">
         <Sidenav />
