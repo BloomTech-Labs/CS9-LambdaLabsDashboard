@@ -27,6 +27,9 @@
 				&:last-of-type {
 					font-size: 2.25vh;
 					font-weight: 800;
+					@media #{$mq-iphoneX} {
+						font-size: 2vh;
+					}
 					@media #{$mq-670} {
 						font-size: 1.85vh;
 					} 

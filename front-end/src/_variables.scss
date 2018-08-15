@@ -24,6 +24,7 @@ $mq-1700 : '(min-width: 1700px)';
 $mq-h-1024: '(min-height: 1024px)';
 $mq-h-1051: '(min-height: 1051px)';
 $mq-h-1400: '(min-height: 1400px)';
+$mq-iphoneX: 'only screen and (device-width : 375px) and (device-height : 812px) and (-webkit-device-pixel-ratio : 3)';
 // $mq-l-h-and-w: '(min-width: 957px) and (min-height: 1024px)'; 
 
 @mixin center {

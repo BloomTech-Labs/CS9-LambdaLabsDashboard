@@ -23,7 +23,7 @@
 				padding: 2.5%;
 			}
 			&>h1 {
-				font-size: 6.5vh;
+				font-size: 6vh;
 				font-weight: 200;
 				@include backgroundTop;
 			    -webkit-background-clip: text;
@@ -38,7 +38,6 @@
 			@include center;
 			width: 100%;
 			flex-direction: column;
-			@include headerShadow;
 			@media #{$mq-670} {
 				flex-direction: row;
 				flex-wrap: wrap;
@@ -49,12 +48,13 @@
 				border-radius: 10px;
 				@include center;
 				background: $darkgray;
-				margin: 3vh 0;
+				margin: 3vh 0 1vh 0;
 				padding: 2.5% 0;
 				@include headerShadow;
 				flex-direction: column;
 				@media #{$mq-670} {
 					width: 45%;
+					margin: 3vh 0;
 					&:nth-of-type(odd) {
 						margin-right: 2.5%;
 					}
