@@ -1,6 +1,5 @@
 import React from "react";
-import "./settings.css";
-//import Sidenav from "../Sidenav/sidenav";
+import "./Settings.css";
 
 export default class Billing extends React.Component {
   constructor(props) {
@@ -25,7 +24,6 @@ export default class Billing extends React.Component {
   render() {
     return (
       <div>
-        {/* <Sidenav /> */}
         <form className="settings">
           <br />
           <label>Email:</label>{" "}
