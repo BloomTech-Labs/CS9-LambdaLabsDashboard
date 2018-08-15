@@ -1,0 +1,12 @@
+.bar-graph {
+	width: 100%;
+	@include center;
+	height: 100%;
+	&>div {
+		@include center;
+		width: 80%;
+		height: 40vh;
+	}
+}
+
+@import 'Graph/graph.scss';

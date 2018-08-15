@@ -1,0 +1,18 @@
+.graph-grid {
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-end;
+	width: 100%;
+	border-bottom: 1px solid #fff;
+	border-left: 1px solid #fff;
+	height: 100%;
+	flex-direction: row;
+	&>.bar-container {
+		width: 50px;
+		height: 100%;
+		background: green;
+		@include center;
+		flex-direction: row;
+		border-right: 1px solid rgba(#fff, 0.25);
+	}
+}

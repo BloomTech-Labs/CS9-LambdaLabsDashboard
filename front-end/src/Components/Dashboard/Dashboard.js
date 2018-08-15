@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Header from '../Header/Header';
+import BarGraph from './BarGraph/BarGraph';
 import CircleGraph from './CircleGraph/CircleGraph';
 import CircleDetails from './CircleGraph/CircleDetails/CircleDetails';
 import Team from './Team/Team';
@@ -79,6 +79,9 @@ export default class Dashboard extends Component {
             <h1>{project}</h1>
           </div>
           <div className='boxes'>
+            <div className='box bar-graph-box'>
+              <BarGraph team={team} />
+            </div>
             <div 
               className='box circle-box'
               style={{height: boxHeight ? boxHeight : 'auto'}}>

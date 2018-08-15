@@ -13,7 +13,7 @@ class Menu extends Component {
   navigate = route => {
     const { history, toggleMenu } = this.props;
     toggleMenu();
-    setTimeout(() => this.props.history.push(route), 300);
+    setTimeout(() => history.push(route), 300);
   }
 
   render = () => {

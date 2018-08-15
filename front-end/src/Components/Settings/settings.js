@@ -1,5 +1,5 @@
 import React from "react";
-import "./Settings.css";
+import "./settings.css";
 
 export default class Billing extends React.Component {
   constructor(props) {

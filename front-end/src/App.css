@@ -1152,3 +1152,35 @@ $scale: 0.8; // icon scale 68/68 default
           @media (min-width: 670px) {
             .circle-details > .stat-wrapper > div > h5:last-of-type {
               font-size: 1.85vh; } }
+
+.bar-graph {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; }
+  .bar-graph > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 40vh; }
+
+.graph-grid {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  width: 100%;
+  border-bottom: 1px solid #fff;
+  border-left: 1px solid #fff;
+  height: 100%;
+  flex-direction: row; }
+  .graph-grid > .bar-container {
+    width: 50px;
+    height: 100%;
+    background: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    border-right: 1px solid rgba(255, 255, 255, 0.25); }
