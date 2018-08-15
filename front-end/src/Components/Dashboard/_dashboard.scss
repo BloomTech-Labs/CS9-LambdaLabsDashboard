@@ -25,9 +25,7 @@
 			&>h1 {
 				font-size: 6.5vh;
 				font-weight: 200;
-				@include backgroundTop;
-			    -webkit-background-clip: text;
-			    -webkit-text-fill-color: transparent;
+				@include gradientText;
 			    margin: 0;
 			    @media #{$mq-iphoneX} {
 					font-size: 6vh;

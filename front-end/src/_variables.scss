@@ -72,3 +72,9 @@ $mq-iphoneX: 'only screen and (device-width : 375px) and (device-height : 812px)
 	background: -webkit-linear-gradient(to right, #fdfbfb, #ebedee);
 	background: linear-gradient(to right, #fdfbfb, #ebedee);
 }
+
+@mixin gradientText {
+	@include backgroundTop;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
