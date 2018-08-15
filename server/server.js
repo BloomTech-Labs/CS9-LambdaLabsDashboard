@@ -32,6 +32,9 @@ Server.get("/", (req, res) => {
 const projects = require("./projects/projectsRoute.js");
 Server.use("/projects", projects);
 
+const user = require("./Users/userRoute.js");
+Server.use("/user", user);
+
 Server.listen(port, () => {
   console.log(`\n=== server is running on ${port} ==`);
 });

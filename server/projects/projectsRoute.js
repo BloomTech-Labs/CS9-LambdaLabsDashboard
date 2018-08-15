@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
 import ProjectsModel from "./projectsModel.js";
-import nonEmpty from "../MiddleWare/middleWare.js";
+import { noneEmpty } from "../MiddleWare/middleWare.js";
+
 router.get("/", (req, res) => {
   console.log(req.body);
   ProjectsModel.find({})
@@ -13,7 +14,7 @@ router.get("/", (req, res) => {
     });
 });
 
-router.post("/", nonEmpty, (req, res) => {
+router.post("/", noneEmpty, (req, res) => {
   console.log("request ===>", req.body);
   const obj = req.body;
   const newProject = ProjectsModel(obj);
@@ -35,10 +36,10 @@ router.put("/:id", (req, res) => {
   console.log(id);
   ProjectsModel.findByIdAndUpdate(id, obj, { new: true })
     .then(p => {
-      res.status(200).json({ msg: "note updated successfully", p });
+      res.status(200).json({ msg: "project updated successfully", p });
     })
     .catch(err => {
-      res.status(500).json({ msg: "... not able to update your note" });
+      res.status(500).json({ msg: "... not able to update your project" });
     });
 });
 module.exports = router;

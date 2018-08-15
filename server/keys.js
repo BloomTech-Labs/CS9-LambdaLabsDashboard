@@ -13,5 +13,10 @@ module.exports = {
   facebook: {
     clientID: "455110098247139",
     clientSecret: "3397aba02276e374ad2cb4d7796eaf09"
+  },
+
+  secretKey: {
+    secretKey:
+      "kakakakllelelelele lele hfhfh3##3ff **8 jjdjdjdjd jjiiiie nncmmdkkkd lfootball lalaliga"
   }
 };

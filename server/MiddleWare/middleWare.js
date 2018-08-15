@@ -1,4 +1,5 @@
 const ProjectModel = require("../projects/projectsModel.js");
+const UserModel = require("../Users/userModel.js");
 
 const noneEmpty = (req, res, next) => {
   const projectName = req.body.projectName;
@@ -13,4 +14,13 @@ const noneEmpty = (req, res, next) => {
   }
 };
 
-module.exports = noneEmpty;
+const userEmpty = (req, res, next) => {
+  const username = req.body.username;
+  const password = req.body.password;
+  if (username === "" || password === "") {
+    return res.status(400).json("credentials can`t be empty..!!!");
+  } else {
+    next();
+  }
+};
+module.exports = { noneEmpty, userEmpty };
