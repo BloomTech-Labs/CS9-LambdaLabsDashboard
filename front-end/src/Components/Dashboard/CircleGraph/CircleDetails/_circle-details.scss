@@ -1,0 +1,37 @@
+.circle-details {
+	@include center;
+	width: 90%;
+	margin-bottom: 5%;
+	&>.stat-wrapper {
+		@include center;
+		flex-direction: row;
+		justify-content: space-between;
+		width: 100%;
+		&>div {
+			@include center;
+			flex-direction: column;
+			justify-content: space-around;
+			width: 33.33333%;
+			border-top-right-radius: 50%;
+			border-top-left-radius: 50%;
+			&>h5 {
+				color: #5B8EC6;
+				margin-top: 0;
+				text-align: center;
+				margin: 0;
+				&:first-of-type {
+					font-size: 8.5vh;
+					font-weight: 200;
+					transition-duration: 0.75s;
+				}
+				&:last-of-type {
+					font-size: 2.25vh;
+					font-weight: 800;
+					@media #{$mq-670} {
+						font-size: 1.85vh;
+					} 
+				}
+			}
+		}
+	}
+}
