@@ -13,18 +13,31 @@ export default class Billing extends React.Component {
       annual: false
     };
   }
-  onToken = token => {
+  // onToken = token => {
+  //   const promise = axios.post("http://localhost:4000/charge", {
+  //     body: JSON.stringify(token)
+  //   });
+  //   promise.then(response => {
+  //     response.json().then(data => {
+  //       alert(`We are in business, ${data.email}`);
+  //     });
+  //   });
+  // };
+
+  onToken = token =>
     axios
-      .get("/save-stripe-token", {
-        method: "POST",
-        body: JSON.stringify(token)
+      .post("http:localhost:4000/charge", {
+        description,
+        source: token.id,
+        currency: "usd",
+        amount: 9.99
       })
       .then(response => {
         response.json().then(data => {
           alert(`We are in business, ${data.email}`);
         });
-      });
-  };
+      })
+      .catch(errorPayment);
 
   onChange = event => {
     alert("hello");
