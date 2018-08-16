@@ -360,8 +360,7 @@ th {
 
 /*=============================variables====================*/
 /*======MEDIA QUERIES======*/
-html,
-body {
+html, body {
   font-family: -apple-system, BlinkMacSystemFont, “Segoe UI”, Roboto, Helvetica, Arial, sans-serif; }
 
 .App {
