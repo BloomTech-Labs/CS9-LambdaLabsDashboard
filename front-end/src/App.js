@@ -9,11 +9,14 @@ import CreateProject from "./Components/CreateProject/createProject.js";
 import EditProject from "./Components/EditProject/editProject.js";
 import EditStudent from "./Components/EditStudent/editStudent.js";
 // import Settings from "./Components/Settings/settings.js";
+import Sidenav from "./Components/Sidenav/sidenav.js"
+import TopNav from "./Components/topNav.js";
 
 class App extends Component {
   render() {
     return (
       <div>
+        <TopNav/>
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/classes" component={Classes} />
         <Route exact path="/projects" component={Projects} />
