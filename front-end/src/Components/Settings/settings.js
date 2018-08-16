@@ -2,7 +2,6 @@ import React from "react";
 import axios from "axios";
 
 import "./settings.css";
-import Sidenav from "../Sidenav/sidenav";
 
 const URL = "https://localhost/updatesettings";
 export default class Billing extends React.Component {
@@ -44,7 +43,6 @@ export default class Billing extends React.Component {
   render() {
     return (
       <div>
-        <Sidenav />
         <form className="settings" onSubmit={this.onSubmit}>
           <h1>Update Settings</h1>
           <br />
