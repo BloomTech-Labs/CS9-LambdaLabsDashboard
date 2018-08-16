@@ -1,8 +1,5 @@
 import React from "react";
-import "./billing.css";
 import axios from "axios";
-
-import Sidenav from "../Sidenav/sidenav";
 
 export default class Billing extends React.Component {
   constructor(props) {
@@ -28,7 +25,6 @@ export default class Billing extends React.Component {
   render() {
     return (
       <div>
-        <Sidenav />
         <form onSubmit={this.onSubmit}>
           <fieldset>
             <legend>Choose Your Subscription</legend>
