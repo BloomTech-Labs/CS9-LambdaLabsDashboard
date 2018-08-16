@@ -1,15 +1,18 @@
 import express from "express";
 import mongoose from "mongoose";
-
-const keys = require("./keys.js");
+import path from 'path'
+import keys from './keys';
+import bodyParser from 'body-parser';
+import helmet from 'helmet';
+import cors from 'cors';
+import projects from './projects/projectsRoute';
+import user from './Users/userRoute.js';
 const Server = express();
-
-const bodyParser = require("body-parser");
-const helmet = require("helmet");
-const cors = require("cors");
+const staticFiles = express.static(path.join(__dirname, '../../front-end/build'));
 Server.use(cors());
 Server.use(helmet());
 Server.use(bodyParser.json());
+Server.use(staticFiles);
 
 const port = process.env.PORT || 4000;
 
@@ -29,11 +32,9 @@ Server.get("/", (req, res) => {
   res.status(200).json({ msg: "api is running!" });
 });
 
-const projects = require("./projects/projectsRoute.js");
 Server.use("/projects", projects);
-
-const user = require("./Users/userRoute.js");
 Server.use("/user", user);
+Server.use('*', staticFiles);
 
 Server.listen(port, () => {
   console.log(`\n=== server is running on ${port} ==`);

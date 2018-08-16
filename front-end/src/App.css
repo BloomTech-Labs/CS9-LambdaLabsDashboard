@@ -1182,8 +1182,11 @@ $scale: 0.8; // icon scale 68/68 default
     margin: 0;
     font-weight: 500;
     color: #5B8EC6;
-    font-size: 3vh;
+    font-size: 1.25em;
     margin-bottom: 1.25em; }
+    @media (min-width: 670px) {
+      .bar-graph > h2 {
+        font-size: 1.5em; } }
   .bar-graph > .grid-container {
     display: flex;
     justify-content: center;
@@ -1195,7 +1198,7 @@ $scale: 0.8; // icon scale 68/68 default
     @media (min-width: 670px) {
       .bar-graph > .grid-container {
         width: 85%;
-        height: 60%; } }
+        height: 55%; } }
     .bar-graph > .grid-container > .y-axis {
       height: 100%;
       display: flex;

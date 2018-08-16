@@ -4,8 +4,8 @@
   "description": "Server for Lambda Labs Dashboard",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js --exec babel-node",
-    "build": "babel ./ -d dist"
+    "start": "nodemon library/server.js --exec babel-node",
+    "build": "babel library -d build"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "helmet": "^3.13.0",
+    "jsonwebtoken": "^8.3.0",
     "mongoose": "^5.2.7"
   },
   "devDependencies": {
