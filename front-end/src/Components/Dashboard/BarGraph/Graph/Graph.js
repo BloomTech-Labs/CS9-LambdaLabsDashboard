@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
+import BarContainer from './BarContainer/BarContainer';
 
 export default class Graph extends Component {
   render = () => {
-  	const { team } = this.props;
+  	const { team, initBars } = this.props;
   	const { length } = team;
     return (
       <div className='graph-grid'>
       	{
       		team.map((dude, i) => {
-      			console.log(100/length + '%')
+      			const { trellos, merges } = dude;
       			return (
-      				<div 
+      				<BarContainer 
       					key={i}
-	      				className='bar-container'
-	      				style={{
-	      					width: 100/length + '%'
-	      				}}>
-	      			</div>
+                index={i}
+      					trellos={trellos}
+      					merges={merges}
+      					length={length}
+                initBars={initBars} />
       			);
       		})
       	}

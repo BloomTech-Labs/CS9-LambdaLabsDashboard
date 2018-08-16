@@ -910,10 +910,12 @@ $scale: 0.8; // icon scale 68/68 default
       @media (min-width: 670px) {
         .Dashboard > div > .top-panel {
           padding: 2.5% 0;
-          width: 95%; } }
-      @media (min-width: 1070px) {
+          width: 95%;
+          margin-bottom: 2vh; } }
+      @media (min-width: 957px) {
         .Dashboard > div > .top-panel {
-          width: 90%; } }
+          width: 90%;
+          margin-bottom: 2vh; } }
       .Dashboard > div > .top-panel > h1 {
         font-size: 6.5vh;
         font-weight: 200;
@@ -949,7 +951,6 @@ $scale: 0.8; // icon scale 68/68 default
         align-items: center;
         background: #263346;
         margin: 3vh 0 1vh 0;
-        margin: 3vh 0;
         padding: 2.5% 0;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
         flex-direction: column; }
@@ -957,21 +958,29 @@ $scale: 0.8; // icon scale 68/68 default
           .Dashboard > div .boxes > .box {
             width: 45%;
             margin: 3vh 0; }
-            .Dashboard > div .boxes > .box:nth-of-type(odd) {
-              margin-right: 2.5%; }
-            .Dashboard > div .boxes > .box:nth-of-type(even) {
-              margin-left: 2.5%; } }
-        @media (min-width: 1070px) {
+            .Dashboard > div .boxes > .box:nth-of-type(2) {
+              margin: 3vh 2.5% 3vh 0; }
+            .Dashboard > div .boxes > .box:nth-of-type(3) {
+              mmargin: 3vh 0 3vh 2.5%; } }
+        @media (min-width: 957px) {
           .Dashboard > div .boxes > .box {
             width: 43%;
-            margin: 3vh 0; }
-            .Dashboard > div .boxes > .box:nth-of-type(odd) {
-              margin-right: 2%; }
-            .Dashboard > div .boxes > .box:nth-of-type(even) {
-              margin-left: 2%; } }
+            margin: 4vh 0 2.5vh 0; }
+            .Dashboard > div .boxes > .box:nth-of-type(2) {
+              margin: 4vh 0 2.5vh 2%; }
+            .Dashboard > div .boxes > .box:nth-of-type(3) {
+              margin: 4vh 0 2.5vh 0; } }
       @media (min-width: 670px) {
         .Dashboard > div .boxes > .circle-box {
           justify-content: space-around; } }
+      @media (min-width: 670px) {
+        .Dashboard > div .boxes > .bar-graph-box {
+          width: 95%;
+          padding: 0; } }
+      @media (min-width: 957px) {
+        .Dashboard > div .boxes > .bar-graph-box {
+          width: 43%;
+          margin: 4vh 2% 2.5vh 0; } }
 
 .circle-graph {
   display: flex;
@@ -1079,7 +1088,8 @@ $scale: 0.8; // icon scale 68/68 default
         flex-direction: column;
         justify-content: flex-start; }
         .team > div > .team-member > .user-info > h3 {
-          margin: 0; }
+          margin: 0;
+          font-size: 1.1em; }
           @media (min-width: 670px) {
             .team > div > .team-member > .user-info > h3 {
               font-size: 1em; } }
@@ -1090,14 +1100,14 @@ $scale: 0.8; // icon scale 68/68 default
           margin-left: 25px;
           cursor: pointer; }
           .team > div > .team-member > .user-info > .github > img {
-            height: 20px;
-            width: 20px;
+            height: 30px;
+            width: 30px;
             padding: 5px; }
             @media (min-width: 670px) {
               .team > div > .team-member > .user-info > .github > img {
-                height: 16px;
-                width: 15px;
-                padding: 4px; } }
+                height: 25px;
+                width: 25px;
+                padding: 5px; } }
           .team > div > .team-member > .user-info > .github > h4 {
             margin: 0;
             font-size: 1em;
@@ -1125,6 +1135,9 @@ $scale: 0.8; // icon scale 68/68 default
     @media (min-width: 670px) {
       .circle-details > .stat-wrapper {
         max-width: 300px; } }
+    @media (min-width: 957px) {
+      .circle-details > .stat-wrapper {
+        max-width: 350px; } }
     .circle-details > .stat-wrapper > div {
       display: flex;
       justify-content: center;
@@ -1152,35 +1165,126 @@ $scale: 0.8; // icon scale 68/68 default
           @media (min-width: 670px) {
             .circle-details > .stat-wrapper > div > h5:last-of-type {
               font-size: 1.85vh; } }
+          @media (min-width: 957px) {
+            .circle-details > .stat-wrapper > div > h5:last-of-type {
+              font-size: 2.25vh; } }
 
 .bar-graph {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%; }
-  .bar-graph > div {
+  height: 100%;
+  padding: 20px 0 60px 0;
+  flex-direction: column; }
+  @media (min-width: 670px) {
+    .bar-graph {
+      padding: 10px 0 20px 0; } }
+  .bar-graph > h2 {
+    margin: 0;
+    font-weight: 500;
+    color: #5B8EC6;
+    font-size: 3vh;
+    margin-bottom: 1.25em; }
+  .bar-graph > .grid-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 80%;
+    height: 40vh;
+    margin-left: 30px; }
+    @media (min-width: 670px) {
+      .bar-graph > .grid-container {
+        width: 85%;
+        height: 70%; } }
+    .bar-graph > .grid-container > .y-axis {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-left: -10px;
+      margin-right: 5px; }
+      .bar-graph > .grid-container > .y-axis > .y-axis-tick {
+        height: 20%;
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-end;
+        color: rgba(255, 255, 255, 0.75);
+        position: relative; }
+        .bar-graph > .grid-container > .y-axis > .y-axis-tick::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          right: -5px;
+          height: 1px;
+          width: 10px;
+          background: #fff; }
+        .bar-graph > .grid-container > .y-axis > .y-axis-tick::before {
+          content: attr(data-stat);
+          position: absolute;
+          top: -7px;
+          right: 7.5px;
+          font-size: 12px; }
+  .bar-graph > .contributors {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 80%;
-    height: 40vh; }
+    margin-left: 30px;
+    color: #fff; }
+    @media (min-width: 670px) {
+      .bar-graph > .contributors {
+        width: 85%; } }
+    .bar-graph > .contributors > .contributor {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 10px; }
+      .bar-graph > .contributors > .contributor > h5 {
+        font-size: 10px;
+        transform-origin: 100% 50%;
+        transform: rotate(-45deg); }
 
 .graph-grid {
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
   width: 100%;
-  border-bottom: 1px solid #fff;
-  border-left: 1px solid #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.75);
+  border-left: 1px solid rgba(255, 255, 255, 0.75);
   height: 100%;
   flex-direction: row; }
   .graph-grid > .bar-container {
     width: 50px;
     height: 100%;
-    background: green;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     flex-direction: row;
     border-right: 1px solid rgba(255, 255, 255, 0.25); }
+    .graph-grid > .bar-container > .bar {
+      width: 20%;
+      border-top-left-radius: 100px;
+      border-top-right-radius: 100px;
+      transition-duration: 0.5s;
+      transition-timing-function: ease-out; }
+      .graph-grid > .bar-container > .bar:first-of-type {
+        background: #74E0FF;
+        /* fallback for old browsers */
+        background: -webkit-linear-gradient(to bottom, #74E0FF, #48A3FF);
+        background: linear-gradient(to bottom, #74E0FF, #48A3FF);
+        box-shadow: 2.5px -0.5px 5px rgba(116, 224, 255, 0.5);
+        margin-right: 10%; }
+      .graph-grid > .bar-container > .bar:last-of-type {
+        background: #A770EF;
+        /* fallback for old browsers */
+        background: -webkit-linear-gradient(to bottom, #FDB99B, #CF8BF3, #A770EF);
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to bottom, #FDB99B, #CF8BF3, #A770EF);
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        box-shadow: 2.5px -0.5px 5px rgba(253, 185, 155, 0.5);
+        margin-left: 10%; }

@@ -32,9 +32,11 @@
 			@media #{$mq-670} {
 				padding: 2.5% 0;
 				width: 95%;
+				margin-bottom: 2vh;
 			}
-			@media #{$mq-1070} {
+			@media #{$mq-957} {
 				width: 90%;
+				margin-bottom: 2vh;
 			}
 			&>h1 {
 				font-size: 6.5vh;
@@ -64,34 +66,43 @@
 				@include center;
 				background: $darkgray;
 				margin: 3vh 0 1vh 0;
-				margin: 3vh 0;
 				padding: 2.5% 0;
 				@include headerShadow;
 				flex-direction: column;
 				@media #{$mq-670} {
 					width: 45%;
 					margin: 3vh 0;
-					&:nth-of-type(odd) {
-						margin-right: 2.5%;
+					&:nth-of-type(2) {
+						margin: 3vh 2.5% 3vh 0;
 					}
-					&:nth-of-type(even) {
-						margin-left: 2.5%;
+					&:nth-of-type(3) {
+						mmargin: 3vh 0 3vh 2.5%;
 					}
 				}
-				@media #{$mq-1070} {
+				@media #{$mq-957} {
 					width: 43%;
-					margin: 3vh 0;
-					&:nth-of-type(odd) {
-						margin-right: 2%;
+					margin: 4vh 0 2.5vh 0;
+					&:nth-of-type(2) {
+						margin: 4vh 0 2.5vh 2%;
 					}
-					&:nth-of-type(even) {
-						margin-left: 2%;
+					&:nth-of-type(3) {
+						margin: 4vh 0 2.5vh 0;
 					}
 				}
 			}
 			&>.circle-box {
 				@media #{$mq-670} {
 					justify-content: space-around;
+				}
+			}
+			&>.bar-graph-box {
+				@media #{$mq-670} {
+					width: 95%;
+					padding: 0;
+				}
+				@media #{$mq-957} {
+					width: 43%;
+					margin: 4vh 2% 2.5vh 0;
 				}
 			}
 		}

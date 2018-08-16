@@ -37,6 +37,7 @@
 				justify-content: flex-start;
 				&>h3 {
 					margin: 0;
+					font-size: 1.1em;
 					@media #{$mq-670} {
 						font-size: 1em;
 					}
@@ -46,11 +47,11 @@
 					margin-left: 25px;
 					cursor: pointer;
 					&>img {
-						height: 20px; width: 20px;
+						height: 30px; width: 30px;
 						padding: 5px;
 						@media #{$mq-670} {
-							height: 16px; width: 15px;
-							padding: 4px;
+							height: 25px; width: 25px;
+							padding: 5px;
 						}
 					}
 					&>h4 {

@@ -13,26 +13,38 @@ export default class Dashboard extends Component {
         {
           name: 'Alex Figliolia',
           github: 'alexfigliolia',
+          merges: 7,
+          trellos: 9,
         },
         {
-          name: 'Alex Figliolia',
+          name: 'Steve Figliolia',
           github: 'alexfigliolia',
+          merges: 4,
+          trellos: 7,
         },
         {
-          name: 'Alex Figliolia',
+          name: 'Hilal Aissani',
           github: 'alexfigliolia',
+          merges: 7,
+          trellos: 8,
         },
         {
-          name: 'Alex Figliolia',
+          name: 'Jackee Rodrich',
           github: 'alexfigliolia',
+          merges: 2,
+          trellos: 4,
         },
         {
-          name: 'Alex Figliolia',
+          name: 'Amanda Moc',
           github: 'alexfigliolia',
+          merges: 9,
+          trellos: 6,
         },
         {
-          name: 'Alex Figliolia',
+          name: 'Yasin Shuman',
           github: 'alexfigliolia',
+          merges: 5,
+          trellos: 3,
         },
       ],
       trello: {
@@ -56,13 +68,14 @@ export default class Dashboard extends Component {
       },
       completeness: Math.PI * (2 * 199),
       boxHeight: null,
+      initBars: false,
       countUp: false
     }
   }
 
   componentDidMount = () => {
     setTimeout(() => {
-      this.setState({ completeness: Math.PI * (2 * 50)});  
+      this.setState({ completeness: Math.PI * (2 * 50), initBars: true});  
       setTimeout(() => this.setState({countUp: true}), 500);
     }, 500);
   }
@@ -70,17 +83,21 @@ export default class Dashboard extends Component {
   setHeight = height => this.setState({boxHeight: height});
 
   render = () => {
-    const { project, team, completeness, trello, boxHeight, countUp } = this.state;
+    const { project, team, completeness, trello, boxHeight, countUp, initBars } = this.state;
     return (
       <div className='Dashboard'>
-{/*        <Header />*/}
         <div>
           <div className='top-panel'>
             <h1>{project}</h1>
           </div>
           <div className='boxes'>
-            <div className='box bar-graph-box'>
-              <BarGraph team={team} />
+            <div 
+              className='box bar-graph-box'
+              style={{height: boxHeight ? boxHeight : 'auto'}}>
+              <BarGraph 
+                team={team}
+                initBars={initBars}
+                boxHeight={boxHeight} />
             </div>
             <div 
               className='box circle-box'

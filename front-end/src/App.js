@@ -8,7 +8,7 @@ import Projects from "./Components/Projects/projects";
 import Billing from "./Components/Billing/billing";
 import CreateProject from "./Components/CreateProject/createProject";
 import EditProject from "./Components/EditProject/editProject";
-import Settings from "./Components/Settings/Settings";
+import settings from "./Components/Settings/settings";
 import Dashboard from './Components/Dashboard/Dashboard';
 import Menu from './Components/Menu/Menu';
 import Header from './Components/Header/Header';
@@ -40,7 +40,7 @@ class App extends Component {
           <Route path="/classes" component={Classes} />
           <Route path="/projects" component={Projects} />
           <Route path="/billing" component={Billing} />
-          <Route path="/settings" component={Settings} />
+          <Route path="/settings" component={settings} />
           <Route path="/project-dashboard" component={Dashboard} />
           <Route
             exact

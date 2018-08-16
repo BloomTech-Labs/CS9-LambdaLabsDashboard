@@ -13,6 +13,9 @@
 		@media #{$mq-670} {
 			max-width: 300px;
 		}
+		@media #{$mq-957} {
+			max-width: 350px;
+		}
 		&>div {
 			@include center;
 			flex-direction: column;
@@ -21,7 +24,7 @@
 			border-top-right-radius: 50%;
 			border-top-left-radius: 50%;
 			&>h5 {
-				color: #5B8EC6;
+				color: $lightgray;
 				margin-top: 0;
 				text-align: center;
 				margin: 0;
@@ -38,6 +41,9 @@
 					}
 					@media #{$mq-670} {
 						font-size: 1.85vh;
+					} 
+					@media #{$mq-957} {
+						font-size: 2.25vh;
 					} 
 				}
 			}
