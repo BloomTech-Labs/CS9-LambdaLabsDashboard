@@ -1,0 +1,6 @@
+.editStudent {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  margin-left: 250px;
+}

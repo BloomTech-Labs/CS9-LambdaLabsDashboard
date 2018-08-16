@@ -1,12 +1,128 @@
 import React, { Component } from "react";
 import Sidenav from "../Sidenav/sidenav";
-
+import CreateProject from "../CreateProject/createProject.js";
+import { Link, Route } from "react-router-dom";
+import axios from "axios";
+import "./projects.css";
+import { Button } from "react-bootstrap";
 class Projects extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      projects: [],
+      students: [
+        {
+          name: "thomas",
+          class: "cs9",
+          participation: "80%",
+          project: "dashboard"
+        },
+        {
+          name: "bill",
+          class: "cs9",
+          participation: "80%",
+          project: "dashboard"
+        },
+        {
+          name: "steve",
+          class: "cs9",
+          participation: "80%",
+          project: "dashboard"
+        },
+        {
+          name: "kyle",
+          class: "cs9",
+          participation: "80%",
+          project: "dashboard"
+        },
+        {
+          name: "zola",
+          class: "cs9",
+          participation: "80%",
+          project: "dashboard"
+        }
+      ]
+    };
+  }
+
+  componentWillMount() {
+    this.fetchingData();
+  }
+
+  fetchingData = () => {
+    const promise = axios.get("http://localhost:4000/projects");
+    promise
+      .then(response => {
+        console.log(response.data);
+        this.setState({ projects: response.data });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+
+  displayProjects() {
+    let data = this.state.projects.projects;
+    if (data === undefined) {
+      return <div>loading projects</div>;
+    } else {
+      return this.state.projects.projects.map(project => {
+        console.log(project._id);
+        return (
+          <div key={project._id} className="projectCard">
+            <div>Project: {project.projectName}</div>
+            <div>
+              Total Students:
+              {project.numberOfStudents}
+            </div>
+            <div>DueDate: {project.dueDate}</div>
+            <div className="students">
+              {this.state.students.map(student => {
+                return (
+                  <div className="student">
+                    <div>
+                      <Link to="/projects/EditStudent">
+                        <span>Student:</span>
+                        {student.name}
+                      </Link>
+                    </div>
+                    <div>
+                      <span>Participation:</span>
+                      {student.participation}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+            <Link to={`projects/EditProject/${project._id}`}>
+              <button className="editButton">Edit</button>
+            </Link>
+            <Link to="#">
+              <button className="dashBoardButton">Dashboard</button>
+            </Link>
+          </div>
+        );
+      });
+    }
+  }
+
   render() {
+    console.log("state", this.state.projects.projects);
+    console.log(this.props);
+
     return (
-      <div>
+      <div className="projects">
         <Sidenav />
-        <h1>PROJECTS</h1>
+        <h1>
+          <span>Projects</span>
+        </h1>
+        <div className="allCards">{this.displayProjects()}</div>
+        <Link to="/createProject">
+          <div className="newProjectCard">
+            <span> New Project</span>
+            <img src={require("../../pictures/add.png")} width="100px" />
+          </div>
+        </Link>
       </div>
     );
   }
