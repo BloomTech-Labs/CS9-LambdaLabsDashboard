@@ -1,7 +1,8 @@
 import React from "react";
 import "./billing.css";
+import axios from "axios";
 
-//import Sidenav from "../Sidenav/sidenav";
+import Sidenav from "../Sidenav/sidenav";
 
 export default class Billing extends React.Component {
   constructor(props) {
@@ -18,11 +19,17 @@ export default class Billing extends React.Component {
     });
   };
 
+  onSubmit = event => {
+    event.preventDefault();
+    console.log("firing off", this.state, URL);
+    //TODO code for stripe
+  };
+
   render() {
     return (
       <div>
-        {/* <Sidenav /> */}
-        <form>
+        <Sidenav />
+        <form onSubmit={this.onSubmit}>
           <fieldset>
             <legend>Choose Your Subscription</legend>
             <div>
@@ -32,7 +39,7 @@ export default class Billing extends React.Component {
                 type="checkbox"
                 onChange={this.onChange}
               />
-              <label for="monthly">1 Year Subscription - $9.99</label>
+              <label htmlFor="monthly">1 Year Subscription - $9.99</label>
             </div>
             <div>
               <input
@@ -41,7 +48,9 @@ export default class Billing extends React.Component {
                 type="checkbox"
                 onChange={this.onChange}
               />
-              <label for="annual">1 Year Premium Subscription - $29.99</label>
+              <label htmlFor="annual">
+                1 Year Premium Subscription - $29.99
+              </label>
             </div>
           </fieldset>
           <p>
