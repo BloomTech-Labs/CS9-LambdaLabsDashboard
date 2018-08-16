@@ -1,7 +1,101 @@
 .projects {
+  color: black;
   display: flex;
   flex-direction: column;
+  height: 100% vh;
   width: 70%;
   margin-left: 300px;
   border: 1px solid red;
+  background: linear-gradient(red, yellow, green);
+}
+
+.allCards {
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid blue;
+}
+.projectCard {
+  padding: 10px;
+  border: 1px solid green;
+  width: 40%;
+  margin: 20px;
+  overflow: hidden;
+  text-align: center;
+  height: 30%;
+  min-height: 30%;
+  background: #41ade5;
+  border-radius: 25px;
+  box-shadow: 10px 10px 5px grey;
+}
+.newProjectCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 10px;
+  border: 1px solid green;
+  width: 40%;
+  margin: 20px;
+  overflow: hidden;
+  text-align: center;
+  text-decoration: none;
+  height: 250px;
+  background: #41ade5;
+  border-radius: 25px;
+  box-shadow: 10px 10px 5px grey;
+  transition: background 1s, transform 0.3s 1s ease-in;
+}
+.editButton {
+  margin-top: 80px;
+  margin-right: 60px;
+  box-shadow: 10px 10px 5px black;
+}
+.dashBoardButton {
+  box-shadow: 10px 10px 5px black;
+}
+.student {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 1px solid goldenrod;
+  background: lightgreen;
+  margin: 10px;
+}
+.newProjectCard span {
+  text-decoration: tomato;
+}
+span {
+  font-weight: Bold;
+  color: lightcoral;
+}
+img {
+  position: absolute;
+  top: 0 px;
+  left: 0 px;
+  transform: scale(1.5);
+  cursor: pointer;
+  animation-name: drive;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+  animation-delay: 3s;
+  animation-iteration-count: infinite;
+  animation-direction: reverse;
+}
+
+.newProjectCard:hover {
+  background: tan;
+  transform: rotate(360deg);
+}
+.projectCard:hover {
+  background: tan;
+  opacity: 0.5;
+}
+
+@keyframes drive {
+  from {
+    transform: translateY(-40);
+  }
+  to {
+    transform: translateY(80px);
+  }
 }
