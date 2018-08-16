@@ -62,7 +62,13 @@
 .newProjectCard span {
   text-decoration: tomato;
 }
-span {
+
+/* Using CSS without being able to controll the cascade is a problem.
+If we are going to write CSS this way, then we cannot style tags.
+Create the highest specificity possible to avoid overwriting
+each others styles */
+
+/* span {
   font-weight: Bold;
   color: lightcoral;
-}
+} */
