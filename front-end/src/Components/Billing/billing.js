@@ -1,5 +1,5 @@
 import React from "react";
-import "./billing.css";
+import "./Billing.css";
 
 //import Sidenav from "../Sidenav/sidenav";
 
