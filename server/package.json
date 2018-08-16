@@ -21,6 +21,7 @@
     "bcrypt": "^3.0.0",
     "cors": "^2.8.4",
     "express": "^4.16.3",
+    "helmet": "^3.13.0",
     "mongoose": "^5.2.7"
   },
   "devDependencies": {
