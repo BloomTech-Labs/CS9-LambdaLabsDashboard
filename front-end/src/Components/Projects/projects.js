@@ -95,8 +95,9 @@ class Projects extends Component {
             </div>
             <div className="students">
               {this.state.students.map(student => {
+                console.log("student", student);
                 return (
-                  <div className="student">
+                  <div key={student.name} className="student">
                     <div>
                       <Link to="/projects/EditStudent">
                         <span>Student:</span>
