@@ -1,6 +1,7 @@
 import React from "react";
 import "./billing.css";
 import axios from "axios";
+import StripeCheckout from "react-stripe-checkout";
 
 import Sidenav from "../Sidenav/sidenav";
 
@@ -12,6 +13,18 @@ export default class Billing extends React.Component {
       annual: false
     };
   }
+  onToken = token => {
+    axios
+      .get("/save-stripe-token", {
+        method: "POST",
+        body: JSON.stringify(token)
+      })
+      .then(response => {
+        response.json().then(data => {
+          alert(`We are in business, ${data.email}`);
+        });
+      });
+  };
 
   onChange = event => {
     this.setState({
@@ -28,7 +41,7 @@ export default class Billing extends React.Component {
   render() {
     return (
       <div>
-        <Sidenav />
+        {/* <Sidenav /> */}
         <form onSubmit={this.onSubmit}>
           <fieldset>
             <legend>Choose Your Subscription</legend>
@@ -53,10 +66,11 @@ export default class Billing extends React.Component {
               </label>
             </div>
           </fieldset>
-          <p>
-            <button className="styled">Buy Now</button>
-          </p>
         </form>
+        <StripeCheckout
+          token={this.onToken}
+          stripeKey="pk_test_iCsQ37ZO7RVr0Kec4pweqCU5"
+        />
       </div>
     );
   }
