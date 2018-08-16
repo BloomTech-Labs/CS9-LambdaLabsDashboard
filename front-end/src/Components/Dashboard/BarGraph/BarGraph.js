@@ -1,7 +1,10 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
+import YAxis from './YAxis/YAxis';
+import XAxis from './XAxis/XAxis';
 import Graph from './Graph/Graph';
+import Key from './Key/Key';
 
-export default class BarGraph extends Component {
+export default class BarGraph extends PureComponent {
 
   getMaxStat = () => {
     const { team } = this.props;
@@ -22,54 +25,13 @@ export default class BarGraph extends Component {
       <div className='bar-graph'>
         <h2>Student Contributions</h2>
       	<div className='grid-container'>
-          <div className='y-axis'>
-            {
-              [0,1,2,3,4,5,6,7,8,9].map(stat => {
-                if(stat % 2 === 0) {
-                  return (
-                    <div 
-                      key={stat}
-                      data-stat={maxStat - ((maxStat/10)*stat)}
-                      className='y-axis-tick'></div>
-                  );
-                }
-                return (
-                  <div 
-                    key={stat}
-                    data-stat=""
-                    className='y-axis-tick'></div>
-                );
-              })
-            }
-          </div>
+          <YAxis maxStat={maxStat}/>
       		<Graph 
             team={team}
             initBars={initBars} />
       	</div>
-        <div 
-          className='contributors'
-          style={{
-            marginLeft: 30 - (length - 1) + 'px'
-          }}>
-          {
-            team.map((dude, i) => {
-              const { name } = dude;
-              const [ first, last ] = name.split(" ");
-              return (
-                <div 
-                  key={i}
-                  className='contributor'
-                  style={{
-                    width: 100/length + '%'
-                  }}>
-                  <h5 style={{
-                    marginLeft: -(300/length) + '%'
-                  }}>{`${first} ${last[0]}`}</h5>
-                </div>
-              );
-            })
-          }
-        </div>
+        <XAxis team={team} />
+        <Key />
       </div>
     );
   }

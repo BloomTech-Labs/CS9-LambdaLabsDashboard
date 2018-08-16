@@ -1175,11 +1175,9 @@ $scale: 0.8; // icon scale 68/68 default
   justify-content: center;
   align-items: center;
   height: 100%;
-  padding: 20px 0 60px 0;
-  flex-direction: column; }
-  @media (min-width: 670px) {
-    .bar-graph {
-      padding: 10px 0 20px 0; } }
+  padding: 20px 0 10px 0;
+  flex-direction: column;
+  position: relative; }
   .bar-graph > h2 {
     margin: 0;
     font-weight: 500;
@@ -1197,7 +1195,7 @@ $scale: 0.8; // icon scale 68/68 default
     @media (min-width: 670px) {
       .bar-graph > .grid-container {
         width: 85%;
-        height: 70%; } }
+        height: 60%; } }
     .bar-graph > .grid-container > .y-axis {
       height: 100%;
       display: flex;
@@ -1248,6 +1246,42 @@ $scale: 0.8; // icon scale 68/68 default
         font-size: 10px;
         transform-origin: 100% 50%;
         transform: rotate(-45deg); }
+  .bar-graph > .graph-key {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px; }
+    .bar-graph > .graph-key > div {
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      .bar-graph > .graph-key > div > .graph-indic {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row; }
+        .bar-graph > .graph-key > div > .graph-indic > .color {
+          height: 15px;
+          width: 20px;
+          margin-right: 5px;
+          background: #74E0FF;
+          /* fallback for old browsers */
+          background: -webkit-linear-gradient(to bottom, #74E0FF, #48A3FF);
+          background: linear-gradient(to bottom, #74E0FF, #48A3FF);
+          box-shadow: 0px 1.5px 5px rgba(116, 224, 255, 0.25); }
+        .bar-graph > .graph-key > div > .graph-indic > h4 {
+          color: #fff;
+          font-weight: 200;
+          font-size: 12px; }
+      .bar-graph > .graph-key > div > .graph-indic:last-of-type > .color {
+        background: #A770EF;
+        /* fallback for old browsers */
+        background: -webkit-linear-gradient(to bottom, #FDB99B, #CF8BF3, #A770EF);
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to bottom, #FDB99B, #CF8BF3, #A770EF);
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        margin-left: 20px;
+        box-shadow: 0px 1.5px 2.5px rgba(253, 185, 155, 0.25); }
 
 .graph-grid {
   display: flex;
