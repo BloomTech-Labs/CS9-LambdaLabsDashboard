@@ -1,12 +1,16 @@
 import React from "react";
-import "./Settings.css";
-//import Sidenav from "../Sidenav/sidenav";
+import axios from "axios";
 
+import "./settings.css";
+import Sidenav from "../Sidenav/sidenav";
+
+const URL = "https://localhost/updatesettings";
 export default class Billing extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
+      oldEmail: "",
+      newEmail: "",
       oldPw: "",
       newPw: ""
     };
@@ -20,19 +24,43 @@ export default class Billing extends React.Component {
 
   onSubmit = event => {
     event.preventDefault();
+    console.log("firing off", this.state, URL);
+    // axios
+    //   .post(URL, {
+    //     oldEmail: this.state.oldEmail,
+    //     newEmail: this.state.newEmail,
+    //     oldPw: this.state.oldPw,
+    //     newPw: this.state.newPw
+    //   })
+    //   .then(res => {
+    //     console.log(res);
+    //   })
+    //   .then(error => {})
+    //   .then(error => {
+    //     console.log(error);
+    //   });
   };
 
   render() {
     return (
       <div>
-        {/* <Sidenav /> */}
-        <form className="settings">
+        <Sidenav />
+        <form className="settings" onSubmit={this.onSubmit}>
+          <h1>Update Settings</h1>
           <br />
           <label>Email:</label>{" "}
           <input
-            type="text"
-            name="email"
-            value={this.state.email}
+            type="email"
+            name="oldEmail"
+            value={this.state.oldEmail}
+            onChange={this.onChange}
+          />
+          <br />
+          <label>New Email:</label>{" "}
+          <input
+            type="email"
+            name="newEmail"
+            value={this.state.newEmail}
             onChange={this.onChange}
           />
           <br />
@@ -53,7 +81,7 @@ export default class Billing extends React.Component {
           />
           <br />
           <p>
-            <button className="styled">Save</button>
+            <button className="styled">Update</button>
           </p>
         </form>
       </div>

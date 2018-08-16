@@ -1,15 +1,16 @@
-@import 'reset.scss';
-@import 'variables.scss';
+@import "reset.scss";
+@import "variables.scss";
 
-html, body {
-	font-family: -apple-system, BlinkMacSystemFont, “Segoe UI”, Roboto, Helvetica, Arial, sans-serif;
+html,
+body {
+  font-family: -apple-system, BlinkMacSystemFont, “Segoe UI”, Roboto, Helvetica,
+    Arial, sans-serif;
 }
 
 .App {
-	@include center;
-	min-height: 100vh;
-	width:  100%;
+  @include center;
+  min-height: 100vh;
+  width: 100%;
 }
 
-
-@import 'components/Dashboard/dashboard.scss';
+@import "components/Dashboard/dashboard.scss";

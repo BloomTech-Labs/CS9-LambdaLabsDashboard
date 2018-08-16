@@ -8,6 +8,7 @@
   text-shadow: 1px 1px 1px #000;
   border-radius: 10px;
   background-color: rgba(0, 0, 255, 1);
+  margin-left: 50%;
   background-image: linear-gradient(
     to top left,
     rgba(0, 0, 0, 0.2),
