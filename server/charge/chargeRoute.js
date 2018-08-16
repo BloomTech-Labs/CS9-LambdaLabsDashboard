@@ -36,7 +36,8 @@ router.post("/charge", (req, res) => {
       });
     })
     .then(charge => {
-      res.redirect("http://localhost:3000/Billing");
+      // res.redirect("http://localhost:3000/Billing");
+      res.json(charge);
     });
 });
 module.exports = router;

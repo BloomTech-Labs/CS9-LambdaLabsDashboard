@@ -27,7 +27,7 @@ export default class Billing extends React.Component {
   onToken = token =>
     axios
       .post("http:localhost:4000/charge", {
-        description,
+        description: "test item",
         source: token.id,
         currency: "usd",
         amount: 9.99
@@ -37,7 +37,9 @@ export default class Billing extends React.Component {
           alert(`We are in business, ${data.email}`);
         });
       })
-      .catch(errorPayment);
+      .catch(error => {
+        console.log("error");
+      });
 
   onChange = event => {
     alert("hello");
@@ -72,17 +74,21 @@ export default class Billing extends React.Component {
         </div>
         <div>
           <label htmlFor="annual">1 Year Premium Subscription - $29.99</label>
-
-          <input
-            name="annual"
-            id="annual"
-            type="checkbox"
-            // onChange={this.onChange}
-          />
+          <input name="annual" id="annual" type="checkbox" />
+          // onChange=
+          {this.onChange}
         </div>
 
-        <StripeCheckout
+        {/* <StripeCheckout
           token={this.onToken}
+          stripeKey="pk_test_iCsQ37ZO7RVr0Kec4pweqCU5"
+        /> */}
+        <StripeCheckout
+          name="test name"
+          description="test item"
+          amount="9.99"
+          token={this.onToken("9.99", "test item")}
+          currency="usd"
           stripeKey="pk_test_iCsQ37ZO7RVr0Kec4pweqCU5"
         />
       </div>
