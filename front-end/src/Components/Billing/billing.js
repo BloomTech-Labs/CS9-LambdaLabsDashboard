@@ -27,8 +27,9 @@ export default class Billing extends React.Component {
   };
 
   onChange = event => {
+    alert("hello");
     this.setState({
-      [event.target.name]: true
+      [event.target.name]: !this.state.id
     });
   };
 
@@ -39,34 +40,34 @@ export default class Billing extends React.Component {
   };
 
   render() {
+    console.log("monthly", this.state.monthly);
+    console.log("annually", this.state.annual);
     return (
       <div>
         {/* <Sidenav /> */}
-        <form onSubmit={this.onSubmit}>
-          <fieldset>
-            <legend>Choose Your Subscription</legend>
-            <div>
-              <input
-                name="monthly"
-                id="monthly"
-                type="checkbox"
-                onChange={this.onChange}
-              />
-              <label htmlFor="monthly">1 Year Subscription - $9.99</label>
-            </div>
-            <div>
-              <input
-                name="annual"
-                id="annual"
-                type="checkbox"
-                onChange={this.onChange}
-              />
-              <label htmlFor="annual">
-                1 Year Premium Subscription - $29.99
-              </label>
-            </div>
-          </fieldset>
-        </form>
+
+        <div>Choose Your Subscription</div>
+        <div>
+          <label htmlFor="monthly">1 Year Subscription - $9.99</label>
+
+          <input
+            name="monthly"
+            id="monthly"
+            type="checkbox"
+            onClick={this.onChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="annual">1 Year Premium Subscription - $29.99</label>
+
+          <input
+            name="annual"
+            id="annual"
+            type="checkbox"
+            // onChange={this.onChange}
+          />
+        </div>
+
         <StripeCheckout
           token={this.onToken}
           stripeKey="pk_test_iCsQ37ZO7RVr0Kec4pweqCU5"
