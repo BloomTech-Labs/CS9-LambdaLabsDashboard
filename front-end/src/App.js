@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import { Route } from "react-router-dom";
 import Classes from "./Components/Classes/classes.js";
-import LandingPage from "./Components/LandingPage/LandingPage.js";
+import LandingPage from "./Components/LandingPage/landingPage.js";
 import Projects from "./Components/Projects/projects.js";
 // import Billing from "./Components/Billing/billing.js";
 import CreateProject from "./Components/CreateProject/createProject.js";
