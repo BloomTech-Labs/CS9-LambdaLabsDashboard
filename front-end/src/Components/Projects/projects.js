@@ -61,6 +61,18 @@ class Projects extends Component {
       });
   };
 
+  deleteProject = id => {
+    const promise = axios.delete(`http://localhost:4000/projects/${id}`);
+    promise
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    this.fetchingData();
+  };
+
   displayProjects() {
     let data = this.state.projects.projects;
     if (data === undefined) {
@@ -70,16 +82,22 @@ class Projects extends Component {
         console.log(project._id);
         return (
           <div key={project._id} className="projectCard">
-            <div>Project: {project.projectName}</div>
             <div>
-              Total Students:
+              <span>Project:</span> {project.projectName}
+            </div>
+            <div>
+              <span>Total Students:</span>
               {project.numberOfStudents}
             </div>
-            <div>DueDate: {project.dueDate}</div>
+            <div>
+              <span>DueDate: </span>
+              {project.dueDate}
+            </div>
             <div className="students">
               {this.state.students.map(student => {
+                console.log("student", student);
                 return (
-                  <div className="student">
+                  <div key={student.name} className="student">
                     <div>
                       <Link to="/projects/EditStudent">
                         <span>Student:</span>
@@ -100,6 +118,13 @@ class Projects extends Component {
             <Link to="#">
               <button className="dashBoardButton">Dashboard</button>
             </Link>
+            <button
+              onClick={() => {
+                this.deleteProject(project._id);
+              }}
+            >
+              Delete Project
+            </button>
           </div>
         );
       });

@@ -8,6 +8,7 @@
   border: 1px solid red;
   background: linear-gradient(red, yellow, green);
 }
+
 .allCards {
   display: flex;
   flex-wrap: wrap;
@@ -42,6 +43,7 @@
   background: #41ade5;
   border-radius: 25px;
   box-shadow: 10px 10px 5px grey;
+  transition: background 1s, transform 0.3s 1s ease-in;
 }
 .editButton {
   margin-top: 80px;
@@ -65,4 +67,35 @@
 span {
   font-weight: Bold;
   color: lightcoral;
+}
+img {
+  position: absolute;
+  top: 0 px;
+  left: 0 px;
+  transform: scale(1.5);
+  cursor: pointer;
+  animation-name: drive;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+  animation-delay: 3s;
+  animation-iteration-count: infinite;
+  animation-direction: reverse;
+}
+
+.newProjectCard:hover {
+  background: tan;
+  transform: rotate(360deg);
+}
+.projectCard:hover {
+  background: tan;
+  opacity: 0.5;
+}
+
+@keyframes drive {
+  from {
+    transform: translateY(-40);
+  }
+  to {
+    transform: translateY(80px);
+  }
 }

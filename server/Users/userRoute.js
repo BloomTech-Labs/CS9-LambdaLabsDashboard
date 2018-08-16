@@ -16,10 +16,6 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", userEmpty, (req, res) => {
-  const { username, password } = req.body;
-  if (username === "" || password === "") {
-    res.status(400).json({ msg: " fields can not be empty...!" });
-  }
   console.log("request ===>", req.body);
   const obj = req.body;
   const newUser = UserModel(obj);
@@ -27,7 +23,9 @@ router.post("/", userEmpty, (req, res) => {
     .save()
     .then(p => {
       console.log(p);
-      res.status(200).json({ newUser });
+      const token = makeToken(newUser);
+
+      res.status(200).json({ token, newUser });
     })
     .catch(error => {
       res.status(200).json({ msg: "... not able to post your user", error });
