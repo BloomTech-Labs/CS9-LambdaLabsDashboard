@@ -1,1 +1,1 @@
-web: npm run postinstall && npm run deployed
+web: npm run deployed
