@@ -1,1 +1,1 @@
-web: npm run postinstall && npm deployed --prefix server
+web: npm run postinstall && npm run deployed
