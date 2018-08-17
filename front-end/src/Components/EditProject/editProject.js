@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Sidenav from "../Sidenav/sidenav";
 import axios from "axios";
 import "./editProject.css";
 
@@ -39,7 +38,6 @@ class EditProject extends Component {
     console.log(this.props.match.params.id);
     return (
       <div className="createProject">
-        <Sidenav />
         <h1> Edit PROJECT</h1>
         <input
           type="text"
