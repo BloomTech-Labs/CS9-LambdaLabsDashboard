@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon library/server.js --exec babel-node",
     "build": "babel library -d build",
-    "deploy": "node build/server"
+    "deployed": "node build/server"
   },
   "repository": {
     "type": "git",
@@ -16,6 +16,9 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Lambda-School-Labs/CS9-LambdaLabsDashboard/issues"
+  },
+  "engines": {
+    "node": "8.7.0"
   },
   "homepage": "https://github.com/Lambda-School-Labs/CS9-LambdaLabsDashboard#readme",
   "dependencies": {

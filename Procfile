@@ -1,1 +1,1 @@
-web: node server/build/server
+web: npm deployed --prefix server
