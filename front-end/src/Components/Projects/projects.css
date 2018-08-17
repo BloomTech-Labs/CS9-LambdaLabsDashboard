@@ -8,7 +8,6 @@
   border: 1px solid red;
   background: linear-gradient(red, yellow, green);
 }
-
 .allCards {
   display: flex;
   flex-wrap: wrap;
@@ -81,7 +80,6 @@ img {
   animation-iteration-count: infinite;
   animation-direction: reverse;
 }
-
 .newProjectCard:hover {
   background: tan;
   transform: rotate(360deg);
@@ -90,7 +88,6 @@ img {
   background: tan;
   opacity: 0.5;
 }
-
 @keyframes drive {
   from {
     transform: translateY(-40);

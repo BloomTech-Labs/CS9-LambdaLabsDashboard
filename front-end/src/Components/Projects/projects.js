@@ -44,11 +44,9 @@ class Projects extends Component {
       ]
     };
   }
-
   componentWillMount() {
     this.fetchingData();
   }
-
   fetchingData = () => {
     const promise = axios.get("http://localhost:4000/projects");
     promise
@@ -60,19 +58,17 @@ class Projects extends Component {
         console.log(error);
       });
   };
-
   deleteProject = id => {
     const promise = axios.delete(`http://localhost:4000/projects/${id}`);
     promise
       .then(response => {
         console.log(response.data);
+        this.fetchingData();
       })
       .catch(error => {
         console.log(error);
       });
-    this.fetchingData();
   };
-
   displayProjects() {
     let data = this.state.projects.projects;
     if (data === undefined) {
@@ -120,6 +116,8 @@ class Projects extends Component {
             </Link>
             <button
               onClick={() => {
+                alert("hello");
+                console.log("project=>", project._id);
                 this.deleteProject(project._id);
               }}
             >
@@ -130,11 +128,9 @@ class Projects extends Component {
       });
     }
   }
-
   render() {
     console.log("state", this.state.projects.projects);
     console.log(this.props);
-
     return (
       <div className="projects">
         <Sidenav />
@@ -152,5 +148,4 @@ class Projects extends Component {
     );
   }
 }
-
 export default Projects;

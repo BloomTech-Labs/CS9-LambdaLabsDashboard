@@ -1,0 +1,36 @@
+.graph-grid {
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-end;
+	width: 100%;
+	border-bottom: 1px solid rgba(#fff, 0.75);
+	border-left: 1px solid rgba(#fff, 0.75);
+	height: 100%;
+	flex-direction: row;
+	&>.bar-container {
+		width: 50px;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: flex-end;
+		flex-direction: row;
+		border-right: 1px solid rgba(#fff, 0.25);
+		&>.bar {
+			width: 20%;
+			border-top-left-radius: 100px;
+			border-top-right-radius: 100px;
+			transition-duration: 0.5s;
+			transition-timing-function: ease-out;
+			&:first-of-type {
+				@include backgroundTrello;
+				box-shadow: 2.5px -0.5px 5px rgba(#74E0FF, 0.5);
+				margin-right: 10%;
+			}
+			&:last-of-type {
+				@include backgroundGit;
+				box-shadow: 2.5px -0.5px 5px rgba(#FDB99B, 0.5);
+				margin-left: 10%;
+			}
+		}
+	}
+}
