@@ -67,7 +67,7 @@
   font-weight: Bold;
   color: lightcoral;
 }
-img {
+.newProjectCard img {
   position: absolute;
   top: 0 px;
   left: 0 px;
