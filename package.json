@@ -6,6 +6,9 @@
     "postinstall": "npm install --prefix server",
     "deployed": "node ./server/build/server"
   },
+  "engines": {
+    "node": "8.7.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Lambda-School-Labs/CS9-LambdaLabsDashboard.git"
