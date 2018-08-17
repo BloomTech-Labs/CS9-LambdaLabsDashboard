@@ -1,6 +1,9 @@
 import React from "react";
 import axios from "axios";
 import StripeCheckout from "react-stripe-checkout";
+import Sidenav from "../Sidenav/sidenav";
+
+const stripe = require("stripe-client")("pk_test_dtZeEKgd6FSjpH2sFi8RAYFa");
 
 export default class Billing extends React.Component {
   constructor(props) {
@@ -67,6 +70,8 @@ export default class Billing extends React.Component {
     }
     return (
       <div>
+        {/* <Sidenav /> */}
+
         <div>Choose Your Subscription</div>
         <div>
           <label htmlFor="monthly">1 Year Subscription - $9.99</label>
