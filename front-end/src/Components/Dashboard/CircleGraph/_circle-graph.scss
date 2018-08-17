@@ -1,0 +1,58 @@
+.circle-graph {
+	@include center;
+	width: 80%;
+	height: auto;
+	@media #{$mq-670} {
+		max-width: 250px;
+		margin-top: -5%;
+	}
+	&>.circle-center {
+		@include center;
+		position: relative;
+		width: 100%;
+		padding-bottom: 100%;
+		cursor: pointer;
+		background: transparent;
+		border-radius: 50%;
+		&>.circle-container {
+			@include center;
+			position: absolute;
+			top: 0%;
+			left: 0%;
+			height: 100%;
+			width: 100%;
+			transform: rotate(-90deg);
+			background: transparent;
+			z-index: 3;
+			&>circle {
+				transition-timing-function: cubic-bezier(0.99, 0.01, 0.62, 0.94);
+				transition: stroke-dashoffset 0.8s 0.15s, stroke-dasharray 0.8s 0.15s;
+			}
+		}
+		&>.completeness {
+			position: absolute;
+			top: 0; left: 0;
+			height: 100%; width: 100%;
+			@include center;
+			flex-direction: column;
+			&>h3 {
+				color: #74E0FF;
+				font-size: 2.5vh;
+				margin: 0;
+				font-weight: 900;
+				@media #{$mq-670} {
+					font-size: 2.25vh;
+				}
+			}
+			&>h4 {
+				color: #74E0FF;
+				font-size: 10vh;
+				font-weight: 100;
+				margin: 0;
+				@media #{$mq-670} {
+					font-size: 9vh;
+				}
+			}
+		}
+	}
+}

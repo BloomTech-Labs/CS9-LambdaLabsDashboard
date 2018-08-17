@@ -28,7 +28,7 @@
     inset 2px 2px 3px rgba(0, 0, 0, 0.6);
 }
 
-legend {
+/* legend {
   background-color: #000;
   color: #fff;
   padding: 3px 6px;
@@ -41,4 +41,6 @@ input {
 fieldset {
   margin: auto;
   width: 35%;
-}
+} */
+
+/* Please dont do this!! */
