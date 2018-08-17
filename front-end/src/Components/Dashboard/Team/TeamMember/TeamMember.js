@@ -3,6 +3,12 @@ import UserIcon from './user.svg';
 import GithubIcon from './github.svg';
 export default class TeamMember extends Component {
   
+  shouldComponentUpdate = ({ name, github }) => {
+    const curProps = this.props;
+    if(name !== curProps.name) return true;
+    else if(github !== curProps.github) return true;
+    return false;
+  }  
 
   render = () => {
   	const { name, github } = this.props;

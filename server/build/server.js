@@ -28,6 +28,14 @@ var _cors = require("cors");
 
 var _cors2 = _interopRequireDefault(_cors);
 
+var _studentRoute = require("./Students/studentRoute");
+
+var _studentRoute2 = _interopRequireDefault(_studentRoute);
+
+var _classRoute = require("./Classes/classRoute");
+
+var _classRoute2 = _interopRequireDefault(_classRoute);
+
 var _projectsRoute = require("./projects/projectsRoute");
 
 var _projectsRoute2 = _interopRequireDefault(_projectsRoute);
@@ -47,7 +55,7 @@ var _chargeRoute2 = _interopRequireDefault(_chargeRoute);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Server = (0, _express2.default)();
-var staticFiles = _express2.default.static(_path2.default.join(__dirname, '../../front-end/build'));
+var staticFiles = _express2.default.static(_path2.default.join(__dirname, "../../front-end/build"));
 Server.use((0, _cors2.default)());
 Server.use((0, _helmet2.default)());
 Server.use(_bodyParser2.default.json());
@@ -65,12 +73,13 @@ Server.get("/", function (req, res) {
   res.status(200).json({ msg: "api is running!" });
 });
 
+Server.use("/classes", _classRoute2.default);
 Server.use("/projects", _projectsRoute2.default);
-Server.use("/user", _userRoute2.default);
-Server.use('*', staticFiles);
+Server.use("/users", _userRoute2.default);
+Server.use("*", staticFiles);
 Server.use("/login", _loginRoute2.default);
 Server.use("/charge", _chargeRoute2.default);
-
+Server.use("/students", _studentRoute2.default);
 Server.listen(port, function () {
   console.log("\n=== server is running on " + port + " ==");
 });
