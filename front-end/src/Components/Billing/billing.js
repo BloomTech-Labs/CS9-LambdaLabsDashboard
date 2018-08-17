@@ -1,50 +1,52 @@
 import React from "react";
-import "./billing.css";
 import axios from "axios";
 import StripeCheckout from "react-stripe-checkout";
-
 import Sidenav from "../Sidenav/sidenav";
+
+const stripe = require("stripe-client")("pk_test_dtZeEKgd6FSjpH2sFi8RAYFa");
 
 export default class Billing extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       monthly: false,
-      annual: false
+      annual: false,
+
+      information: {
+        card: {
+          number: "4242424242424242",
+          exp_month: "02",
+          exp_year: "21",
+          cvc: "999",
+          name: "Billy Joe"
+        }
+      }
     };
   }
-  // onToken = token => {
-  //   const promise = axios.post("http://localhost:4000/charge", {
-  //     body: JSON.stringify(token)
-  //   });
-  //   promise.then(response => {
-  //     response.json().then(data => {
-  //       alert(`We are in business, ${data.email}`);
-  //     });
-  //   });
-  // };
 
-  onToken = token =>
-    axios
-      .post("http:localhost:4000/charge", {
-        description: "test item",
-        source: token.id,
-        currency: "usd",
-        amount: 9.99
-      })
+  onToken = token => {
+    fetch("http://localhost:4000/charge", {
+      method: "POST",
+      body: JSON.stringify(token)
+    })
       .then(response => {
-        response.json().then(data => {
-          alert(`We are in business, ${data.email}`);
-        });
+        console.log(response.body);
       })
       .catch(error => {
-        console.log("error");
+        console.log(error);
       });
-
+  };
+  switching = () => {
+    if (this.state.monthly) {
+      return 999;
+    }
+    if (this.state.annual) {
+      return 2999;
+    }
+  };
   onChange = event => {
-    alert("hello");
     this.setState({
-      [event.target.name]: !this.state.id
+      [event.target.name]: true
     });
   };
 
@@ -57,6 +59,15 @@ export default class Billing extends React.Component {
   render() {
     console.log("monthly", this.state.monthly);
     console.log("annually", this.state.annual);
+    let amount;
+    if (this.state.monthly) {
+      amount = 999;
+      this.state.annual = false;
+    }
+    if (this.state.annual) {
+      amount = 2999;
+      this.state.monthly = false;
+    }
     return (
       <div>
         {/* <Sidenav /> */}
@@ -74,22 +85,21 @@ export default class Billing extends React.Component {
         </div>
         <div>
           <label htmlFor="annual">1 Year Premium Subscription - $29.99</label>
-          <input name="annual" id="annual" type="checkbox" />
-          // onChange=
-          {this.onChange}
+          <input
+            name="annual"
+            id="annual"
+            type="checkbox"
+            onClick={this.onChange}
+          />
         </div>
-
-        {/* <StripeCheckout
-          token={this.onToken}
-          stripeKey="pk_test_iCsQ37ZO7RVr0Kec4pweqCU5"
-        /> */}
         <StripeCheckout
+          id={this.state.id}
           name="test name"
           description="test item"
-          amount="9.99"
-          token={this.onToken("9.99", "test item")}
-          currency="usd"
-          stripeKey="pk_test_iCsQ37ZO7RVr0Kec4pweqCU5"
+          amount={amount}
+          token={this.onToken}
+          currency="USD"
+          stripeKey="pk_test_dtZeEKgd6FSjpH2sFi8RAYFa"
         />
       </div>
     );
