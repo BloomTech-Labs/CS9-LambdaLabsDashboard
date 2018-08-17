@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { Route } from "react-router-dom";
 import Classes from "./Components/Classes/classes";
-import LandingPage from "./Components/LandingPage/LandingPage";
+import LandingPage from "./Components/LandingPage/landingPage";
 import Projects from "./Components/Projects/projects";
 import Billing from "./Components/Billing/billing";
 import CreateProject from "./Components/CreateProject/createProject";
@@ -40,27 +40,12 @@ class App extends Component {
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/classes" component={Classes} />
           <Route exact path="/projects" component={Projects} />
-          <Route exact path="/Billing" component={Billing} />
+          <Route exact path="/billing" component={Billing} />
           <Route exact path="/createProject" component={CreateProject} />
           <Route exact path="/projects/EditProject/:id" component={EditProject} />
           <Route exact path="/projects/EditStudent" component={EditStudent} />
-          <Route path="/classes" component={Classes} />
-          <Route path="/projects" component={Projects} />
-          <Route path="/billing" component={Billing} />
           <Route path="/settings" component={Settings} />
           <Route path="/project-dashboard" component={Dashboard} />
-          <Route
-            exact
-            path="/createProject"
-            CreateProject
-            component={CreateProject}
-          />
-          <Route
-            exact
-            path="/projects/:id"
-            CreateProject
-            component={EditProject}
-          />
         </div>
       </div>
     );

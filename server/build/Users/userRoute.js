@@ -24,19 +24,14 @@ router.get("/", function (req, res) {
 });
 
 router.post("/", _middleWare.userEmpty, function (req, res) {
-  var _req$body = req.body,
-      username = _req$body.username,
-      password = _req$body.password;
-
-  if (username === "" || password === "") {
-    res.status(400).json({ msg: " fields can not be empty...!" });
-  }
   console.log("request ===>", req.body);
   var obj = req.body;
   var newUser = (0, _userModel2.default)(obj);
   newUser.save().then(function (p) {
     console.log(p);
-    res.status(200).json({ newUser: newUser });
+    var token = (0, _jwtMiddleWare.makeToken)(newUser);
+
+    res.status(200).json({ token: token, newUser: newUser });
   }).catch(function (error) {
     res.status(200).json({ msg: "... not able to post your user", error: error });
   });

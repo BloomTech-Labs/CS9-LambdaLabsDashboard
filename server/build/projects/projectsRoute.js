@@ -45,4 +45,15 @@ router.put("/:id", function (req, res) {
     res.status(500).json({ msg: "... not able to update your project" });
   });
 });
+
+router.delete("/:id", function (req, res) {
+  var id = req.params.id;
+
+  _projectsModel2.default.findById(id).remove().then(function (p) {
+    res.status(200).json({ msg: "...project successfully deleted" });
+  }).catch(function (err) {
+    res.status(200).json({ msg: "... not able to  delete project" });
+  });
+});
+
 module.exports = router;

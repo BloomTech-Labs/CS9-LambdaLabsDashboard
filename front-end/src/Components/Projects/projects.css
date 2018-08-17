@@ -42,6 +42,7 @@
   background: #41ade5;
   border-radius: 25px;
   box-shadow: 10px 10px 5px grey;
+  transition: background 1s, transform 0.3s 1s ease-in;
 }
 .editButton {
   margin-top: 80px;
@@ -62,13 +63,36 @@
 .newProjectCard span {
   text-decoration: tomato;
 }
-
-/* Using CSS without being able to controll the cascade is a problem.
-If we are going to write CSS this way, then we cannot style tags.
-Create the highest specificity possible to avoid overwriting
-each others styles */
-
-/* span {
+span {
   font-weight: Bold;
   color: lightcoral;
-} */
+}
+img {
+  position: absolute;
+  top: 0 px;
+  left: 0 px;
+  transform: scale(1.5);
+  cursor: pointer;
+  animation-name: drive;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+  animation-delay: 3s;
+  animation-iteration-count: infinite;
+  animation-direction: reverse;
+}
+.newProjectCard:hover {
+  background: tan;
+  transform: rotate(360deg);
+}
+.projectCard:hover {
+  background: tan;
+  opacity: 0.5;
+}
+@keyframes drive {
+  from {
+    transform: translateY(-40);
+  }
+  to {
+    transform: translateY(80px);
+  }
+}

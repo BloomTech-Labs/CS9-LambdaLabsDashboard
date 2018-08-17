@@ -42,4 +42,18 @@ router.put("/:id", (req, res) => {
       res.status(500).json({ msg: "... not able to update your project" });
     });
 });
+
+router.delete("/:id", (req, res) => {
+  const id = req.params.id;
+
+  ProjectsModel.findById(id)
+    .remove()
+    .then(p => {
+      res.status(200).json({ msg: "...project successfully deleted" });
+    })
+    .catch(err => {
+      res.status(200).json({ msg: "... not able to  delete project" });
+    });
+});
+
 module.exports = router;

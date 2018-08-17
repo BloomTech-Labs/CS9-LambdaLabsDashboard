@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon library/server.js --exec babel-node",
-    "build": "babel library -d build"
+    "build": "babel library -d build",
+    "deploy": "node build/server"
   },
   "repository": {
     "type": "git",
@@ -23,7 +24,8 @@
     "express": "^4.16.3",
     "helmet": "^3.13.0",
     "jsonwebtoken": "^8.3.0",
-    "mongoose": "^5.2.7"
+    "mongoose": "^5.2.7",
+    "stripe": "^6.7.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

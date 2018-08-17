@@ -1,20 +1,3 @@
-label {
-  display: inline-block;
-  float: left;
-  clear: left;
-  width: 250px;
-  text-align: right;
-}
-input {
-  display: inline-block;
-  float: left;
-}
-.settings {
-  margin: auto;
-  width: 35%;
-  padding: 10px;
-}
-
 .styled {
   border: 0px;
   line-height: 2.5;
@@ -25,6 +8,7 @@ input {
   text-shadow: 1px 1px 1px #000;
   border-radius: 10px;
   background-color: rgba(0, 0, 255, 1);
+  margin-left: 50%;
   background-image: linear-gradient(
     to top left,
     rgba(0, 0, 0, 0.2),
@@ -43,3 +27,20 @@ input {
   box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6),
     inset 2px 2px 3px rgba(0, 0, 0, 0.6);
 }
+
+/* legend {
+  background-color: #000;
+  color: #fff;
+  padding: 3px 6px;
+}
+
+input {
+  margin: 0.4rem;
+}
+
+fieldset {
+  margin: auto;
+  width: 35%;
+} */
+
+/* Please dont do this!! */

@@ -36,6 +36,14 @@ var _userRoute = require("./Users/userRoute.js");
 
 var _userRoute2 = _interopRequireDefault(_userRoute);
 
+var _loginRoute = require("./login/loginRoute.js");
+
+var _loginRoute2 = _interopRequireDefault(_loginRoute);
+
+var _chargeRoute = require("./charge/chargeRoute.js");
+
+var _chargeRoute2 = _interopRequireDefault(_chargeRoute);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Server = (0, _express2.default)();
@@ -60,6 +68,8 @@ Server.get("/", function (req, res) {
 Server.use("/projects", _projectsRoute2.default);
 Server.use("/user", _userRoute2.default);
 Server.use('*', staticFiles);
+Server.use("/login", _loginRoute2.default);
+Server.use("/charge", _chargeRoute2.default);
 
 Server.listen(port, function () {
   console.log("\n=== server is running on " + port + " ==");
