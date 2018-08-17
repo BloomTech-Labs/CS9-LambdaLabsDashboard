@@ -63,7 +63,7 @@
 .newProjectCard span {
   text-decoration: tomato;
 }
-span {
+/* span {
   font-weight: Bold;
   color: lightcoral;
 }
@@ -79,7 +79,7 @@ img {
   animation-delay: 3s;
   animation-iteration-count: infinite;
   animation-direction: reverse;
-}
+} */
 .newProjectCard:hover {
   background: tan;
   transform: rotate(360deg);
