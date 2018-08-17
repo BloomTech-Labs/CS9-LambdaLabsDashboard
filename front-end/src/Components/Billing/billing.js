@@ -101,10 +101,7 @@ export default class Billing extends React.Component {
           currency="USD"
           stripeKey="pk_test_dtZeEKgd6FSjpH2sFi8RAYFa"
         />
-
-        
-        </select>
-      </div >
+      </div>
     );
   }
 }
