@@ -1,9 +1,6 @@
 import React from "react";
-import "./billing.css";
 import axios from "axios";
 import StripeCheckout from "react-stripe-checkout";
-
-import Sidenav from "../Sidenav/sidenav";
 
 export default class Billing extends React.Component {
   constructor(props) {
@@ -59,8 +56,6 @@ export default class Billing extends React.Component {
     console.log("annually", this.state.annual);
     return (
       <div>
-        {/* <Sidenav /> */}
-
         <div>Choose Your Subscription</div>
         <div>
           <label htmlFor="monthly">1 Year Subscription - $9.99</label>

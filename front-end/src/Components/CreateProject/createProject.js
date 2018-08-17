@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Sidenav from "../Sidenav/sidenav";
 import axios from "axios";
-import "./createProject.css";
 class CreateProject extends Component {
   constructor(props) {
     super(props);
