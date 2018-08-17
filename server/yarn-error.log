@@ -1,26 +1,17 @@
 Arguments: 
-  /Users/Fig/.nvm/versions/node/v8.7.0/bin/node /usr/local/Cellar/yarn/1.7.0/libexec/bin/yarn.js install
+  /usr/local/bin/node /usr/local/bin/yarn start
 
 PATH: 
-  /Users/Fig/.nvm/versions/node/v8.7.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/Fig/Library/Android/sdk/tools:/Users/Fig/Library/Android/sdk/platform-tools
+  /Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/usr/local/share/dotnet:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Applications/Postgres.app/Contents/Versions/latest/bin:/Applications/Xamarin Workbooks.app/Contents/SharedSupport/path-bin:/Users/hilalaissani/apache-maven-3.5.2/bin
 
 Yarn version: 
-  1.7.0
+  1.5.1
 
 Node version: 
-  8.7.0
+  8.9.4
 
 Platform: 
   darwin x64
-
-Trace: 
-  SyntaxError: /Users/Fig/Desktop/CS9-LambdaLabsDashboard/server/package.json: Unexpected token < in JSON at position 731
-      at JSON.parse (<anonymous>)
-      at /usr/local/Cellar/yarn/1.7.0/libexec/lib/cli.js:1130:59
-      at Generator.next (<anonymous>)
-      at step (/usr/local/Cellar/yarn/1.7.0/libexec/lib/cli.js:98:30)
-      at /usr/local/Cellar/yarn/1.7.0/libexec/lib/cli.js:109:13
-      at <anonymous>
 
 npm manifest: 
   {
@@ -30,7 +21,8 @@ npm manifest:
     "main": "server.js",
     "scripts": {
       "start": "nodemon library/server.js --exec babel-node",
-      "build": "babel library -d build"
+      "build": "babel library -d build",
+      "deploy": "node build/server"
     },
     "repository": {
       "type": "git",
@@ -48,12 +40,8 @@ npm manifest:
       "express": "^4.16.3",
       "helmet": "^3.13.0",
       "jsonwebtoken": "^8.3.0",
-  <<<<<<< HEAD
-      "mongoose": "^5.2.7"
-  =======
       "mongoose": "^5.2.7",
       "stripe": "^6.7.0"
-  >>>>>>> 64842ba74ef949fabd3d7bcf9e50fa8317d39f78
     },
     "devDependencies": {
       "babel-cli": "^6.26.0",
@@ -3100,3 +3088,19 @@ Lockfile:
   yallist@^3.0.0, yallist@^3.0.2:
     version "3.0.2"
     resolved "https://registry.yarnpkg.com/yallist/-/yallist-3.0.2.tgz#8452b4bb7e83c7c188d8041c1a837c773d6d8bb9"
+
+Trace: 
+  Error: Command failed.
+  Exit code: 127
+  Command: sh
+  Arguments: -c nodemon library/server.js --exec babel-node
+  Directory: /Users/hilalaissani/Lamda-1/lambdalabs/CS9-LambdaLabsDashboard/server
+  Output:
+  
+      at ProcessTermError.MessageError (/usr/local/lib/node_modules/yarn/lib/cli.js:186:110)
+      at new ProcessTermError (/usr/local/lib/node_modules/yarn/lib/cli.js:226:113)
+      at ChildProcess.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:30281:17)
+      at emitTwo (events.js:126:13)
+      at ChildProcess.emit (events.js:214:7)
+      at maybeClose (internal/child_process.js:925:16)
+      at Process.ChildProcess._handle.onexit (internal/child_process.js:209:5)

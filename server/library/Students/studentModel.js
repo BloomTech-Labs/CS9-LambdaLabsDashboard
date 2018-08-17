@@ -4,34 +4,37 @@ const Schema = mongoose.Schema;
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const definition = {
-  projectName: {
+  firstName: {
     type: String,
     unique: true
   },
-  numberOfStudents: {
-    type: Number
+  lastName: {
+    type: String
   },
-  dueDate: {
+  email: {
+    type: String
+  },
+  github: {
     type: String
   },
   class: {
+    type: String
+  },
+  className: {
     type: ObjectId,
     ref: "Class"
   },
-  students: {
+  project: {
     type: ObjectId,
-    ref: "Student"
+    ref: "LambdaProject"
   }
 };
 const options = {
   timestamps: true
 };
 
-const lambdaProjectsSchema = new Schema(definition, options);
+const studentSchema = new Schema(definition, options);
 
-const lambdaProjectsModel = mongoose.model(
-  "LambdaProject",
-  lambdaProjectsSchema
-);
+const studentModel = mongoose.model("Student", studentSchema);
 
-module.exports = lambdaProjectsModel;
+module.exports = studentModel;
