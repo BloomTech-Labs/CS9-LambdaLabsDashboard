@@ -38,6 +38,9 @@ Server.use("/users", user);
 const login = require("./login/loginRoute.js");
 Server.use("/login", login);
 
+const charge = require("./charge/chargeRoute.js");
+Server.use("/charge", charge);
+
 Server.listen(port, () => {
   console.log(`\n=== server is running on ${port} ==`);
 });
