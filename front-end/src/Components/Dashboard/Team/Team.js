@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import teamMember from './TeamMember/teamMember';
+import TeamMember from './TeamMember/TeamMember';
 
 export default class Team extends Component {
 
@@ -34,7 +34,7 @@ export default class Team extends Component {
 		        team.map((dude, i) => {
 		        	const { name, github } = dude;
 		          return (
-		          	<teamMember
+		          	<TeamMember
 		          		key={`${dude}-${i}`}
 		          		name={name}
 		          		github={github} />
