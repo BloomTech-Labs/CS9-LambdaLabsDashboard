@@ -6,7 +6,6 @@
   "scripts": {
     "start": "nodemon library/server.js --exec babel-node",
     "build": "babel library -d build",
-    "deployed": "node build/server"
   },
   "repository": {
     "type": "git",

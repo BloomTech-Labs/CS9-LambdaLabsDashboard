@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Package to kick off the deployed application",
   "scripts": {
-    "postinstall": "npm install --prefix server"
+    "postinstall": "npm install --prefix server",
+    "deployed": "node ./server/build/server"
   },
   "repository": {
     "type": "git",
