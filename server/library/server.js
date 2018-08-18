@@ -42,10 +42,10 @@ Server.get("/", (req, res) => {
 Server.use("/classes", classes);
 Server.use("/projects", projects);
 Server.use("/users", user);
-Server.use("*", staticFiles);
 Server.use("/login", login);
 Server.use("/charge", charge);
 Server.use("/students", students);
+Server.use("*", staticFiles);
 Server.listen(port, () => {
   console.log(`\n=== server is running on ${port} ==`);
 });
