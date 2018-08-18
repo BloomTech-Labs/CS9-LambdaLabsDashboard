@@ -1,8 +1,8 @@
 import React from "react";
-import axios from "axios";
+// import axios from "axios";
 import StripeCheckout from "react-stripe-checkout";
 
-const stripe = require("stripe-client")("pk_test_dtZeEKgd6FSjpH2sFi8RAYFa");
+// const stripe = require("stripe-client")("pk_test_dtZeEKgd6FSjpH2sFi8RAYFa");
 
 export default class Billing extends React.Component {
   constructor(props) {
@@ -19,7 +19,8 @@ export default class Billing extends React.Component {
           cvc: "999",
           name: "Billy Joe"
         }
-      }
+      },
+      amount: 9.99
     };
   }
 
@@ -47,6 +48,9 @@ export default class Billing extends React.Component {
     this.setState({
       [event.target.name]: true
     });
+    //Make the checking off of one checkbox
+    //deselect the other
+    //Remove logic from render
   };
 
   onSubmit = event => {
@@ -58,15 +62,16 @@ export default class Billing extends React.Component {
   render() {
     console.log("monthly", this.state.monthly);
     console.log("annually", this.state.annual);
-    let amount;
-    if (this.state.monthly) {
-      amount = 999;
-      this.state.annual = false;
-    }
-    if (this.state.annual) {
-      amount = 2999;
-      this.state.monthly = false;
-    }
+    // let amount;
+    // if (this.state.monthly) {
+    //   amount = 999;
+    //   this.state.annual = false;
+    // }
+    // if (this.state.annual) {
+    //   amount = 2999;
+    //   this.state.monthly = false;
+    // }
+    const { amount } = this.state;
     return (
       <div>
         <div>Choose Your Subscription</div>
