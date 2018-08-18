@@ -45,7 +45,9 @@ Server.use("api/users", user);
 Server.use("api/login", login);
 Server.use("api/charge", charge);
 Server.use("api/students", students);
-Server.use("*", staticFiles);
+Server.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../../front-end/build/index.html'));
+});
 Server.listen(port, () => {
   console.log(`\n=== server is running on ${port} ==`);
 });
