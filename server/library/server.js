@@ -35,19 +35,17 @@ mongoose
     console.log(`err:${err}`);
   });
 
-// Server.get("/", (req, res) => {
-//   res.status(200).json({ msg: "api is running!" });
-// });
-
-Server.use("api/classes", classes);
-Server.use("api/projects", projects);
-Server.use("api/users", user);
-Server.use("api/login", login);
-Server.use("api/charge", charge);
-Server.use("api/students", students);
-Server.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../../front-end/build/index.html'));
+Server.get("/", (req, res) => {
+  res.status(200).json({ msg: "api is running!" });
 });
+
+Server.use("/classes", classes);
+Server.use("/projects", projects);
+Server.use("/users", user);
+Server.use("/login", login);
+Server.use("/charge", charge);
+Server.use("/students", students);
+Server.use('/*', staticFiles)
 Server.listen(port, () => {
   console.log(`\n=== server is running on ${port} ==`);
 });
