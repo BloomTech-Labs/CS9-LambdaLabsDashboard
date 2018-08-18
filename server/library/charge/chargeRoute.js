@@ -1,6 +1,7 @@
-const express = require("express");
-const router = express.Router();
+import express from 'express';
 import UserModel from "../Users/userModel.js";
+
+const router = express.Router();
 const stripe = require("stripe")("sk_test_F2N15doyqIvd8Qb47d1Setor");
 
 router.get("/", (req, res) => {
