@@ -46,6 +46,12 @@ export default class Dashboard extends Component {
           merges: 5,
           trellos: 3,
         },
+        {
+          name: 'SpongeBob S.',
+          github: 'alexfigliolia',
+          merges: 5,
+          trellos: 3,
+        },
       ],
       trello: {
         todo: [
@@ -67,7 +73,6 @@ export default class Dashboard extends Component {
         ]
       },
       completeness: Math.PI * (2 * 199),
-      boxHeight: null,
       initBars: false,
       countUp: false
     }
@@ -80,10 +85,8 @@ export default class Dashboard extends Component {
     }, 500);
   }
 
-  setHeight = height => this.setState({boxHeight: height});
-
   render = () => {
-    const { project, team, completeness, trello, boxHeight, countUp, initBars } = this.state;
+    const { project, team, completeness, trello, countUp, initBars } = this.state;
     return (
       <div className='Dashboard'>
         <div>
@@ -91,28 +94,20 @@ export default class Dashboard extends Component {
             <h1>{project}</h1>
           </div>
           <div className='boxes'>
-            <div 
-              className='box bar-graph-box'
-              style={{height: boxHeight ? boxHeight : 'auto'}}>
+            <div className='box bar-graph-box'>
               <BarGraph 
                 team={team}
-                initBars={initBars}
-                boxHeight={boxHeight} />
+                initBars={initBars} />
             </div>
-            <div 
-              className='box circle-box'
-              style={{height: boxHeight ? boxHeight : 'auto'}}>
+            <div className='box circle-box'>
               <CircleGraph completeness={completeness} />
               <CircleDetails 
                 trello={trello}
                 countUp={countUp} />
             </div>
-            <div 
-              className='box'
-              style={{height: boxHeight ? boxHeight : 'auto'}}>
+            <div className='box team-box'>
               <Team 
                 team={team}
-                boxHeight={boxHeight}
                 setHeight={this.setHeight} />
             </div>
           </div>
