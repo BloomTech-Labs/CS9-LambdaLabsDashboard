@@ -5,7 +5,7 @@ import { makeToken, secret } from "../Middleware/jwtMiddleWare.js";
 import { userEmpty } from "../MiddleWare/middleWare.js";
 import authenticate from "../MiddleWare/authJWT.js";
 
-router.get("/", authenticate, (req, res) => {
+router.get("/", (req, res) => {
   console.log(req.body);
   StudentModel.find({})
     .populate("className", "-_id")
@@ -18,7 +18,7 @@ router.get("/", authenticate, (req, res) => {
     });
 });
 
-router.post("/", authenticate, (req, res) => {
+router.post("/", (req, res) => {
   console.log("request ===>", req.body);
   const obj = req.body;
   const newStudent = StudentModel(obj);
@@ -33,7 +33,7 @@ router.post("/", authenticate, (req, res) => {
     });
 });
 
-router.put("/:id", authenticate, (req, res) => {
+router.put("/:id", (req, res) => {
   const { id } = req.params;
   const obj = req.body;
   console.log(obj);
@@ -47,7 +47,7 @@ router.put("/:id", authenticate, (req, res) => {
     });
 });
 
-router.get("/:id", authenticate, (req, res) => {
+router.get("/:id", (req, res) => {
   const { id } = req.params;
   StudentModel.findById(id)
     .populate("className", "-_id")
@@ -60,7 +60,7 @@ router.get("/:id", authenticate, (req, res) => {
     });
 });
 
-router.delete("/:id", authenticate, (req, res) => {
+router.delete("/:id", (req, res) => {
   const id = req.params.id;
 
   StudentModel.findById(id)

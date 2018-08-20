@@ -8,7 +8,7 @@ router.get("/", authenticate, (req, res) => {
   res.send("you are on the charge page");
 });
 
-router.post("/", authenticate, (req, res) => {
+router.post("/", (req, res) => {
   console.log("====>", req.body.token);
   console.log("====>", req.body.email);
   const amount = 2000;
