@@ -1,15 +1,38 @@
-@import 'reset.scss';
-@import 'variables.scss';
+@import "reset.scss";
+@import "variables.scss";
 
-html, body {
-	font-family: -apple-system, BlinkMacSystemFont, “Segoe UI”, Roboto, Helvetica, Arial, sans-serif;
+html,
+body {
+  font-family: -apple-system, BlinkMacSystemFont, “Segoe UI”, Roboto, Helvetica,
+    Arial, sans-serif;
 }
 
 .App {
 	@include center;
 	min-height: 100vh;
 	width:  100%;
+	&>.body-container {
+		@include center;
+		width: 100%;
+		min-height: 100vh;
+		transition-duration: 0.3s;
+		@media #{$mq-1070} {
+			justify-content: flex-end;
+		}
+	}
+	&>.shift-left {
+		transition-duration: 0.5s;
+		transform: translateX(-75%);
+		@media #{$mq-670} {
+			transform: translateX(-70%);
+		}
+		@media #{$mq-800} {
+			transform: translateX(0%);
+		}
+	}
 }
 
-
+@import 'components/Header/header.scss';
+@import 'components/Menu/menu.scss';
 @import 'components/Dashboard/dashboard.scss';
+@import 'components/CreateProject/CreateProject';

@@ -1,0 +1,21 @@
+{
+  "name": "cs9-lambdalabsdashboard",
+  "version": "1.0.0",
+  "description": "Package to kick off the deployed application",
+  "scripts": {
+    "postinstall": "npm install --prefix server",
+    "deployed": "node ./server/build/server"
+  },
+  "engines": {
+    "node": "8.7.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lambda-School-Labs/CS9-LambdaLabsDashboard.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lambda-School-Labs/CS9-LambdaLabsDashboard/issues"
+  },
+  "homepage": "https://lambda-dashboard-cs9.herokuapp.com/"
+}

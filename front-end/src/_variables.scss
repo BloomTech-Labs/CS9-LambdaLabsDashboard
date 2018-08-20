@@ -4,6 +4,8 @@ $redish: #F66463;
 $darkred: #CD5456;
 $background : #fff;
 $darkgray: #263346;
+$darkergray: #202B3C;
+$lightgray: #5B8EC6;
 $size : 50vmin;
 $duration : 1.5s;
 $axis : 70deg;
@@ -19,10 +21,12 @@ $mq-957 : '(min-width: 957px)';
 $mq-1000 : '(min-width: 1000px)';
 $mq-1070 : '(min-width: 1070px)';
 $mq-1150 : '(min-width: 1150px)';
+$mq-1400 : '(min-width: 1400px)';
 $mq-1700 : '(min-width: 1700px)';
 $mq-h-1024: '(min-height: 1024px)';
 $mq-h-1051: '(min-height: 1051px)';
 $mq-h-1400: '(min-height: 1400px)';
+$mq-iphoneX: 'only screen and (device-width : 375px) and (device-height : 812px) and (-webkit-device-pixel-ratio : 3)';
 // $mq-l-h-and-w: '(min-width: 957px) and (min-height: 1024px)'; 
 
 @mixin center {
@@ -69,4 +73,21 @@ $mq-h-1400: '(min-height: 1400px)';
 	background: #fdfbfb;  /* fallback for old browsers */
 	background: -webkit-linear-gradient(to right, #fdfbfb, #ebedee);
 	background: linear-gradient(to right, #fdfbfb, #ebedee);
+}
+
+@mixin backgroundTrello {
+	background: #74E0FF;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to bottom, #74E0FF, #48A3FF);
+	background: linear-gradient(to bottom, #74E0FF, #48A3FF);
+}
+@mixin backgroundGit {
+	background: #A770EF;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to bottom, #FDB99B, #CF8BF3, #A770EF);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to bottom, #FDB99B, #CF8BF3, #A770EF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+@mixin gradientText {
+	@include backgroundTop;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
