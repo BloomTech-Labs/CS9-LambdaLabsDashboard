@@ -39,7 +39,7 @@ Server.get("/", (req, res) => {
 });
 
 Server.use("/classes", classes);
-Server.use("/projects", projects);
+Server.use("/projects", cors(), projects);
 Server.use("/users", user);
 Server.use("*", staticFiles);
 Server.use("/login", login);
