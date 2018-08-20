@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 import UserModel from "../Users/userModel.js";
-const stripe = require("stripe")("sk_test_4uTrPeq8JDUTDumv8qDek87x");
 import authenticate from "../MiddleWare/authJWT.js";
 
 router.get("/", authenticate, (req, res) => {
