@@ -159,7 +159,7 @@ export default class Dashboard extends Component {
                   <StatBox
                     color="#FC4645" 
                     trello={trello['Done'].cards}
-                    title="Ass!!!" />
+                    title="Hello!!" />
               }
             </div>
           </div>
