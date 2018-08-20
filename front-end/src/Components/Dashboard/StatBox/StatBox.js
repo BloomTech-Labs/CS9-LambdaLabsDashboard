@@ -1,9 +1,6 @@
 import React, { PureComponent } from 'react';
 
 export default class StatBox extends PureComponent {
-  constructor(props) {
-    super(props);
-  }
   render = () => {
   	const { title, trello, color } = this.props;
   	console.log(trello);
@@ -14,6 +11,7 @@ export default class StatBox extends PureComponent {
       		{
       			trello.map((card, index) => {
       				const { name, idMembers } = card;
+              console.log(idMembers);
       				return (
       					<div 
       						className='card-info'
