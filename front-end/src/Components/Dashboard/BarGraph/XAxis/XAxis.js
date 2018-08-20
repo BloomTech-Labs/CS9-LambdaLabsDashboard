@@ -18,12 +18,13 @@ export default class XAxis extends PureComponent {
               <div 
                 key={i}
                 className='contributor'
+                data-name={`${first} ${last}`}
                 style={{
                   width: 100/length + '%'
                 }}>
                 <h5 style={{
-                  marginLeft: -(300/length) + '%'
-                }}>{`${first} ${last[0]}`}</h5>
+                  // marginLeft: -(300/length) + '%'
+                }}>{`${first[0]}.${last[0]}.`}</h5>
               </div>
             );
           })

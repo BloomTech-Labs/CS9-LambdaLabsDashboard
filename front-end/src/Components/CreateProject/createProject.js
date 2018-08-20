@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Sidenav from "../Sidenav/sidenav";
 import axios from "axios";
 class CreateProject extends Component {
   constructor(props) {
@@ -35,7 +34,6 @@ class CreateProject extends Component {
   render() {
     return (
       <div className="createProject">
-        <Sidenav />
         <h1> Create PROJECTS</h1>
         <input
           type="text"

@@ -1,4 +1,4 @@
-label {
+/* label {
   display: inline-block;
   float: left;
   clear: left;
@@ -8,7 +8,7 @@ label {
 input {
   display: inline-block;
   float: left;
-}
+} */
 .settings {
   margin: auto;
   width: 35%;

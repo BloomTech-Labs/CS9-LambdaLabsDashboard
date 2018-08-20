@@ -14,7 +14,7 @@ var router = express.Router();
 
 router.get("/", function (req, res) {
   console.log(req.body);
-  _projectsModel2.default.find({}).then(function (projects) {
+  _projectsModel2.default.find({}).populate("class", "-_id").populate("students", "-_id").then(function (projects) {
     res.status(200).json({ projects: projects });
   }).catch(function (error) {
     res.status(500).json({ msg: error });
@@ -43,6 +43,16 @@ router.put("/:id", function (req, res) {
     res.status(200).json({ msg: "project updated successfully", p: p });
   }).catch(function (err) {
     res.status(500).json({ msg: "... not able to update your project" });
+  });
+});
+
+router.get("/:id", function (req, res) {
+  var id = req.params.id;
+
+  ProjectModel.findById(id).populate("class", "-_id").populate("students", "-_id").then(function (p) {
+    res.status(200).json(p);
+  }).catch(function (err) {
+    res.status(500).json({ msg: "we cant display this project " });
   });
 });
 
