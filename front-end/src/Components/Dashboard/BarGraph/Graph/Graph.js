@@ -3,7 +3,7 @@ import BarContainer from './BarContainer/BarContainer';
 
 export default class Graph extends Component {
   render = () => {
-  	const { team, initBars } = this.props;
+  	const { team, initBars, maxStat } = this.props;
   	const { length } = team;
     return (
       <div className='graph-grid'>
@@ -17,6 +17,7 @@ export default class Graph extends Component {
       					trellos={trellos}
       					merges={merges}
       					length={length}
+                maxStat={maxStat}
                 initBars={initBars} />
       			);
       		})

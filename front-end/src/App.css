@@ -1103,10 +1103,11 @@ $scale: 0.8; // icon scale 68/68 default
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        justify-content: flex-start; }
+        align-items: flex-start; }
         .team > div > .team-member > .user-info > h3 {
           margin: 0;
-          font-size: 1.1em; }
+          font-size: 1.1em;
+          text-align: left; }
           @media (min-width: 670px) {
             .team > div > .team-member > .user-info > h3 {
               font-size: 1em; } }
@@ -1114,7 +1115,6 @@ $scale: 0.8; // icon scale 68/68 default
           display: flex;
           justify-content: center;
           align-items: center;
-          margin-left: 25px;
           cursor: pointer; }
           .team > div > .team-member > .user-info > .github > img {
             height: 30px;

@@ -27,7 +27,8 @@ export default class BarGraph extends PureComponent {
           <YAxis maxStat={maxStat}/>
       		<Graph 
             team={team}
-            initBars={initBars} />
+            initBars={initBars}
+            maxStat={maxStat} />
       	</div>
         <XAxis team={team} />
         <Key />
