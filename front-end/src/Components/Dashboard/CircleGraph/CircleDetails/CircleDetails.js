@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
-export default class CircleDetails extends Component {
+export default class CircleDetails extends PureComponent {
   render = () => {
   	const { trello, countUp } = this.props;
     return (
@@ -19,7 +19,7 @@ export default class CircleDetails extends Component {
     					color: '#65AAFF',
     					opacity: countUp ? 1 : 0,
     					transform: countUp ? 'scale(1)' : 'scale(0.75)'
-    				}}>{countUp ? trello['In Progress'].cards.length : 0}</h5>
+    				}}>{countUp ? trello['In Progress'].cards.length + trello['Testing'].cards.length : 0}</h5>
     				<h5>In Progress</h5>
     			</div>
     			<div style={{borderTop: '3px solid #35FA7E'}}>

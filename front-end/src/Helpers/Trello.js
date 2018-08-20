@@ -62,6 +62,12 @@ export default class Trello {
 		}
 		const completeness = (complete/(complete+inProgress+pending))*100;
 		const circ = Math.PI * (2 * (200 - ((completeness*200)/100)));
-		return { trello: this.lists, completeness: circ, updatedTeamStats: this.teamStats };
+		return { trello: this.lists, completeness: circ, updatedTeamStats: this.teamStats, inProgress: this.getInProgress() };
+	}
+	getInProgress() {
+		if('In Progress' in this.lists && 'Testing' in this.lists) {
+			return [...this.lists['In Progress'].cards, ...this.lists['Testing'].cards]
+		}
+		return [];
 	}
 }
