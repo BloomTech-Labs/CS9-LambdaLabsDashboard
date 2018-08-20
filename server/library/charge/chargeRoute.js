@@ -7,7 +7,7 @@ router.get("/", (req, res) => {
   res.send("you are on the charge page");
 });
 
-server.post("/api", (req, res) => {
+server.post("/", (req, res) => {
   console.log("====>", req.body.token);
   console.log("====>", req.body.email);
   const amount = 2000;
