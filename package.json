@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Package to kick off the deployed application",
   "scripts": {
-    "postinstall": "cd server && npm install"
+    "postinstall": "cd server && npm install",
+    "deployed": "node ./server/build/server"
   },
   "engines": {
     "node": "8.7.0"
