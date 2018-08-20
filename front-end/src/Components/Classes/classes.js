@@ -10,7 +10,7 @@ export default class Classes extends Component {
 
   render = () => {
     return (
-      <div></div>
+      <div>Classes</div>
     );
   }
 }

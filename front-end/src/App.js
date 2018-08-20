@@ -18,14 +18,18 @@ class App extends Component {
 
   shouldComponentUpdate = ({ location, classes }) => {
     const curProps = this.props;
-    if(location !== curProps.location) return true;
+    if(location.pathname !== curProps.location.pathname) return true;
     else if(classes !== curProps.classes) return true;
     return false;
+    //App will only update if these props change
   }
 
   render = () => {
     const { location, classes } = this.props;
-    const notLandingPage = location.pathName !== 'LandingPage';
+    const notLandingPage = location.pathname !== '/';
+    console.log(notLandingPage);
+    console.log(location);
+    //notLandingPage will return true for every route other than landing page
     return (
       <div className='App'>
         {
