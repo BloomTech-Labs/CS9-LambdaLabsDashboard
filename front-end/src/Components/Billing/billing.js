@@ -1,8 +1,8 @@
 import React from "react";
-import axios from "axios";
+// import axios from "axios";
 import StripeCheckout from "react-stripe-checkout";
 
-const stripe = require("stripe-client")("pk_test_dtZeEKgd6FSjpH2sFi8RAYFa");
+// const stripe = require("stripe-client")("pk_test_dtZeEKgd6FSjpH2sFi8RAYFa");
 
 export default class Billing extends React.Component {
   constructor(props) {
@@ -61,11 +61,11 @@ export default class Billing extends React.Component {
     let amount;
     if (this.state.monthly) {
       amount = 999;
-      this.state.annual = false;
+      this.setState.annual = false;
     }
     if (this.state.annual) {
       amount = 2999;
-      this.state.monthly = false;
+      this.SetState.monthly = false;
     }
     return (
       <div>

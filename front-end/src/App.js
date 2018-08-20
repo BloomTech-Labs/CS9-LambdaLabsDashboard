@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { Route } from "react-router-dom";
 import Classes from "./Components/Classes/classes";
 import LandingPage from "./Components/LandingPage/landingPage";
+import LogIn from './Components/LogIn.js';
+import SignUp from './Components/SignUp';
 import Projects from "./Components/Projects/projects";
 import Billing from "./Components/Billing/billing";
 import CreateProject from "./Components/CreateProject/createProject";
@@ -38,6 +40,8 @@ class App extends Component {
                 }
                 <div className={classes}>
                     <Route exact path="/" component={LandingPage} />
+                    <Route exact path="/login" component={LogIn}/>
+                    <Route exact path="/signup" component={SignUp}/>
                     <Route exact path="/classes" component={Classes} />
                     <Route exact path="/projects" component={Projects} />
                     <Route exact path="/billing" component={Billing} />

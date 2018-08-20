@@ -27,7 +27,7 @@
 			flex-direction: column;
 			justify-content: flex-start;
 			height: 100%;
-			overflow-y: scroll;
+			// overflow-y: scroll;
 		}
 		&>h1 {
 			cursor: pointer;
@@ -123,8 +123,8 @@
 				margin-right: 10px;
 				width: auto;
 				max-width: 60%;
-				overflow-x: scroll;
-				overflow-y: hidden;
+				// overflow-x: scroll;
+				// overflow-y: hidden;
 				height: 80px;
 				justify-content: flex-start;
 				padding: 0 20px;
@@ -139,7 +139,7 @@
 				padding: 0px;
 				max-width: none;
 				max-height: 95%;
-				overflow-y: scroll;
+				// overflow-y: scroll;
 				padding-top: 0px;
 				margin-left: auto;
 				margin-right: auto;

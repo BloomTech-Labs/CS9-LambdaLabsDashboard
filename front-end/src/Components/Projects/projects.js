@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import CreateProject from "../CreateProject/createProject.js";
-import { Link, Route } from "react-router-dom";
+// import CreateProject from "../CreateProject/createProject.js";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import "./projects.css";
-import { Button } from "react-bootstrap";
+// import { Button } from "react-bootstrap";
 class Projects extends Component {
   constructor(props) {
     super(props);
@@ -139,7 +139,7 @@ class Projects extends Component {
         <Link to="/createProject">
           <div className="newProjectCard">
             <span> New Project</span>
-            <img src={require("../../pictures/add.png")} width="100px" />
+            <img src={require("../../pictures/add.png")} width="100px" alt='add' />
           </div>
         </Link>
       </div>

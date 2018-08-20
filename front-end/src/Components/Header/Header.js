@@ -7,7 +7,7 @@ export default class Header extends Component {
     return (
       <header className="header">
       <div>
-        <h1>LABS</h1>
+        <h1><Link to= "/">LABS</Link></h1> {/* just wanted to link it to the landing page and not lose your css fix as you need to */}
         <Burger />
         <nav className="header-links">
           <Link to="/classes">Classes</Link>
