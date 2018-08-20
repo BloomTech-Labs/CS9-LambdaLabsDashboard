@@ -1,6 +1,9 @@
 import React from "react";
 import axios from "axios";
 import StripeCheckout from "react-stripe-checkout";
+import Sidenav from "../Sidenav/sidenav";
+import "./billing.css";
+const stripe = require("stripe-client")("pk_test_dtZeEKgd6FSjpH2sFi8RAYFa");
 
 export default class Billing extends React.Component {
   constructor(props) {
@@ -10,38 +13,24 @@ export default class Billing extends React.Component {
       annual: false
     };
   }
-  // onToken = token => {
-  //   const promise = axios.post("http://localhost:4000/charge", {
-  //     body: JSON.stringify(token)
-  //   });
-  //   promise.then(response => {
-  //     response.json().then(data => {
-  //       alert(`We are in business, ${data.email}`);
-  //     });
-  //   });
-  // };
 
-  onToken = token =>
+  onToken = token => {
     axios
-      .post("http:localhost:4000/charge", {
-        description: "test item",
-        source: token.id,
-        currency: "usd",
-        amount: 9.99
+      .post("http://localhost:4000/charge", {
+        body: JSON.stringify(token)
       })
       .then(response => {
-        response.json().then(data => {
-          alert(`We are in business, ${data.email}`);
-        });
+        console.log(response);
       })
       .catch(error => {
-        console.log("error");
+        console.log(error);
       });
+  };
 
   onChange = event => {
     alert("hello");
     this.setState({
-      [event.target.name]: !this.state.id
+      [event.target.name]: true
     });
   };
 
@@ -54,39 +43,98 @@ export default class Billing extends React.Component {
   render() {
     console.log("monthly", this.state.monthly);
     console.log("annually", this.state.annual);
+    let amount;
+    if (this.state.monthly) {
+      amount = 999;
+      this.state.annual = false;
+    }
+    if (this.state.annual) {
+      amount = 2999;
+      this.state.monthly = false;
+    }
     return (
-      <div>
-        <div>Choose Your Subscription</div>
-        <div>
-          <label htmlFor="monthly">1 Year Subscription - $9.99</label>
-
-          <input
-            name="monthly"
-            id="monthly"
-            type="checkbox"
-            onClick={this.onChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="annual">1 Year Premium Subscription - $29.99</label>
-          <input name="annual" id="annual" type="checkbox" />
-          // onChange=
-          {this.onChange}
-        </div>
+      <div className="billing">
+        <form>
+          <legend>Choose Your Subscription</legend>
+          <div>
+            <input
+              name="monthly"
+              id="monthly"
+              type="checkbox"
+              onClick={this.onChange}
+            />
+            <label for="monthly">1 Year Subscription - $9.99</label>
+          </div>
+          <div>
+            <input
+              name="annual"
+              id="annual"
+              type="checkbox"
+              onChange={this.onChange}
+            />
+            <label for="annual">1 Year Premium Subscription - $29.99</label>
+          </div>
+        </form>
 
         {/* <StripeCheckout
-          token={this.onToken}
-          stripeKey="pk_test_iCsQ37ZO7RVr0Kec4pweqCU5"
-        /> */}
-        <StripeCheckout
+          id={this.state.id}
           name="test name"
           description="test item"
-          amount="9.99"
-          token={this.onToken("9.99", "test item")}
-          currency="usd"
-          stripeKey="pk_test_iCsQ37ZO7RVr0Kec4pweqCU5"
-        />
+          amount={amount}
+          token={this.onToken}
+          currency="USD"
+          stripeKey="pk_test_dtZeEKgd6FSjpH2sFi8RAYFa"
+        /> */}
+
+        <form
+          action="http://localhost:4000/charge"
+          method="post"
+          id="payment-form"
+        >
+          <div class="form-row">
+            <label for="card-element">Credit or debit card</label>
+            <div id="card-element" />
+
+            <div id="card-errors" role="alert" />
+          </div>
+
+          <button>Submit Payment</button>
+        </form>
       </div>
     );
+    //)
+
+    //   {/* <Sidenav /> */}
+
+    //     <input type="checkbox" name="vehicle" value="Car" checked/>
+    //     <input type="submit" value="Submit">
+
+    //     1 Year Subscription - $9.99
+    //     <input
+    //       name="monthly"
+    //       id="monthly"
+    //       type="checkbox"
+    //       onClick={this.onChange}
+    //     />
+
+    //     1 Year Premium Subscription - $29.99
+    //     <input
+    //       name="annual"
+    //       id="annual"
+    //       type="checkbox"
+    //       onClick={this.onChange}
+    //     />
+
+    //   <StripeCheckout
+    //     id={this.state.id}
+    //     name="test name"
+    //     description="test item"
+    //     amount={amount}
+    //     token={this.onToken}
+    //     currency="USD"
+    //     stripeKey="pk_test_dtZeEKgd6FSjpH2sFi8RAYFa"
+    //   />
+
+    // </div>
   }
 }

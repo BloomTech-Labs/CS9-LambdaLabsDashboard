@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 import ProjectsModel from "./projectsModel.js";
 import { noneEmpty } from "../MiddleWare/middleWare.js";
+import authenticate from "../MiddleWare/authJWT.js";
 
 router.get("/", (req, res) => {
   console.log(req.body);
