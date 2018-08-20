@@ -362,7 +362,8 @@ th {
 /*======MEDIA QUERIES======*/
 html,
 body {
-  font-family: -apple-system, BlinkMacSystemFont, “Segoe UI”, Roboto, Helvetica, Arial, sans-serif; }
+  font-family: -apple-system, BlinkMacSystemFont, “Segoe UI”, Roboto, Helvetica,
+ Arial, sans-serif; }
 
 .App {
   display: flex;
@@ -1382,3 +1383,4 @@ $scale: 0.8; // icon scale 68/68 default
   flex-direction: column;
   margin-left: 250px;
   width: 70%; }
+

@@ -77,9 +77,9 @@ class LogIn extends Component {
                             value={this.state.password}
                             onChange={this.eventHandler}
                         />
-                        <button onClick={this.userLogin}>Login</button>
+                        <button onClick={this.userLogin}>Sign in</button>
                     </div>
-                    <button onClick={this.submitUser}>Log out</button>
+                    <button onClick={this.submitUser}>Sign out</button>
                 </div>
 
             </div>

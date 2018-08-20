@@ -1,0 +1,10 @@
+#landingPage .content{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    width: 100%;
+    background-color: blue;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.75);
+    border-left: 1px solid rgba(255, 255, 255, 0.75);
+    height: 100%;
+    flex-direction: row; }

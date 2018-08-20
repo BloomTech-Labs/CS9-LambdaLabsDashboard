@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
+import { Button } from 'react-bootstrap'
+import './_landingPage.scss'
 
 class LandingPage extends Component {
   constructor(props) {
@@ -55,25 +56,17 @@ class LandingPage extends Component {
 
   render() {
     return (
-      <div>
+      <div id="landingPage">
         <div className="content">
           <h2>Landing Page</h2>
           <div>
-            <input
-              type="text"
-              placeholder="username"
-              name="username"
-              value={this.state.username}
-              onChange={this.eventHandler}
-            />
-            <input
-              type="text"
-              placeholder="password"
-              name="password"
-              value={this.state.password}
-              onChange={this.eventHandler}
-            />
-            <button onClick={this.userLogin}>Login</button>
+            <Button onClick={() => { this.props.history.replace('/login') }}>
+              Log In
+            </Button>
+            <Button onClick={() => { this.props.history.replace('/signup') }}>
+              Sign Up
+            </Button>
+            
           </div>
         </div>
       </div>

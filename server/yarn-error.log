@@ -1,17 +1,17 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn start
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js start
 
 PATH: 
-  /Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/usr/local/share/dotnet:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Applications/Postgres.app/Contents/Versions/latest/bin:/Applications/Xamarin Workbooks.app/Contents/SharedSupport/path-bin:/Users/hilalaissani/apache-maven-3.5.2/bin
+  C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\jacqu\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Python37-32\Scripts;C:\Program Files (x86)\Python37-32;C:\Program Files\Docker\Docker\Resources\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\Program Files\nodejs;C:\Program Files\dotnet;C:\Program Files\Microsoft SQL Server\130\Tools\Binn;C:\Program Files\MySQL\MySQL Utilities 1.6;C:\Program Files\Git\cmd;C:\Program Files (x86)\Yarn\bin;C:\WINDOWS\System32\OpenSSH;C:\Program Files\Microsoft VS Code\bin;C:\Users\jacqu\AppData\Local\Programs\Python\Python37\Scripts;C:\Users\jacqu\AppData\Local\Programs\Python\Python37;C:\Program Files\Docker\Docker\Resources\bi;.;C:\WINDOWS\system3;.;C:\WINDOW;.;C:\WINDOWS\System32\Wbe;.;C:\WINDOWS\System32\WindowsPowerShell\v1.0;.;C:\Program Files\nodejs;.;C:\Program Files\dotnet;.;C:\Program Files\Microsoft SQL Server\130\Tools\Binn;.;C:\Program Files\MySQL\MySQL Utilities 1.6;.;C:\Program Files\Git\cm;.;C:\Program Files (x86)\Yarn\bin;.;C:\WINDOWS\System32\OpenSSH;.;C:\Program Files\MongoDB\Server\3.6\bi;.;C:\Program Files\Microsoft VS Code\bi;.;C:\Users\jacqu\AppData\Local\Yarn\bin;C:\Python34;C:\users\jacqu\appdata\roaming\python\python37\site-packages;C:\sqlite3;C:\Program Files\Heroku\bin
 
 Yarn version: 
   1.5.1
 
 Node version: 
-  8.9.4
+  8.9.1
 
 Platform: 
-  darwin x64
+  win32 x64
 
 npm manifest: 
   {
@@ -21,8 +21,7 @@ npm manifest:
     "main": "server.js",
     "scripts": {
       "start": "nodemon library/server.js --exec babel-node",
-      "build": "babel library -d build",
-      "deploy": "node build/server"
+      "build": "babel library -d build"
     },
     "repository": {
       "type": "git",
@@ -3091,15 +3090,15 @@ Lockfile:
 
 Trace: 
   Error: Command failed.
-  Exit code: 127
-  Command: sh
-  Arguments: -c nodemon library/server.js --exec babel-node
-  Directory: /Users/hilalaissani/Lamda-1/lambdalabs/CS9-LambdaLabsDashboard/server
+  Exit code: 3221225786
+  Command: C:\WINDOWS\system32\cmd.exe
+  Arguments: /d /s /c nodemon library/server.js --exec babel-node
+  Directory: C:\dev\CS9-LambdaLabsDashboard\server
   Output:
   
-      at ProcessTermError.MessageError (/usr/local/lib/node_modules/yarn/lib/cli.js:186:110)
-      at new ProcessTermError (/usr/local/lib/node_modules/yarn/lib/cli.js:226:113)
-      at ChildProcess.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:30281:17)
+      at ProcessTermError.MessageError (C:\Program Files (x86)\Yarn\lib\cli.js:186:110)
+      at new ProcessTermError (C:\Program Files (x86)\Yarn\lib\cli.js:226:113)
+      at ChildProcess.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:30281:17)
       at emitTwo (events.js:126:13)
       at ChildProcess.emit (events.js:214:7)
       at maybeClose (internal/child_process.js:925:16)

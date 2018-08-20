@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Route } from "react-router-dom";
 import Classes from "./Components/Classes/classes";
 import LandingPage from "./Components/LandingPage/landingPage";
-import LogIn from './Components/LogIn.js';
+import LogIn from './Components/signIn.js';
 import SignUp from './Components/SignUp';
 import Projects from "./Components/Projects/projects";
 import Billing from "./Components/Billing/billing";
