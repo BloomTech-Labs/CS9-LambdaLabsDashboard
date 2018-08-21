@@ -1,9 +1,9 @@
 .Dashboard {
 	@include center;
 	min-height: 100vh; 
-	width: 100%;
 	background: $darkergray;
 	position: relative;
+	width: 100%;
 	@media #{$mq-1070} {
 		width: calc(100% - 200px);
 	}
@@ -135,6 +135,20 @@
 					margin: 4vh 0 2.5vh 1%;
 				}
 			}
+			&>.stat-box {
+				@media #{$mq-670} {
+					overflow-y: scroll;
+					-webkit-overflow-scrolling: touch;
+					justify-content: space-around;
+					width: 43.5%;
+					&:nth-of-type(odd) {
+						margin: 3vh 0 3vh 1.5%;
+					}
+					&:nth-of-type(even) {
+						margin: 3vh 1.5% 3vh 0;
+					}
+				}
+			}
 		}
 	}
 }
@@ -143,3 +157,4 @@
 @import 'Team/team.scss';
 @import 'CircleGraph/CircleDetails/circle-details.scss';
 @import 'BarGraph/bar-graph.scss';
+@import 'StatBox/statbox.scss';

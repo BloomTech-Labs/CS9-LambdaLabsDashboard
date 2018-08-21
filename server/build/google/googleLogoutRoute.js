@@ -1,0 +1,1 @@
+"use strict";var express=require("express"),router=express.Router();router.get("/",function(a,b){b.send("googleLogoutRoute is here ")}),module.exports=router;

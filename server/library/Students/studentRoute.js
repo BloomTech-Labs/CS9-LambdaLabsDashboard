@@ -1,8 +1,8 @@
-const express = require("express");
-const router = express.Router();
+import express from 'express';
 import StudentModel from "./studentModel.js";
-import { makeToken, secret } from "../Middleware/jwtMiddleWare.js";
+import { makeToken, secret } from "../MiddleWare/jwtMiddleWare.js";
 import { userEmpty } from "../MiddleWare/middleWare.js";
+const router = express.Router();
 import authenticate from "../MiddleWare/authJWT.js";
 
 router.get("/", (req, res) => {

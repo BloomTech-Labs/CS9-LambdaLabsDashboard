@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 import CreateProject from "../CreateProject/createProject.js";
 import { Link, Route } from "react-router-dom";
 import axios from "axios";
@@ -132,6 +133,7 @@ class Projects extends Component {
     console.log(this.props);
     return (
       <div className="projects">
+        {/* <Sidenav /> */}
         <h1>
           <span>Projects</span>
         </h1>

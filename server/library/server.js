@@ -4,8 +4,8 @@ import path from "path";
 import keys from "./keys";
 import bodyParser from "body-parser";
 import helmet from "helmet";
-const cookieSession = require("cookie-session");
-const passport = require("passport");
+import cookieSession from "cookie-session";
+import passport from "passport";
 import cors from "cors";
 import students from "./Students/studentRoute";
 import classes from "./Classes/classRoute";
@@ -13,6 +13,9 @@ import projects from "./projects/projectsRoute";
 import user from "./Users/userRoute.js";
 import login from "./login/loginRoute.js";
 import charge from "./charge/chargeRoute.js";
+import googleRedirect from "./google/googleRedirect.js";
+import googleRoute from "./google/googleRoute.js";
+
 const Server = express();
 const sessionOptions = {
   maxAge: 24 * 60 * 60 * 1000,
@@ -47,16 +50,15 @@ Server.get("/", (req, res) => {
 Server.use("/classes", classes);
 Server.use("/projects", cors(), projects);
 Server.use("/users", user);
-Server.use("*", staticFiles);
 Server.use("/login", login);
 Server.use("/charge", charge);
 Server.use("/students", students);
-
-const googleRedirect = require("./google/googleRedirect.js");
 Server.use("/auth/google/callback", googleRedirect);
-
-const googleRoute = require("./google/googleRoute.js");
 Server.use("/google", googleRoute);
+Server.use("*", staticFiles);
+
+// const googleRoute = require("./google/googleRoute.js");
+// // Server.use("/google", googleRoute);
 
 // const googleLoginRoute = require("./google/googleLoginRoute.js");
 // Server.use("/google", googleLoginRoute);

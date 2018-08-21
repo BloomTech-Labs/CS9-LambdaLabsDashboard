@@ -17,14 +17,14 @@ import "./App.css";
 class App extends Component {
   shouldComponentUpdate = ({ location, classes }) => {
     const curProps = this.props;
-    if (location !== curProps.location) return true;
+    if (location.pathname !== curProps.location.pathname) return true;
     else if (classes !== curProps.classes) return true;
     return false;
   };
 
   render = () => {
     const { location, classes } = this.props;
-    const notLandingPage = location.pathName !== "LandingPage";
+    const notLandingPage = location.pathname !== "/";
     return (
       <div className="App">
         {notLandingPage && <Menu />}

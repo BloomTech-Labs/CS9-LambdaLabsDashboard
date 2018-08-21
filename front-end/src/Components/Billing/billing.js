@@ -1,6 +1,6 @@
 import React from "react";
-import axios from "axios";
-import StripeCheckout from "react-stripe-checkout";
+import Axios from "axios";
+// import StripeCheckout from "react-stripe-checkout";
 import Stripe from "./stripe";
 
 export default class Billing extends React.Component {
