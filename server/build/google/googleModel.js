@@ -1,0 +1,1 @@
+"use strict";var mongoose=require("mongoose"),Schema=mongoose.Schema,definition={username:String,googleId:String},googleUserSchema=new Schema(definition),googleUserModel=mongoose.model("GoogleUsers",googleUserSchema);module.exports=googleUserModel;

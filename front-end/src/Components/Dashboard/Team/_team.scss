@@ -44,17 +44,18 @@
 			&>.user-info {
 				@include center;
 				flex-direction: column;
-				justify-content: flex-start;
+				align-items: flex-start;
 				&>h3 {
 					margin: 0;
 					font-size: 1.1em;
+					text-align: left;
 					@media #{$mq-670} {
 						font-size: 1em;
 					}
 				}
 				&>.github {
 					@include center;
-					margin-left: 25px;
+					// margin-left: 25px;
 					cursor: pointer;
 					&>img {
 						height: 30px; width: 30px;

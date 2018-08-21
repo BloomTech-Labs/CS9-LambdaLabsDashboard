@@ -1,0 +1,1 @@
+"use strict";var jwt=require("jsonwebtoken"),_require=require("./jwtMiddleWare.js"),secret=_require.secret,authenticate=function(a,b,c){var d=a.headers.authorization;return d?void jwt.verify(d,secret,function(d,e){return d?b.status(422).json({msg:d}):void(a.decoded=e,c())}):b.status(403).json({msg:"sorry there is not token, you can not pass"})};module.exports=authenticate;

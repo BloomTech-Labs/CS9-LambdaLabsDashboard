@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const passport = require("passport");
 const passportSetup = require("../passport/passport-setup.js");
-const { makeToken } = require("../middleWare/jwtMiddleWare.js");
+const { makeToken } = require("../MiddleWare/jwtMiddleWare.js");
 
 router.get("/", passport.authenticate("google"), (req, res) => {
   const token = makeToken(req.user);

@@ -858,9 +858,9 @@ $scale: 0.8; // icon scale 68/68 default
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  width: 100%;
   background: #202B3C;
-  position: relative; }
+  position: relative;
+  width: 100%; }
   @media (min-width: 1070px) {
     .Dashboard {
       width: calc(100% - 200px); } }
@@ -989,6 +989,16 @@ $scale: 0.8; // icon scale 68/68 default
         .Dashboard > div .boxes > .team-box {
           width: 28%;
           margin: 4vh 0 2.5vh 1%; } }
+      @media (min-width: 670px) {
+        .Dashboard > div .boxes > .stat-box {
+          overflow-y: scroll;
+          -webkit-overflow-scrolling: touch;
+          justify-content: space-around;
+          width: 43.5%; }
+          .Dashboard > div .boxes > .stat-box:nth-of-type(odd) {
+            margin: 3vh 0 3vh 1.5%; }
+          .Dashboard > div .boxes > .stat-box:nth-of-type(even) {
+            margin: 3vh 1.5% 3vh 0; } }
 
 .circle-graph {
   display: flex;
@@ -998,8 +1008,8 @@ $scale: 0.8; // icon scale 68/68 default
   height: auto; }
   @media (min-width: 670px) {
     .circle-graph {
-      max-width: 250px;
-      margin-top: -5%; } }
+      max-width: 275px;
+      margin-top: -2.5%; } }
   .circle-graph > .circle-center {
     display: flex;
     justify-content: center;
@@ -1009,7 +1019,11 @@ $scale: 0.8; // icon scale 68/68 default
     padding-bottom: 100%;
     cursor: pointer;
     background: transparent;
-    border-radius: 50%; }
+    border-radius: 50%;
+    margin-bottom: 1em; }
+    @media (min-width: 670px) {
+      .circle-graph > .circle-center {
+        margin-bottom: 0; } }
     .circle-graph > .circle-center > .circle-container {
       display: flex;
       justify-content: center;
@@ -1103,10 +1117,11 @@ $scale: 0.8; // icon scale 68/68 default
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        justify-content: flex-start; }
+        align-items: flex-start; }
         .team > div > .team-member > .user-info > h3 {
           margin: 0;
-          font-size: 1.1em; }
+          font-size: 1.1em;
+          text-align: left; }
           @media (min-width: 670px) {
             .team > div > .team-member > .user-info > h3 {
               font-size: 1em; } }
@@ -1114,7 +1129,6 @@ $scale: 0.8; // icon scale 68/68 default
           display: flex;
           justify-content: center;
           align-items: center;
-          margin-left: 25px;
           cursor: pointer; }
           .team > div > .team-member > .user-info > .github > img {
             height: 30px;
@@ -1350,6 +1364,16 @@ $scale: 0.8; // icon scale 68/68 default
   border-left: 1px solid rgba(255, 255, 255, 0.75);
   height: 100%;
   flex-direction: row; }
+  .graph-grid > .error {
+    align-self: center;
+    width: 90%;
+    text-align: center;
+    color: #fff;
+    margin: auto; }
+    .graph-grid > .error > h3 {
+      font-weight: 700;
+      color: #EB5C59;
+      font-size: 1.5em; }
   .graph-grid > .bar-container {
     width: 50px;
     height: 100%;
@@ -1380,6 +1404,43 @@ $scale: 0.8; // icon scale 68/68 default
         /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
         box-shadow: 2.5px -0.5px 5px rgba(253, 185, 155, 0.5);
         margin-left: 10%; }
+
+.statistic {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; }
+  .statistic > div {
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 5% 0; }
+    .statistic > div > h2 {
+      color: #fff;
+      font-size: 4vh;
+      font-weight: 200;
+      margin-top: 0; }
+      @media (min-width: 670px) {
+        .statistic > div > h2 {
+          font-size: 4vh;
+          text-align: center; } }
+    .statistic > div > .card-info {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: auto;
+      color: #fff;
+      width: 90%;
+      padding: 10px;
+      margin: 0;
+      background: #304159;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
+      .statistic > div > .card-info > h3 {
+        margin: 0; }
 
 .createProject {
   display: flex;
