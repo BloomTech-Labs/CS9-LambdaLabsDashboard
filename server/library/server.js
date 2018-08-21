@@ -57,6 +57,12 @@ Server.use("/auth/google/callback", googleRedirect);
 Server.use("/google", googleRoute);
 Server.use('*', staticFiles);
 
+// const googleRoute = require("./google/googleRoute.js");
+// Server.use("/google", googleRoute);
+
+const googleLoginRoute = require("./google/googleLoginRoute.js");
+Server.use("/google", googleLoginRoute);
+
 Server.listen(port, () => {
   console.log(`\n=== server is running on ${port} ==`);
 });

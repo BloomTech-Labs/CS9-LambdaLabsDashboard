@@ -5,7 +5,7 @@ import { userEmpty } from "../MiddleWare/middleWare.js";
 import authenticate from "../MiddleWare/authJWT.js";
 const router = express.Router();
 
-router.get("/", authenticate, (req, res) => {
+router.get("/", (req, res) => {
   console.log(req.body);
   ClassModel.find({})
     .populate("Students", "-_id")
@@ -18,7 +18,7 @@ router.get("/", authenticate, (req, res) => {
     });
 });
 
-router.post("/", userEmpty, authenticate, (req, res) => {
+router.post("/", userEmpty, (req, res) => {
   console.log("request ===>", req.body);
   const obj = req.body;
   const newClass = ClassModel(obj);
@@ -33,7 +33,7 @@ router.post("/", userEmpty, authenticate, (req, res) => {
     });
 });
 
-router.get("/:id", authenticate, (req, res) => {
+router.get("/:id", (req, res) => {
   const { id } = req.params;
   ClassModel.findById(id)
     .populate("Students", "-_id")
@@ -46,7 +46,7 @@ router.get("/:id", authenticate, (req, res) => {
     });
 });
 
-router.put("/:id", authenticate, (req, res) => {
+router.put("/:id", (req, res) => {
   const { id } = req.params;
   const obj = req.body;
   console.log(obj);
@@ -60,7 +60,7 @@ router.put("/:id", authenticate, (req, res) => {
     });
 });
 
-router.delete("/:id", authenticate, (req, res) => {
+router.delete("/:id", (req, res) => {
   const id = req.params.id;
 
   ClassModel.findById(id)

@@ -1,14 +1,14 @@
 import express from 'express';
 import UserModel from "../Users/userModel.js";
 const router = express.Router();
-const stripe = require("stripe")("sk_test_F2N15doyqIvd8Qb47d1Setor");
+const stripe = require("stripe")("sk_test_4uTrPeq8JDUTDumv8qDek87x");
 import authenticate from "../MiddleWare/authJWT.js";
 
 router.get("/", authenticate, (req, res) => {
   res.send("you are on the charge page");
 });
 
-router.post("/", authenticate, (req, res) => {
+router.post("/", (req, res) => {
   console.log("====>", req.body.token);
   console.log("====>", req.body.email);
   const amount = 2000;
