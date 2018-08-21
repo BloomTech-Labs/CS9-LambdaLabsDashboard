@@ -5,7 +5,7 @@ import MyStoreCheckout from "./myStoreCheckout";
 class stripeApp extends Component {
   render() {
     return (
-      <StripeProvider apiKey="pk_test_dtZeEKgd6FSjpH2sFi8RAYFa">
+      <StripeProvider apiKey="pk_test_iCsQ37ZO7RVr0Kec4pweqCU5">
         <MyStoreCheckout />
       </StripeProvider>
     );
