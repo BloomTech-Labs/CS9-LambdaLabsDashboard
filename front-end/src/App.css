@@ -362,8 +362,7 @@ th {
 /*======MEDIA QUERIES======*/
 html,
 body {
-  font-family: -apple-system, BlinkMacSystemFont, “Segoe UI”, Roboto, Helvetica,
- Arial, sans-serif; }
+  font-family: -apple-system, BlinkMacSystemFont, “Segoe UI”, Roboto, Helvetica, Arial, sans-serif; }
 
 .App {
   display: flex;
@@ -1384,3 +1383,13 @@ $scale: 0.8; // icon scale 68/68 default
   margin-left: 250px;
   width: 70%; }
 
+#landingPage .content {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  width: 100%;
+  background-color: blue;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.75);
+  border-left: 1px solid rgba(255, 255, 255, 0.75);
+  height: 100%;
+  flex-direction: row; }

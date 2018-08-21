@@ -127,6 +127,10 @@ class Projects extends Component {
       });
     }
   }
+  signout =()=>{
+    localStorage.removeItem('token')
+    this.props.history.push('/SignIn')
+}
   render() {
     console.log("state", this.state.projects.projects);
     console.log(this.props);
@@ -138,6 +142,8 @@ class Projects extends Component {
         <div className="allCards">{this.displayProjects()}</div>
         <Link to="/createProject">
           <div className="newProjectCard">
+          
+
             <span> New Project</span>
             <img src={require("../../pictures/add.png")} width="100px" alt='add' />
           </div>

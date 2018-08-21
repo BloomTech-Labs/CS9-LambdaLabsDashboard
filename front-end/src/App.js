@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Route } from "react-router-dom";
 import Classes from "./Components/Classes/classes";
 import LandingPage from "./Components/LandingPage/landingPage";
-import LogIn from './Components/signIn.js';
+import SignIn from './Components/signIn.js';
 import SignUp from './Components/SignUp';
 import Projects from "./Components/Projects/projects";
 import Billing from "./Components/Billing/billing";
@@ -40,7 +40,7 @@ class App extends Component {
                 }
                 <div className={classes}>
                     <Route exact path="/" component={LandingPage} />
-                    <Route exact path="/login" component={LogIn}/>
+                    <Route exact path="/signin" component={SignIn}/>
                     <Route exact path="/signup" component={SignUp}/>
                     <Route exact path="/classes" component={Classes} />
                     <Route exact path="/projects" component={Projects} />

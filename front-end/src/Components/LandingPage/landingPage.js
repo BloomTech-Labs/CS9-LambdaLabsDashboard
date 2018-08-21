@@ -60,8 +60,8 @@ class LandingPage extends Component {
         <div className="content">
           <h2>Landing Page</h2>
           <div>
-            <Button onClick={() => { this.props.history.replace('/login') }}>
-              Log In
+            <Button onClick={() => { this.props.history.replace('/signin') }}>
+             Sign in
             </Button>
             <Button onClick={() => { this.props.history.replace('/signup') }}>
               Sign Up

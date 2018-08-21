@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Button } from 'react-bootstrap'
 
 
 class SignUp extends Component {
@@ -17,7 +18,7 @@ class SignUp extends Component {
     eventHandler = (event) => {
         this.setState({
             [event.target.name]:
-            event.target.value
+                event.target.value
         })
     }
 
@@ -52,10 +53,10 @@ class SignUp extends Component {
                 error => { console.log(error) }
             )
     }
-    signout =()=>{
+    signout = () => {
         localStorage.removeItem('token')
         this.props.history.push('/SignIn')
-      }
+    }
     render() {
         return (
             <div>
@@ -67,24 +68,28 @@ class SignUp extends Component {
                             name="user"
                             value={this.state.user}
                             onChange={this.eventHandler}
-                        />
-                        <input type="text"
-                            placeholder="userpassword"
-                            name="userpassword"
-                            value={this.state.userpassword}
-                            onChange={this.eventHandler}
-                        />
-                        <input type="text"
+                        /></div>
+                    <input type="text"
+                        placeholder="userpassword"
+                        name="userpassword"
+                        value={this.state.userpassword}
+                        onChange={this.eventHandler}
+                    />
+                    <input type="text"
                         placeholder="email"
                         name="email"
                         value={this.state.email}
                         onChange={this.eventHandler}
-                        />
-                        <button onClick={this.submitUser}>Submit</button>
-                    </div>
+                    />
                 </div>
-
+                <div><button onClick={this.submitUser}>Submit</button></div>
             </div>
+            <div><h3>Already Signed in? </h3></div>
+            <div><Button onClick={() => { this.props.history.replace('/signin') }}>Sign in</Button></div>
+                    </div >
+                </div >
+
+
         );
     }
 }

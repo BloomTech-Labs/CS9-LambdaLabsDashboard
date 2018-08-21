@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import {Route, Link } from 'react-router-dom';
 import Burger from './Burger/Burger';
+
+
 
 export default class Header extends Component {
   render = () => {
@@ -14,8 +16,9 @@ export default class Header extends Component {
           <Link to="/billing">Billing</Link>
           <Link to="/projects">Projects</Link>
           <Link to="/project-dashboard">Project Dashboard</Link>
+          <Route to='/signOut'></Route>
         </nav>
-        <button>Logout</button>
+        {/* <button onClick={this.history.push('/')}>Sign out</button> */}
       </div>
     </header>
     );

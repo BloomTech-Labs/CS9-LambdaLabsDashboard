@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+// import SignOut from './signOut';
+import {Button} from 'react-bootstrap'
 
-class LogIn extends Component {
+class SignIn extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -42,7 +44,7 @@ class LogIn extends Component {
             password: this.state.password,
         }
         console.log("===>", object)
-        const promise = axios.post("http://localhost:4000/login", object);
+        const promise = axios.post("http://localhost:4000/signin", object);
         promise
             .then(response => {
                 console.log(response.data)
@@ -51,10 +53,7 @@ class LogIn extends Component {
                 error => { console.log(error) }
             )
     }
-    signout =()=>{
-        localStorage.removeItem('token')
-        this.props.history.push('/SignIn')
-      }
+
     render() {
         return (
             <div>
@@ -78,8 +77,12 @@ class LogIn extends Component {
                             onChange={this.eventHandler}
                         />
                         <button onClick={this.userLogin}>Sign in</button>
+                        <h3> Not a user? </h3>
+                        <div>
+                            <Button onClick={() => { this.props.history.replace('/signup') }}>Sign Up</Button>
+                            </div>
                     </div>
-                    <button onClick={this.submitUser}>Sign out</button>
+                    {/* <SignOut/> */}
                 </div>
 
             </div>
@@ -87,4 +90,4 @@ class LogIn extends Component {
     }
 }
 
-export default LogIn;
+export default SignIn;
