@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
+import Axios from 'axios';
 import BarGraph from './BarGraph/BarGraph';
 import CircleGraph from './CircleGraph/CircleGraph';
 import CircleDetails from './CircleGraph/CircleDetails/CircleDetails';
 import Team from './Team/Team';
+import StatBox from './StatBox/StatBox';
+import Github from '../../Helpers/Github';
+import Trello from '../../Helpers/Trello';
 
 export default class Dashboard extends Component {
   constructor(props) {
@@ -13,80 +17,89 @@ export default class Dashboard extends Component {
         {
           name: 'Alex Figliolia',
           github: 'alexfigliolia',
-          merges: 7,
-          trellos: 9,
+          trellos: 0,
+          merges: 0,
         },
         {
-          name: 'Steve Figliolia',
-          github: 'alexfigliolia',
-          merges: 4,
-          trellos: 7,
+          name: 'Boomer Boomer',
+          github: 'boomer1204',
+          trellos: 0,
+          merges: 0,
         },
         {
           name: 'Hilal Aissani',
-          github: 'alexfigliolia',
-          merges: 7,
-          trellos: 8,
+          github: 'hillal20',
+          trellos: 0,
+          merges: 0,
         },
         {
           name: 'Jackee Rodrich',
-          github: 'alexfigliolia',
-          merges: 2,
-          trellos: 4,
+          github: 'JacquelynnRohrich',
+          trellos: 0,
+          merges: 0,
         },
         {
           name: 'Amanda Moc',
-          github: 'alexfigliolia',
-          merges: 9,
-          trellos: 6,
+          github: 'mocamanda',
+          trellos: 0,
+          merges: 0,
         },
         {
           name: 'Yasin Shuman',
-          github: 'alexfigliolia',
-          merges: 5,
-          trellos: 3,
-        },
-        {
-          name: 'SpongeBob S.',
-          github: 'alexfigliolia',
-          merges: 5,
-          trellos: 3,
+          github: 'yshuman1',
+          trellos: 0,
+          merges: 0,
         },
       ],
       trello: {
-        todo: [
-          'Write routes for joe momma',
-          'Build ui for joe momma',
-          'Build auth for joe momma'
-        ],
-        inProgress: [
-          'Login-logout',
-          'Reset password',
-          'style guide',
-          'tie my shoes'
-        ],
-        complete: [
-          'Front-end routing',
-          'Login view',
-          'Navigation view',
-          'Make some chicken'
-        ]
+        members: [],
+        todo: [],
+        inProgress: [],
+        complete: []
       },
       completeness: Math.PI * (2 * 199),
       initBars: false,
-      countUp: false
+      countUp: false,
+      error: false,
     }
+    this.trelloKey = 'cb548cca4f1358b69b3bee4a25ca02ec';
+    this.trelloToken = '5b6ec3db4fe7211b52293adec51fefdd06444a2546ff8ca725dbc5c5ebefa114';
+    this.auth = `?key=${this.trelloKey}&token=${this.trelloToken}`;
   }
 
   componentDidMount = () => {
+    Axios.all([
+      Axios.get(`https://api.trello.com/1/boards/5b70b2c75105750d2795cccb/members${this.auth}`),
+      Axios.get(`https://api.trello.com/1/boards/5b70b2c75105750d2795cccb/cards${this.auth}`),
+      Axios.get(`https://api.trello.com/1/boards/5b70b2c75105750d2795cccb/lists${this.auth}`),
+      Axios.get('https://api.github.com/repos/Lambda-School-Labs/CS9-LambdaLabsDashboard/pulls?state=all'),
+    ])
+    .then(res => this.parseData(res))
+    .catch(err => this.setState({error: true}));
+  }
+
+  parseData = data => {
+    const [ members, cards, lists, pullRequests ] = data;
+    const team = new Github(this.state.team, pullRequests.data);
+    const { trello, completeness, updatedTeamStats, inProgress } = new Trello(team, members.data, cards.data, lists.data);
+    this.setState({ team: updatedTeamStats, trello, inProgress });
     setTimeout(() => {
-      this.setState({ completeness: Math.PI * (2 * 50), initBars: true});  
-      setTimeout(() => this.setState({countUp: true}), 500);
-    }, 500);
+      this.setState({ completeness, initBars: true, countUp: true});  
+    }, 250);
   }
 
   render = () => {
-    const { project, team, completeness, trello, countUp, initBars } = this.state;
+    const { 
+      project, 
+      team, 
+      completeness, 
+      trello, 
+      inProgress,
+      countUp, 
+      initBars, 
+      error 
+    } = this.state;
+    // console.log(trello);
     return (
       <div className='Dashboard'>
         <div>
@@ -95,12 +108,15 @@ export default class Dashboard extends Component {
           </div>
           <div className='boxes'>
             <div className='box bar-graph-box'>
-              <BarGraph 
+              <BarGraph
+                error={error}
                 team={team}
                 initBars={initBars} />
             </div>
             <div className='box circle-box'>
-              <CircleGraph completeness={completeness} />
+              <CircleGraph 
+                error={error}
+                completeness={completeness} />
               <CircleDetails 
                 trello={trello}
                 countUp={countUp} />
@@ -109,6 +125,42 @@ export default class Dashboard extends Component {
               <Team 
                 team={team}
                 setHeight={this.setHeight} />
+            </div>
+            <div className='box stat-box'>
+              {
+                countUp && 
+                  <StatBox
+                    color="#FC4645" 
+                    trello={trello['To Do'].cards}
+                    title="Pending" />
+              }
+            </div>
+            <div className='box stat-box'>
+              {
+                countUp && 
+                  <StatBox
+                    color="#FC4645" 
+                    trello={inProgress}
+                    title="In Progress" />
+              }
+            </div>
+            <div className='box stat-box'>
+              {
+                countUp && 
+                  <StatBox
+                    color="#FC4645" 
+                    trello={trello['Done'].cards}
+                    title="Complete" />
+              }
+            </div>
+            <div className='box stat-box'>
+              {
+                countUp && 
+                  <StatBox
+                    color="#FC4645" 
+                    trello={trello['Done'].cards}
+                    title="Hello!!" />
+              }
             </div>
           </div>
         </div>

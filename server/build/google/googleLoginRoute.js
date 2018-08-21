@@ -1,0 +1,1 @@
+"use strict";var express=require("express"),router=express.Router();router.get("/",function(a,b){b.send("googleLoginRoute is here ")}),module.exports=router;

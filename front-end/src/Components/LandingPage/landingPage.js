@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import { Route } from 'react-router-dom';
 import axios from 'axios';
 
 class LandingPage extends Component {
@@ -57,7 +56,6 @@ class LandingPage extends Component {
       <div>
         <div className="content">
           <h2>Landing Page</h2>
-            {/* <Sidenav/> */}
             <div>
               {/* <button>Sign In</button> */}
               <input

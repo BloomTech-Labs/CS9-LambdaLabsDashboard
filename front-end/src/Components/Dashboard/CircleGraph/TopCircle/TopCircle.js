@@ -19,7 +19,7 @@ export default class TopCircle extends Component {
 				r="200"
 				strokeLinecap="round"
 				style={{
-					strokeDasharray: (Math.PI * (2 * 200)),
+					strokeDasharray: Math.PI * (2 * 200),
 					strokeDashoffset: completeness
 				}} />
     );
