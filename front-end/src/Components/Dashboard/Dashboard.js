@@ -99,7 +99,7 @@ export default class Dashboard extends Component {
       initBars, 
       error 
     } = this.state;
-    console.log(trello);
+    // console.log(trello);
     return (
       <div className='Dashboard'>
         <div>
