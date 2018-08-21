@@ -1,9 +1,5 @@
 import React, {Component} from 'react';
-import App from '../../App.js';
-import { Route } from 'react-router-dom';
-import Sidenav from '../Sidenav/sidenav.js';
 import axios from 'axios';
-import "./landingPage.css";
 
 class LandingPage extends Component {
   constructor(props) {
@@ -60,7 +56,6 @@ class LandingPage extends Component {
       <div>
         <div className="content">
           <h2>Landing Page</h2>
-            {/* <Sidenav/> */}
             <div>
               {/* <button>Sign In</button> */}
               <input
@@ -101,8 +96,6 @@ class LandingPage extends Component {
         /> */}
         <button onClick={this.submitUser}>Submit</button>
       </div>
-          
-          <Route exact path="/App" Component={ App } />
           <button>Sign Out</button>
         </div>
 

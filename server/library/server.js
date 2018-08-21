@@ -1,16 +1,29 @@
 import express from "express";
 import mongoose from "mongoose";
-import path from 'path'
-import keys from './keys';
-import bodyParser from 'body-parser';
-import helmet from 'helmet';
-import cors from 'cors';
-import projects from './projects/projectsRoute';
-import user from './Users/userRoute.js';
-import login from './login/loginRoute.js';
-import charge from './charge/chargeRoute.js';
+import path from "path";
+import keys from "./keys";
+import bodyParser from "body-parser";
+import helmet from "helmet";
+import cookieSession from "cookie-session";
+import passport from "passport";
+import cors from "cors";
+import students from "./Students/studentRoute";
+import classes from "./Classes/classRoute";
+import projects from "./projects/projectsRoute";
+import user from "./Users/userRoute.js";
+import login from "./login/loginRoute.js";
+import charge from "./charge/chargeRoute.js";
+import googleRedirect from "./google/googleRedirect.js";
+import googleRoute from "./google/googleRoute.js";
+
 const Server = express();
-const staticFiles = express.static(path.join(__dirname, '../../front-end/build'));
+const sessionOptions = {
+  maxAge: 24 * 60 * 60 * 1000,
+  keys: [keys.session.cookieKey]
+};
+const staticFiles = express.static(
+  path.join(__dirname, "../../front-end/build")
+);
 Server.use(cors());
 Server.use(helmet());
 Server.use(bodyParser.json());
@@ -34,11 +47,21 @@ Server.get("/", (req, res) => {
   res.status(200).json({ msg: "api is running!" });
 });
 
-Server.use("/projects", projects);
-Server.use("/user", user);
-Server.use('*', staticFiles);
+Server.use("/classes", classes);
+Server.use("/projects", cors(), projects);
+Server.use("/users", user);
 Server.use("/login", login);
 Server.use("/charge", charge);
+Server.use("/students", students);
+Server.use("/auth/google/callback", googleRedirect);
+Server.use("/google", googleRoute);
+Server.use('*', staticFiles);
+
+// const googleRoute = require("./google/googleRoute.js");
+// Server.use("/google", googleRoute);
+
+const googleLoginRoute = require("./google/googleLoginRoute.js");
+Server.use("/google", googleLoginRoute);
 
 Server.listen(port, () => {
   console.log(`\n=== server is running on ${port} ==`);

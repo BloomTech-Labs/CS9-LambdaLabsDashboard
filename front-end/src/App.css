@@ -853,32 +853,14 @@ $scale: 0.8; // icon scale 68/68 default
 .menu-remove > div {
   transform: translateX(-100%); }
 
-.side-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 50px;
-  width: 100%;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  z-index: 50; }
-  .side-nav > div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%; }
-
 .Dashboard {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  width: 100%;
   background: #202B3C;
-  position: relative; }
+  position: relative;
+  width: 100%; }
   @media (min-width: 1070px) {
     .Dashboard {
       width: calc(100% - 200px); } }
@@ -893,10 +875,11 @@ $scale: 0.8; // icon scale 68/68 default
     margin-top: 70px; }
     @media (min-width: 670px) {
       .Dashboard > div {
-        margin-top: 100px; } }
+        margin-top: 100px;
+        width: 97.5%; } }
     @media (min-width: 1070px) {
       .Dashboard > div {
-        margin-top: 2.5%; } }
+        margin-top: 3.5%; } }
     .Dashboard > div > .top-panel {
       width: 100%;
       display: flex;
@@ -911,9 +894,8 @@ $scale: 0.8; // icon scale 68/68 default
       @media (min-width: 670px) {
         .Dashboard > div > .top-panel {
           padding: 2.5% 0;
-          width: 95%;
           margin-bottom: 2vh; } }
-      @media (min-width: 957px) {
+      @media (min-width: 890px) {
         .Dashboard > div > .top-panel {
           width: 90%;
           margin-bottom: 2vh; } }
@@ -957,31 +939,66 @@ $scale: 0.8; // icon scale 68/68 default
         flex-direction: column; }
         @media (min-width: 670px) {
           .Dashboard > div .boxes > .box {
-            width: 45%;
-            margin: 3vh 0; }
-            .Dashboard > div .boxes > .box:nth-of-type(2) {
-              margin: 3vh 2.5% 3vh 0; }
-            .Dashboard > div .boxes > .box:nth-of-type(3) {
-              mmargin: 3vh 0 3vh 2.5%; } }
-        @media (min-width: 957px) {
+            height: 450px; } }
+        @media (min-width: 890px) {
           .Dashboard > div .boxes > .box {
             width: 43%;
-            margin: 4vh 0 2.5vh 0; }
-            .Dashboard > div .boxes > .box:nth-of-type(2) {
-              margin: 4vh 0 2.5vh 2%; }
-            .Dashboard > div .boxes > .box:nth-of-type(3) {
-              margin: 4vh 0 2.5vh 0; } }
+            margin: 4vh 0 2.5vh 0; } }
       @media (min-width: 670px) {
         .Dashboard > div .boxes > .circle-box {
-          justify-content: space-around; } }
+          justify-content: space-around;
+          width: 43.5%;
+          margin: 3vh 1.5% 3vh 0; } }
+      @media (min-width: 890px) {
+        .Dashboard > div .boxes > .circle-box {
+          width: 35%;
+          margin: 4vh 0 2.5vh 2%; } }
+      @media (min-width: 1070px) {
+        .Dashboard > div .boxes > .circle-box {
+          width: 35.5%;
+          margin: 4vh 0 2.5vh 1.5%; } }
+      @media (min-width: 1400px) {
+        .Dashboard > div .boxes > .circle-box {
+          width: 27%;
+          margin: 4vh 1% 2.5vh 1%; } }
+      .Dashboard > div .boxes > .bar-graph-box {
+        width: 90%; }
+        @media (min-width: 670px) {
+          .Dashboard > div .boxes > .bar-graph-box {
+            padding: 0; } }
+        @media (min-width: 890px) {
+          .Dashboard > div .boxes > .bar-graph-box {
+            width: 51%;
+            margin: 4vh 2% 2.5vh 0; } }
+        @media (min-width: 1070px) {
+          .Dashboard > div .boxes > .bar-graph-box {
+            width: 51.5%;
+            margin: 4vh 1.5% 2.5vh 0; } }
+        @media (min-width: 1400px) {
+          .Dashboard > div .boxes > .bar-graph-box {
+            width: 31%;
+            margin: 4vh 1% 2.5vh 0; } }
       @media (min-width: 670px) {
-        .Dashboard > div .boxes > .bar-graph-box {
-          width: 95%;
-          padding: 0; } }
-      @media (min-width: 957px) {
-        .Dashboard > div .boxes > .bar-graph-box {
-          width: 43%;
-          margin: 4vh 2% 2.5vh 0; } }
+        .Dashboard > div .boxes > .team-box {
+          overflow-y: scroll;
+          -webkit-overflow-scrolling: touch;
+          justify-content: space-around;
+          width: 43.5%;
+          margin: 3vh 0 3vh 1.5%; } }
+      @media (min-width: 1400px) {
+        .Dashboard > div .boxes > .team-box {
+          width: 28%;
+          margin: 4vh 0 2.5vh 1%; } }
+      @media (min-width: 670px) {
+        .Dashboard > div .boxes > .stat-box {
+          overflow-y: scroll;
+          -webkit-overflow-scrolling: touch;
+          justify-content: space-around;
+          width: 43.5%; }
+          .Dashboard > div .boxes > .stat-box:nth-of-type(odd) {
+            margin: 3vh 0 3vh 1.5%; }
+          .Dashboard > div .boxes > .stat-box:nth-of-type(even) {
+            margin: 3vh 1.5% 3vh 0; } }
 
 .circle-graph {
   display: flex;
@@ -991,8 +1008,8 @@ $scale: 0.8; // icon scale 68/68 default
   height: auto; }
   @media (min-width: 670px) {
     .circle-graph {
-      max-width: 250px;
-      margin-top: -5%; } }
+      max-width: 275px;
+      margin-top: -2.5%; } }
   .circle-graph > .circle-center {
     display: flex;
     justify-content: center;
@@ -1002,7 +1019,11 @@ $scale: 0.8; // icon scale 68/68 default
     padding-bottom: 100%;
     cursor: pointer;
     background: transparent;
-    border-radius: 50%; }
+    border-radius: 50%;
+    margin-bottom: 1em; }
+    @media (min-width: 670px) {
+      .circle-graph > .circle-center {
+        margin-bottom: 0; } }
     .circle-graph > .circle-center > .circle-container {
       display: flex;
       justify-content: center;
@@ -1053,6 +1074,11 @@ $scale: 0.8; // icon scale 68/68 default
   align-items: center;
   flex-direction: column;
   margin-bottom: 5%; }
+  @media (min-width: 670px) {
+    .team {
+      display: block;
+      margin: auto;
+      height: 450px; } }
   .team > h2 {
     color: #fff;
     font-size: 6vh;
@@ -1060,14 +1086,16 @@ $scale: 0.8; // icon scale 68/68 default
     @media (min-width: 670px) {
       .team > h2 {
         font-size: 4.5vh;
-        margin: 0.5em 0; } }
+        text-align: center; } }
   .team > div {
     width: 90%;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    justify-content: space-between; }
+    flex-direction: column; }
+    @media (min-width: 670px) {
+      .team > div {
+        display: block; } }
     .team > div > .team-member {
       display: flex;
       justify-content: center;
@@ -1078,6 +1106,8 @@ $scale: 0.8; // icon scale 68/68 default
       padding: 10px;
       border-bottom: 1px solid rgba(226, 230, 230, 0.5);
       justify-content: flex-start; }
+      .team > div > .team-member:last-of-type {
+        border: none; }
       .team > div > .team-member > img {
         height: 35px;
         width: 35px;
@@ -1087,10 +1117,11 @@ $scale: 0.8; // icon scale 68/68 default
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        justify-content: flex-start; }
+        align-items: flex-start; }
         .team > div > .team-member > .user-info > h3 {
           margin: 0;
-          font-size: 1.1em; }
+          font-size: 1.1em;
+          text-align: left; }
           @media (min-width: 670px) {
             .team > div > .team-member > .user-info > h3 {
               font-size: 1em; } }
@@ -1098,7 +1129,6 @@ $scale: 0.8; // icon scale 68/68 default
           display: flex;
           justify-content: center;
           align-items: center;
-          margin-left: 25px;
           cursor: pointer; }
           .team > div > .team-member > .user-info > .github > img {
             height: 30px;
@@ -1200,6 +1230,9 @@ $scale: 0.8; // icon scale 68/68 default
       .bar-graph > .grid-container {
         width: 85%;
         height: 55%; } }
+    @media (min-width: 890px) {
+      .bar-graph > .grid-container {
+        width: 80%; } }
     .bar-graph > .grid-container > .y-axis {
       height: 100%;
       display: flex;
@@ -1241,20 +1274,55 @@ $scale: 0.8; // icon scale 68/68 default
     @media (min-width: 670px) {
       .bar-graph > .contributors {
         width: 85%; } }
+    @media (min-width: 890px) {
+      .bar-graph > .contributors {
+        width: 80%; } }
     .bar-graph > .contributors > .contributor {
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 10px; }
+      height: 12px;
+      position: relative;
+      margin-top: 5px;
+      cursor: pointer; }
+      .bar-graph > .contributors > .contributor::after {
+        content: attr(data-name);
+        color: #fff;
+        position: absolute;
+        top: 12px;
+        left: 0;
+        min-width: 100%;
+        padding: 5px;
+        background: #5B8EC6;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+        font-size: 14px;
+        border-radius: 5px;
+        opacity: 0;
+        transform: translateY(10px);
+        transition-duration: 0.3s; }
       .bar-graph > .contributors > .contributor > h5 {
-        font-size: 10px;
-        transform-origin: 100% 50%;
-        transform: rotate(-45deg); }
+        font-size: 12px;
+        margin: 0;
+        padding: 0;
+        font-weight: 200;
+        color: rgba(255, 255, 255, 0.75); }
+      .bar-graph > .contributors > .contributor:hover > h5 {
+        color: #fff;
+        transition-duration: 0.2s; }
+      .bar-graph > .contributors > .contributor:hover::after {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 1;
+        transform: translateY(0px); }
   .bar-graph > .graph-key {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 40px; }
+    margin-top: 20px; }
     .bar-graph > .graph-key > div {
       display: flex;
       justify-content: center;
@@ -1265,8 +1333,8 @@ $scale: 0.8; // icon scale 68/68 default
         align-items: center;
         flex-direction: row; }
         .bar-graph > .graph-key > div > .graph-indic > .color {
-          height: 15px;
-          width: 20px;
+          height: 20px;
+          width: 25px;
           margin-right: 5px;
           background: #74E0FF;
           /* fallback for old browsers */
@@ -1276,7 +1344,7 @@ $scale: 0.8; // icon scale 68/68 default
         .bar-graph > .graph-key > div > .graph-indic > h4 {
           color: #fff;
           font-weight: 200;
-          font-size: 12px; }
+          font-size: 14px; }
       .bar-graph > .graph-key > div > .graph-indic:last-of-type > .color {
         background: #A770EF;
         /* fallback for old browsers */
@@ -1296,6 +1364,16 @@ $scale: 0.8; // icon scale 68/68 default
   border-left: 1px solid rgba(255, 255, 255, 0.75);
   height: 100%;
   flex-direction: row; }
+  .graph-grid > .error {
+    align-self: center;
+    width: 90%;
+    text-align: center;
+    color: #fff;
+    margin: auto; }
+    .graph-grid > .error > h3 {
+      font-weight: 700;
+      color: #EB5C59;
+      font-size: 1.5em; }
   .graph-grid > .bar-container {
     width: 50px;
     height: 100%;
@@ -1326,6 +1404,43 @@ $scale: 0.8; // icon scale 68/68 default
         /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
         box-shadow: 2.5px -0.5px 5px rgba(253, 185, 155, 0.5);
         margin-left: 10%; }
+
+.statistic {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; }
+  .statistic > div {
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 5% 0; }
+    .statistic > div > h2 {
+      color: #fff;
+      font-size: 4vh;
+      font-weight: 200;
+      margin-top: 0; }
+      @media (min-width: 670px) {
+        .statistic > div > h2 {
+          font-size: 4vh;
+          text-align: center; } }
+    .statistic > div > .card-info {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: auto;
+      color: #fff;
+      width: 90%;
+      padding: 10px;
+      margin: 0;
+      background: #304159;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
+      .statistic > div > .card-info > h3 {
+        margin: 0; }
 
 .createProject {
   display: flex;

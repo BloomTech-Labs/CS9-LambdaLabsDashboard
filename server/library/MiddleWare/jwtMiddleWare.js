@@ -1,5 +1,6 @@
-const jwt = require("jsonwebtoken");
-const keys = require("../keys");
+import jwt from "jsonwebtoken";
+import keys from "../keys";
+
 const secret = keys.secretKey.secretKey;
 
 function makeToken(user) {
@@ -14,4 +15,5 @@ function makeToken(user) {
   const token = jwt.sign(payload, secret, options);
   return token;
 }
-module.exports = { makeToken, secret };
+
+export { makeToken, secret };

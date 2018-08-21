@@ -4,9 +4,9 @@
   "description": "Server for Lambda Labs Dashboard",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon library/server.js --exec babel-node",
-    "build": "babel library -d build",
-    "deploy": "node build/server"
+    "start": "nodemon library/server.js --exec babel-node NODE_ENV=development",
+    "build": "NODE_ENV=production babel library -d build",
+    "deployed": "node build/server.js"
   },
   "repository": {
     "type": "git",
@@ -20,16 +20,21 @@
   "homepage": "https://github.com/Lambda-School-Labs/CS9-LambdaLabsDashboard#readme",
   "dependencies": {
     "bcrypt": "^3.0.0",
+    "cookie-session": "^2.0.0-beta.3",
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "helmet": "^3.13.0",
     "jsonwebtoken": "^8.3.0",
     "mongoose": "^5.2.7",
+    "passport": "^0.4.0",
+    "passport-google-oauth20": "^1.0.0",
     "stripe": "^6.7.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-plugin-transform-remove-console": "^6.9.4",
     "babel-preset-es2015": "^6.24.1",
+    "babel-preset-minify": "^0.4.3",
     "babel-preset-stage-2": "^6.24.1",
     "nodemon": "^1.18.3"
   }

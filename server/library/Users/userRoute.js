@@ -1,8 +1,9 @@
-const express = require("express");
-const router = express.Router();
+import express from 'express';
 import UserModel from "./userModel.js";
-import { makeToken, secret } from "../Middleware/jwtMiddleWare.js";
+import { makeToken, secret } from "../MiddleWare/jwtMiddleWare.js";
 import { userEmpty } from "../MiddleWare/middleWare.js";
+const router = express.Router();
+import authenticate from "../MiddleWare/authJWT.js";
 
 router.get("/", (req, res) => {
   console.log(req.body);
@@ -22,10 +23,10 @@ router.post("/", userEmpty, (req, res) => {
   newUser
     .save()
     .then(p => {
-      console.log(p);
-      const token = makeToken(newUser);
+      // console.log(p);
+      // const token = makeToken(newUser);
 
-      res.status(200).json({ token, newUser });
+      res.status(200).json({ msg: "user posted successfully ", newUser });
     })
     .catch(error => {
       res.status(200).json({ msg: "... not able to post your user", error });
@@ -45,4 +46,18 @@ router.put("/:id", (req, res) => {
       res.status(500).json({ msg: "... not able to update your user" });
     });
 });
+
+router.delete("/:id", (req, res) => {
+  const id = req.params.id;
+
+  UserModel.findById(id)
+    .remove()
+    .then(p => {
+      res.status(200).json({ msg: "...user  successfully deleted" });
+    })
+    .catch(err => {
+      res.status(200).json({ msg: "... not able to  delete user" });
+    });
+});
+
 module.exports = router;

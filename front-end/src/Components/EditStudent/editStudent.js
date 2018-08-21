@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Sidenav from "../Sidenav/sidenav";
 import axios from "axios";
 import "./editStudent.css";
 
@@ -41,7 +40,6 @@ class EditStudent extends Component {
     // console.log(this.props.match.params.id);
     return (
       <div className="editStudent">
-        <Sidenav />
         <h1> Edit Student</h1>
         <input
           type="text"

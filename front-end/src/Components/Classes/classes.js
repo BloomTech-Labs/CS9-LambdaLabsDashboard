@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import Sidenav from '../Sidenav/sidenav';
 
-class Classes extends Component {
-    render() {
-        return (
-            <div>
-                <Sidenav/>
-                <h1>CLASSES</h1>
-            </div>
-        )
+export default class Classes extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+    	classes: []
     }
+  }
+
+  render = () => {
+    return (
+      <div>Classes</div>
+    );
+  }
 }
-
-export default Classes;
-

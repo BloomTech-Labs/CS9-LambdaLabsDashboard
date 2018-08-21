@@ -2,10 +2,13 @@ const express = require("express");
 const router = express.Router();
 import ProjectsModel from "./projectsModel.js";
 import { noneEmpty } from "../MiddleWare/middleWare.js";
+import authenticate from "../MiddleWare/authJWT.js";
 
 router.get("/", (req, res) => {
   console.log(req.body);
   ProjectsModel.find({})
+    .populate("class", "-_id")
+    .populate("students", "-_id")
     .then(projects => {
       res.status(200).json({ projects: projects });
     })
@@ -40,6 +43,19 @@ router.put("/:id", (req, res) => {
     })
     .catch(err => {
       res.status(500).json({ msg: "... not able to update your project" });
+    });
+});
+
+router.get("/:id", (req, res) => {
+  const { id } = req.params;
+  ProjectModel.findById(id)
+    .populate("class", "-_id")
+    .populate("students", "-_id")
+    .then(p => {
+      res.status(200).json(p);
+    })
+    .catch(err => {
+      res.status(500).json({ msg: "we cant display this project " });
     });
 });
 

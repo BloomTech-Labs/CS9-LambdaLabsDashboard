@@ -63,23 +63,6 @@
 .newProjectCard span {
   text-decoration: tomato;
 }
-span {
-  font-weight: Bold;
-  color: lightcoral;
-}
-img {
-  position: absolute;
-  top: 0 px;
-  left: 0 px;
-  transform: scale(1.5);
-  cursor: pointer;
-  animation-name: drive;
-  animation-duration: 3s;
-  animation-fill-mode: forwards;
-  animation-delay: 3s;
-  animation-iteration-count: infinite;
-  animation-direction: reverse;
-}
 .newProjectCard:hover {
   background: tan;
   transform: rotate(360deg);

@@ -1,10 +1,8 @@
 import React, { Component } from "react";
-import Sidenav from "../Sidenav/sidenav";
-import CreateProject from "../CreateProject/createProject.js";
-import { Link, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import "./projects.css";
-import { Button } from "react-bootstrap";
+import NewProjectIcon from '../../pictures/add.png';
 class Projects extends Component {
   constructor(props) {
     super(props);
@@ -44,9 +42,9 @@ class Projects extends Component {
       ]
     };
   }
-  componentWillMount() {
-    this.fetchingData();
-  }
+
+  UNSAFE_componentWillMount = () => this.fetchingData();
+
   fetchingData = () => {
     const promise = axios.get("http://localhost:4000/projects");
     promise
@@ -58,6 +56,7 @@ class Projects extends Component {
         console.log(error);
       });
   };
+
   deleteProject = id => {
     const promise = axios.delete(`http://localhost:4000/projects/${id}`);
     promise
@@ -69,6 +68,7 @@ class Projects extends Component {
         console.log(error);
       });
   };
+
   displayProjects() {
     let data = this.state.projects.projects;
     if (data === undefined) {
@@ -128,12 +128,12 @@ class Projects extends Component {
       });
     }
   }
+  
   render() {
     console.log("state", this.state.projects.projects);
     console.log(this.props);
     return (
       <div className="projects">
-        <Sidenav />
         <h1>
           <span>Projects</span>
         </h1>
@@ -141,7 +141,7 @@ class Projects extends Component {
         <Link to="/createProject">
           <div className="newProjectCard">
             <span> New Project</span>
-            <img src={require("../../pictures/add.png")} width="100px" />
+            <img src={NewProjectIcon} alt="create a project" width="100px" />
           </div>
         </Link>
       </div>

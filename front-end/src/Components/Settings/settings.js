@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-import "./settings.css";
+// import "./settings.css";
 
 export default class Billing extends React.Component {
   constructor(props) {
