@@ -49,4 +49,15 @@ router.put("/:id", function (req, res) {
     res.status(500).json({ msg: "... not able to update your user" });
   });
 });
+
+router.delete("/:id", function (req, res) {
+  var id = req.params.id;
+
+  _userModel2.default.findById(id).remove().then(function (p) {
+    res.status(200).json({ msg: "...user  successfully deleted" });
+  }).catch(function (err) {
+    res.status(200).json({ msg: "... not able to  delete user" });
+  });
+});
+
 module.exports = router;

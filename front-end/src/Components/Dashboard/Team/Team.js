@@ -1,33 +1,11 @@
 import React, { Component } from 'react';
 import TeamMember from './TeamMember/TeamMember';
 
-export default class Team extends Component {
-
-	componentDidMount = () => {
-		if(window.innerWidth >= 670) {
-			this.props.setHeight(this.refs.teamContainer.clientHeight);
-		}
-		window.addEventListener('resize', this.resize, true);
-	}
-
-	componentWillUnmount = () => {
-    window.removeEventListener('resize', this.resize, true);
-  }
-
-  resize = e => {
-  	const { boxHeight, setHeight } = this.props;
-  	const width = window.innerWidth;
-  	if(width >= 670 && boxHeight === null) {
-			setHeight(this.refs.teamContainer.clientHeight);
-  	} else if(width < 670 && boxHeight !== null) {
-  		setHeight(null);
-  	}
-  }
-  
+export default class Team extends Component {  
   render = () => {
   	const { team } = this.props;
     return (
-      <div className='team' ref='teamContainer'>
+      <div className='team'>
       	<h2>Team:</h2>
       	<div>
 	      	{
