@@ -1,6 +1,6 @@
 import express from 'express';
 import UserModel from "../Users/userModel.js";
-import { makeToken, secret } from "../Middleware/jwtMiddleWare.js";
+import { makeToken, secret } from "../MiddleWare/jwtMiddleWare.js";
 
 const router = express.Router();
 
