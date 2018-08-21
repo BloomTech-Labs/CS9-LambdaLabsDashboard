@@ -9,7 +9,7 @@ class CheckoutForm extends Component {
       complete: false,
       monthly: false,
       annual: false,
-      amount: "",
+      amount: ""
     };
   }
 
@@ -40,19 +40,27 @@ class CheckoutForm extends Component {
       });
   };
 
+  // onChange = event => {
+  //   console.log(event.target.id);
+  //   alert("hello");
+  //   this.setState({
+  //     [event.target.name]: true,
+  //     amount: event.target.id
+  //   });
+  // };
   onChange = event => {
     console.log(event.target.id);
     const { name } = event.target;
-    if(name === 'annual') {
+    if (name === "annual") {
       this.setState({
-        annual: true, 
+        annual: true,
         monthly: false
-      })
+      });
     } else {
       this.setState({
-        annual: false, 
+        annual: false,
         monthly: true
-      })
+      });
     }
   };
 

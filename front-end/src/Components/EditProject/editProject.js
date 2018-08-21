@@ -8,7 +8,9 @@ class EditProject extends Component {
     this.state = {
       projectName: "",
       numberOfStudents: "",
-      dueDate: ""
+      dueDate: "",
+      classId: "",
+      projectId: ""
     };
   }
 
@@ -20,7 +22,9 @@ class EditProject extends Component {
     const object = {
       projectName: this.state.projectName,
       numberOfStudents: this.state.numberOfStudents,
-      dueDate: this.state.dueDate
+      dueDate: this.state.dueDate,
+      classId: this.state.classId,
+      projectId: this.state.projectId
     };
     const id = this.props.match.params.id;
     console.log(object);
@@ -59,6 +63,20 @@ class EditProject extends Component {
           placeholder=" due Date "
           name="dueDate"
           value={this.state.dueDate}
+          onChange={this.createProjectHandler}
+        />
+        <input
+          type="text"
+          placeholder=" project ID"
+          name="projectId"
+          value={this.state.projectId}
+          onChange={this.createProjectHandler}
+        />
+        <input
+          type="text"
+          placeholder=" class ID"
+          name="classId"
+          value={this.state.classId}
           onChange={this.createProjectHandler}
         />
         <button onClick={this.submitProject}> Submit</button>
