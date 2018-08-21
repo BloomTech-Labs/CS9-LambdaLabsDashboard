@@ -1,31 +1,30 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Route } from "react-router-dom";
-import Classes from "./Components/Classes/Classes";
-import LandingPage from "./Components/LandingPage/LandingPage";
-import Projects from "./Components/Projects/Projects";
-import Billing from "./Components/Billing/Billing";
-import CreateProject from "./Components/CreateProject/CreateProject";
-import EditProject from "./Components/EditProject/EditProject";
-import EditStudent from "./Components/EditStudent/EditStudent";
-import Settings from "./Components/Settings/Settings";
-import Dashboard from './Components/Dashboard/Dashboard';
-import Menu from './Components/Menu/Menu';
-import Header from './Components/Header/Header';
+import Classes from "./Components/Classes/classes";
+import LandingPage from "./Components/LandingPage/landingPage";
+import Projects from "./Components/Projects/projects";
+import Billing from "./Components/Billing/billing";
+import CreateProject from "./Components/CreateProject/createProject";
+import EditProject from "./Components/EditProject/editProject";
+import EditStudent from "./Components/EditStudent/editStudent";
+import Settings from "./Components/Settings/settings";
+import Dashboard from "./Components/Dashboard/Dashboard";
+import Menu from "./Components/Menu/Menu";
+import Header from "./Components/Header/Header";
 import "./App.css";
 
 class App extends Component {
-  
   shouldComponentUpdate = ({ location, classes }) => {
     const curProps = this.props;
-    if(location.pathname !== curProps.location.pathname) return true;
-    else if(classes !== curProps.classes) return true;
+    if (location.pathname !== curProps.location.pathname) return true;
+    else if (classes !== curProps.classes) return true;
     return false;
   };
 
   render = () => {
     const { location, classes } = this.props;
-    const notLandingPage = location.pathname !== '/';
+    const notLandingPage = location.pathname !== "/";
     return (
       <div className="App">
         {notLandingPage && <Menu />}

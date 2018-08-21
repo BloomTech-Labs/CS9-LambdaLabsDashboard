@@ -12,19 +12,7 @@ const definition = {
   lastName: {
     type: String
   },
-  email: {
-    type: String
-  },
-  github: {
-    type: String
-  },
-  class: {
-    type: String
-  },
-  className: {
-    type: ObjectId,
-    ref: "Class"
-  },
+
   project: {
     type: ObjectId,
     ref: "LambdaProject"

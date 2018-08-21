@@ -8,7 +8,7 @@ export default class Billing extends React.Component {
     super(props);
     this.state = {
       monthly: false,
-      annual: false,
+      annual: false
     };
   }
 
