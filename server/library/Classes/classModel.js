@@ -8,22 +8,12 @@ const definition = {
     type: String,
     unique: true
   },
-  numberOfStudents: {
-    type: String
-  },
   startDate: {
-    type: String
+    type: String,
+    default: new Date()
   },
   endDate: {
     type: String
-  },
-  Students: {
-    type: ObjectId,
-    ref: "Student"
-  },
-  Project: {
-    type: ObjectId,
-    ref: "Project"
   }
 };
 const options = {

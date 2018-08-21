@@ -8,20 +8,24 @@ const definition = {
     type: String,
     unique: true
   },
-  numberOfStudents: {
-    type: Number
-  },
-  dueDate: {
+  githubRepoName: {
     type: String
   },
-  class: {
+
+  classId: {
     type: ObjectId,
     ref: "Class"
   },
-  students: {
-    type: ObjectId,
-    ref: "Student"
+
+  trelloId: {
+    type: String
   }
+  // students: [
+  //   {
+  //     type: ObjectId,
+  //     ref: "Student"
+  //   }
+  // ]
 };
 const options = {
   timestamps: true

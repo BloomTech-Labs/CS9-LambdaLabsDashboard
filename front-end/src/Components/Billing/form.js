@@ -46,13 +46,28 @@ class CheckoutForm extends Component {
       });
   };
 
+  // onChange = event => {
+  //   console.log(event.target.id);
+  //   alert("hello");
+  //   this.setState({
+  //     [event.target.name]: true,
+  //     amount: event.target.id
+  //   });
+  // };
   onChange = event => {
     console.log(event.target.id);
-    alert("hello");
-    this.setState({
-      [event.target.name]: true,
-      amount: event.target.id
-    });
+    const { name } = event.target;
+    if (name === "annual") {
+      this.setState({
+        annual: true,
+        monthly: false
+      });
+    } else {
+      this.setState({
+        annual: false,
+        monthly: true
+      });
+    }
   };
 
   render() {
@@ -81,6 +96,7 @@ class CheckoutForm extends Component {
               name="monthly"
               id="monthly"
               type="checkbox"
+              checked={this.state.monthly}
               amount="999"
               onClick={this.onChange}
             />
@@ -91,6 +107,7 @@ class CheckoutForm extends Component {
               name="annual"
               id="annual"
               type="checkbox"
+              checked={this.state.annual}
               amount="2999"
               onClick={this.onChange}
             />

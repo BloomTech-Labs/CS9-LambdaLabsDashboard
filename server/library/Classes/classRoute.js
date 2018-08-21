@@ -8,8 +8,8 @@ import authenticate from "../MiddleWare/authJWT.js";
 router.get("/", (req, res) => {
   console.log(req.body);
   ClassModel.find({})
-    .populate("Students", "-_id")
-    .populate("LambdaProject", "-_id")
+    .populate("students", "-_id")
+    .populate("project", "-_id")
     .then(p => {
       res.status(200).json({ classes: p });
     })
