@@ -2,7 +2,7 @@ const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20");
 const keys = require("../keys.js");
 const GoogleUser = require("../google/googleModel.js");
-const { makeToken } = require("../middleWare/jwtMiddleWare.js");
+const { makeToken } = require("../MiddleWare/jwtMiddleWare.js");
 
 passport.serializeUser((user, done) => {
   done(null, user.id);
