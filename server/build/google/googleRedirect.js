@@ -1,0 +1,1 @@
+"use strict";var express=require("express"),router=express.Router(),passport=require("passport"),passportSetup=require("../passport/passport-setup.js");router.get("/",passport.authenticate("google"),function(a,b){b.redirect("http://localhost:3000/")}),module.exports=router;

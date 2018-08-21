@@ -2,7 +2,7 @@ import React from "react";
 import Axios from "axios";
 import StripeCheckout from "react-stripe-checkout";
 import Stripe from "./stripe";
-const stripe = require("stripe-client")("pk_test_dtZeEKgd6FSjpH2sFi8RAYFa");
+// const stripe = require("stripe-client")("pk_test_dtZeEKgd6FSjpH2sFi8RAYFa");
 
 export default class Billing extends React.Component {
   constructor(props) {
@@ -77,7 +77,7 @@ export default class Billing extends React.Component {
     return (
       <div>
         <h1>Welcome to Payments</h1>
-        <Stripe />
+{/*        <Stripe />*/}
       </div>
     );
   }
