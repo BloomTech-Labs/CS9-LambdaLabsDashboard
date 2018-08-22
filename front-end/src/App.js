@@ -9,23 +9,23 @@ import CreateProject from "./Components/CreateProject/CreateProject";
 import EditProject from "./Components/EditProject/EditProject";
 import EditStudent from "./Components/EditStudent/EditStudent";
 import Settings from "./Components/Settings/Settings";
-import Dashboard from './Components/Dashboard/Dashboard';
-import Menu from './Components/Menu/Menu';
-import Header from './Components/Header/Header';
+import Dashboard from "./Components/Dashboard/Dashboard";
+import Menu from "./Components/Menu/Menu";
+import Header from "./Components/Header/Header";
 import "./App.css";
 
 class App extends Component {
   
   shouldComponentUpdate = ({ location, classes }) => {
     const curProps = this.props;
-    if(location.pathname !== curProps.location.pathname) return true;
-    else if(classes !== curProps.classes) return true;
+    if (location.pathname !== curProps.location.pathname) return true;
+    else if (classes !== curProps.classes) return true;
     return false;
   };
 
   render = () => {
     const { location, classes } = this.props;
-    const notLandingPage = location.pathname !== '/';
+    const notLandingPage = location.pathname !== "/";
     return (
       <div className="App">
         {notLandingPage && <Menu />}

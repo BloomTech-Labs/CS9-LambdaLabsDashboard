@@ -920,11 +920,13 @@ $scale: 0.8; // icon scale 68/68 default
       justify-content: center;
       align-items: center;
       width: 100%;
-      flex-direction: column; }
+      flex-direction: column;
+      margin-bottom: 8vh; }
       @media (min-width: 670px) {
         .Dashboard > div .boxes {
           flex-direction: row;
-          flex-wrap: wrap; } }
+          flex-wrap: wrap;
+          margin-bottom: 4vh; } }
       .Dashboard > div .boxes > .box {
         height: 100%;
         width: 90%;
@@ -985,6 +987,14 @@ $scale: 0.8; // icon scale 68/68 default
           justify-content: space-around;
           width: 43.5%;
           margin: 3vh 0 3vh 1.5%; } }
+      @media (min-width: 890px) {
+        .Dashboard > div .boxes > .team-box {
+          width: 43%;
+          margin: 4vh 2% 2.5vh 0; } }
+      @media (min-width: 1070px) {
+        .Dashboard > div .boxes > .team-box {
+          width: 43.5%;
+          margin: 4vh 1.5% 2.5vh 0; } }
       @media (min-width: 1400px) {
         .Dashboard > div .boxes > .team-box {
           width: 28%;
@@ -999,6 +1009,31 @@ $scale: 0.8; // icon scale 68/68 default
             margin: 3vh 0 3vh 1.5%; }
           .Dashboard > div .boxes > .stat-box:nth-of-type(even) {
             margin: 3vh 1.5% 3vh 0; } }
+      @media (min-width: 890px) {
+        .Dashboard > div .boxes > .stat-box {
+          width: 43%; }
+          .Dashboard > div .boxes > .stat-box:nth-of-type(odd) {
+            margin: 4vh 2% 3vh 0; }
+          .Dashboard > div .boxes > .stat-box:nth-of-type(even) {
+            margin: 4vh 0 3vh 2%; } }
+      @media (min-width: 1070px) {
+        .Dashboard > div .boxes > .stat-box {
+          width: 43.5%; }
+          .Dashboard > div .boxes > .stat-box:nth-of-type(odd) {
+            margin: 4vh 1.5% 2.5vh 0; }
+          .Dashboard > div .boxes > .stat-box:nth-of-type(even) {
+            margin: 4vh 0 2.5vh 1.5%; } }
+      @media (min-width: 1400px) {
+        .Dashboard > div .boxes > .stat-box {
+          width: 21%; }
+          .Dashboard > div .boxes > .stat-box:nth-of-type(odd) {
+            margin: 4vh 0 4vh 1%; }
+          .Dashboard > div .boxes > .stat-box:nth-of-type(even) {
+            margin: 4vh 1% 4vh 0; }
+          .Dashboard > div .boxes > .stat-box:last-of-type {
+            margin: 4vh 0 4vh 1%; }
+          .Dashboard > div .boxes > .stat-box:nth-of-type(n + 1) {
+            margin: 4vh 1% 4vh 1%; } }
 
 .circle-graph {
   display: flex;
