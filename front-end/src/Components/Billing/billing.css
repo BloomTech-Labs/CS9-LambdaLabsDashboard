@@ -74,3 +74,15 @@ fieldset {
 .StripeElement--webkit-autofill {
   background-color: #fefde5 !important;
 }
+
+.payment {
+  display: flex;
+  border: 2px solid black;
+  flex-wrap: wrap;
+}
+/* .checkout {
+  display: flex;
+  border: 2px solid black; */
+  /* height: 400px;
+  width: 800px; */
+/* } */
