@@ -60,9 +60,10 @@ export default class Trello {
 				else if(list === 'To Do') pending++;
 			}
 		}
-		const completeness = (complete/(complete+inProgress+pending))*100;
+		const total = complete+inProgress+pending;
+		const completeness = (complete/total)*100;
 		const circ = Math.PI * (2 * (200 - ((completeness*200)/100)));
-		return { trello: this.lists, completeness: circ, updatedTeamStats: this.teamStats, inProgress: this.getInProgress() };
+		return { trello: this.lists, completeness: circ, updatedTeamStats: this.teamStats, totalCards: total, inProgress: this.getInProgress() };
 	}
 	getInProgress() {
 		if('In Progress' in this.lists && 'Testing' in this.lists) {

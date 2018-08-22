@@ -946,28 +946,41 @@ $scale: 0.8; // icon scale 68/68 default
           .Dashboard > div .boxes > .box {
             width: 43%;
             margin: 4vh 0 2.5vh 0; } }
-      @media (min-width: 670px) {
-        .Dashboard > div .boxes > .circle-box {
-          justify-content: space-around;
-          width: 43.5%;
-          margin: 3vh 1.5% 3vh 0; } }
-      @media (min-width: 890px) {
-        .Dashboard > div .boxes > .circle-box {
-          width: 35%;
-          margin: 4vh 0 2.5vh 2%; } }
-      @media (min-width: 1070px) {
-        .Dashboard > div .boxes > .circle-box {
-          width: 35.5%;
-          margin: 4vh 0 2.5vh 1.5%; } }
-      @media (min-width: 1400px) {
-        .Dashboard > div .boxes > .circle-box {
-          width: 27%;
-          margin: 4vh 1% 2.5vh 1%; } }
+      .Dashboard > div .boxes > .circle-box {
+        position: relative; }
+        .Dashboard > div .boxes > .circle-box > .bottom {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 15px;
+          width: 100%;
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px; }
+        @media (min-width: 670px) {
+          .Dashboard > div .boxes > .circle-box {
+            justify-content: space-around;
+            width: 43.5%;
+            margin: 4vh 1.5% 3vh 0; } }
+        @media (min-width: 890px) {
+          .Dashboard > div .boxes > .circle-box {
+            width: 35%;
+            margin: 4vh 0 2.5vh 2%; } }
+        @media (min-width: 1070px) {
+          .Dashboard > div .boxes > .circle-box {
+            width: 35.5%;
+            margin: 4vh 0 2.5vh 1.5%; } }
+        @media (min-width: 1400px) {
+          .Dashboard > div .boxes > .circle-box {
+            width: 27%;
+            margin: 4vh 1% 2.5vh 1%; } }
       .Dashboard > div .boxes > .bar-graph-box {
-        width: 90%; }
+        width: 90%;
+        padding: 2.5% 0 0 0; }
         @media (min-width: 670px) {
           .Dashboard > div .boxes > .bar-graph-box {
-            padding: 0; } }
+            padding: 0 0 0 0;
+            margin-bottom: 2vh; } }
         @media (min-width: 890px) {
           .Dashboard > div .boxes > .bar-graph-box {
             width: 51%;
@@ -982,11 +995,8 @@ $scale: 0.8; // icon scale 68/68 default
             margin: 4vh 1% 2.5vh 0; } }
       @media (min-width: 670px) {
         .Dashboard > div .boxes > .team-box {
-          overflow-y: scroll;
-          -webkit-overflow-scrolling: touch;
-          justify-content: space-around;
           width: 43.5%;
-          margin: 3vh 0 3vh 1.5%; } }
+          margin: 4vh 0 3vh 1.5%; } }
       @media (min-width: 890px) {
         .Dashboard > div .boxes > .team-box {
           width: 43%;
@@ -999,48 +1009,62 @@ $scale: 0.8; // icon scale 68/68 default
         .Dashboard > div .boxes > .team-box {
           width: 28%;
           margin: 4vh 0 2.5vh 1%; } }
-      @media (min-width: 670px) {
-        .Dashboard > div .boxes > .stat-box {
-          overflow-y: scroll;
-          -webkit-overflow-scrolling: touch;
-          justify-content: space-around;
-          width: 43.5%; }
-          .Dashboard > div .boxes > .stat-box:nth-of-type(odd) {
-            margin: 3vh 0 3vh 1.5%; }
-          .Dashboard > div .boxes > .stat-box:nth-of-type(even) {
-            margin: 3vh 1.5% 3vh 0; } }
-      @media (min-width: 890px) {
-        .Dashboard > div .boxes > .stat-box {
-          width: 43%; }
-          .Dashboard > div .boxes > .stat-box:nth-of-type(odd) {
-            margin: 4vh 2% 3vh 0; }
-          .Dashboard > div .boxes > .stat-box:nth-of-type(even) {
-            margin: 4vh 0 3vh 2%; } }
-      @media (min-width: 1070px) {
-        .Dashboard > div .boxes > .stat-box {
-          width: 43.5%; }
-          .Dashboard > div .boxes > .stat-box:nth-of-type(odd) {
-            margin: 4vh 1.5% 2.5vh 0; }
-          .Dashboard > div .boxes > .stat-box:nth-of-type(even) {
-            margin: 4vh 0 2.5vh 1.5%; } }
-      @media (min-width: 1400px) {
-        .Dashboard > div .boxes > .stat-box {
-          width: 21%; }
-          .Dashboard > div .boxes > .stat-box:nth-of-type(odd) {
-            margin: 4vh 0 4vh 1%; }
-          .Dashboard > div .boxes > .stat-box:nth-of-type(even) {
-            margin: 4vh 1% 4vh 0; }
-          .Dashboard > div .boxes > .stat-box:last-of-type {
-            margin: 4vh 0 4vh 1%; }
-          .Dashboard > div .boxes > .stat-box:nth-of-type(n + 1) {
-            margin: 4vh 1% 4vh 1%; } }
+      .Dashboard > div .boxes > .stat-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative; }
+        .Dashboard > div .boxes > .stat-box > .bottom {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 15px;
+          width: 100%;
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px; }
+        @media (min-width: 670px) {
+          .Dashboard > div .boxes > .stat-box {
+            height: 450px;
+            justify-content: space-around;
+            width: 43.5%; }
+            .Dashboard > div .boxes > .stat-box:nth-of-type(odd) {
+              margin: 3vh 0 3vh 1.5%; }
+            .Dashboard > div .boxes > .stat-box:nth-of-type(even) {
+              margin: 3vh 1.5% 3vh 0; } }
+        @media (min-width: 890px) {
+          .Dashboard > div .boxes > .stat-box {
+            width: 43%; }
+            .Dashboard > div .boxes > .stat-box:nth-of-type(odd) {
+              margin: 4vh 2% 3vh 0; }
+            .Dashboard > div .boxes > .stat-box:nth-of-type(even) {
+              margin: 4vh 0 3vh 2%; } }
+        @media (min-width: 1070px) {
+          .Dashboard > div .boxes > .stat-box {
+            width: 43.5%; }
+            .Dashboard > div .boxes > .stat-box:nth-of-type(odd) {
+              margin: 4vh 1.5% 2.5vh 0; }
+            .Dashboard > div .boxes > .stat-box:nth-of-type(even) {
+              margin: 4vh 0 2.5vh 1.5%; } }
+        @media (min-width: 1400px) {
+          .Dashboard > div .boxes > .stat-box {
+            width: 21%; }
+            .Dashboard > div .boxes > .stat-box:nth-of-type(odd) {
+              margin: 4vh 0 4vh 1%; }
+            .Dashboard > div .boxes > .stat-box:nth-of-type(even) {
+              margin: 4vh 1% 4vh 0; }
+            .Dashboard > div .boxes > .stat-box:last-of-type {
+              margin: 4vh 0 4vh 1%; }
+            .Dashboard > div .boxes > .stat-box:nth-of-type(n + 1) {
+              margin: 4vh 1% 4vh 1%; } }
 
 .circle-graph {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 80%;
-  height: auto; }
+  height: auto;
+  margin-top: 2.5%; }
   @media (min-width: 670px) {
     .circle-graph {
       max-width: 275px;
@@ -1113,7 +1137,9 @@ $scale: 0.8; // icon scale 68/68 default
     .team {
       display: block;
       margin: auto;
-      height: 450px; } }
+      overflow-y: scroll;
+      -webkit-overflow-scrolling: touch;
+      justify-content: space-around; } }
   .team > h2 {
     color: #fff;
     font-size: 6vh;
@@ -1121,13 +1147,15 @@ $scale: 0.8; // icon scale 68/68 default
     @media (min-width: 670px) {
       .team > h2 {
         font-size: 4.5vh;
-        text-align: center; } }
+        text-align: center;
+        margin-top: 0.25em; } }
   .team > div {
     width: 90%;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column; }
+    flex-direction: column;
+    margin: auto; }
     @media (min-width: 670px) {
       .team > div {
         display: block; } }
@@ -1241,7 +1269,7 @@ $scale: 0.8; // icon scale 68/68 default
   justify-content: center;
   align-items: center;
   height: 100%;
-  padding: 20px 0 10px 0;
+  padding: 20px 0 0 0;
   flex-direction: column;
   position: relative; }
   .bar-graph > h2 {
@@ -1305,7 +1333,8 @@ $scale: 0.8; // icon scale 68/68 default
     align-items: center;
     width: 80%;
     margin-left: 30px;
-    color: #fff; }
+    color: #fff;
+    margin-bottom: 70px; }
     @media (min-width: 670px) {
       .bar-graph > .contributors {
         width: 85%; } }
@@ -1337,7 +1366,8 @@ $scale: 0.8; // icon scale 68/68 default
         border-radius: 5px;
         opacity: 0;
         transform: translateY(10px);
-        transition-duration: 0.3s; }
+        transition-duration: 0.3s;
+        z-index: 2; }
       .bar-graph > .contributors > .contributor > h5 {
         font-size: 12px;
         margin: 0;
@@ -1357,38 +1387,41 @@ $scale: 0.8; // icon scale 68/68 default
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px; }
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0; }
     .bar-graph > .graph-key > div {
       display: flex;
       justify-content: center;
-      align-items: center; }
-      .bar-graph > .graph-key > div > .graph-indic {
+      align-items: center;
+      width: 100%; }
+      .bar-graph > .graph-key > div > .color {
         display: flex;
         justify-content: center;
         align-items: center;
-        flex-direction: row; }
-        .bar-graph > .graph-key > div > .graph-indic > .color {
-          height: 20px;
-          width: 25px;
-          margin-right: 5px;
-          background: #74E0FF;
-          /* fallback for old browsers */
-          background: -webkit-linear-gradient(to bottom, #74E0FF, #48A3FF);
-          background: linear-gradient(to bottom, #74E0FF, #48A3FF);
-          box-shadow: 0px 1.5px 5px rgba(116, 224, 255, 0.25); }
-        .bar-graph > .graph-key > div > .graph-indic > h4 {
+        width: 100%;
+        height: 50px;
+        background: #74E0FF;
+        /* fallback for old browsers */
+        background: -webkit-linear-gradient(to bottom, #74E0FF, #48A3FF);
+        background: linear-gradient(to bottom, #74E0FF, #48A3FF);
+        box-shadow: 0px 1.5px 5px rgba(116, 224, 255, 0.5);
+        border-bottom-left-radius: 10px; }
+        .bar-graph > .graph-key > div > .color > h4 {
           color: #fff;
           font-weight: 200;
-          font-size: 14px; }
-      .bar-graph > .graph-key > div > .graph-indic:last-of-type > .color {
+          font-size: 16px; }
+      .bar-graph > .graph-key > div > .color:last-of-type {
         background: #A770EF;
         /* fallback for old browsers */
         background: -webkit-linear-gradient(to bottom, #FDB99B, #CF8BF3, #A770EF);
         /* Chrome 10-25, Safari 5.1-6 */
         background: linear-gradient(to bottom, #FDB99B, #CF8BF3, #A770EF);
         /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-        margin-left: 20px;
-        box-shadow: 0px 1.5px 2.5px rgba(253, 185, 155, 0.25); }
+        box-shadow: 0px 1.5px 2.5px rgba(253, 185, 155, 0.5);
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 0px; }
 
 .graph-grid {
   display: flex;
@@ -1445,23 +1478,84 @@ $scale: 0.8; // icon scale 68/68 default
   justify-content: center;
   align-items: center;
   width: 100%; }
+  @media (min-width: 670px) {
+    .statistic {
+      display: block;
+      height: 450px;
+      overflow-y: scroll;
+      -webkit-overflow-scrolling: touch; } }
   .statistic > div {
+    margin: auto;
     width: 95%;
+    align-self: flex-start;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    margin: 5% 0; }
-    .statistic > div > h2 {
-      color: #fff;
-      font-size: 4vh;
-      font-weight: 200;
-      margin-top: 0; }
-      @media (min-width: 670px) {
-        .statistic > div > h2 {
-          font-size: 4vh;
-          text-align: center; } }
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap; }
+    .statistic > div > .title-stat {
+      width: 90%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      margin-top: 10px; }
+      .statistic > div > .title-stat > .circle-graph {
+        width: 38.5%;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        margin-right: -1%;
+        position: relative; }
+        @media (min-width: 670px) {
+          .statistic > div > .title-stat > .circle-graph {
+            margin-top: 0; } }
+        @media (min-width: 890px) {
+          .statistic > div > .title-stat > .circle-graph {
+            width: 41%; } }
+        @media (min-width: 1400px) {
+          .statistic > div > .title-stat > .circle-graph {
+            width: 38.5%; } }
+        .statistic > div > .title-stat > .circle-graph > .circle-center {
+          margin: 0; }
+      .statistic > div > .title-stat > .indic {
+        width: 52.5%;
+        color: #fff;
+        font-weight: 600;
+        margin-bottom: 5px; }
+        @media (min-width: 670px) {
+          .statistic > div > .title-stat > .indic {
+            margin-bottom: 20px; } }
+        @media (min-width: 890px) {
+          .statistic > div > .title-stat > .indic {
+            width: 50%;
+            margin-bottom: 20px; } }
+        @media (min-width: 1400px) {
+          .statistic > div > .title-stat > .indic {
+            width: 52.5%; } }
+        .statistic > div > .title-stat > .indic > .bar {
+          position: absolute;
+          bottom: 30px;
+          left: 0;
+          background: #fff;
+          height: 1px;
+          width: 50%; }
+        .statistic > div > .title-stat > .indic > h2 {
+          text-align: left;
+          font-size: 4.5vh;
+          margin: 0; }
+          @media (min-width: 670px) {
+            .statistic > div > .title-stat > .indic > h2 {
+              font-size: 4.5vh; } }
+          @media (min-width: 890px) {
+            .statistic > div > .title-stat > .indic > h2 {
+              font-size: 5.5vh; } }
+          @media (min-width: 1400px) {
+            .statistic > div > .title-stat > .indic > h2 {
+              font-size: 4.5vh; } }
     .statistic > div > .card-info {
+      margin: auto auto 10px auto;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -1469,13 +1563,13 @@ $scale: 0.8; // icon scale 68/68 default
       color: #fff;
       width: 90%;
       padding: 10px;
-      margin: 0;
       background: #304159;
-      margin-bottom: 10px;
       border-radius: 5px;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
       .statistic > div > .card-info > h3 {
-        margin: 0; }
+        margin: 0;
+        font-size: 14px;
+        font-weight: 500; }
 
 .createProject {
   display: flex;

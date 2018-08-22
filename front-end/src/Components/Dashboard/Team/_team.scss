@@ -7,7 +7,10 @@
 	@media #{$mq-670} {
 		display: block;
 		margin: auto;
-		height: 450px;
+		// height: 450px;
+		overflow-y: scroll;
+		-webkit-overflow-scrolling: touch;
+		justify-content: space-around;
 	}
 	&>h2 {
 		color: #fff;
@@ -16,12 +19,14 @@
 		@media #{$mq-670} {
 			font-size: 4.5vh;
 			text-align: center;
+			margin-top: 0.25em;
 		}
 	}
 	&>div {
 		width: 90%;
 		@include center;
 		flex-direction: column;
+		margin: auto;
 		@media #{$mq-670} {
 			display: block;
 		}

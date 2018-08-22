@@ -4,16 +4,37 @@ import TopCircle from './TopCircle/TopCircle';
 import CountUp from 'react-countup';
 
 export default class CircleGraph extends Component {
-	
-	shouldComponentUpdate = ({completeness, error}) => {
+	constructor(props) {
+	  super(props);
+	  this.state = {
+	  	fontSize: 0
+	  };
+	}
+
+	componentDidMount = () => {
+		this.setState({ fontSize: this.refs.stat.clientHeight/4 });
+		window.addEventListener('resize', this.resize, true);
+	}
+
+	shouldComponentUpdate = ({completeness, error}, {fontSize}) => {
 		const curProps = this.props;
 		if(completeness !== curProps.completeness) return true;
 		else if(error !== curProps.error) return true;
+		else if(fontSize !== this.state.fontSize) return true;
 		return false;
 	}
 
+	componentWillUnmount = () => {
+		window.removeEventListener('resize', this.resize, true);
+	}
+
+	resize = e => {
+		this.setState({ fontSize: this.refs.stat.clientHeight/4 })
+	}
+
   render = () => {
-  	const { completeness, error } = this.props; 
+  	const { completeness, error, color1, color2, gradientID, measure, noSubText } = this.props; 
+  	const { fontSize } = this.state; 
     return (
       <div className='circle-graph'>
 				<div className='circle-center'>
@@ -21,18 +42,20 @@ export default class CircleGraph extends Component {
 						className='circle-container'
 						viewBox="0 0 500 500" 
 						preserveAspectRatio="xMinYMin meet"
-						style={{ filter: `drop-shadow( 5px 0px 15px #1F2638)` }}>
-						<linearGradient id="blueGradient">
-	            <stop offset="0%"  stopColor="#74E0FF" />
-	            <stop offset="100%" stopColor="#48A3FF" />
+						style={{ filter: 'drop-shadow( 5px 0px 15px #1F2638)' }}>
+						<linearGradient id={gradientID}>
+	            <stop offset="0%"  stopColor={color1} />
+	            <stop offset="100%" stopColor={color2} />
 		        </linearGradient>
 						<BaseCircle />
 						<TopCircle 
 							completeness={completeness}
-							stroke="url(#blueGradient)" />
+							stroke={`url(#${gradientID})`} />
 					</svg>
-					<div className='completeness'>
-						<h4>
+					<div
+						ref="stat" 
+						className='completeness'>
+						<h4 style={{color: color1, fontSize}}>
 							{
 								error ? 0 :
 								<CountUp
@@ -43,7 +66,10 @@ export default class CircleGraph extends Component {
 									onStart={e => false} />
 							}
 						%</h4>
-						<h3>Completeness</h3>
+						{
+							!noSubText &&
+							<h3 style={{color: color1, fontSize: fontSize/4}}>{measure}</h3>
+						}
 					</div>
 				</div>
 			</div>
