@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import TeamMember from './TeamMember/TeamMember';
 
-export default class Team extends Component {  
+class Team extends Component {  
   render = () => {
   	const { team } = this.props;
+  	console.log(team);
     return (
       <div className='team'>
       	<h2>Team:</h2>
@@ -24,3 +26,9 @@ export default class Team extends Component {
     );
   }
 }
+
+const mSTP = ({ ExternalApis }) => {
+	return { team: ExternalApis.team }; 
+}
+
+export default connect(mSTP)(Team);

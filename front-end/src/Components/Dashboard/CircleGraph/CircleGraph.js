@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import BaseCircle from './BaseCircle/BaseCircle';
 import TopCircle from './TopCircle/TopCircle';
 import CountUp from 'react-countup';
 
-export default class CircleGraph extends Component {
+class CircleGraph extends Component {
 	constructor(props) {
 	  super(props);
 	  this.state = {
@@ -76,3 +77,10 @@ export default class CircleGraph extends Component {
     );
   }
 }
+
+const mSTP = ({ ExternalApis }) => {
+	const { completeness, error } = ExternalApis;
+	return { error, completeness };
+}
+
+export default connect(mSTP)(CircleGraph);

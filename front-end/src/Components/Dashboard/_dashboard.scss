@@ -13,10 +13,13 @@
 		width: 100%;
 		flex-direction: column;
 		justify-content: flex-start;
-		margin-top: 70px;
+		margin-top: 50px;
 		@media #{$mq-670} {
-			margin-top: 100px;
+			margin-top: 90px;
 			width: 97.5%;
+		}
+		@media #{$mq-890} {
+			margin-top: 100px;
 		}
 		@media #{$mq-1070} {
 			margin-top: 3.5%;
@@ -25,6 +28,7 @@
 			width: 100%;
 			@include center;
 			margin-bottom: 1vh;
+			margin-top: 4vh;
 			background: $darkgray;
 			padding: 5% 0;
 			@include headerShadow;
@@ -37,7 +41,7 @@
 			}
 			@media #{$mq-890} {
 				width: 90%;
-				margin-bottom: 2vh;
+				margin-bottom: 3vh;
 			}
 			&>h1 {
 				font-size: 6.5vh;
@@ -68,7 +72,7 @@
 				border-radius: 10px;
 				@include center;
 				background: $darkgray;
-				margin: 3vh 0 1vh 0;
+				margin: 3vh 0 4vh 0;
 				padding: 2.5% 0;
 				@include headerShadow;
 				flex-direction: column;
@@ -77,7 +81,7 @@
 				}
 				@media #{$mq-890} {
 					width: 43%;
-					margin: 4vh 0 2.5vh 0;
+					margin: 4vh 0 4vh 0;
 				}
 			}
 			&>.circle-box {
@@ -92,20 +96,16 @@
 				}
 				@media #{$mq-670} {
 					justify-content: space-around;
-					width: 43.5%;
-					margin: 4vh 1.5% 3vh 0;
+					width: 42.5%;
+					margin: 4vh 2.5% 4vh 0;
 				}
 				@media #{$mq-890} {
-					width: 35%;
-					margin: 4vh 0 2.5vh 2%;
-				}
-				@media #{$mq-1070} {
-					width: 35.5%;
-					margin: 4vh 0 2.5vh 1.5%;
+					width: 34.5%;
+					margin: 4vh 0 4vh 2.5%;
 				}
 				@media #{$mq-1400} {
-					width: 27%;
-					margin: 4vh 1% 2.5vh 1%;
+					width: 26%;
+					margin: 4vh 1.5% 4vh 1.5%;
 				}
 			}
 			&>.bar-graph-box {
@@ -113,37 +113,29 @@
 				padding: 2.5% 0 0 0;
 				@media #{$mq-670} {
 					padding: 0 0 0 0;
-					margin-bottom: 2vh;
+					margin-bottom: 4vh;
 				}
 				@media #{$mq-890} {
-					width: 51%;
-					margin: 4vh 2% 2.5vh 0;
-				}
-				@media #{$mq-1070} {
-					width: 51.5%;
-					margin: 4vh 1.5% 2.5vh 0;
+					width: 50.5%;
+					margin: 4vh 2.5% 4vh 0;
 				}
 				@media #{$mq-1400} {
-					width: 31%;
-					margin: 4vh 1% 2.5vh 0;
+					width: 30.5%;
+					margin: 4vh 1.5% 4vh 0;
 				}
 			}
 			&>.team-box {
 				@media #{$mq-670} {
-					width: 43.5%;
-					margin: 4vh 0 3vh 1.5%;
+					width: 42.5%;
+					margin: 4vh 0 4vh 2.5%;
 				}
 				@media #{$mq-890} {
-					width: 43%;
-					margin: 4vh 2% 2.5vh 0;
-				}
-				@media #{$mq-1070} {
-					width: 43.5%;
-					margin: 4vh 1.5% 2.5vh 0;
+					width: 42.5%;
+					margin: 4vh 2.5% 4vh 0;
 				}
 				@media #{$mq-1400} {
-					width: 28%;
-					margin: 4vh 0 2.5vh 1%;
+					width: 27.5%;
+					margin: 4vh 0 4vh 1.5%;
 				}
 			}
 			&>.stat-box {
@@ -160,45 +152,36 @@
 				@media #{$mq-670} {
 					height: 450px;
 					justify-content: space-around;
-					width: 43.5%;
+					width: 42.5%;
 					&:nth-of-type(odd) {
-						margin: 3vh 0 3vh 1.5%;
+						margin: 3vh 0 4vh 2.5%;
 					}
 					&:nth-of-type(even) {
-						margin: 3vh 1.5% 3vh 0;
+						margin: 3vh 2.5% 4vh 0;
 					}
 				}
 				@media #{$mq-890} {
-					width: 43%;
+					width: 42.5%;
 					&:nth-of-type(odd) {
-						margin: 4vh 2% 3vh 0;
+						margin: 4vh 2.5% 4vh 0;
 					}
 					&:nth-of-type(even) {
-						margin: 4vh 0 3vh 2%;
-					}
-				}
-				@media #{$mq-1070} {
-					width: 43.5%;
-					&:nth-of-type(odd) {
-						margin: 4vh 1.5% 2.5vh 0;
-					}
-					&:nth-of-type(even) {
-						margin: 4vh 0 2.5vh 1.5%;
+						margin: 4vh 0 4vh 2.5%;
 					}
 				}
 				@media #{$mq-1400} {
-					width: 21%;
+					width: 20.25%;
 					&:nth-of-type(odd) {
-						margin: 4vh 0 4vh 1%;
+						margin: 4vh 0 4vh 1.5%;
 					}
 					&:nth-of-type(even) {
-						margin: 4vh 1% 4vh 0;
+						margin: 4vh 1.5% 4vh 0;
 					}
 					&:last-of-type {
-						margin: 4vh 0 4vh 1%;
+						margin: 4vh 0 4vh 1.5%;
 					}
 					&:nth-of-type(n + 1) {
-						margin: 4vh 1% 4vh 1%;
+						margin: 4vh 1.5% 4vh 1.5%;
 					}
 				}
 			}

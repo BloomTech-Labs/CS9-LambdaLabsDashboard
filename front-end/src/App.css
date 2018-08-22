@@ -872,11 +872,14 @@ $scale: 0.8; // icon scale 68/68 default
     width: 100%;
     flex-direction: column;
     justify-content: flex-start;
-    margin-top: 70px; }
+    margin-top: 50px; }
     @media (min-width: 670px) {
       .Dashboard > div {
-        margin-top: 100px;
+        margin-top: 90px;
         width: 97.5%; } }
+    @media (min-width: 890px) {
+      .Dashboard > div {
+        margin-top: 100px; } }
     @media (min-width: 1070px) {
       .Dashboard > div {
         margin-top: 3.5%; } }
@@ -886,6 +889,7 @@ $scale: 0.8; // icon scale 68/68 default
       justify-content: center;
       align-items: center;
       margin-bottom: 1vh;
+      margin-top: 4vh;
       background: #263346;
       padding: 5% 0;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
@@ -898,7 +902,7 @@ $scale: 0.8; // icon scale 68/68 default
       @media (min-width: 890px) {
         .Dashboard > div > .top-panel {
           width: 90%;
-          margin-bottom: 2vh; } }
+          margin-bottom: 3vh; } }
       .Dashboard > div > .top-panel > h1 {
         font-size: 6.5vh;
         font-weight: 200;
@@ -935,7 +939,7 @@ $scale: 0.8; // icon scale 68/68 default
         justify-content: center;
         align-items: center;
         background: #263346;
-        margin: 3vh 0 1vh 0;
+        margin: 3vh 0 4vh 0;
         padding: 2.5% 0;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
         flex-direction: column; }
@@ -945,7 +949,7 @@ $scale: 0.8; // icon scale 68/68 default
         @media (min-width: 890px) {
           .Dashboard > div .boxes > .box {
             width: 43%;
-            margin: 4vh 0 2.5vh 0; } }
+            margin: 4vh 0 4vh 0; } }
       .Dashboard > div .boxes > .circle-box {
         position: relative; }
         .Dashboard > div .boxes > .circle-box > .bottom {
@@ -960,55 +964,43 @@ $scale: 0.8; // icon scale 68/68 default
         @media (min-width: 670px) {
           .Dashboard > div .boxes > .circle-box {
             justify-content: space-around;
-            width: 43.5%;
-            margin: 4vh 1.5% 3vh 0; } }
+            width: 42.5%;
+            margin: 4vh 2.5% 4vh 0; } }
         @media (min-width: 890px) {
           .Dashboard > div .boxes > .circle-box {
-            width: 35%;
-            margin: 4vh 0 2.5vh 2%; } }
-        @media (min-width: 1070px) {
-          .Dashboard > div .boxes > .circle-box {
-            width: 35.5%;
-            margin: 4vh 0 2.5vh 1.5%; } }
+            width: 34.5%;
+            margin: 4vh 0 4vh 2.5%; } }
         @media (min-width: 1400px) {
           .Dashboard > div .boxes > .circle-box {
-            width: 27%;
-            margin: 4vh 1% 2.5vh 1%; } }
+            width: 26%;
+            margin: 4vh 1.5% 4vh 1.5%; } }
       .Dashboard > div .boxes > .bar-graph-box {
         width: 90%;
         padding: 2.5% 0 0 0; }
         @media (min-width: 670px) {
           .Dashboard > div .boxes > .bar-graph-box {
             padding: 0 0 0 0;
-            margin-bottom: 2vh; } }
+            margin-bottom: 4vh; } }
         @media (min-width: 890px) {
           .Dashboard > div .boxes > .bar-graph-box {
-            width: 51%;
-            margin: 4vh 2% 2.5vh 0; } }
-        @media (min-width: 1070px) {
-          .Dashboard > div .boxes > .bar-graph-box {
-            width: 51.5%;
-            margin: 4vh 1.5% 2.5vh 0; } }
+            width: 50.5%;
+            margin: 4vh 2.5% 4vh 0; } }
         @media (min-width: 1400px) {
           .Dashboard > div .boxes > .bar-graph-box {
-            width: 31%;
-            margin: 4vh 1% 2.5vh 0; } }
+            width: 30.5%;
+            margin: 4vh 1.5% 4vh 0; } }
       @media (min-width: 670px) {
         .Dashboard > div .boxes > .team-box {
-          width: 43.5%;
-          margin: 4vh 0 3vh 1.5%; } }
+          width: 42.5%;
+          margin: 4vh 0 4vh 2.5%; } }
       @media (min-width: 890px) {
         .Dashboard > div .boxes > .team-box {
-          width: 43%;
-          margin: 4vh 2% 2.5vh 0; } }
-      @media (min-width: 1070px) {
-        .Dashboard > div .boxes > .team-box {
-          width: 43.5%;
-          margin: 4vh 1.5% 2.5vh 0; } }
+          width: 42.5%;
+          margin: 4vh 2.5% 4vh 0; } }
       @media (min-width: 1400px) {
         .Dashboard > div .boxes > .team-box {
-          width: 28%;
-          margin: 4vh 0 2.5vh 1%; } }
+          width: 27.5%;
+          margin: 4vh 0 4vh 1.5%; } }
       .Dashboard > div .boxes > .stat-box {
         display: flex;
         justify-content: center;
@@ -1027,36 +1019,29 @@ $scale: 0.8; // icon scale 68/68 default
           .Dashboard > div .boxes > .stat-box {
             height: 450px;
             justify-content: space-around;
-            width: 43.5%; }
+            width: 42.5%; }
             .Dashboard > div .boxes > .stat-box:nth-of-type(odd) {
-              margin: 3vh 0 3vh 1.5%; }
+              margin: 3vh 0 4vh 2.5%; }
             .Dashboard > div .boxes > .stat-box:nth-of-type(even) {
-              margin: 3vh 1.5% 3vh 0; } }
+              margin: 3vh 2.5% 4vh 0; } }
         @media (min-width: 890px) {
           .Dashboard > div .boxes > .stat-box {
-            width: 43%; }
+            width: 42.5%; }
             .Dashboard > div .boxes > .stat-box:nth-of-type(odd) {
-              margin: 4vh 2% 3vh 0; }
+              margin: 4vh 2.5% 4vh 0; }
             .Dashboard > div .boxes > .stat-box:nth-of-type(even) {
-              margin: 4vh 0 3vh 2%; } }
-        @media (min-width: 1070px) {
-          .Dashboard > div .boxes > .stat-box {
-            width: 43.5%; }
-            .Dashboard > div .boxes > .stat-box:nth-of-type(odd) {
-              margin: 4vh 1.5% 2.5vh 0; }
-            .Dashboard > div .boxes > .stat-box:nth-of-type(even) {
-              margin: 4vh 0 2.5vh 1.5%; } }
+              margin: 4vh 0 4vh 2.5%; } }
         @media (min-width: 1400px) {
           .Dashboard > div .boxes > .stat-box {
-            width: 21%; }
+            width: 20.25%; }
             .Dashboard > div .boxes > .stat-box:nth-of-type(odd) {
-              margin: 4vh 0 4vh 1%; }
+              margin: 4vh 0 4vh 1.5%; }
             .Dashboard > div .boxes > .stat-box:nth-of-type(even) {
-              margin: 4vh 1% 4vh 0; }
+              margin: 4vh 1.5% 4vh 0; }
             .Dashboard > div .boxes > .stat-box:last-of-type {
-              margin: 4vh 0 4vh 1%; }
+              margin: 4vh 0 4vh 1.5%; }
             .Dashboard > div .boxes > .stat-box:nth-of-type(n + 1) {
-              margin: 4vh 1% 4vh 1%; } }
+              margin: 4vh 1.5% 4vh 1.5%; } }
 
 .circle-graph {
   display: flex;
@@ -1437,11 +1422,19 @@ $scale: 0.8; // icon scale 68/68 default
     width: 90%;
     text-align: center;
     color: #fff;
-    margin: auto; }
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; }
     .graph-grid > .error > h3 {
+      margin-top: 0;
+      margin-bottom: 0;
       font-weight: 700;
       color: #EB5C59;
-      font-size: 1.5em; }
+      font-size: 1.75em; }
+    .graph-grid > .error > p {
+      max-width: 300px; }
   .graph-grid > .bar-container {
     width: 50px;
     height: 100%;

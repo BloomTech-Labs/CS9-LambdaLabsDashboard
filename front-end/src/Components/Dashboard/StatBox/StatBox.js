@@ -1,21 +1,21 @@
 import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
 import CircleGraph from '../CircleGraph/CircleGraph';
 
-export default class StatBox extends PureComponent {
+class StatBox extends PureComponent {
   render = () => {
   	const { 
       title, 
       trello, 
-      // error, 
       total, 
       color1, 
       color2,
       gradientID,
       measure,
-      countUp
+      countUp,
+      error,
     } = this.props;
     const percentage = (trello.length/total)*100;
-    console.log(color1, color2);
     return (
       <div className='statistic'>
       	<div>
@@ -36,12 +36,11 @@ export default class StatBox extends PureComponent {
                 countUp ? 
                   Math.PI * (2 * (200 - ((percentage*200)/100)))
                 : Math.PI * (2 * 199) }
-              error={false} />
+              error={error} />
           </div>
           {
             trello.map((card, index) => {
-              const { name, idMembers } = card;
-              console.log(idMembers);
+              const { name } = card;
               return (
                 <div 
                   className='card-info'
@@ -56,3 +55,10 @@ export default class StatBox extends PureComponent {
     );
   }
 }
+
+const mSTP = ({ ExternalApis }) => {
+  const { error, countUp, totalCards } = ExternalApis;
+  return { error, countUp, total: totalCards };
+}
+
+export default connect(mSTP)(StatBox);

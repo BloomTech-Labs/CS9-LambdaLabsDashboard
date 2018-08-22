@@ -1,10 +1,11 @@
 import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
 import YAxis from './YAxis/YAxis';
 import XAxis from './XAxis/XAxis';
 import Graph from './Graph/Graph';
 import Key from './Key/Key';
 
-export default class BarGraph extends PureComponent {
+class BarGraph extends PureComponent {
 
   getMaxStat = () => {
     const { team } = this.props;
@@ -18,18 +19,14 @@ export default class BarGraph extends PureComponent {
   }
 
   render = () => {
-  	const { team, initBars, error } = this.props;
+  	const { team, initBars } = this.props;
     const maxStat = Math.round(this.getMaxStat() / 10) * 10;
     return (
       <div className='bar-graph'>
         <h2>Student Contributions</h2>
       	<div className='grid-container'>
           <YAxis maxStat={maxStat}/>
-      		<Graph
-            error={error} 
-            team={team}
-            initBars={initBars}
-            maxStat={maxStat} />
+      		<Graph maxStat={maxStat} />
       	</div>
         <XAxis team={team} />
         <Key />
@@ -37,3 +34,10 @@ export default class BarGraph extends PureComponent {
     );
   }
 }
+
+const mSTP = ({ ExternalApis }) => {
+  const { team, initBars } = ExternalApis;
+  return { team, initBars };
+}
+
+export default connect(mSTP)(BarGraph);
