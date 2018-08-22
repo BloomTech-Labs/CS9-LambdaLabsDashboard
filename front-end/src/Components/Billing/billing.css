@@ -45,6 +45,13 @@ fieldset {
 }  */
 
 /* Please dont do this!! */
+.payment-wrapper {
+  width: calc(100% - 200px);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .billing {
   display: flex;
@@ -53,7 +60,7 @@ fieldset {
   background: lightgrey;
 }
 .StripeElement {
-  background-color: white;
+  background-color: black;
   height: 40px;
   padding: 10px 12px;
   border-radius: 4px;
@@ -75,11 +82,6 @@ fieldset {
   background-color: #fefde5 !important;
 }
 
-.payment {
-  display: flex;
-  border: 2px solid black;
-  flex-wrap: wrap;
-}
 /* .checkout {
   display: flex;
   border: 2px solid black; */

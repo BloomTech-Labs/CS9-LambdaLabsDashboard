@@ -16,7 +16,7 @@ export default class Billing extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='payment-wrapper'>
         <div className="payment">
           <h1>Welcome to Payments</h1>
             <Stripe />
