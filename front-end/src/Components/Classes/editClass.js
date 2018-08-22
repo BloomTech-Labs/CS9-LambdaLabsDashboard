@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-class CreateClass extends Component {
+class EditClass extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -84,7 +84,7 @@ class CreateClass extends Component {
 
     return (
       <div className="editStudent">
-        <h1> Create Class </h1>
+        <h1> edit Class </h1>
         <input
           type="text"
           placeholder="class Name"
@@ -129,4 +129,4 @@ class CreateClass extends Component {
   }
 }
 
-export default CreateClass;
+export default EditClass;

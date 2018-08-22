@@ -1,5 +1,5 @@
 import React from "react";
-import Axios from "axios";
+// import Axios from "axios";
 // import StripeCheckout from "react-stripe-checkout";
 import Stripe from "./stripe";
 

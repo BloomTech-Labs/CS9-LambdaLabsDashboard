@@ -1,13 +1,20 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { connect } from "react-redux";
+// import Projects from "../Projects/projects.js";
+export const TRELLONAME = "TRELLONAME";
+export const GITHUBHANDLER = "GITHUBHANDLER";
+
 class CreateProject extends Component {
   constructor(props) {
     super(props);
     this.state = {
       projectName: "",
-      githubURL: "",
-      classId: "",
-      trelloId: ""
+      githubHandle: "",
+      trelloName: "",
+      class: "",
+      dueDate: "",
+      projects: ""
     };
   }
 
@@ -15,29 +22,25 @@ class CreateProject extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  submitProject = () => {
-    const data = axios.get(
-      "https://api.github.com/repos/Lambda-School-Labs/CS9-LambdaLabsDashboard/pulls?state=all"
-    );
-    data.then(res => {
-      console.log(res.data);
-    });
-
+  submitProject = Projects => {
     const object = {
       projectName: this.state.projectName,
-      githubRepoName: this.state.githubRepoName,
-      classId: this.state.classId,
-      trelloId: this.state.trelloId
+      githubHandle: this.state.githubHandle,
+      trelloName: this.state.trelloName,
+      class: this.state.class,
+      dueDate: this.state.dueDate
     };
     console.log(object);
     const promise = axios.post("http://localhost:4000/projects", object);
-    promise
-      .then(response => {
-        console.log(response.data);
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    return dispatch => {
+      promise
+        .then(response => {
+          console.log("respose====>", response.data);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    };
   };
 
   render() {
@@ -46,38 +49,66 @@ class CreateProject extends Component {
         <h1> Create PROJECTS</h1>
         <input
           type="text"
-          placeholder=" projectName"
+          placeholder="ProjectName"
           name="projectName"
           value={this.state.projectName}
           onChange={this.createProjectHandler}
         />
-        <input
-          type="text"
-          placeholder="Github repository"
-          name="githubRepoName"
-          value={this.state.githubRepoName}
-          onChange={this.createProjectHandler}
-        />
 
         <input
           type="text"
-          placeholder=" trello ID"
-          name="trelloId"
-          value={this.state.trelloId}
+          placeholder="githubHandle "
+          name="githubHandle"
+          value={this.state.githubHandle}
           onChange={this.createProjectHandler}
         />
         <input
           type="text"
-          placeholder=" class ID"
-          name="classId"
-          value={this.state.classId}
+          placeholder="trelloName "
+          name="trelloName"
+          value={this.state.trelloName}
           onChange={this.createProjectHandler}
         />
-
-        <button onClick={this.submitProject}> Submit</button>
+        <input
+          type="text"
+          placeholder="class"
+          name="class"
+          value={this.state.class}
+          onChange={this.createProjectHandler}
+        />
+        <input
+          type="text"
+          placeholder="dueDate"
+          name="dueDate"
+          value={this.state.dueDate}
+          onChange={this.createProjectHandler}
+        />
+        <button
+          onClick={() => {
+            this.submitProject();
+            this.props.bill(this.state.githubHandle, this.state.trelloName);
+          }}
+        >
+          Submit
+        </button>
       </div>
     );
   }
 }
 
-export default CreateProject;
+const mapStateToProps = state => {
+  console.log("create  satate ===>", state);
+  return {};
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    bill: (githubHandle, trelloName) => {
+      dispatch({ type: "hilal", payload: { trelloName, githubHandle } });
+    }
+  };
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CreateProject);

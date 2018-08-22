@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import "./editStudent.css";
 
 class EditStudent extends Component {
   constructor(props) {
@@ -8,10 +7,10 @@ class EditStudent extends Component {
     this.state = {
       firstName: "",
       lastName: "",
-      projectId: "",
-      classId: "",
+      slack: "",
+      trelloName: "",
       email: "",
-      github: ""
+      githubHandle: ""
     };
   }
 
@@ -44,7 +43,7 @@ class EditStudent extends Component {
     // console.log(this.props.match.params.id);
     return (
       <div className="editStudent">
-        <h1> Edit Student</h1>
+        <h1> Create Student</h1>
         <input
           type="text"
           placeholder="student Name"
@@ -62,17 +61,17 @@ class EditStudent extends Component {
         />
         <input
           type="text"
-          placeholder="projectId"
-          name="projectId"
-          value={this.state.projectId}
+          placeholder="slack"
+          name="slack"
+          value={this.state.slack}
           onChange={this.editHandler}
         />
 
         <input
           type="text"
-          placeholder="classId"
-          name="classId"
-          value={this.state.classId}
+          placeholder="trelloName"
+          name="trelloName"
+          value={this.state.trelloName}
           onChange={this.editHandler}
         />
         <input
@@ -86,8 +85,8 @@ class EditStudent extends Component {
           type="text"
           placeholder="github"
           name="github"
-          value={this.state.github}
-          onChange={this.editHandler}
+          value={this.state.githubHandle}
+          onChange={this.editHandlerHandle}
         />
 
         <button onClick={this.submitStudentChanges}> Submit</button>

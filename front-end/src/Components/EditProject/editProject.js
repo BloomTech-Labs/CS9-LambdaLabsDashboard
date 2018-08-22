@@ -1,16 +1,15 @@
 import React, { Component } from "react";
 import axios from "axios";
-import "./editProject.css";
-
+import CreateStudent from "../CreateStudent/createStudent.js";
 class EditProject extends Component {
   constructor(props) {
     super(props);
     this.state = {
       projectName: "",
-      numberOfStudents: "",
-      dueDate: "",
-      classId: "",
-      projectId: ""
+      githubHandle: "",
+      trelloName: "",
+      class: "",
+      dueDate: ""
     };
   }
 
@@ -21,10 +20,10 @@ class EditProject extends Component {
   submitProject = () => {
     const object = {
       projectName: this.state.projectName,
-      numberOfStudents: this.state.numberOfStudents,
-      dueDate: this.state.dueDate,
-      classId: this.state.classId,
-      projectId: this.state.projectId
+      githubHandle: this.state.githubHandle,
+      class: this.state.class,
+      trelloName: this.state.trelloName,
+      dueDate: this.state.dueDate
     };
     const id = this.props.match.params.id;
     console.log(object);
@@ -53,33 +52,34 @@ class EditProject extends Component {
 
         <input
           type="text"
-          placeholder="Number of Student "
-          name="numberOfStudents"
-          value={this.state.numberOfStudents}
+          placeholder="githubHandle "
+          name="githubHandle"
+          value={this.state.githubHandle}
           onChange={this.createProjectHandler}
         />
         <input
           type="text"
-          placeholder=" due Date "
+          placeholder="trelloName "
+          name="trelloName"
+          value={this.state.trelloName}
+          onChange={this.createProjectHandler}
+        />
+        <input
+          type="text"
+          placeholder="class"
+          name="class"
+          value={this.state.class}
+          onChange={this.createProjectHandler}
+        />
+        <input
+          type="text"
+          placeholder="dueDate"
           name="dueDate"
           value={this.state.dueDate}
           onChange={this.createProjectHandler}
         />
-        <input
-          type="text"
-          placeholder=" project ID"
-          name="projectId"
-          value={this.state.projectId}
-          onChange={this.createProjectHandler}
-        />
-        <input
-          type="text"
-          placeholder=" class ID"
-          name="classId"
-          value={this.state.classId}
-          onChange={this.createProjectHandler}
-        />
         <button onClick={this.submitProject}> Submit</button>
+        <CreateStudent />
       </div>
     );
   }

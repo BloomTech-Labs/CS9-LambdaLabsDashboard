@@ -7,8 +7,8 @@ import authenticate from "../MiddleWare/authJWT.js";
 router.get("/", (req, res) => {
   console.log(req.body);
   ProjectsModel.find({})
-    .populate("class", "-_id")
-    .populate("students", "-_id")
+    // .populate("class", "-_id")
+    // .populate("students", "-_id")
     .then(projects => {
       res.status(200).json({ projects: projects });
     })
