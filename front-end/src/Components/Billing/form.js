@@ -69,6 +69,7 @@ class CheckoutForm extends Component {
     console.log("annually", this.state.annual);
     console.log(this.state.amount);
     return (
+      <div className="payment">
       <div className="checkout">
         <p>Would you like to complete the purchase?</p>
         <CardElement />
@@ -98,6 +99,7 @@ class CheckoutForm extends Component {
           </div>
         </form>
         <button onClick={this.submit}>Send</button>
+      </div>
       </div>
     );
   }

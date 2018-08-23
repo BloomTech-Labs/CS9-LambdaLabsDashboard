@@ -1,6 +1,5 @@
 import React from "react";
-import Axios from "axios";
-// import StripeCheckout from "react-stripe-checkout";
+// import Axios from "axios";
 import Stripe from "./Stripe";
 
 export default class Billing extends React.Component {
@@ -14,9 +13,11 @@ export default class Billing extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>Welcome to Payments</h1>
-        <Stripe />
+      <div className='paymentWrapper'>
+        <div className="payment">
+          <h1>Welcome to Payments</h1>
+            <Stripe />
+        </div>
       </div>
     );
   }
