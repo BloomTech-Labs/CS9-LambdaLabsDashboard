@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { connect } from 'react-redux'; 
+import { auth } from '../../Actions/Navigation';
 
 class LandingPage extends Component {
   constructor(props) {
@@ -20,15 +22,20 @@ class LandingPage extends Component {
   };
 
   submitUser = () => {
+    const { user, userpassword } = this.state;
+    const { history, auth } = this.props;
     const object = {
-      username: this.state.user,
-      password: this.state.userpassword
+      username: user,
+      password: userpassword
     };
     console.log("===>", object);
     const promise = axios.post("http://localhost:4000/users", object);
     promise
       .then(response => {
         console.log(response.data);
+        const { token } = response.data;
+        auth(token);
+        history.push('/projects');
       })
       .catch(error => {
         console.log(error);
@@ -36,10 +43,8 @@ class LandingPage extends Component {
   };
 
   userLogin = () => {
-    const object = {
-      username: this.state.username,
-      password: this.state.password
-    };
+    const { username, password } = this.state; 
+    const object = { username, password };
     console.log("===>", object);
     const promise = axios.post("http://localhost:4000/login", object);
     promise
@@ -57,7 +62,6 @@ class LandingPage extends Component {
         <div className="content">
           <h2>Landing Page</h2>
           <div>
-            {/* <button>Sign In</button> */}
             <input
               type="text"
               placeholder="username"
@@ -90,12 +94,6 @@ class LandingPage extends Component {
               value={this.state.userpassword}
               onChange={this.eventHandler}
             />
-            {/* <input type="text"
-          placeholder="email"
-          name="email"
-          value={this.state.email}
-          onChange={this.eventHandler}
-        /> */}
             <button onClick={this.submitUser}>Submit</button>
           </div>
           <button>Sign Out</button>
@@ -105,4 +103,4 @@ class LandingPage extends Component {
   }
 }
 
-export default LandingPage;
+export default connect(null, { auth })(LandingPage);

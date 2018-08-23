@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Route } from "react-router-dom";
-import Classes from "./Components/Classes/Classes";
+import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
+import Classes from "./Components/Classes/classes";
 import LandingPage from "./Components/LandingPage/LandingPage";
-import Projects from "./Components/Projects/Projects";
+import Projects from "./Components/Projects/projects";
 import Billing from "./Components/Billing/Billing";
-import CreateProject from "./Components/CreateProject/CreateProject";
-import EditProject from "./Components/EditProject/EditProject";
-import EditStudent from "./Components/EditStudent/EditStudent";
+import CreateProject from "./Components/CreateProject/createProject";
+import EditProject from "./Components/EditProject/editProject";
+import EditStudent from "./Components/EditStudent/editStudent";
 import Settings from "./Components/Settings/Settings";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import Menu from "./Components/Menu/Menu";
@@ -15,7 +16,7 @@ import Header from "./Components/Header/Header";
 import "./App.css";
 
 class App extends Component {
-  
+
   shouldComponentUpdate = ({ location, classes }) => {
     const curProps = this.props;
     if (location.pathname !== curProps.location.pathname) return true;
@@ -24,26 +25,26 @@ class App extends Component {
   };
 
   render = () => {
-    const { location, classes } = this.props;
+    const { location, classes, history } = this.props;
     const notLandingPage = location.pathname !== "/";
     return (
       <div className="App">
         {notLandingPage && <Menu />}
-        {notLandingPage && <Header />}
+        {notLandingPage && <Header history={history} />}
         <div className={classes}>
           <Route exact path="/" component={LandingPage} />
-          <Route exact path="/classes" component={Classes} />
-          <Route exact path="/projects" component={Projects} />
-          <Route exact path="/billing" component={Billing} />
-          <Route exact path="/createProject" component={CreateProject} />
-          <Route
+          <PrivateRoute exact path="/classes" component={Classes} />
+          <PrivateRoute exact path="/projects" component={Projects} />
+          <PrivateRoute exact path="/billing" component={Billing} />
+          <PrivateRoute exact path="/createProject" component={CreateProject} />
+          <PrivateRoute
             exact
             path="/projects/EditProject/:id"
             component={EditProject}
           />
-          <Route exact path="/projects/EditStudent" component={EditStudent} />
-          <Route path="/settings" component={Settings} />
-          <Route path="/project-dashboard" component={Dashboard} />
+          <PrivateRoute exact path="/projects/EditStudent" component={EditStudent} />
+          <PrivateRoute path="/settings" component={Settings} />
+          <PrivateRoute path="/project-dashboard" component={Dashboard} />
         </div>
       </div>
     );

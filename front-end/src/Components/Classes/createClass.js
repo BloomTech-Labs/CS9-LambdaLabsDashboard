@@ -30,8 +30,6 @@ class CreateClass extends Component {
       endDate: this.state.endDate,
       projectsIds: this.state.projectsIds
     };
-
-    const id = "";
     console.log(object);
     const promise = axios.post(`http://localhost:4000/classes`, object);
     promise

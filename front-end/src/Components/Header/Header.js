@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import Burger from './Burger/Burger';
+import { logout } from '../../Actions/Navigation';
 
-export default class Header extends Component {
+class Header extends Component {
+
+  logout = () => {
+    const { history, logout } = this.props;
+    logout();
+    history.push('/');
+  }
+
   render = () => {
     return (
       <header className="header">
@@ -15,9 +24,11 @@ export default class Header extends Component {
           <Link to="/projects">Projects</Link>
           <Link to="/project-dashboard">Project Dashboard</Link>
         </nav>
-        <button>Logout</button>
+        <button onClick={this.logout}>Logout</button>
       </div>
     </header>
     );
   }
 }
+
+export default connect(null, { logout })(Header);

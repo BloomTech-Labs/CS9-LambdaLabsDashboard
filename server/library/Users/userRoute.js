@@ -23,12 +23,8 @@ router.post("/", userEmpty, (req, res) => {
   newUser
     .save()
     .then(p => {
-      console.log(p);
       const token = makeToken(newUser);
-
-      res
-        .status(200)
-        .json({ msg: "user posted successfully ", newUser, token });
+      res.status(200).json({ msg: "user posted successfully ", newUser, token });
     })
     .catch(error => {
       res.status(200).json({ msg: "... not able to post your user", error });

@@ -123,7 +123,7 @@ class Projects extends Component {
     const arr = [];
 
     if (this.state.students.length > 0) {
-      this.state.students.map(student => {
+      this.state.students.forEach(student => {
         arr.push(student.fullName);
       });
 
@@ -287,7 +287,7 @@ class Projects extends Component {
           <Link to="/createProject">
             <div className="newProjectCard">
               <span> New Project</span>
-              <img src={require("../../pictures/add.png")} width="100px" />
+              <img src={require("../../pictures/add.png")} alt="add icon" width="100px" />
             </div>
           </Link>
         </div>

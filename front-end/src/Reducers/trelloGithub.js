@@ -16,7 +16,7 @@ const trelloGithubReducer = (state = initialState, action) => {
       if (action.payload !== undefined || action.payload !== null) {
         return (state = [action.payload]);
       }
-
+      return state;
     default:
       return state;
   }

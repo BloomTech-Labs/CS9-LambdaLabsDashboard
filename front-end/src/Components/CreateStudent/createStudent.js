@@ -27,11 +27,9 @@ class EditStudent extends Component {
       trelloName: this.state.trelloName,
       salck: this.state.slack
     };
-    const id = "";
     console.log(object);
-    const promise = axios.post(`http://localhost:4000/students`, object);
-    promise
-      .then(response => {
+    axios.post(`http://localhost:4000/students`, object)
+    .then(response => {
         console.log(response.data);
       })
       .catch(error => {

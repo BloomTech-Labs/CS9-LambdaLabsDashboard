@@ -1,6 +1,6 @@
 export default class Trello {
 	constructor(team, members, cards, lists) {
-		this.teamStats = team.slice();
+		this.teamStats = team;
 		this.team = members;
 		this.lists = this.parseLists(lists)
 		return this.parseCards(cards);
@@ -35,11 +35,8 @@ export default class Trello {
 			const { id, fullName } = this.team[i];
 			if(idMembers.includes(id)) {
 				totalFound++;
-				for(let j = this.teamStats.length - 1; j >= 0; j--) {
-					if(fullName === this.teamStats[j].name) {
-						this.teamStats[j].trellos += 1;
-						break;
-					}
+				if(fullName in this.teamStats) {
+					this.teamStats[fullName].trellos += 1;
 				}
 				if(totalFound === length) break;
 			}
@@ -60,9 +57,22 @@ export default class Trello {
 				else if(list === 'To Do') pending++;
 			}
 		}
-		const completeness = (complete/(complete+inProgress+pending))*100;
+		const total = complete+inProgress+pending;
+		const completeness = (complete/total)*100;
 		const circ = Math.PI * (2 * (200 - ((completeness*200)/100)));
-		return { trello: this.lists, completeness: circ, updatedTeamStats: this.teamStats, inProgress: this.getInProgress() };
+		return { updatedTeamStats: this.rebuildTeamObject(), totalCards: total, inProgress: this.getInProgress(), trello: this.lists, completeness: circ };
+	}
+	rebuildTeamObject() {
+		const res = [];
+		for(let name in this.teamStats) {
+			const userObj = {};
+			userObj.name = name;
+			userObj.github = this.teamStats[name].github;
+			userObj.merges = this.teamStats[name].merges;
+			userObj.trellos = this.teamStats[name].trellos;
+			res.push(userObj);
+		}
+		return res;
 	}
 	getInProgress() {
 		if('In Progress' in this.lists && 'Testing' in this.lists) {

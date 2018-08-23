@@ -1,34 +1,97 @@
 .statistic {
 	@include center;
 	width: 100%;
+	@media #{$mq-670} {
+		display: block;
+		height: 450px;
+		overflow-y: scroll;
+		-webkit-overflow-scrolling: touch;
+	}
 	&>div {
+		margin: auto;
 		width: 95%;
+		align-self: flex-start;
 		@include center;
-		flex-direction: column;
-		margin: 5% 0;
-		&>h2 {
-			color: #fff;
-			font-size: 4vh;
-			font-weight: 200;
-			margin-top: 0;
-			@media #{$mq-670} {
-				font-size: 4vh;
-				text-align: center;
+		align-items: center;
+		flex-direction: row;
+		flex-wrap: wrap;
+		&>.title-stat {
+			width: 90%;
+			@include center;
+			justify-content: space-between;
+			position: relative;
+			margin-top: 10px;
+			&>.circle-graph {
+				width: 38.5%;
+				margin-bottom: 20px;
+				margin-top: 20px;
+				margin-right: -1%;
+				position: relative;
+				@media #{$mq-670} {
+					margin-top: 0;
+				}
+				@media #{$mq-890} {
+					width: 41%;
+				}
+				@media #{$mq-1400} {
+					width: 38.5%;
+				}
+				&>.circle-center {
+					margin: 0;
+				}
+			}
+			&>.indic {
+				width: 52.5%;
+				color: #fff;
+				font-weight: 600;
+				margin-bottom: 5px;
+				@media #{$mq-670} {
+					margin-bottom: 20px;
+				}
+				@media #{$mq-890} {
+					width: 50%;
+					margin-bottom: 20px;
+				}
+				@media #{$mq-1400} {
+					width: 52.5%;
+				}
+				&>.bar {
+					position: absolute;
+					bottom: 30px; left: 0;
+					background: #fff;
+					height: 1px;
+					width: 50%;
+				}
+				&>h2 {
+					text-align: left;
+					font-size: 4.5vh;
+					margin: 0;
+					@media #{$mq-670} {
+						font-size: 4.5vh;
+					}
+					@media #{$mq-890} {
+						font-size: 5.5vh;
+					}
+					@media #{$mq-1400} {
+						font-size: 4.5vh;
+					}
+				}
 			}
 		}
 		&>.card-info {
+			margin: auto auto 10px auto;
 			@include center;
 			height: auto;
 			color: #fff;
 			width: 90%;
 			padding: 10px;
-			margin: 0;
 			background: #304159;
-			margin-bottom: 10px;
 			border-radius: 5px;
 			@include buttonShadow;
 			&>h3 {
 				margin: 0;
+				font-size: 14px;
+				font-weight: 500;
 			}
 		}
 	}

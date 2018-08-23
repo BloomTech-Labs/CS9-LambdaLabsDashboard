@@ -13,10 +13,17 @@
 		text-align: center;
 		color: #fff;
 		margin: auto;
+		@include center;
+		flex-direction: column;
 		&>h3 {
+			margin-top: 0;
+			margin-bottom: 0;
 			font-weight: 700;
 			color: #EB5C59;
-			font-size: 1.5em;
+			font-size: 1.75em;
+		}
+		&>p {
+			max-width: 300px;
 		}
 	}
 	&>.bar-container {

@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
 
-export default class CircleDetails extends PureComponent {
+class CircleDetails extends PureComponent {
   render = () => {
   	const { trello, countUp } = this.props;
     return (
@@ -35,3 +36,10 @@ export default class CircleDetails extends PureComponent {
     );
   }
 }
+
+const mSTP = ({ ExternalApis }) => {
+  const { trello, countUp } = ExternalApis;
+  return { trello, countUp };
+}
+
+export default connect(mSTP)(CircleDetails);
