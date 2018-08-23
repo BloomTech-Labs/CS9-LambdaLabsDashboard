@@ -13,6 +13,7 @@ class Dashboard extends PureComponent {
 
   render = () => {
     const { project, trello, countUp, completeness } = this.props;
+    console.log(project);
     return (
       <div className='Dashboard'>
         <div>
