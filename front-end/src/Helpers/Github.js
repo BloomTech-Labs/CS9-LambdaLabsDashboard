@@ -32,8 +32,8 @@ const rebuildTeamObject = async (team, requests) => {
 	if(users) {
 		let i = 0;
 		for(let username in team) {
-			const user = users[i].data.name;
-			finalTeamObject[user] = team[username];
+			const { name } = users[i].data;
+			finalTeamObject[name] = team[username];
 			i++;
 		}
 	}

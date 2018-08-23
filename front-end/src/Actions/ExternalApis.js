@@ -6,7 +6,7 @@ import { arrayFilter } from '../Helpers/Arrays';
 const trelloKey = 'cb548cca4f1358b69b3bee4a25ca02ec';
 const trelloToken = '5b6ec3db4fe7211b52293adec51fefdd06444a2546ff8ca725dbc5c5ebefa114';
 const auth = `?key=${trelloKey}&token=${trelloToken}`;
-const gha = {headers: {'Authorization': "bearer cab4002fff39db7aba84b793a4aa48c599a3ee92"}};
+const gha = {headers: {'Authorization': "bearer 077f954a454bef9cbd2d88dbbba0a38ba1152a13"}};
 
 export const getDataForProject = repository => {
 	return dispatch => {

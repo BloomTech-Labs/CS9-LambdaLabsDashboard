@@ -37,7 +37,6 @@ export default class Trello {
 				totalFound++;
 				if(fullName in this.teamStats) {
 					this.teamStats[fullName].trellos += 1;
-					break;
 				}
 				if(totalFound === length) break;
 			}
