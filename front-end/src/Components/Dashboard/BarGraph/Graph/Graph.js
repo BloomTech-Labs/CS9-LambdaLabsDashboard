@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
 import BarContainer from './BarContainer/BarContainer';
 
-export default class Graph extends PureComponent {
+class Graph extends PureComponent {
   render = () => {
   	const { team, initBars, maxStat, error } = this.props;
   	const { length } = team;
@@ -32,3 +33,10 @@ export default class Graph extends PureComponent {
     );
   }
 }
+
+const mSTP = ({ ExternalApis }) => {
+  const { error, initBars, team } = ExternalApis;
+  return { error, initBars, team };
+}
+
+export default connect(mSTP)(Graph);

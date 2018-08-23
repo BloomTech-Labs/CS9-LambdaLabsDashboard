@@ -2,6 +2,7 @@
 	@include center;
 	width: 80%;
 	height: auto;
+	margin-top: 2.5%;
 	@media #{$mq-670} {
 		max-width: 275px;
 		margin-top: -2.5%;

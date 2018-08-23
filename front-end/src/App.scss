@@ -7,6 +7,10 @@ body {
     Arial, sans-serif;
 }
 
+::-webkit-scrollbar { 
+    display: none; 
+}
+
 .App {
 	@include center;
 	min-height: 100vh;
