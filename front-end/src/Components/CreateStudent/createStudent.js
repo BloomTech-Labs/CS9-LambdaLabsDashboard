@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import "./editStudent.css";
 
 class EditStudent extends Component {
   constructor(props) {
@@ -8,8 +7,8 @@ class EditStudent extends Component {
     this.state = {
       firstName: "",
       lastName: "",
-      projectId: "",
-      classId: "",
+      slack: "",
+      trelloName: "",
       email: "",
       github: ""
     };
@@ -25,8 +24,8 @@ class EditStudent extends Component {
       lastName: this.state.lastName,
       email: this.state.email,
       github: this.state.github,
-      projectId: this.state.projectId,
-      classId: this.state.classId
+      trelloName: this.state.trelloName,
+      salck: this.state.slack
     };
     const id = "";
     console.log(object);
@@ -44,10 +43,10 @@ class EditStudent extends Component {
     // console.log(this.props.match.params.id);
     return (
       <div className="editStudent">
-        <h1> Edit Student</h1>
+        <h1> Add Student</h1>
         <input
           type="text"
-          placeholder="student Name"
+          placeholder="first  Name"
           name="firstName"
           value={this.state.firstName}
           onChange={this.editHandler}
@@ -62,17 +61,17 @@ class EditStudent extends Component {
         />
         <input
           type="text"
-          placeholder="projectId"
-          name="projectId"
-          value={this.state.projectId}
+          placeholder="slack name"
+          name="slack"
+          value={this.state.slack}
           onChange={this.editHandler}
         />
 
         <input
           type="text"
-          placeholder="classId"
-          name="classId"
-          value={this.state.classId}
+          placeholder="trelloName name"
+          name="trelloName"
+          value={this.state.trelloName}
           onChange={this.editHandler}
         />
         <input
@@ -84,7 +83,7 @@ class EditStudent extends Component {
         />
         <input
           type="text"
-          placeholder="github"
+          placeholder="github name"
           name="github"
           value={this.state.github}
           onChange={this.editHandler}

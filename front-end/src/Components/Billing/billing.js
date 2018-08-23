@@ -1,6 +1,9 @@
 import React from "react";
 // import Axios from "axios";
-import Stripe from "./Stripe";
+
+
+import Stripe from "./stripe";
+
 
 export default class Billing extends React.Component {
   constructor(props) {

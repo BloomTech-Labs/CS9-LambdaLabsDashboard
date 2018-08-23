@@ -1,32 +1,28 @@
-import mongoose from 'mongoose';
-import bcrypt from 'bcrypt';
+import mongoose from "mongoose";
+import bcrypt from "bcrypt";
 
 const Schema = mongoose.Schema;
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const definition = {
   projectName: {
-    type: String,
-    unique: true
+    type: String
+    // unique: true
   },
-  githubRepoName: {
+  githubHandle: {
     type: String
   },
 
-  classId: {
-    type: ObjectId,
-    ref: "Class"
+  class: {
+    type: String
   },
 
-  trelloId: {
+  trelloName: {
+    type: String
+  },
+  dueDate: {
     type: String
   }
-  // students: [
-  //   {
-  //     type: ObjectId,
-  //     ref: "Student"
-  //   }
-  // ]
 };
 const options = {
   timestamps: true

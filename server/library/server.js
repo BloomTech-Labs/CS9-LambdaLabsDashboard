@@ -15,7 +15,7 @@ import login from "./login/loginRoute.js";
 import charge from "./charge/chargeRoute.js";
 import googleRedirect from "./google/googleRedirect.js";
 import googleRoute from "./google/googleRoute.js";
-
+import ProjectUsers from "./ProjectUsers/projectUsersRoute.js";
 const Server = express();
 const sessionOptions = {
   maxAge: 24 * 60 * 60 * 1000,
@@ -55,6 +55,7 @@ Server.use("/charge", charge);
 Server.use("/students", students);
 Server.use("/auth/google/callback", googleRedirect);
 Server.use("/google", googleRoute);
+Server.use("/projectUsers", ProjectUsers);
 Server.use("*", staticFiles);
 
 // const googleRoute = require("./google/googleRoute.js");

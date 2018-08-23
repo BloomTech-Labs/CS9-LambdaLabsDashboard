@@ -7,8 +7,8 @@ import authenticate from "../MiddleWare/authJWT.js";
 router.get("/", (req, res) => {
   console.log(req.body);
   ProjectsModel.find({})
-    .populate("class", "-_id")
-    .populate("students", "-_id")
+    // .populate("class", "-_id")
+    // .populate("students", "-_id")
     .then(projects => {
       res.status(200).json({ projects: projects });
     })
@@ -24,8 +24,7 @@ router.post("/", noneEmpty, (req, res) => {
   newProject
     .save()
     .then(p => {
-      console.log(p);
-      res.status(200).json({ newProject });
+      res.status(200).json({ projectId: p._id });
     })
     .catch(error => {
       res.status(200).json({ msg: "... not able to post your project", error });
