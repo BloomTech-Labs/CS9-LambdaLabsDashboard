@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
-export default class CircleDetails extends Component {
+export default class CircleDetails extends PureComponent {
   render = () => {
   	const { trello, countUp } = this.props;
-  	const { todo, inProgress, complete } = trello;
     return (
       <div className='circle-details'>
       	<div className='stat-wrapper'>
@@ -12,7 +11,7 @@ export default class CircleDetails extends Component {
     					color: '#FC4645',
     					opacity: countUp ? 1 : 0,
     					transform: countUp ? 'scale(1)' : 'scale(0.75)'
-    				}}>{todo.length}</h5>
+    				}}>{countUp ? trello['To Do'].cards.length : 0}</h5>
     				<h5>Pending</h5>
     			</div>
     			<div style={{borderTop: '3px solid #65AAFF'}}>
@@ -20,7 +19,7 @@ export default class CircleDetails extends Component {
     					color: '#65AAFF',
     					opacity: countUp ? 1 : 0,
     					transform: countUp ? 'scale(1)' : 'scale(0.75)'
-    				}}>{inProgress.length}</h5>
+    				}}>{countUp ? trello['In Progress'].cards.length + trello['Testing'].cards.length : 0}</h5>
     				<h5>In Progress</h5>
     			</div>
     			<div style={{borderTop: '3px solid #35FA7E'}}>
@@ -28,7 +27,7 @@ export default class CircleDetails extends Component {
     					color: '#35FA7E',
     					opacity: countUp ? 1 : 0,
     					transform: countUp ? 'scale(1)' : 'scale(0.75)'
-    				}}>{complete.length}</h5>
+    				}}>{countUp ? trello['Done'].cards.length : 0}</h5>
     				<h5>Completed</h5>
     			</div>
     		</div>

@@ -1,5 +1,6 @@
-const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
+import mongoose from 'mongoose';
+import bcrypt from 'bcrypt';
+
 const Schema = mongoose.Schema;
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
@@ -8,22 +9,12 @@ const definition = {
     type: String,
     unique: true
   },
-  numberOfStudents: {
-    type: String
-  },
   startDate: {
-    type: String
+    type: String,
+    default: new Date()
   },
   endDate: {
     type: String
-  },
-  Students: {
-    type: ObjectId,
-    ref: "Student"
-  },
-  Project: {
-    type: ObjectId,
-    ref: "Project"
   }
 };
 const options = {

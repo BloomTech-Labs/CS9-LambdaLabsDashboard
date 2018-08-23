@@ -1,8 +1,8 @@
-const express = require("express");
-const router = express.Router();
+import express from "express";
 import UserModel from "./userModel.js";
-import { makeToken, secret } from "../Middleware/jwtMiddleWare.js";
+import { makeToken, secret } from "../MiddleWare/jwtMiddleWare.js";
 import { userEmpty } from "../MiddleWare/middleWare.js";
+const router = express.Router();
 import authenticate from "../MiddleWare/authJWT.js";
 
 router.get("/", (req, res) => {
@@ -23,17 +23,19 @@ router.post("/", userEmpty, (req, res) => {
   newUser
     .save()
     .then(p => {
-      // console.log(p);
-      // const token = makeToken(newUser);
+      console.log(p);
+      const token = makeToken(newUser);
 
-      res.status(200).json({ msg: "user posted successfully ", newUser });
+      res
+        .status(200)
+        .json({ msg: "user posted successfully ", newUser, token });
     })
     .catch(error => {
       res.status(200).json({ msg: "... not able to post your user", error });
     });
 });
 
-router.put("/:id", authenticate, (req, res) => {
+router.put("/:id", (req, res) => {
   const { id } = req.params;
   const obj = req.body;
   console.log(obj);
@@ -47,7 +49,7 @@ router.put("/:id", authenticate, (req, res) => {
     });
 });
 
-router.delete("/:id", authenticate, (req, res) => {
+router.delete("/:id", (req, res) => {
   const id = req.params.id;
 
   UserModel.findById(id)

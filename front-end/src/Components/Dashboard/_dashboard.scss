@@ -1,9 +1,9 @@
 .Dashboard {
 	@include center;
 	min-height: 100vh; 
-	width: 100%;
 	background: $darkergray;
 	position: relative;
+	width: 100%;
 	@media #{$mq-1070} {
 		width: calc(100% - 200px);
 	}
@@ -56,9 +56,11 @@
 			@include center;
 			width: 100%;
 			flex-direction: column;
+			margin-bottom: 8vh;
 			@media #{$mq-670} {
 				flex-direction: row;
 				flex-wrap: wrap;
+				margin-bottom: 4vh;
 			}
 			&>.box {
 				height: 100%;
@@ -76,12 +78,6 @@
 				@media #{$mq-890} {
 					width: 43%;
 					margin: 4vh 0 2.5vh 0;
-					// &:nth-of-type(2) {
-					// 	margin: 4vh 0 2.5vh 2%;
-					// }
-					// &:nth-of-type(3) {
-					// 	margin: 4vh 0 2.5vh 0;
-					// }
 				}
 			}
 			&>.circle-box {
@@ -130,9 +126,64 @@
 					width: 43.5%;
 					margin: 3vh 0 3vh 1.5%;
 				}
+				@media #{$mq-890} {
+					width: 43%;
+					margin: 4vh 2% 2.5vh 0;
+				}
+				@media #{$mq-1070} {
+					width: 43.5%;
+					margin: 4vh 1.5% 2.5vh 0;
+				}
 				@media #{$mq-1400} {
 					width: 28%;
 					margin: 4vh 0 2.5vh 1%;
+				}
+			}
+			&>.stat-box {
+				@media #{$mq-670} {
+					overflow-y: scroll;
+					-webkit-overflow-scrolling: touch;
+					justify-content: space-around;
+					width: 43.5%;
+					&:nth-of-type(odd) {
+						margin: 3vh 0 3vh 1.5%;
+					}
+					&:nth-of-type(even) {
+						margin: 3vh 1.5% 3vh 0;
+					}
+				}
+				@media #{$mq-890} {
+					width: 43%;
+					&:nth-of-type(odd) {
+						margin: 4vh 2% 3vh 0;
+					}
+					&:nth-of-type(even) {
+						margin: 4vh 0 3vh 2%;
+					}
+				}
+				@media #{$mq-1070} {
+					width: 43.5%;
+					&:nth-of-type(odd) {
+						margin: 4vh 1.5% 2.5vh 0;
+					}
+					&:nth-of-type(even) {
+						margin: 4vh 0 2.5vh 1.5%;
+					}
+				}
+				@media #{$mq-1400} {
+					width: 21%;
+					&:nth-of-type(odd) {
+						margin: 4vh 0 4vh 1%;
+					}
+					&:nth-of-type(even) {
+						margin: 4vh 1% 4vh 0;
+					}
+					&:last-of-type {
+						margin: 4vh 0 4vh 1%;
+					}
+					&:nth-of-type(n + 1) {
+						margin: 4vh 1% 4vh 1%;
+					}
 				}
 			}
 		}
@@ -143,3 +194,4 @@
 @import 'Team/team.scss';
 @import 'CircleGraph/CircleDetails/circle-details.scss';
 @import 'BarGraph/bar-graph.scss';
+@import 'StatBox/statbox.scss';

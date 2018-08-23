@@ -1,12 +1,13 @@
-const express = require("express");
-const router = express.Router();
+import express from "express";
 import UserModel from "../Users/userModel.js";
-import { makeToken, secret } from "../Middleware/jwtMiddleWare.js";
+import { makeToken, secret } from "../MiddleWare/jwtMiddleWare.js";
+
+const router = express.Router();
 
 router.get("/", (req, res) => {
   res.send("you are logged-in ");
 });
-
+/////:
 router.post("/", (req, res) => {
   const { username, password } = req.body;
 

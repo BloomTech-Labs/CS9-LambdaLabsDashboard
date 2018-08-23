@@ -1,15 +1,15 @@
-const express = require("express");
-const router = express.Router();
+import express from "express";
 import ClassModel from "./classModel.js";
-import { makeToken, secret } from "../Middleware/jwtMiddleWare.js";
+import { makeToken, secret } from "../MiddleWare/jwtMiddleWare.js";
 import { userEmpty } from "../MiddleWare/middleWare.js";
 import authenticate from "../MiddleWare/authJWT.js";
+const router = express.Router();
 
-router.get("/", authenticate, (req, res) => {
+router.get("/", (req, res) => {
   console.log(req.body);
   ClassModel.find({})
-    .populate("Students", "-_id")
-    .populate("LambdaProject", "-_id")
+    .populate("students", "-_id")
+    .populate("project", "-_id")
     .then(p => {
       res.status(200).json({ classes: p });
     })
@@ -18,7 +18,7 @@ router.get("/", authenticate, (req, res) => {
     });
 });
 
-router.post("/", userEmpty, authenticate, (req, res) => {
+router.post("/", userEmpty, (req, res) => {
   console.log("request ===>", req.body);
   const obj = req.body;
   const newClass = ClassModel(obj);
@@ -33,7 +33,7 @@ router.post("/", userEmpty, authenticate, (req, res) => {
     });
 });
 
-router.get("/:id", authenticate, (req, res) => {
+router.get("/:id", (req, res) => {
   const { id } = req.params;
   ClassModel.findById(id)
     .populate("Students", "-_id")
@@ -46,7 +46,7 @@ router.get("/:id", authenticate, (req, res) => {
     });
 });
 
-router.put("/:id", authenticate, (req, res) => {
+router.put("/:id", (req, res) => {
   const { id } = req.params;
   const obj = req.body;
   console.log(obj);
@@ -60,7 +60,7 @@ router.put("/:id", authenticate, (req, res) => {
     });
 });
 
-router.delete("/:id", authenticate, (req, res) => {
+router.delete("/:id", (req, res) => {
   const id = req.params.id;
 
   ClassModel.findById(id)

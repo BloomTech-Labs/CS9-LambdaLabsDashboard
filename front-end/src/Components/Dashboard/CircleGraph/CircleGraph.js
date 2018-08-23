@@ -5,13 +5,15 @@ import CountUp from 'react-countup';
 
 export default class CircleGraph extends Component {
 	
-	shouldComponentUpdate = ({completeness}) => {
-		if(completeness !== this.props.completeness) return true;
+	shouldComponentUpdate = ({completeness, error}) => {
+		const curProps = this.props;
+		if(completeness !== curProps.completeness) return true;
+		else if(error !== curProps.error) return true;
 		return false;
 	}
 
   render = () => {
-  	const { completeness } = this.props; 
+  	const { completeness, error } = this.props; 
     return (
       <div className='circle-graph'>
 				<div className='circle-center'>
@@ -19,7 +21,7 @@ export default class CircleGraph extends Component {
 						className='circle-container'
 						viewBox="0 0 500 500" 
 						preserveAspectRatio="xMinYMin meet"
-						style={{ filter: `drop-shadow( 0px 0px 7.5px #74E0FF)` }}>
+						style={{ filter: `drop-shadow( 5px 0px 15px #1F2638)` }}>
 						<linearGradient id="blueGradient">
 	            <stop offset="0%"  stopColor="#74E0FF" />
 	            <stop offset="100%" stopColor="#48A3FF" />
@@ -31,12 +33,15 @@ export default class CircleGraph extends Component {
 					</svg>
 					<div className='completeness'>
 						<h4>
-							<CountUp
-								start={0}
-								end={100 - (100*completeness) / (Math.PI * (2 * 200))}
-								duration={1.5}
-								useEasing={true}
-								onStart={e => false} />
+							{
+								error ? 0 :
+								<CountUp
+									start={0}
+									end={100 - (100*completeness) / (Math.PI * (2 * 200))}
+									duration={1.5}
+									useEasing={true}
+									onStart={e => false} />
+							}
 						%</h4>
 						<h3>Completeness</h3>
 					</div>

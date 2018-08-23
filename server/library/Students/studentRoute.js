@@ -1,15 +1,14 @@
-const express = require("express");
-const router = express.Router();
+import express from "express";
 import StudentModel from "./studentModel.js";
-import { makeToken, secret } from "../Middleware/jwtMiddleWare.js";
+import { makeToken, secret } from "../MiddleWare/jwtMiddleWare.js";
 import { userEmpty } from "../MiddleWare/middleWare.js";
+const router = express.Router();
 import authenticate from "../MiddleWare/authJWT.js";
 
-router.get("/", authenticate, (req, res) => {
+router.get("/", (req, res) => {
   console.log(req.body);
   StudentModel.find({})
-    .populate("className", "-_id")
-    .populate("project", "-_id")
+
     .then(s => {
       res.status(200).json({ students: s });
     })
@@ -18,7 +17,7 @@ router.get("/", authenticate, (req, res) => {
     });
 });
 
-router.post("/", authenticate, (req, res) => {
+router.post("/", (req, res) => {
   console.log("request ===>", req.body);
   const obj = req.body;
   const newStudent = StudentModel(obj);
@@ -33,7 +32,7 @@ router.post("/", authenticate, (req, res) => {
     });
 });
 
-router.put("/:id", authenticate, (req, res) => {
+router.put("/:id", (req, res) => {
   const { id } = req.params;
   const obj = req.body;
   console.log(obj);
@@ -47,11 +46,10 @@ router.put("/:id", authenticate, (req, res) => {
     });
 });
 
-router.get("/:id", authenticate, (req, res) => {
+router.get("/:id", (req, res) => {
   const { id } = req.params;
   StudentModel.findById(id)
-    .populate("className", "-_id")
-    .populate("project", "-_id")
+
     .then(p => {
       res.status(200).json(p);
     })
@@ -60,7 +58,7 @@ router.get("/:id", authenticate, (req, res) => {
     });
 });
 
-router.delete("/:id", authenticate, (req, res) => {
+router.delete("/:id", (req, res) => {
   const id = req.params.id;
 
   StudentModel.findById(id)
