@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import CreateStudent from "../CreateStudent/createStudent.js";
+import { connect } from "react-redux";
 class EditProject extends Component {
   constructor(props) {
     super(props);
@@ -38,9 +39,12 @@ class EditProject extends Component {
   };
 
   render() {
-    console.log(this.props.match.params.id);
+    console.log("params.id ====> ", this.props.match.params.id);
+
     return (
       <div className="createProject">
+        {}
+
         <h1> Edit PROJECT</h1>
         <input
           type="text"
@@ -78,11 +82,38 @@ class EditProject extends Component {
           value={this.state.dueDate}
           onChange={this.createProjectHandler}
         />
-        <button onClick={this.submitProject}> Submit</button>
+        <button
+          onClick={() => {
+            this.submitProject();
+            this.props.bill(this.state.githubHandle, this.state.trelloName);
+            this.props.history.push("/projects");
+          }}
+        >
+          {" "}
+          Submit
+        </button>
         <CreateStudent />
       </div>
     );
   }
 }
 
-export default EditProject;
+const mapStateToProps = state => {
+  console.log("create  satate ===>", state.editProjectReducer);
+  return {
+    projectInfo: state.editProjectReducer
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    bill: (githubHandle, trelloName) => {
+      dispatch({ type: "hilal", payload: { trelloName, githubHandle } });
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(EditProject);

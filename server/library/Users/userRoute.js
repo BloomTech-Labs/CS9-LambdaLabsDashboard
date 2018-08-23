@@ -1,4 +1,4 @@
-import express from 'express';
+import express from "express";
 import UserModel from "./userModel.js";
 import { makeToken, secret } from "../MiddleWare/jwtMiddleWare.js";
 import { userEmpty } from "../MiddleWare/middleWare.js";
@@ -23,10 +23,12 @@ router.post("/", userEmpty, (req, res) => {
   newUser
     .save()
     .then(p => {
-      // console.log(p);
-      // const token = makeToken(newUser);
+      console.log(p);
+      const token = makeToken(newUser);
 
-      res.status(200).json({ msg: "user posted successfully ", newUser });
+      res
+        .status(200)
+        .json({ msg: "user posted successfully ", newUser, token });
     })
     .catch(error => {
       res.status(200).json({ msg: "... not able to post your user", error });

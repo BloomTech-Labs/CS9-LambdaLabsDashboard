@@ -24,8 +24,7 @@ router.post("/", noneEmpty, (req, res) => {
   newProject
     .save()
     .then(p => {
-      console.log(p);
-      res.status(200).json({ newProject });
+      res.status(200).json({ projectId: p._id });
     })
     .catch(error => {
       res.status(200).json({ msg: "... not able to post your project", error });

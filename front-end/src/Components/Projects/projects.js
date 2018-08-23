@@ -10,6 +10,7 @@ class Projects extends Component {
     super(props);
     this.state = {
       projects: [],
+      backupStudents: [],
       students: [],
       pullRequests: [],
       trelloCards: [],
@@ -31,10 +32,14 @@ class Projects extends Component {
   }
   componentDidMount() {
     this.fetchingData();
+
+    this.savingStudentsInDB();
+
+    this.fetchingStudentsFromDataBase();
   }
 
   fetchingCardsFromTrello(x) {
-    console.log("x===>", x);
+    // console.log("x===>", x);
     if (x === undefined || x === null) {
       return;
     }
@@ -72,7 +77,7 @@ class Projects extends Component {
       });
   }
   fetchingPullsFromGithub(x) {
-    console.log("x3===>", x);
+    // console.log("x3===>", x);
     if (x === undefined || x === null) {
       return;
     }
@@ -93,7 +98,7 @@ class Projects extends Component {
   }
 
   fetchingMembersFromTrello(x) {
-    console.log("x2===>", x);
+    // console.log("x2===>", x);
     if (x === undefined || x === null) {
       return;
     }
@@ -102,7 +107,7 @@ class Projects extends Component {
     );
     members
       .then(res => {
-        console.log("members ====>", res.data);
+        // console.log("members ====>", res.data);
         if (res.data !== undefined || res.data !== undefined) {
           this.setState({ students: res.data });
         }
@@ -111,13 +116,49 @@ class Projects extends Component {
         console.log(err);
       });
   }
+  savingStudentsInDB = () => {
+    const object = {};
+    const arr = [];
+
+    if (this.state.students.length > 0) {
+      this.state.students.map(student => {
+        arr.push(student.fullName);
+      });
+
+      object.users = arr;
+      object.projectId = this.props.projectId.projectId;
+      console.log(object);
+      const promise = axios.post("http://localhost:4000/projectUsers", object);
+      promise
+        .then(res => {
+          console.log("res===>", res);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  };
+
+  fetchingStudentsFromDataBase = () => {
+    const promise = axios.get(
+      `http://localhost:4000/projectUsers/${this.props.projectId.projectId}`
+    );
+    promise
+      .then(res => {
+        console.log("res students ===>", res.data.users);
+        this.setState({ backupStudents: res.data.users });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
   fetchingData = () => {
-    console.log("alex ====> ....");
+    // console.log("alex ====> ....");
     const promise = axios.get("http://localhost:4000/projects");
     promise
       .then(response => {
-        console.log(response.data);
+        // console.log(response.data);
         this.setState({ projects: response.data });
       })
       .catch(error => {
@@ -129,11 +170,11 @@ class Projects extends Component {
 
     promise
       .then(response => {
-        console.log(response.data);
+        // console.log(response.data);
         this.fetchingData();
       })
       .catch(error => {
-        console.log(error);
+        // console.log(error);
       });
   };
   displayProjects() {
@@ -142,7 +183,7 @@ class Projects extends Component {
       return <div>loading projects</div>;
     } else {
       return this.state.projects.projects.map(project => {
-        console.log(project._id);
+        // console.log(project._id);
         return (
           <div key={project._id} className="projectCard">
             <div>
@@ -150,78 +191,149 @@ class Projects extends Component {
             </div>
             <div>
               <span>Total Students:</span>
-              {this.state.students.length}
+              {this.state.students.length || this.state.backupStudents.length}
             </div>
             <div>
               <span>DueDate: </span>
               {project.dueDate}
             </div>
             <div className="students">
-              {this.state.students.map(student => {
-                console.log("student===>", student);
-                return (
-                  <div key={student.fullName} className="student">
-                    <div>
-                      <Link to="/projects/EditStudent">
-                        <span>Student:</span>
-                        {student.fullName}
-                      </Link>
-                    </div>
-                    <div>
-                      <span>Participation:</span>
-                      {student.participation}
-                    </div>
-                  </div>
-                );
-              })}
+              {this.state.students.length > 0
+                ? this.state.students.map(student => {
+                    // console.log("student===>", student);
+                    return (
+                      <div key={student.fullName} className="student">
+                        <div>
+                          <Link to="/projects/EditStudent">
+                            <span>Student:</span>
+                            {student.fullName}
+                          </Link>
+                        </div>
+                        <div>
+                          <span>Participation:</span>
+                          {student.participation}
+                        </div>
+                      </div>
+                    );
+                  })
+                : /*this.props.logins[0].githubHandle === project.projectName &&*/
+                  this.state.backupStudents.map(student => {
+                    console.log("backupstudent===>", student);
+                    return (
+                      <div key={student.fullName} className="student">
+                        <div>
+                          <Link to="/projects/EditStudent">
+                            <span>Student:</span>
+                            {student}
+                          </Link>
+                        </div>
+                        <div>
+                          <span>Participation:</span>
+                          {student.participation}
+                        </div>
+                      </div>
+                    );
+                  })}
             </div>
-            <Link to={`projects/EditProject/${project._id}`}>
-              <button className="editButton">Edit</button>
-            </Link>
-            <Link to="#">
-              <button className="dashBoardButton">Dashboard</button>
-            </Link>
-            <button
-              onClick={() => {
-                alert("hello");
-                console.log("project=>", project._id);
-                this.deleteProject(project._id);
-              }}
-            >
-              Delete Project
-            </button>
+            <div className="buttons">
+              <Link to={`projects/EditProject/${project._id}`}>
+                <button
+                  className="editButton"
+                  onClick={() => {
+                    this.props.editProject(
+                      project.projectName,
+                      project.githubHandle,
+                      project.trelloName
+                    );
+                  }}
+                >
+                  Edit
+                </button>
+              </Link>
+              <Link to="#">
+                <button className="dashBoardButton">Dashboard</button>
+              </Link>
+              <button
+                className="deleteButton"
+                onClick={() => {
+                  // alert("hello");
+                  // console.log("project=>", project._id);
+                  this.deleteProject(project._id);
+                }}
+              >
+                Delete Project
+              </button>
+            </div>
           </div>
         );
       });
     }
   }
   render() {
-    console.log(" projects props ===>", this.props.logins[0]);
+    console.log(" projects props ===>", this.props);
 
     return (
       <div className="projects">
         <h1>
           <span>Projects</span>
+          {/* {this.savingStudentsInDB()}
+          {this.fetchingStudentsFromDataBase()} */}
         </h1>
-        <div className="allCards">{this.displayProjects()}</div>
-        <Link to="/createProject">
-          <div className="newProjectCard">
-            <span> New Project</span>
-            <img src={require("../../pictures/add.png")} width="100px" />
-          </div>
-        </Link>
+        <div className="allCards">
+          {this.displayProjects()}
+
+          <Link to="/createProject">
+            <div className="newProjectCard">
+              <span> New Project</span>
+              <img src={require("../../pictures/add.png")} width="100px" />
+            </div>
+          </Link>
+        </div>
       </div>
     );
   }
 }
 
 const mapStateToProps = state => {
-  console.log("projects satate ===>", state.trelloGithubReducer);
-  return { logins: state.trelloGithubReducer };
+  console.log("projects satate ===>", state.submitProjectReducer.length);
+  let projectId = "";
+  let logins = "";
+  if (
+    state.submitProjectReducer.length !== 0 ||
+    state.submitProjectReducer.length !== null
+  ) {
+    console.log(state.submitProjectReducer[0]);
+    if (state.submitProjectReducer[0] !== undefined) {
+      projectId = state.submitProjectReducer[0];
+    }
+  }
+  if (
+    state.trelloGithubReducer !== null ||
+    state.trelloGithubReducer[0] !== undefined ||
+    state.trelloGithubReducer[0] !== null
+  ) {
+    if (state.trelloGithubReducer.length > 0) {
+      logins = state.trelloGithubReducer;
+    }
+  }
+
+  return {
+    logins: logins,
+    projectId: projectId
+  };
 };
+
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    editProject: (projectName, githubHandle, trelloName) => {
+      dispatch({
+        type: "editProject",
+        payload: { projectName, githubHandle, trelloName }
+      });
+    }
+  };
 };
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps

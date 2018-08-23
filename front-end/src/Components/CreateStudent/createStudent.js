@@ -10,7 +10,7 @@ class EditStudent extends Component {
       slack: "",
       trelloName: "",
       email: "",
-      githubHandle: ""
+      github: ""
     };
   }
 
@@ -24,8 +24,8 @@ class EditStudent extends Component {
       lastName: this.state.lastName,
       email: this.state.email,
       github: this.state.github,
-      projectId: this.state.projectId,
-      classId: this.state.classId
+      trelloName: this.state.trelloName,
+      salck: this.state.slack
     };
     const id = "";
     console.log(object);
@@ -43,10 +43,10 @@ class EditStudent extends Component {
     // console.log(this.props.match.params.id);
     return (
       <div className="editStudent">
-        <h1> Create Student</h1>
+        <h1> Add Student</h1>
         <input
           type="text"
-          placeholder="student Name"
+          placeholder="first  Name"
           name="firstName"
           value={this.state.firstName}
           onChange={this.editHandler}
@@ -61,7 +61,7 @@ class EditStudent extends Component {
         />
         <input
           type="text"
-          placeholder="slack"
+          placeholder="slack name"
           name="slack"
           value={this.state.slack}
           onChange={this.editHandler}
@@ -69,7 +69,7 @@ class EditStudent extends Component {
 
         <input
           type="text"
-          placeholder="trelloName"
+          placeholder="trelloName name"
           name="trelloName"
           value={this.state.trelloName}
           onChange={this.editHandler}
@@ -83,10 +83,10 @@ class EditStudent extends Component {
         />
         <input
           type="text"
-          placeholder="github"
+          placeholder="github name"
           name="github"
-          value={this.state.githubHandle}
-          onChange={this.editHandlerHandle}
+          value={this.state.github}
+          onChange={this.editHandler}
         />
 
         <button onClick={this.submitStudentChanges}> Submit</button>
