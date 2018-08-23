@@ -1,16 +1,16 @@
 import React, { Component } from "react";
 import axios from "axios";
-import "./editProject.css";
-
+import CreateStudent from "../CreateStudent/createStudent.js";
+import { connect } from "react-redux";
 class EditProject extends Component {
   constructor(props) {
     super(props);
     this.state = {
       projectName: "",
-      numberOfStudents: "",
-      dueDate: "",
-      classId: "",
-      projectId: ""
+      githubHandle: "",
+      trelloName: "",
+      class: "",
+      dueDate: ""
     };
   }
 
@@ -21,10 +21,10 @@ class EditProject extends Component {
   submitProject = () => {
     const object = {
       projectName: this.state.projectName,
-      numberOfStudents: this.state.numberOfStudents,
-      dueDate: this.state.dueDate,
-      classId: this.state.classId,
-      projectId: this.state.projectId
+      githubHandle: this.state.githubHandle,
+      class: this.state.class,
+      trelloName: this.state.trelloName,
+      dueDate: this.state.dueDate
     };
     const id = this.props.match.params.id;
     console.log(object);
@@ -39,9 +39,12 @@ class EditProject extends Component {
   };
 
   render() {
-    console.log(this.props.match.params.id);
+    console.log("params.id ====> ", this.props.match.params.id);
+
     return (
       <div className="createProject">
+        {}
+
         <h1> Edit PROJECT</h1>
         <input
           type="text"
@@ -53,36 +56,64 @@ class EditProject extends Component {
 
         <input
           type="text"
-          placeholder="Number of Student "
-          name="numberOfStudents"
-          value={this.state.numberOfStudents}
+          placeholder="githubHandle "
+          name="githubHandle"
+          value={this.state.githubHandle}
           onChange={this.createProjectHandler}
         />
         <input
           type="text"
-          placeholder=" due Date "
+          placeholder="trelloName "
+          name="trelloName"
+          value={this.state.trelloName}
+          onChange={this.createProjectHandler}
+        />
+        <input
+          type="text"
+          placeholder="class"
+          name="class"
+          value={this.state.class}
+          onChange={this.createProjectHandler}
+        />
+        <input
+          type="text"
+          placeholder="dueDate"
           name="dueDate"
           value={this.state.dueDate}
           onChange={this.createProjectHandler}
         />
-        <input
-          type="text"
-          placeholder=" project ID"
-          name="projectId"
-          value={this.state.projectId}
-          onChange={this.createProjectHandler}
-        />
-        <input
-          type="text"
-          placeholder=" class ID"
-          name="classId"
-          value={this.state.classId}
-          onChange={this.createProjectHandler}
-        />
-        <button onClick={this.submitProject}> Submit</button>
+        <button
+          onClick={() => {
+            this.submitProject();
+            this.props.bill(this.state.githubHandle, this.state.trelloName);
+            this.props.history.push("/projects");
+          }}
+        >
+          {" "}
+          Submit
+        </button>
+        <CreateStudent />
       </div>
     );
   }
 }
 
-export default EditProject;
+const mapStateToProps = state => {
+  console.log("create  satate ===>", state.editProjectReducer);
+  return {
+    projectInfo: state.editProjectReducer
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    bill: (githubHandle, trelloName) => {
+      dispatch({ type: "hilal", payload: { trelloName, githubHandle } });
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(EditProject);

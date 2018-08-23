@@ -22,11 +22,11 @@ class LandingPage extends Component {
   };
 
   submitUser = () => {
-    const { user, password } = this.state;
+    const { user, userpassword } = this.state;
     const { history, auth } = this.props;
     const object = {
-      username: this.state.user,
-      password: this.state.userpassword
+      username: user,
+      password: userpassword
     };
     console.log("===>", object);
     const promise = axios.post("http://localhost:4000/users", object);

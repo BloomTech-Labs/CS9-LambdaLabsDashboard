@@ -12,8 +12,7 @@ class Dashboard extends PureComponent {
   componentDidMount = () => this.props.getDataForProject('CS9-LambdaLabsDashboard');
 
   render = () => {
-    const { project, trello, countUp, completeness } = this.props;
-    console.log(project);
+    const { trello, countUp, completeness } = this.props;
     return (
       <div className='Dashboard'>
         <div>

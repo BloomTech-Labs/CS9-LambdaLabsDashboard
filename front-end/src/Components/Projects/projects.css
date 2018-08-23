@@ -2,6 +2,7 @@
   color: black;
   display: flex;
   flex-direction: column;
+  flex-wrap: nowrap;
   height: 100% vh;
   width: 70%;
   margin-left: 300px;
@@ -11,7 +12,7 @@
 .allCards {
   display: flex;
   flex-wrap: wrap;
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
 }
 .projectCard {
   padding: 10px;
@@ -44,13 +45,22 @@
   box-shadow: 10px 10px 5px grey;
   transition: background 1s, transform 0.3s 1s ease-in;
 }
+.deleteButton {
+  display: flex;
+  flex-direction: row;
+  box-shadow: 10px 10px 5px black;
+}
 .editButton {
-  margin-top: 80px;
-  margin-right: 60px;
   box-shadow: 10px 10px 5px black;
 }
 .dashBoardButton {
   box-shadow: 10px 10px 5px black;
+}
+.buttons {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 .student {
   display: flex;

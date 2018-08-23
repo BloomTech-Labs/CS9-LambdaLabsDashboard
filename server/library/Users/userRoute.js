@@ -1,4 +1,4 @@
-import express from 'express';
+import express from "express";
 import UserModel from "./userModel.js";
 import { makeToken, secret } from "../MiddleWare/jwtMiddleWare.js";
 import { userEmpty } from "../MiddleWare/middleWare.js";

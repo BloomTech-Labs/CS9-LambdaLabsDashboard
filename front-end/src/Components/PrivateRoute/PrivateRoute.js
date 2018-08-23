@@ -4,11 +4,18 @@ import { connect } from 'react-redux';
 
 class PrivateRoute extends Component {
   render = () => {
-  	const { component, location, auth, ...rest } = this.props;
+  	console.log(this.props);
+  	const { component: CurrentRoute, location, auth, ...rest } = this.props;
+  	console.log(auth);
     return (
-      auth ? <Route {...rest} component={component} />
-      : <Redirect to={{ pathname: '/', state: { from: location } }} />
-    );
+      <Route
+      	location={location} 
+      	{...rest} 
+      	render={props => {
+		      return auth ? <CurrentRoute {...props} /> :
+	        <Redirect to={{ pathname: '/', state: { from: location } }} />
+		    }} />
+		);
   }
 }
 
@@ -16,4 +23,4 @@ const mSTP = ({ Navigation }) => {
 	return { auth: Navigation.auth };
 }
 
-export default connect(mSTP)(PrivateRoute);
+export default connect(mSTP, null, null, { pure: false })(PrivateRoute);

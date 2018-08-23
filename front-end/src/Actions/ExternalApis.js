@@ -45,6 +45,7 @@ const getValidUsers = team => {
 const parseData = (api, project) => {
   return async dispatch => {
     const [ members, cards, lists, pr1, pr2, pr3, pr4, pr5, pr6, pr7, contributors ] = api;
+    console.log(api);
     const pullRequests = [...pr1.data, ...pr2.data, ...pr3.data, ...pr4.data, ...pr5.data, ...pr6.data, ...pr7.data];
     const team = await GithubParser(contributors.data, pullRequests, gha);
     const { trello, completeness, updatedTeamStats, totalCards, inProgress } = new Trello(team, members.data, cards.data, lists.data);
