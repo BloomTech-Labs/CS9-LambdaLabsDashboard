@@ -12,12 +12,12 @@ class Dashboard extends PureComponent {
   componentDidMount = () => this.props.getDataForProject('CS9-LambdaLabsDashboard');
 
   render = () => {
-    const { project, trello, countUp } = this.props;
+    const { project, trello, countUp, completeness } = this.props;
     return (
       <div className='Dashboard'>
         <div>
           <div className='top-panel'>
-            <h1>{project}</h1>
+            <h1>Labs Dashboard</h1>
           </div>
           <div className='boxes'>
             <div className='box bar-graph-box'>
@@ -31,6 +31,7 @@ class Dashboard extends PureComponent {
                   display: 'flex'
                 }}></div>
               <CircleGraph 
+                completeness={completeness}
                 color1="#74E0FF"
                 color2="#48A3FF"
                 gradientID="completeness"
@@ -104,8 +105,8 @@ class Dashboard extends PureComponent {
 }
 
 const mSTP = ({ ExternalApis }) => {
-  const { project, trello, countUp } = ExternalApis;
-  return { project, trello, countUp };
+  const { project, trello, countUp, completeness } = ExternalApis;
+  return { project, trello, countUp, completeness };
 }
 
 export default connect(mSTP, { getDataForProject })(Dashboard);

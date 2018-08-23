@@ -8,12 +8,13 @@ class CircleGraph extends Component {
 	constructor(props) {
 	  super(props);
 	  this.state = {
-	  	fontSize: 0
+	  	fontSize: 0,
+	  	animate: false,
 	  };
 	}
 
 	componentDidMount = () => {
-		this.setState({ fontSize: this.refs.stat.clientHeight/4 });
+		this.setState({ fontSize: this.refs.stat.clientHeight/4, animate: true });
 		window.addEventListener('resize', this.resize, true);
 	}
 
@@ -26,6 +27,7 @@ class CircleGraph extends Component {
 	}
 
 	componentWillUnmount = () => {
+		this.setState({ animate: false });
 		window.removeEventListener('resize', this.resize, true);
 	}
 
@@ -35,7 +37,7 @@ class CircleGraph extends Component {
 
   render = () => {
   	const { completeness, error, color1, color2, gradientID, measure, noSubText } = this.props; 
-  	const { fontSize } = this.state; 
+  	const { fontSize, animate } = this.state; 
     return (
       <div className='circle-graph'>
 				<div className='circle-center'>
@@ -43,14 +45,14 @@ class CircleGraph extends Component {
 						className='circle-container'
 						viewBox="0 0 500 500" 
 						preserveAspectRatio="xMinYMin meet"
-						style={{ filter: 'drop-shadow( 5px 0px 15px #1F2638)' }}>
+						style={{ filter: 'drop-shadow( 5px 0px 15px #1B2131)' }}>
 						<linearGradient id={gradientID}>
 	            <stop offset="0%"  stopColor={color1} />
 	            <stop offset="100%" stopColor={color2} />
 		        </linearGradient>
 						<BaseCircle />
 						<TopCircle 
-							completeness={completeness}
+							completeness={animate ? completeness : Math.PI * (2 * 199)}
 							stroke={`url(#${gradientID})`} />
 					</svg>
 					<div
@@ -79,8 +81,7 @@ class CircleGraph extends Component {
 }
 
 const mSTP = ({ ExternalApis }) => {
-	const { completeness, error } = ExternalApis;
-	return { error, completeness };
+	return { error: ExternalApis.error };
 }
 
 export default connect(mSTP)(CircleGraph);

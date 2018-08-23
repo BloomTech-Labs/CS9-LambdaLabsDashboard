@@ -19,7 +19,7 @@ class BarGraph extends PureComponent {
   }
 
   render = () => {
-  	const { team, initBars } = this.props;
+  	const { team } = this.props;
     const maxStat = Math.round(this.getMaxStat() / 10) * 10;
     return (
       <div className='bar-graph'>
@@ -36,8 +36,7 @@ class BarGraph extends PureComponent {
 }
 
 const mSTP = ({ ExternalApis }) => {
-  const { team, initBars } = ExternalApis;
-  return { team, initBars };
+  return { team: ExternalApis.team };
 }
 
 export default connect(mSTP)(BarGraph);

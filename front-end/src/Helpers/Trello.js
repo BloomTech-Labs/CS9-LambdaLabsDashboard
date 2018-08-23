@@ -61,8 +61,19 @@ export default class Trello {
 		const total = complete+inProgress+pending;
 		const completeness = (complete/total)*100;
 		const circ = Math.PI * (2 * (200 - ((completeness*200)/100)));
-		console.log(this.teamStats);
-		return { updatedTeamStats: this.teamStats, totalCards: total, inProgress: this.getInProgress(), trello: this.lists, completeness: circ };
+		return { updatedTeamStats: this.rebuildTeamObject(), totalCards: total, inProgress: this.getInProgress(), trello: this.lists, completeness: circ };
+	}
+	rebuildTeamObject() {
+		const res = [];
+		for(let name in this.teamStats) {
+			const userObj = {};
+			userObj.name = name;
+			userObj.github = this.teamStats[name].github;
+			userObj.merges = this.teamStats[name].merges;
+			userObj.trellos = this.teamStats[name].trellos;
+			res.push(userObj);
+		}
+		return res;
 	}
 	getInProgress() {
 		if('In Progress' in this.lists && 'Testing' in this.lists) {

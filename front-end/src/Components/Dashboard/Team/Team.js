@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import TeamMember from './TeamMember/TeamMember';
 
-class Team extends Component {  
+class Team extends PureComponent {  
   render = () => {
   	const { team } = this.props;
-  	console.log(team);
     return (
       <div className='team'>
       	<h2>Team:</h2>
