@@ -14,12 +14,15 @@
 	}
 	&>h2 {
 		color: #fff;
-		font-size: 6vh;
+		font-size: 2.25em;
 		font-weight: 200;
 		@media #{$mq-670} {
-			font-size: 4.5vh;
+			// font-size: 2em;
 			text-align: center;
 			margin-top: 0.25em;
+		}
+		@media #{$mq-1400} {
+			font-size: 2em;
 		}
 	}
 	&>div {

@@ -34,6 +34,7 @@
 			@include headerShadow;
 			width: 90%;
 			border-radius: 10px;
+			text-overflow: ellipsis;
 			@media #{$mq-670} {
 				padding: 2.5% 0;
 				// width: 95%;
@@ -44,15 +45,15 @@
 				margin-bottom: 3vh;
 			}
 			&>h1 {
-				font-size: 6.5vh;
+				font-size: 2.15em;
 				font-weight: 200;
 				@include gradientText;
 			    margin: 0;
 			    @media #{$mq-iphoneX} {
-					font-size: 6vh;
+					font-size: 2.5em;
 			    }
 			    @media #{$mq-670} {
-					font-size: 7.5vh;
+					font-size: 3em;
 				}
 			}
 		}
@@ -87,7 +88,6 @@
 			&>.circle-box {
 				position: relative;
 				&>.bottom {
-					content: "";
 					position: absolute;
 					top: 0; left: 0;
 					height: 15px; width: 100%;
@@ -125,6 +125,14 @@
 				}
 			}
 			&>.team-box {
+				position: relative;
+				&>.bottom {
+					position: absolute;
+					top: 0; left: 0;
+					height: 15px; width: 100%;
+					border-top-left-radius: 10px;
+					border-top-right-radius: 10px;
+				}
 				@media #{$mq-670} {
 					width: 42.5%;
 					margin: 4vh 0 4vh 2.5%;
@@ -142,7 +150,6 @@
 				@include center;
 				position: relative;
 				&>.bottom {
-					content: "";
 					position: absolute;
 					top: 0; left: 0;
 					height: 15px; width: 100%;

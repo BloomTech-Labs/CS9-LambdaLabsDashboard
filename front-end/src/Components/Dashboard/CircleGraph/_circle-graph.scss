@@ -52,10 +52,11 @@
 			&>h4 {
 				color: #74E0FF;
 				font-size: 10vh;
-				font-weight: 100;
+				font-weight: 200;
 				margin: 0;
 				@media #{$mq-670} {
 					font-size: 9vh;
+					font-weight: 100;
 				}
 			}
 		}

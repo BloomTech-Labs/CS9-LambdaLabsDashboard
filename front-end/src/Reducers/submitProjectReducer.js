@@ -1,7 +1,7 @@
 const initialState = [];
 
 const submitProjectReducer = (state = initialState, action) => {
-  console.log("?===>", action.type);
+  // console.log("?===>", action.type);
   switch (action.type) {
     case "projectId":
       return (state = [action.payload]);
