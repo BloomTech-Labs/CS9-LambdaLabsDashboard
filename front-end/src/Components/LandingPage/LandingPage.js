@@ -89,7 +89,7 @@ class LandingPage extends Component{
     const { newUser, name, email, password } = this.state;
     const url = newUser ? '/users' : '/login'; 
     const body = newUser ? { name, email, password } : { email, password };
-    Axios.post(`http://localhost:4000${url}`, body)
+    Axios.post(url, body)
       .then(res => {
         if(typeof res.data === 'object') {
           const { token } = res.data;

@@ -2,7 +2,7 @@ import Axios from 'axios';
 
 export const getDataForProject = repository => {
 	return dispatch => {
-		Axios.post('http://localhost:4000/externalApis', { repository })
+		Axios.post('/externalApis', { repository })
     .then(api => {
       if(api.data) {
         const { project, team, trello, totalCards, inProgress, completeness } = api.data;
