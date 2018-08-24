@@ -16,11 +16,16 @@ import charge from "./charge/chargeRoute.js";
 import googleRedirect from "./google/googleRedirect.js";
 import googleRoute from "./google/googleRoute.js";
 import ProjectUsers from "./ProjectUsers/projectUsersRoute.js";
+<<<<<<< HEAD
 
+=======
+import ExternalApiRoutes from './ExternalApis/ExternalApiRoutes';
+require('dotenv').config();
+>>>>>>> 27ba6333cbc6e4a312c3c3be739589161cacb26a
 const Server = express();
 const sessionOptions = {
   maxAge: 24 * 60 * 60 * 1000,
-  keys: [keys.session.cookieKey]
+  keys: [process.env.cookieKey]
 };
 const staticFiles = express.static(
   path.join(__dirname, "../../front-end/build")
@@ -28,21 +33,26 @@ const staticFiles = express.static(
 Server.use(cors());
 Server.use(helmet());
 Server.use(bodyParser.json());
+Server.use((req, res, next) => {
+ res.setHeader('Access-Control-Allow-Origin', '*');
+ res.setHeader('Access-Control-Allow-Credentials', 'true');
+ res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT,DELETE');
+ res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers');
+ res.setHeader('Cache-Control', 'no-cache');
+ next();
+});
 Server.use(staticFiles);
 
 const port = process.env.PORT || 4000;
 
 mongoose
-  .connect(
-    keys.mongodb.dbURL,
-    { useNewUrlParser: true }
-  )
-  .then(p => {
-    console.log("=== connected to lambdadashboard==");
-  })
-  .catch(err => {
-    console.log(`err:${err}`);
-  });
+  .connect(process.env.MONGO_URL, { useNewUrlParser: true })
+    .then(p => {
+      console.log("=== connected to lambdadashboard==");
+    })
+    .catch(err => {
+      console.log(`err:${err}`);
+    });
 
 Server.get("/", (req, res) => {
   res.status(200).json({ msg: "api is running!" });
@@ -57,6 +67,7 @@ Server.use("/students", students);
 Server.use("/auth/google/callback", googleRedirect);
 Server.use("/google", googleRoute);
 Server.use("/projectUsers", ProjectUsers);
+Server.use("/externalApis", ExternalApiRoutes);
 Server.use("*", staticFiles);
 
 // const googleRoute = require("./google/googleRoute.js");

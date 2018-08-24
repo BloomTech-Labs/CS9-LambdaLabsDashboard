@@ -15,9 +15,9 @@ const noneEmpty = (req, res, next) => {
 };
 
 const userEmpty = (req, res, next) => {
-  const username = req.body.username;
+  const email = req.body.email;
   const password = req.body.password;
-  if (username === "" || password === "") {
+  if (email === "" || password === "") {
     return res.status(400).json("credentials can`t be empty..!!!");
   } else {
     next();

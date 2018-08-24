@@ -7,11 +7,16 @@ body {
     Arial, sans-serif;
 }
 
+::-webkit-scrollbar { 
+    display: none; 
+}
+
 .App {
 	@include center;
 	min-height: 100vh;
 	width:  100%;
 	&>.body-container {
+		background: $darkergray;
 		@include center;
 		width: 100%;
 		min-height: 100vh;
@@ -36,3 +41,5 @@ body {
 @import 'components/Menu/menu.scss';
 @import 'components/Dashboard/dashboard.scss';
 @import 'components/CreateProject/CreateProject';
+@import 'components/Billing/billing.scss';
+@import 'components/LandingPage/landing-page.scss';

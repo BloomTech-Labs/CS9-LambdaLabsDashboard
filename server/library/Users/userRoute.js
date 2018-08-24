@@ -16,22 +16,18 @@ router.get("/", (req, res) => {
     });
 });
 
-router.post("/", userEmpty, (req, res) => {
+router.post("/", (req, res) => {
   console.log("request ===>", req.body);
   const obj = req.body;
   const newUser = UserModel(obj);
   newUser
     .save()
     .then(p => {
-      console.log(p);
       const token = makeToken(newUser);
-
-      res
-        .status(200)
-        .json({ msg: "user posted successfully ", newUser, token });
+      res.status(200).json({ msg: "user posted successfully ", newUser, token });
     })
     .catch(error => {
-      res.status(200).json({ msg: "... not able to post your user", error });
+      res.send(`${obj.email} already exists. Please login`);
     });
 });
 
