@@ -65,6 +65,7 @@ class LandingPage extends Component {
     });
   };
 
+<<<<<<< HEAD
   handleName = name => {
     return this.nameReg.test(name);
   };
@@ -97,6 +98,18 @@ class LandingPage extends Component {
         } else {
           this.handleError(res.data);
         }
+=======
+  userLogin = () => {
+    const object = {
+      username: this.state.username,
+      password: this.state.password
+    };
+    console.log("===>", object);
+    const promise = axios.post("http://localhost:4000/login", object);
+    promise
+      .then(response => {
+        console.log(response.data);
+>>>>>>> parent of 88a0e06a... ready but still not good in streaming data
       })
       .catch(err => {
         console.log(err);

@@ -40,10 +40,80 @@ class EditStudent extends Component {
       });
   };
 
+<<<<<<< HEAD
   render() {
     // console.log(this.props.match.params.id);
     return (
       <div className="editStudent">
+=======
+  gettingGithubHandles = () => {
+    if (
+      this.props.studentsGithub.length > 0 &&
+      this.props.studentsGithub !== undefined &&
+      this.props.studentsGithub !== null
+    ) {
+      const logins = this.props.studentsGithub.map(p => {
+        return p.login;
+      });
+      return logins;
+    }
+  };
+
+  filteringHandles = () => {
+    let handlesArray = [];
+    let handles = this.gettingGithubHandles();
+    console.log("handles ===>:", handles);
+    if (handles !== undefined && handles.length > 0) {
+      for (let i = 0; i < handles.length; i++) {
+        if (!handlesArray.includes(handles[i])) {
+          handlesArray.push(handles[i]);
+        }
+      }
+    }
+    console.log("handlesarray==>", handlesArray);
+    return handlesArray;
+  };
+
+  pullingGithubUsersRealInfo = () => {
+    const dummyData = {};
+  };
+
+  render() {
+    // const handles = this.filteringHandles();
+    // const token = "47c075cdc8b2bd9d1c727790fc09558e85597179";
+
+    // for (let i = 0; i < handles.length; i++) {
+    //   const promise = axios.get(`https://api.github.com/users/${handles[i]}`, {
+    //     headers: { Authorization: `bearer ${token}` }
+    //   });
+
+    //   promise.then(res => {
+    //     console.log("res===> ", res.data);
+
+    //     this.props.collectingData({
+    //       FullName: res.data.name,
+    //       githubHandle: res.data.login,
+    //       githubURL: res.data.html_url,
+    //       location: res.data.location
+    //     });
+    //   });
+    // }
+
+    return (
+      <div className="editStudent">
+        <div>
+          <div>
+            Full Name:
+            {this.props.studentInfo.studentName}
+          </div>
+          <div>Trello: {this.props.studentInfo.trelloName}</div>
+
+          <div>Github: xxxxx</div>
+          <div>Email: xxxxx</div>
+          <div>: xxxxx</div>
+        </div>
+
+>>>>>>> parent of 88a0e06a... ready but still not good in streaming data
         <h1> Edit Student</h1>
         <input
           type="text"

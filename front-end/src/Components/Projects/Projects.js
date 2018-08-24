@@ -32,23 +32,13 @@ class Projects extends Component {
       this.fetchingListsFromTrello(this.props.logins[0].trelloName);
     }
   }
-  // shouldComponentUpdate() {
-  //   this.fetchingMembersFromTrello();
-  // }
-  componentDidMount() {
-    // if (this.props.logins[0] !== undefined) {
-    //   this.fetchingMembersFromTrello(this.props.logins[0].trelloName);
-    //   this.fetchingPullsFromGithub(this.props.logins[0].githubHandle);
-    //   this.fetchingCardsFromTrello(this.props.logins[0].trelloName);
-    //   this.fetchingListsFromTrello(this.props.logins[0].trelloName);
-    // }
-    this.fetchingData();
-    // this.savingStudentsInDB();
-    // this.fetchingStudentsFromDataBase();
-  }
-  // shouldComponentUpdate({}){
 
-  // }
+  componentDidMount() {
+    this.fetchingData();
+    this.fetchingMembersFromTrello();
+    this.savingStudentsInDB();
+    this.fetchingStudentsFromDataBase();
+  }
 
   fetchingCardsFromTrello(x) {
     // console.log("x===>", x);
@@ -275,7 +265,7 @@ class Projects extends Component {
                   Edit
                 </button>
               </Link>
-              <Link to="/project-dashboard">
+              <Link to="#">
                 <button className="dashBoardButton">Dashboard</button>
               </Link>
               <button
@@ -295,8 +285,6 @@ class Projects extends Component {
     }
   }
   render() {
-    console.log("projects props===>", this.props.logins[0]);
-
     this.state.pullRequests.map(request => {
       return request.user;
       console.log("githubplls ===>", request.user.login);
@@ -311,6 +299,7 @@ class Projects extends Component {
         </h1>
         <div className="allCards">
           {this.displayProjects()}
+
           <Link to="/createProject">
             <div className="newProjectCard">
               <span> New Project</span>
