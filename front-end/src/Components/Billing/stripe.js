@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { StripeProvider } from "react-stripe-elements";
 
-import MyStoreCheckout from "./MyStoreCheckout";
+import MyStoreCheckout from "./myStoreCheckout";
 class stripeApp extends Component {
   render() {
     return (
