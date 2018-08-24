@@ -44,7 +44,11 @@ class LandingPage extends Component {
     const promise = axios.post("http://localhost:4000/login", object);
     promise
       .then(response => {
-        console.log(response.data);
+        console.log(response.data.token);
+        if (response.data.token) {
+          localStorage.setItem("token", response.data.token);
+          this.props.history.push("/projects");
+        }
       })
       .catch(error => {
         console.log(error);

@@ -16,6 +16,10 @@ class EditStudent extends Component {
     };
   }
 
+  componentWillMount() {
+    this.pullingGithubUsersRealInfo();
+  }
+
   editHandler = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
@@ -70,42 +74,62 @@ class EditStudent extends Component {
   };
 
   pullingGithubUsersRealInfo = () => {
-    const dummyData = {};
+    console.log("hilallllll====>");
+    const handles = this.filteringHandles();
+    const token = "443defdfb160d600093d598bd94798e4a66f6d19";
+    for (let i = 0; i < handles.length; i++) {
+      const promise = axios.get(`https://api.github.com/users/${handles[i]}`, {
+        headers: { Authorization: `bearer ${token}` }
+      });
+      promise.then(res => {
+        console.log("res===> ", res.data);
+        this.props.collectingData({
+          FullName: res.data.name,
+          githubHandle: res.data.login,
+          githubURL: res.data.html_url,
+          location: res.data.location
+        });
+      });
+    }
   };
 
   render() {
-    // const handles = this.filteringHandles();
-    // const token = "47c075cdc8b2bd9d1c727790fc09558e85597179";
-
-    // for (let i = 0; i < handles.length; i++) {
-    //   const promise = axios.get(`https://api.github.com/users/${handles[i]}`, {
-    //     headers: { Authorization: `bearer ${token}` }
-    //   });
-
-    //   promise.then(res => {
-    //     console.log("res===> ", res.data);
-
-    //     this.props.collectingData({
-    //       FullName: res.data.name,
-    //       githubHandle: res.data.login,
-    //       githubURL: res.data.html_url,
-    //       location: res.data.location
-    //     });
-    //   });
-    // }
-
+    console.log("githubDummyData", this.props.githubDummyData[0]);
+    let student = "";
+    if (this.props.githubDummyData.length > 0) {
+      student = this.props.githubDummyData.filter(p => {
+        console.log("p==>", p);
+        return p.FullName === this.props.studentInfo.studentName;
+      });
+    }
+    console.log("s==>", student);
     return (
       <div className="editStudent">
-        <div>
+        <div className="studentIfo">
           <div>
             Full Name:
             {this.props.studentInfo.studentName}
           </div>
           <div>Trello: {this.props.studentInfo.trelloName}</div>
 
-          <div>Github: xxxxx</div>
-          <div>Email: xxxxx</div>
-          <div>: xxxxx</div>
+          <div>
+            Github:
+            {student[0] !== null &&
+              student[0] !== undefined &&
+              student[0].githubHandle}
+          </div>
+          <div>
+            Email:{" "}
+            {student[0] !== null &&
+              student[0] !== undefined &&
+              student[0].email}
+          </div>
+          <div>
+            location:
+            {student[0] !== null &&
+              student[0] !== undefined &&
+              student[0].location}
+          </div>
         </div>
 
         <h1> Edit Student</h1>

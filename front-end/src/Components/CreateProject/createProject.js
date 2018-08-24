@@ -22,30 +22,9 @@ class CreateProject extends Component {
   createProjectHandler = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
-
-  // submitProject = dispatch => {
-  //   const object = {
-  //     projectName: this.state.projectName,
-  //     githubHandle: this.state.githubHandle,
-  //     trelloName: this.state.trelloName,
-  //     class: this.state.class,
-  //     dueDate: this.state.dueDate
-  //   };
-  //   console.log(object);
-  //   const promise = axios.post("http://localhost:4000/projects", object);
-  //   return dispatch => {
-  //     promise
-  //       .then(response => {
-  //         dispatch({
-  //           type: "projectId",
-  //           payload: response.data
-  //         });
-  //       })
-  //       .catch(error => {
-  //         console.log(error);
-  //       });
-  //   };
-  // };
+  componentDidMount() {
+    this.props.submitProject();
+  }
 
   render() {
     console.log("props ====>", this.props);
@@ -98,6 +77,7 @@ class CreateProject extends Component {
               this.state.dueDate
             );
             this.props.bill(this.state.githubHandle, this.state.trelloName);
+            this.props.history.push("./projects");
           }}
         >
           Submit
