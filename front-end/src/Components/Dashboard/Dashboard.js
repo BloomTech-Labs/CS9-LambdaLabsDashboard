@@ -9,7 +9,7 @@ import { getDataForProject } from '../../Actions/ExternalApis';
 
 class Dashboard extends PureComponent {
 
-  componentDidMount = () => this.props.getDataForProject('CS9-LambdaLabsDashboard');
+  UNSAFE_componentWillMount = () => this.props.getDataForProject('CS9-LambdaLabsDashboard');
 
   render = () => {
     const { trello, countUp, completeness } = this.props;
@@ -39,6 +39,12 @@ class Dashboard extends PureComponent {
               <CircleDetails  />
             </div>
             <div className='box team-box'>
+              <div 
+                className='bottom'
+                style={{
+                  background: 'linear-gradient(to right, #74E0FF, #48A3FF)',
+                  display: 'flex'
+                }}></div>
               <Team setHeight={this.setHeight} />
             </div>
             <div className='box stat-box'>
@@ -59,11 +65,11 @@ class Dashboard extends PureComponent {
               <div 
                 className='bottom'
                 style={{
-                  background: 'linear-gradient(to right, #93BAFF, #6CB0FF)'
+                  background: 'linear-gradient(to right, #FD9121, #FC4026)'
                 }}></div>
               <StatBox
-                color1="#93BAFF"
-                color2="#6CB0FF"
+                color1="#FD9121"
+                color2="#FC4026"
                 gradientID="inProg"
                 trello={countUp ? trello['In Progress'].cards : []}
                 title="In Progress"
