@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
-import keys from "../keys";
+require('dotenv').config();
 
-const secret = keys.secretKey.secretKey;
+const secret = process.env.SECRET_KEY;
 
 function makeToken(user) {
   const payload = {

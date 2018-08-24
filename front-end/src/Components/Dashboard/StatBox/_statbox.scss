@@ -64,16 +64,10 @@
 				}
 				&>h2 {
 					text-align: left;
-					font-size: 4.5vh;
+					font-size: 2em;
 					margin: 0;
-					@media #{$mq-670} {
-						font-size: 4.5vh;
-					}
-					@media #{$mq-890} {
-						font-size: 5.5vh;
-					}
 					@media #{$mq-1400} {
-						font-size: 4.5vh;
+						font-size: 1.25em;
 					}
 				}
 			}

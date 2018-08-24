@@ -4,9 +4,7 @@ import { connect } from 'react-redux';
 
 class PrivateRoute extends Component {
   render = () => {
-  	console.log(this.props);
   	const { component: CurrentRoute, location, auth, ...rest } = this.props;
-  	console.log(auth);
     return (
       <Route
       	location={location} 

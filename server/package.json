@@ -19,9 +19,11 @@
   },
   "homepage": "https://github.com/Lambda-School-Labs/CS9-LambdaLabsDashboard#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "bcrypt": "^3.0.0",
     "cookie-session": "^2.0.0-beta.3",
     "cors": "^2.8.4",
+    "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "helmet": "^3.13.0",
     "jsonwebtoken": "^8.3.0",

@@ -6,7 +6,7 @@ import {
 const initialState = [];
 
 const trelloGithubReducer = (state = initialState, action) => {
-  console.log("action===>", action.type);
+  // console.log("action===>", action.type);
   switch (action.type) {
     case TRELLONAME:
       return (state = state.push(action.payload));
