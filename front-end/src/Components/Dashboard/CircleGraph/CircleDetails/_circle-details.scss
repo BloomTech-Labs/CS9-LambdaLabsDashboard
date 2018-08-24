@@ -29,21 +29,24 @@
 				text-align: center;
 				margin: 0;
 				&:first-of-type {
-					font-size: 8.5vh;
+					font-size: 3.5em;
 					font-weight: 200;
 					transition-duration: 0.75s;
 				}
 				&:last-of-type {
-					font-size: 2.25vh;
+					font-size: 0.9em;
 					font-weight: 800;
 					@media #{$mq-iphoneX} {
-						font-size: 2vh;
+						font-size: 1em;
 					}
 					@media #{$mq-670} {
-						font-size: 1.85vh;
-					} 
+						font-size: 0.8em;
+					}
 					@media #{$mq-957} {
-						font-size: 2.25vh;
+						font-size: 0.9em;
+					} 
+					@media #{$mq-1070} {
+						font-size: 0.8em;
 					} 
 				}
 			}
