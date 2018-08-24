@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Route } from "react-router-dom";
-import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
-import Classes from "./Components/Classes/classes";
+import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
+import Classes from "./Components/Classes/Classes";
 import LandingPage from "./Components/LandingPage/LandingPage";
-import Projects from "./Components/Projects/projects";
+import Projects from "./Components/Projects/Projects";
 import Billing from "./Components/Billing/Billing";
-import CreateProject from "./Components/CreateProject/createProject";
-import EditProject from "./Components/EditProject/editProject";
-import EditStudent from "./Components/EditStudent/editStudent";
+import CreateProject from "./Components/CreateProject/CreateProject";
+import EditProject from "./Components/EditProject/EditProject";
+import EditStudent from "./Components/EditStudent/EditStudent";
 import Settings from "./Components/Settings/Settings";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import Menu from "./Components/Menu/Menu";
@@ -16,7 +16,6 @@ import Header from "./Components/Header/Header";
 import "./App.css";
 
 class App extends Component {
-
   shouldComponentUpdate = ({ location, classes }) => {
     const curProps = this.props;
     if (location.pathname !== curProps.location.pathname) return true;
@@ -42,7 +41,11 @@ class App extends Component {
             path="/projects/EditProject/:id"
             component={EditProject}
           />
-          <PrivateRoute exact path="/projects/EditStudent" component={EditStudent} />
+          <PrivateRoute
+            exact
+            path="/projects/EditStudent"
+            component={EditStudent}
+          />
           <PrivateRoute path="/settings" component={Settings} />
           <PrivateRoute path="/project-dashboard" component={Dashboard} />
         </div>

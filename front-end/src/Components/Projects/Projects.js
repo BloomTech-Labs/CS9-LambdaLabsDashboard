@@ -32,13 +32,23 @@ class Projects extends Component {
       this.fetchingListsFromTrello(this.props.logins[0].trelloName);
     }
   }
+  // shouldComponentUpdate() {
+  //   this.fetchingMembersFromTrello();
+  // }
   componentDidMount() {
+    // if (this.props.logins[0] !== undefined) {
+    //   this.fetchingMembersFromTrello(this.props.logins[0].trelloName);
+    //   this.fetchingPullsFromGithub(this.props.logins[0].githubHandle);
+    //   this.fetchingCardsFromTrello(this.props.logins[0].trelloName);
+    //   this.fetchingListsFromTrello(this.props.logins[0].trelloName);
+    // }
     this.fetchingData();
-
-    this.savingStudentsInDB();
-
-    this.fetchingStudentsFromDataBase();
+    // this.savingStudentsInDB();
+    // this.fetchingStudentsFromDataBase();
   }
+  // shouldComponentUpdate({}){
+
+  // }
 
   fetchingCardsFromTrello(x) {
     // console.log("x===>", x);
@@ -109,7 +119,7 @@ class Projects extends Component {
     );
     members
       .then(res => {
-        // console.log("members ====>", res.data);
+        console.log("members ====>", res.data);
         if (res.data !== undefined || res.data !== undefined) {
           this.setState({ students: res.data });
         }
@@ -193,49 +203,62 @@ class Projects extends Component {
             </div>
             <div>
               <span>Total Students:</span>
-              {this.state.students.length || this.state.backupStudents.length}
+              {
+                this.state.students
+                  .length /*|| this.state.backupStudents.length}*/
+              }
             </div>
             <div>
               <span>DueDate: </span>
               {project.dueDate}
             </div>
             <div className="students">
-              {this.state.students.length > 0
-                ? this.state.students.map(student => {
-                    // console.log("student===>", student);
-                    return (
-                      <div key={student.fullName} className="student">
-                        <div>
-                          <Link to="/projects/EditStudent">
-                            <span>Student:</span>
-                            {student.fullName}
-                          </Link>
-                        </div>
-                        <div>
-                          <span>Participation:</span>
-                          {student.participation}
-                        </div>
-                      </div>
-                    );
-                  })
-                : /*this.props.logins[0].githubHandle === project.projectName &&*/
-                  this.state.backupStudents.map(student => {
-                    console.log("backupstudent===>", student);
-                    return (
-                      <div key={student.fullName} className="student">
-                        <div>
-                          <Link to="/projects/EditStudent">
-                            <span>Student:</span>
-                            {student}
-                          </Link>
-                        </div>
-                        <div>
-                          <span>Participation:</span>
-                          {student.participation}
-                        </div>
-                      </div>
-                    );
-                  })}
+              {/*this.state.students.length > 0 */
+
+              this.state.students.map(student => {
+                // console.log("student===>", student);
+                return (
+                  <div key={student.fullName} className="student">
+                    <div
+                      onClick={() => {
+                        this.props.studentTrelloInfo(
+                          student.fullName,
+                          student.username
+                        );
+                        this.props.sendGithubInf(this.state.pullRequests);
+                      }}
+                    >
+                      <Link to="/projects/EditStudent">
+                        <span>Student:</span>
+                        {student.fullName}
+                      </Link>
+                    </div>
+                    <div>
+                      <span>Participation:</span>
+                      {student.participation}
+                    </div>
+                  </div>
+                );
+              })
+              // : /*this.props.logins[0].githubHandle === project.projectName &&*/
+              //   this.state.backupStudents.map(student => {
+              //     console.log("backupstudent===>", student);
+              //     return (
+              //       <div key={student.fullName} className="student">
+              //         <div>
+              //           <Link to="/projects/EditStudent">
+              //             <span>Student:</span>
+              //             {student}
+              //           </Link>
+              //         </div>
+              //         <div>
+              //           <span>Participation:</span>
+              //           {student.participation}
+              //         </div>
+              //       </div>
+              //     );
+              //   })
+              }
             </div>
             <div className="buttons">
               <Link to={`projects/EditProject/${project._id}`}>
@@ -252,7 +275,7 @@ class Projects extends Component {
                   Edit
                 </button>
               </Link>
-              <Link to="#">
+              <Link to="/project-dashboard">
                 <button className="dashBoardButton">Dashboard</button>
               </Link>
               <button
@@ -272,18 +295,22 @@ class Projects extends Component {
     }
   }
   render() {
-    console.log(" projects props ===>", this.props);
+    console.log("projects props===>", this.props.logins[0]);
+
+    this.state.pullRequests.map(request => {
+      return request.user;
+      console.log("githubplls ===>", request.user.login);
+    });
+
+    // console.log(" projects props ===>", this.props);
 
     return (
       <div className="projects">
         <h1>
           <span>Projects</span>
-          {/* {this.savingStudentsInDB()}
-          {this.fetchingStudentsFromDataBase()} */}
         </h1>
         <div className="allCards">
           {this.displayProjects()}
-
           <Link to="/createProject">
             <div className="newProjectCard">
               <span> New Project</span>
@@ -297,7 +324,7 @@ class Projects extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log("projects satate ===>", state.submitProjectReducer.length);
+  console.log("projects satate ===>", state.submitProjectReducer);
   let projectId = "";
   let logins = "";
   if (
@@ -331,6 +358,27 @@ const mapDispatchToProps = dispatch => {
       dispatch({
         type: "editProject",
         payload: { projectName, githubHandle, trelloName }
+      });
+    },
+    studentTrelloInfo: (fullName, username) => {
+      dispatch({
+        type: "studentInfo",
+        payload: {
+          studentName: fullName,
+          trelloName: username
+        }
+      });
+    },
+    sendGithubInf: pullRequests => {
+      let requests = pullRequests.map(request => {
+        return request.user;
+        console.log("githubplls ===>", request.user.login);
+      });
+      dispatch({
+        type: "studentGithubInfo",
+        payload: {
+          githubUsers: requests
+        }
       });
     }
   };

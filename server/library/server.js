@@ -16,8 +16,12 @@ import charge from "./charge/chargeRoute.js";
 import googleRedirect from "./google/googleRedirect.js";
 import googleRoute from "./google/googleRoute.js";
 import ProjectUsers from "./ProjectUsers/projectUsersRoute.js";
+<<<<<<< HEAD
+
+=======
 import ExternalApiRoutes from './ExternalApis/ExternalApiRoutes';
 require('dotenv').config();
+>>>>>>> 27ba6333cbc6e4a312c3c3be739589161cacb26a
 const Server = express();
 const sessionOptions = {
   maxAge: 24 * 60 * 60 * 1000,

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import CreateClass from "./createClass.js";
-import EditClass from "./editClass.js";
+import CreateClass from "./CreateClass.js";
+import EditClass from "./EditClass.js";
 export default class Classes extends Component {
   constructor(props) {
     super(props);
