@@ -4,13 +4,13 @@ import { connect } from 'react-redux';
 
 class PrivateRoute extends Component {
   render = () => {
-  	const { component: CurrentRoute, location, auth, ...rest } = this.props;
+  	const { component: CurrentRoute, location, auth, userID, ...rest } = this.props;
     return (
       <Route
       	location={location} 
       	{...rest} 
       	render={props => {
-		      return auth ? <CurrentRoute {...props} /> :
+		      return auth && userID ? <CurrentRoute {...props} /> :
 	        <Redirect to={{ pathname: '/', state: { from: location } }} />
 		    }} />
 		);
@@ -18,7 +18,8 @@ class PrivateRoute extends Component {
 }
 
 const mSTP = ({ Navigation }) => {
-	return { auth: Navigation.auth };
+  const { auth, userID } = Navigation;
+	return { auth, userID };
 }
 
 export default connect(mSTP, null, null, { pure: false })(PrivateRoute);
