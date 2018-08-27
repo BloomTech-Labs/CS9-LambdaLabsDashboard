@@ -1,4 +1,4 @@
-{
+ {
   "env": {
     "production": {
       "presets": ["es2015", "stage-0", "minify"], 
@@ -6,9 +6,9 @@
       "comments": false
     },
     "development": {
-      "presets": ["es2015", "stage-0", "transform-runtime"], 
-      "plugins": [],
+      "presets": ["es2015", "stage-0"], 
+      "plugins": ["transform-runtime"],
       "comments": true
     }
   }
-}
+} 
