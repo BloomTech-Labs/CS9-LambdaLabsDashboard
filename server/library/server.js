@@ -17,6 +17,7 @@ import googleRedirect from "./google/googleRedirect.js";
 import googleRoute from "./google/googleRoute.js";
 import ProjectUsers from "./ProjectUsers/projectUsersRoute.js";
 import ExternalApiRoutes from './ExternalApis/ExternalApiRoutes';
+import ValidateTokenRoute from './Token/ValidateTokenRoute';
 require('dotenv').config();
 const Server = express();
 const sessionOptions = {
@@ -64,6 +65,7 @@ Server.use("/auth/google/callback", googleRedirect);
 Server.use("/google", googleRoute);
 Server.use("/projectUsers", ProjectUsers);
 Server.use("/externalApis", ExternalApiRoutes);
+Server.use("/token", ValidateTokenRoute)
 Server.use("*", staticFiles);
 
 // const googleRoute = require("./google/googleRoute.js");

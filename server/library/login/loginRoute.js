@@ -17,7 +17,8 @@ router.post("/", (req, res) => {
         .then(result => {
           if (result) {
             const token = makeToken(p);
-            res.status(200).json({ msg: "login successful", p, token });
+            const { _id } = p;
+            res.status(200).json({ msg: "login successful", _id, token });
           } else {
             res.send("Incorrect password");
           }
