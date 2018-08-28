@@ -9,6 +9,10 @@
 		width: 90%;
 		height: auto;
 		margin: auto;
+		min-height: 70vh;
+	    @media #{$mq-1070} {
+	      width: 95%;
+	    }
 		&>h1 {
 			font-size: 3em;
 			font-weight: 200;
@@ -16,6 +20,7 @@
 			width: 100%;
 			text-align: center;
 			margin: 2em auto 0.5em auto;
+			position: relative;
 			@media #{$mq-670} {
 				margin: 2.5em auto 1em auto;
 			}
@@ -31,150 +36,63 @@
 				flex-direction: row;
 				flex-wrap: wrap;
 			}
-			&>.class {
-				width: 90%;
-				background: $darkgray;
-				@include center;
-				@include headerShadow;
-				border-radius: 5px;
-				margin: 1em;
-				position: relative;
-				@media #{$mq-1070} {
-					margin: 1.25em;
-				}
-				&:hover {
-					background: lighten($darkgray, 2.5%);
-				}
-				@media #{$mq-670} {
-					width: auto;
-					min-width: 250px;
-					max-width: 350px;
-				}
-				&>div {
-					@include center;
-					flex-direction: column;
-					padding: 5% 0;
-					&>h2 {
-						font-weight: 600;
-						color: $purple;
-						margin-top: 0;
-					}
-					&>div {
-						margin: 10px 0;
-						color: $purple;
-					}
-				}
-				&>button {
-					outline: none; border: none;
-					background: url('pictures/edit.svg') no-repeat center;
-					background-size: 45% 45%;
-					position: absolute;
-					top: 5px; left: 5px;
-					height: 32.5px; width: 32.5px;
-					@include center;
-					border-right: 1px solid $purple;
-					border-bottom: 1px solid $purple;
-				}
-				&>.delete {
-					top: auto;
-					bottom: 5px;
-					background: url('pictures/delete.svg') no-repeat center;
-					background-size: 45% 45%;
-					border-right: 1px solid $redish;
-					border-top: 1px solid $redish;
-					border-bottom: none;
-				}
-			}
-		}
-	}
-	&>.class-delete {
-		position: fixed;
-		top: 0; right: 0;
-		height: 100%;
-		width: 100%;
-		display: none;
-		z-index: 5;
-		@media #{$mq-1070} {
-			width: calc(100% - 200px);
-		}
-		&>div {
-			height: 100%;
-			width: 100%;
-			background: rgba(#000, 0.75);
-			@include center;
-			opacity: 0;
-			transition-duration: 0.3s;
-			&>div {
+			&>h2 {
+				color: $purple;
+				text-align: center;
 				width: 80%;
-				width: auto;
-				background: #F1F7FB;
-				border-radius: 5px;
-				@include center;
-				flex-direction: column;
-				transform: scale(0);
-				transition-duration: 0.3s;
-				&>h4 {
-					width: 80%;
-					text-align: center;
-					margin-bottom: 0.5em;
-					color: $darkergray;
+				margin-bottom: 50%;
+				@media #{$mq-670} {
+					margin-bottom: 25%;
 				}
-				&>.buttons {
-					width: 100%;
-					@include center;
-					&>button {
-						outline: none; border: none;
-						margin: 0; padding: 0;
-						height: 37.5px;
-						width: 40%; max-width: 200px;
-						margin: 2.5%;
-						background: $redish;
-						color: #fff;
-						font-weight: 600;
-						border-radius: 2.5px;
-						@include buttonShadow;
-						&:last-of-type {
-							background: #5BD070;
-						}
-					}
+				@media #{$mq-1070} {
+					margin-bottom: 10%;
 				}
-			}
-		}
-	}
-	&>.class-delete-show {
-		@include center;
-	}
-	&>.class-delete-enter {
-		&>div {
-			opacity: 1;
-			transition-delay: 0.1s;
-			transition-duration: 0.3s;
-			&>div {
-				transform: scale(1);
-				transition-delay: 0.25s;
-				transition-duration: 0.3s;
-				transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-			}
-		}
-	}
-	&>.class-delete-loading>div>div>.buttons>button:last-of-type {
-		background: #5BD070 url('./pictures/loader.gif') no-repeat center;
-		background-size: 25px 25px;
-		color: transparent;
-		width: 37.5px;
-		border-radius: 50%;
-		transition-duration: 0.3s;
-	}
-	&>.class-delete-close {
-		@include center;
-		&>div {
-			opacity: 0;
-			transition-delay: 0.25s;
-			&>div {
-				transform: scale(0);
-				transition-delay: 0s;
-				transition-timing-function: cubic-bezier(0.6, -0.28, 0.735, 0.045);
 			}
 		}
 	}
 }
+
+.classes-show {
+	&>.center {
+		&>div {
+			&>.class {
+				transform: translateY(0);
+				opacity: 1;
+			}
+		}
+	}
+	&>.create-class {
+		transform: scale(1) rotate(0deg);
+		transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+		transition-delay: 0.5s;
+	}
+}
+
+.create-class {
+	outline: none; border: none;
+	position: fixed;
+	bottom: 2.5vh; right: 2.5vh;
+	height: 50px; width: 50px;
+	background: $redish url('pictures/plus.svg') no-repeat center;
+	background-size: 65% 65%;
+	border-radius: 50%;
+	@include headerShadow;
+	z-index: 2;
+	transform: scale(0) rotate(360deg);
+	transition-timing-function: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+	transition-duration: 0.4s;
+	@media #{$mq-670} {
+		height: 70px; width: 70px;
+		bottom: 3.5vh; right: 3.5vh;
+	}
+	&:hover {
+		transition-duration: 0.3s;
+		transition-delay: 0s;
+		transform: scale(1.1);
+	}
+}
+
+@import 'Class/class.scss';
+@import 'CreateClass/create-class.scss';
+@import 'ConfirmDelete/confirm-delete.scss';
+@import 'class-modals.scss';

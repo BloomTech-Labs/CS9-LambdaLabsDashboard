@@ -5,32 +5,29 @@ import { userEmpty } from "../MiddleWare/middleWare.js";
 import authenticate from "../MiddleWare/authJWT.js";
 const Router = express.Router();
 
-Router.get("/", (req, res) => {
-  console.log(req.body);
-  ClassModel.find({})
-    .populate("students", "-_id")
-    .populate("project", "-_id")
-    .then(p => {
-      res.status(200).json({ classes: p });
+Router.get("/:userID", (req, res) => {
+  const { userID } = req.params
+  ClassModel.find({ userID })
+    .populate("project")
+    .then(classes => {
+      res.status(200).json({ classes });
     })
-    .catch(error => {
-      res.status(500).json({ msg: error });
-    });
+    .catch(error => res.send('error'));
 });
 
-Router.post("/", userEmpty, (req, res) => {
+Router.post("/", (req, res) => {
   console.log("request ===>", req.body);
   const obj = req.body;
+  const { userID } = obj;
   const newClass = ClassModel(obj);
-  newClass
-    .save()
-    .then(p => {
-      console.log(p);
-      res.status(200).json({ newClass });
+  newClass.save()
+    .then(newClass => {
+      console.log(newClass);
+      ClassModel.find({ userID })
+        .then(classes => res.status(200).json({classes}))
+        .catch(notClasses => res.send('error'));
     })
-    .catch(error => {
-      res.status(200).json({ msg: "... not able to post your user", error });
-    });
+    .catch(error => res.send('error'));
 });
 
 Router.get("/:id", (req, res) => {
@@ -46,14 +43,13 @@ Router.get("/:id", (req, res) => {
     });
 });
 
-Router.put("/:id", (req, res) => {
-  const { id } = req.params;
-  const obj = req.body;
-  console.log(obj);
-  console.log(id);
-  ClassModel.findByIdAndUpdate(id, obj, { new: true })
-    .then(p => {
-      res.status(200).json({ msg: "class updated successfully", p });
+Router.put("/:userID/:id", (req, res) => {
+  const { userID, id } = req.params;
+  ClassModel.findByIdAndUpdate(id, req.body, {new: true})
+    .then(doc => {
+      ClassModel.find({ userID })
+        .then(classes => res.status(200).json({classes}))
+        .catch(notClasses => res.send('error'));
     })
     .catch(err => {
       res.status(500).json({ msg: "... not able to update your class" });

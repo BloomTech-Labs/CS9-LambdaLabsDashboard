@@ -12,7 +12,8 @@ const definition = {
   userID: {
     type: ObjectId,
     required: true
-  }
+  },
+  projects: [{ type: ObjectId, ref: 'LambdaProject' }]
 };
 const options = {
   timestamps: true

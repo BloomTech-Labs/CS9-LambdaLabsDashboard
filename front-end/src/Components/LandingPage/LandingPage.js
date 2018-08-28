@@ -110,7 +110,7 @@ class LandingPage extends Component{
     this.setState({classes: "login login-loading login-remove"}, () => {
       setTimeout(() => {
         auth(id, token);
-        history.push('/projects');
+        history.push('/classes');
       }, 1500);
     });
   }

@@ -1,37 +1,6 @@
 const initialState = {
 	projects: [],
-	classes: [
-    {
-      _id: 'alskdjf',
-      name: 'CS9',
-      projects: ['Labs Dashboard', 'Hello', 'Goodbye']
-    },
-    {
-      _id: 'alskdjf',
-      name: 'CS10',
-      projects: ['Labs Dashboard', 'Hello', 'Goodbye']
-    },
-    {
-      _id: 'alskdjf',
-      name: 'CS11',
-      projects: ['Labs Dashboard', 'Hello', 'Goodbye']
-    },
-    {
-      _id: 'alskdjf',
-      name: 'CS9',
-      projects: ['Labs Dashboard', 'Hello', 'Goodbye']
-    },
-    {
-      _id: 'alskdjf',
-      name: 'CS10',
-      projects: ['Labs Dashboard', 'Hello', 'Goodbye']
-    },
-    {
-      _id: 'alskdjf',
-      name: 'CS11',
-      projects: ['Labs Dashboard', 'Hello', 'Goodbye']
-    }
-  ], 
+	classes: [], 
 	createError: false
 }
 
