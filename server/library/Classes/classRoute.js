@@ -3,9 +3,9 @@ import ClassModel from "./classModel.js";
 import { makeToken, secret } from "../MiddleWare/jwtMiddleWare.js";
 import { userEmpty } from "../MiddleWare/middleWare.js";
 import authenticate from "../MiddleWare/authJWT.js";
-const router = express.Router();
+const Router = express.Router();
 
-router.get("/", (req, res) => {
+Router.get("/", (req, res) => {
   console.log(req.body);
   ClassModel.find({})
     .populate("students", "-_id")
@@ -18,7 +18,7 @@ router.get("/", (req, res) => {
     });
 });
 
-router.post("/", userEmpty, (req, res) => {
+Router.post("/", userEmpty, (req, res) => {
   console.log("request ===>", req.body);
   const obj = req.body;
   const newClass = ClassModel(obj);
@@ -33,7 +33,7 @@ router.post("/", userEmpty, (req, res) => {
     });
 });
 
-router.get("/:id", (req, res) => {
+Router.get("/:id", (req, res) => {
   const { id } = req.params;
   ClassModel.findById(id)
     .populate("Students", "-_id")
@@ -46,7 +46,7 @@ router.get("/:id", (req, res) => {
     });
 });
 
-router.put("/:id", (req, res) => {
+Router.put("/:id", (req, res) => {
   const { id } = req.params;
   const obj = req.body;
   console.log(obj);
@@ -60,17 +60,17 @@ router.put("/:id", (req, res) => {
     });
 });
 
-router.delete("/:id", (req, res) => {
-  const id = req.params.id;
-
-  ClassModel.findById(id)
-    .remove()
+Router.delete("/:id/:userID", (req, res) => {
+  const { id, userID } = req.params;
+  ClassModel.findById(id).remove()
     .then(p => {
-      res.status(200).json({ msg: "...class  successfully deleted" });
+      ClassModel.find({ userID })
+        .then(classes => res.status(200).json({classes}))
+        .catch(notClasses => res.send('error'));
     })
     .catch(err => {
-      res.status(200).json({ msg: "... not able to  delete class" });
+      res.send('error');
     });
 });
 
-module.exports = router;
+export default Router

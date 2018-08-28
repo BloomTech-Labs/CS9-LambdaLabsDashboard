@@ -1,4 +1,4 @@
-.app-loader {
+.load {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -7,36 +7,23 @@
 	overflow: hidden;
 	width: 100%;
 	background: transparent;
-	z-index: 2000000000000;
+	z-index: 2;
 	@include center;
-	&::after {
-		content: "";
-		height: 100%;
-		width: 100%;
-		position: absolute;
-		background: $darkred;
-		top: 0;
-		left: 0;
-		transform: scaleY(0);
-		transform-origin: 50% 100%;
-		transition-duration: 0.3s
-	}
 	&>div {
 		@include center;
 		width: 100%;
 		height: 100%;
 		&>.show-box {
 			@include center;
-			width: 150px;
 		}
 	}
 }
 
 
 
-.loader {
+.load .loader {
   position: relative;
-  margin: 0px auto;
+  // margin: 0px auto;
   width: 150px;
   &:before {
     content:'';
@@ -45,7 +32,7 @@
   }
 }
 
-.circular {
+.load .circular {
   animation: rotate 2s linear infinite;
   height: 100%;
   transform-origin: center center;
@@ -56,7 +43,7 @@
 }
 
 
-.path {
+.load .path {
   stroke-dasharray: 1,200;
   stroke-dashoffset: 0;
   animation: 
@@ -106,7 +93,4 @@
 	transition-duration: 0.3s;
 	transition-delay: 0.3s;
 	transition-timing-function: ease-in-out;
-	&::after {
-		transform: scaleY(1)
-	}
 }

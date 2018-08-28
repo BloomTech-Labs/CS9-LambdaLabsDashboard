@@ -17,18 +17,14 @@ router.get("/", (req, res) => {
     });
 });
 
-router.post("/", noneEmpty, (req, res) => {
+router.post("/", (req, res) => {
   console.log("request ===>", req.body);
-  const obj = req.body;
-  const newProject = ProjectsModel(obj);
-  newProject
-    .save()
-    .then(p => {
-      res.status(200).json({ projectId: p._id });
+  const newProject = ProjectsModel(req.body);
+  newProject.save()
+    .then(project => {
+      res.status(200).json({ project });
     })
-    .catch(error => {
-      res.status(200).json({ msg: "... not able to post your project", error });
-    });
+    .catch(error => res.send('Error creating project'));
 });
 
 router.put("/:id", (req, res) => {

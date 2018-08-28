@@ -6,7 +6,7 @@ import Classes from "./Components/Classes/classes";
 import LandingPage from "./Components/LandingPage/LandingPage";
 import Projects from "./Components/Projects/projects";
 import Billing from "./Components/Billing/Billing";
-import CreateProject from "./Components/CreateProject/createProject";
+import CreateProject from "./Components/CreateProject/Create";
 import EditProject from "./Components/EditProject/editProject";
 import EditStudent from "./Components/EditStudent/editStudent";
 import Settings from "./Components/Settings/Settings";
@@ -21,6 +21,7 @@ class App extends Component {
     super(props);
     this.loader = document.getElementById("appLoader");
     this.callCount = 0;
+    this.url = window.location.pathname;
   }
   
   UNSAFE_componentWillMount = () => this.props.validateToken();
@@ -28,7 +29,7 @@ class App extends Component {
   UNSAFE_componentWillReceiveProps = ({ authOnLoad, history, location }) => {
     if(authOnLoad !== this.props.authOnLoad) {
       if(authOnLoad) {
-        if(location.pathname === "/")history.push("/projects");
+        if(location.pathname === "/") history.push(this.url);
         this.removeLoader(500)
       } else {
         if(this.callCount === 0) this.removeLoader(1000);
@@ -36,6 +37,13 @@ class App extends Component {
     }
     this.callCount++;
   }
+
+  shouldComponentUpdate = ({ location, classes }) => {
+    const curProps = this.props;
+    if (location.pathname !== curProps.location.pathname) return true;
+    else if (classes !== curProps.classes) return true;
+    return false;
+  };
 
   removeLoader = delay => {
     if(this.loader !== null) {
@@ -48,13 +56,6 @@ class App extends Component {
       }, delay)
     }
   }
-
-  shouldComponentUpdate = ({ location, classes }) => {
-    const curProps = this.props;
-    if (location.pathname !== curProps.location.pathname) return true;
-    else if (classes !== curProps.classes) return true;
-    return false;
-  };
 
   render = () => {
     const { location, classes, history } = this.props;

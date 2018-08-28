@@ -9,12 +9,9 @@ const definition = {
     type: String,
     unique: true
   },
-  startDate: {
-    type: String,
-    default: new Date()
-  },
-  endDate: {
-    type: String
+  userID: {
+    type: ObjectId,
+    required: true
   }
 };
 const options = {

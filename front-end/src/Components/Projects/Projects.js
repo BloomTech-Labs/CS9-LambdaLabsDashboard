@@ -185,7 +185,7 @@ class Projects extends Component {
       return <div>loading projects</div>;
     } else {
       return this.state.projects.projects.map(project => {
-        // console.log(project._id);
+        console.log(project);
         return (
           <div key={project._id} className="projectCard">
             <div>
@@ -253,7 +253,9 @@ class Projects extends Component {
                 </button>
               </Link>
               <Link to="#">
-                <button className="dashBoardButton">Dashboard</button>
+                <button 
+                  onClick={() => null}
+                  className="dashBoardButton">Dashboard</button>
               </Link>
               <button
                 className="deleteButton"
