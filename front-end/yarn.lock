@@ -3276,6 +3276,16 @@ hpack.js@^2.1.6:
     readable-stream "^2.0.1"
     wbuf "^1.1.0"
 
+hsl-to-hex@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/hsl-to-hex/-/hsl-to-hex-1.0.0.tgz#c58c826dc6d2f1e0a5ff1da5a7ecbf03faac1352"
+  dependencies:
+    hsl-to-rgb-for-reals "^1.1.0"
+
+hsl-to-rgb-for-reals@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/hsl-to-rgb-for-reals/-/hsl-to-rgb-for-reals-1.1.0.tgz#50cf13dc9e5e722af29b5e5bea6e0d675a671e08"
+
 html-comment-regex@^1.1.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/html-comment-regex/-/html-comment-regex-1.1.1.tgz#668b93776eaae55ebde8f3ad464b307a4963625e"

@@ -41,4 +41,8 @@ userSchema.methods.checkPassWord = function(guestPassWord) {
 
 const userModel = mongoose.model("User", userSchema);
 
+userModel.collection.dropIndex('username', (err, result) => {
+  if (err) console.log('Error in dropping index!', err);
+});
+
 module.exports = userModel;

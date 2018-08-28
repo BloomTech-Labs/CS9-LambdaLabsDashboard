@@ -9,13 +9,11 @@ const definition = {
     type: String,
     unique: true
   },
-  startDate: {
-    type: String,
-    default: new Date()
+  userID: {
+    type: ObjectId,
+    required: true
   },
-  endDate: {
-    type: String
-  }
+  projects: [{ type: ObjectId, ref: 'LambdaProject' }]
 };
 const options = {
   timestamps: true

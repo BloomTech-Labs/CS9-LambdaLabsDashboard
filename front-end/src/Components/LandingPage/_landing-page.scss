@@ -1,5 +1,6 @@
 .login{
-	position: relative;
+	position: fixed;
+	top: 0; left: 0;
 	height: 100vh;
 	width: 100%;
 	@include center;
@@ -20,10 +21,6 @@
 		flex-direction: column;
 		width: 100%;
 		z-index: 4;
-		margin-top: -15%;
-		@media #{$mq-670} {
-			margin-top: 0;
-		}
 		&>h1 {
 			color: #fff;
 			font-weight: 100;

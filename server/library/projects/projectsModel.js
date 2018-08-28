@@ -5,34 +5,34 @@ const Schema = mongoose.Schema;
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const definition = {
-  projectName: {
-    type: String
-    // unique: true
+  name: {
+    type: String,
+    required: true
   },
-  githubHandle: {
-    type: String
+  github: {
+    type: String,
+    required: true
   },
-
-  class: {
-    type: String
+  className: {
+    type: String,
+    required: true
   },
-
-  trelloName: {
-    type: String
+  trello: {
+    type: String,
+    required: true
   },
-  dueDate: {
-    type: String
+  classID: {
+    type: ObjectId,
+    required: true
   }
 };
+
 const options = {
   timestamps: true
 };
 
 const lambdaProjectsSchema = new Schema(definition, options);
 
-const lambdaProjectsModel = mongoose.model(
-  "LambdaProject",
-  lambdaProjectsSchema
-);
+const lambdaProjectsModel = mongoose.model("LambdaProject", lambdaProjectsSchema);
 
 module.exports = lambdaProjectsModel;

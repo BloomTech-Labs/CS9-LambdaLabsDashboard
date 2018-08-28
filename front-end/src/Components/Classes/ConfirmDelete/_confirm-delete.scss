@@ -1,0 +1,72 @@
+.class-delete {
+	position: fixed;
+	top: 0; right: 0;
+	height: 100%;
+	width: 100%;
+	display: none;
+	z-index: 5;
+	@media #{$mq-1070} {
+		width: calc(100% - 200px);
+	}
+	&>div {
+		height: 100%;
+		width: 100%;
+		background: rgba(#000, 0.75);
+		@include center;
+		opacity: 0;
+		transition-duration: 0.3s;
+		&>div {
+			width: 80%;
+			width: auto;
+			background: lighten($darkgray, 5%);
+			border-radius: 5px;
+			@include center;
+			flex-direction: column;
+			transform: scale(0);
+			transition-duration: 0.3s;
+			@include headerShadow;
+			&>h4 {
+				width: 80%;
+				text-align: center;
+				margin-bottom: 0.5em;
+				color: #E7E9F0;
+				@media #{$mq-375} {
+					font-size: 1.1em;
+				}
+				@media #{$mq-1070} {
+					font-weight: 500;
+				}
+			}
+			&>.buttons {
+				width: 100%;
+				@include center;
+				margin-bottom: 20px;
+				margin-top: 10px;
+				&>button {
+					outline: none; border: none;
+					margin: 0; padding: 0;
+					height: 37.5px;
+					width: 40%; max-width: 200px;
+					margin: 2.5%;
+					background: $redish;
+					color: #fff;
+					font-weight: 600;
+					border-radius: 2.5px;
+					@include buttonShadow;
+					position: relative;
+					transition-duration: 0.3s;
+					&:last-of-type {
+						background: #5BD070;
+						&>img {
+							position: absolute;
+							height:60%; width: 60%;
+							top: 20%; left: 20%;
+							transform: scale(0);
+							transition-duration: 0.3s;
+						}
+					}
+				}
+			}
+		}
+	}
+}
