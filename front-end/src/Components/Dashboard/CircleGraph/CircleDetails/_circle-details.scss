@@ -29,13 +29,27 @@
 				text-align: center;
 				margin: 0;
 				&:first-of-type {
+<<<<<<< HEAD
 					font-size: 8.5vh;
+=======
+					font-size: 3em;
+>>>>>>> bf5b460eecad7fb0a9442164fb900fa3b6cd4c1a
 					font-weight: 200;
 					transition-duration: 0.75s;
+					@media #{$mq-375} {
+						font-size: 3.5em;
+					}
 				}
 				&:last-of-type {
+<<<<<<< HEAD
 					font-size: 2.25vh;
+=======
+					font-size: 0.8em;
+>>>>>>> bf5b460eecad7fb0a9442164fb900fa3b6cd4c1a
 					font-weight: 800;
+					@media #{$mq-375} {
+						font-size: 0.9em;
+					}
 					@media #{$mq-iphoneX} {
 						font-size: 2vh;
 					}

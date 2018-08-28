@@ -9,7 +9,7 @@ router.get("/", (req, res) => {
   console.log(req.body);
   UserModel.find({})
     .then(users => {
-      res.status(200).json({ users: users });
+      res.status(200).json({ users });
     })
     .catch(error => {
       res.status(500).json({ msg: error });
@@ -19,20 +19,27 @@ router.get("/", (req, res) => {
 router.post("/", userEmpty, (req, res) => {
   console.log("request ===>", req.body);
   const obj = req.body;
+  const { name, email } = obj;
   const newUser = UserModel(obj);
-  newUser
-    .save()
-    .then(p => {
-      console.log(p);
-      const token = makeToken(newUser);
-
-      res
-        .status(200)
-        .json({ msg: "user posted successfully ", newUser, token });
-    })
-    .catch(error => {
-      res.status(200).json({ msg: "... not able to post your user", error });
-    });
+  UserModel.find({ email }).then(arr => {
+    if (arr.length === 0) {
+      newUser
+        .save()
+        .then(savedUser => {
+          const token = makeToken(savedUser);
+          const { _id } = savedUser;
+          res
+            .status(200)
+            .json({ msg: "user posted successfully ", _id, token });
+        })
+        .catch(err => {
+          console.log(err);
+          res.send(`${name} already exists. Please login`);
+        });
+    } else {
+      res.send(`${email} already exists. Please login`);
+    }
+  });
 });
 
 router.put("/:id", (req, res) => {

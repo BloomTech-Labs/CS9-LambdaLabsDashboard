@@ -15,23 +15,19 @@ router.post("/", (req, res) => {
 
   UserModel.findOne({ username })
     .then(p => {
-      if (p && p.username !== "" && p.password !== "") {
-        p.checkPassWord(password)
-          .then(result => {
-            if (result) {
-              const token = makeToken(p);
-              res.status(200).json({ msg: "login successful", p, token });
-            } else {
-              res.status(401).json({ msg: "wrong password" });
-            }
-          })
-
-          .catch(err => {
-            res.status(500).json({ msg: "error happening", err });
-          });
-      } else {
-        res.status(401).json({ msg: "wrong username" });
-      }
+      p.checkPassWord(password)
+        .then(result => {
+          if (result) {
+            const token = makeToken(p);
+            const { _id } = p;
+            res.status(200).json({ msg: "login successful", _id, token });
+          } else {
+            res.send("Incorrect password");
+          }
+        })
+        .catch(err => {
+          res.send("Something went wrong. Please try again");
+        });
     })
 
     .catch(err => {

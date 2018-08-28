@@ -13,25 +13,11 @@ class LandingPage extends Component {
       email: "",
       password: "",
       newUser: false,
-      loginErrors: "Error:",
-      height: "100%"
+      loginErrors: "Error:"
     };
-    this.emailReg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    this.emailReg = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
     this.nameReg = /\b[A-Z][-'a-zA-Z]+,?\s[A-Z][-'a-zA-Z]{0,19}\b/;
   }
-
-  // componentDidMount = () => {
-  //   this.setState({ height: window.innerHeight });
-  //   window.addEventListener('resize', this.resize, true);
-  // }
-
-  // componentWillUnmount = () => {
-  //   window.removeEventListener('resize', this.resize, true);
-  // }
-
-  // resize = () => {
-  //   this.setState({ height: window.innerHeight });
-  // }
 
   focus = e => {
     e.target.parentNode.classList.add("focused");
@@ -87,27 +73,31 @@ class LandingPage extends Component {
 
   login = () => {
     const { newUser, name, email, password } = this.state;
-    const url = newUser ? "/users" : "/login";
+    const baseURL =
+      process.env.NODE_ENV === "production" ? "" : "http://localhost:4000";
+    const location = newUser ? "/users" : "/login";
     const body = newUser ? { name, email, password } : { email, password };
-    Axios.post(url, body)
+    Axios.post(`${baseURL}${location}`, body)
       .then(res => {
         if (typeof res.data === "object") {
-          const { token } = res.data;
-          this.enter(token);
+          console.log(res);
+          const { _id, token } = res.data;
+          this.enter(_id, token);
         } else {
           this.handleError(res.data);
         }
       })
       .catch(err => {
         console.log(err);
+        this.handleError("");
       });
   };
 
-  enter = token => {
+  enter = (id, token) => {
     const { auth, history } = this.props;
     this.setState({ classes: "login login-loading login-remove" }, () => {
       setTimeout(() => {
-        auth(token);
+        auth(id, token);
         history.push("/projects");
       }, 1500);
     });
@@ -115,15 +105,7 @@ class LandingPage extends Component {
 
   render = () => {
     const { errors } = this.props;
-    const {
-      classes,
-      name,
-      email,
-      password,
-      loginErrors,
-      newUser,
-      height
-    } = this.state;
+    const { classes, name, email, password, loginErrors, newUser } = this.state;
     return (
       <section className={classes}>
         <div>

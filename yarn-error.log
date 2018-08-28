@@ -1,0 +1,55 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/bin/yarn start
+
+PATH: 
+  /Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/usr/local/share/dotnet:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Applications/Postgres.app/Contents/Versions/latest/bin:/Applications/Xamarin Workbooks.app/Contents/SharedSupport/path-bin:/Users/hilalaissani/apache-maven-3.5.2/bin
+
+Yarn version: 
+  1.5.1
+
+Node version: 
+  8.9.4
+
+Platform: 
+  darwin x64
+
+npm manifest: 
+  {
+    "name": "cs9-lambdalabsdashboard",
+    "version": "1.0.0",
+    "description": "Package to kick off the deployed application",
+    "scripts": {
+      "postinstall": "cd server && npm install"
+    },
+    "engines": {
+      "node": "8.7.0"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/Lambda-School-Labs/CS9-LambdaLabsDashboard.git"
+    },
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/Lambda-School-Labs/CS9-LambdaLabsDashboard/issues"
+    },
+    "homepage": "https://lambda-dashboard-cs9.herokuapp.com/"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: Command "start" not found.
+      at new MessageError (/usr/local/lib/node_modules/yarn/lib/cli.js:186:110)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:87307:17
+      at Generator.next (<anonymous>)
+      at step (/usr/local/lib/node_modules/yarn/lib/cli.js:98:30)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:116:14
+      at new Promise (<anonymous>)
+      at new F (/usr/local/lib/node_modules/yarn/lib/cli.js:23451:28)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:95:12
+      at runCommand (/usr/local/lib/node_modules/yarn/lib/cli.js:87312:22)
+      at Object.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:87412:14)

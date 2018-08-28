@@ -2,7 +2,9 @@ const initialState = {
   menuClasses: "menu",
   burgerClasses: "hamburglar is-open",
   bodyClasses: "body-container",
-  auth: localStorage.getItem("token") ? localStorage.getItem("token") : false
+  auth: false,
+  userID: null,
+  authOnLoad: null
 };
 
 export default (state = initialState, action) => {
@@ -20,11 +22,17 @@ export default (state = initialState, action) => {
             : "body-container"
       });
     case "AUTH":
-      localStorage.setItem("token", action.token);
-      return Object.assign({}, state, { auth: action.token });
+      return Object.assign({}, state, { auth: true, userID: action.id });
     case "LOG_OUT":
-      localStorage.removeItem("token");
-      return Object.assign({}, state, { auth: false });
+      return Object.assign({}, state, { auth: false, userID: null });
+    case "STORE_USER_ID":
+      return Object.assign({}, state, { userID: action.id });
+    case "AUTH_ON_LOAD":
+      const { auth, _id } = action;
+      const newState = auth
+        ? { authOnLoad: auth, auth, userID: _id }
+        : { authOnLoad: auth, auth };
+      return Object.assign({}, state, newState);
     default:
       return state;
   }

@@ -4,10 +4,11 @@ import keys from "../keys";
 const secret = keys.secretKey.secretKey;
 
 function makeToken(user) {
+  const { _id, email } = user;
   const payload = {
-    sub: user._id,
+    sub: _id,
     iat: new Date().getTime(),
-    username: user.username
+    email
   };
   const options = {
     expiresIn: "24h"
