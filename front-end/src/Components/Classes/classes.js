@@ -1,11 +1,13 @@
 import React, { Component } from "react";
-import CreateClass from "./CreateClass.js";
-import EditClass from "./EditClass.js";
+import CreateClass from "./createClass.js";
+import EditClass from "./editClass.js";
 export default class Classes extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      classes: []
+      classes: [],
+      create: false,
+      edit: false
     };
   }
 
@@ -13,6 +15,12 @@ export default class Classes extends Component {
     return (
       <div>
         Classes
+        <div />
+        <button
+          onClick={e => {
+            this.setState({ create: !this.state.create });
+          }}
+        />
         <CreateClass />
         <EditClass />
       </div>

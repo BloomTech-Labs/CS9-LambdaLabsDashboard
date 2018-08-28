@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "./editStudent.css";
-
+import { connect } from "react-redux";
 class EditStudent extends Component {
   constructor(props) {
     super(props);
@@ -11,9 +11,19 @@ class EditStudent extends Component {
       slack: "",
       trelloName: "",
       email: "",
-      github: ""
+      github: "",
+      dummyData: [],
+      studentId: "",
+      credentials: ""
     };
   }
+
+  componentWillMount() {
+    this.pullingGithubUsersRealInfo();
+
+    this.state.credentials === "" && this.postingStudentCredentials();
+  }
+  componentDidMount() {}
 
   editHandler = event => {
     this.setState({ [event.target.name]: event.target.value });
@@ -26,11 +36,14 @@ class EditStudent extends Component {
       email: this.state.email,
       github: this.state.github,
       trelloName: this.state.trelloName,
-      salck: this.state.slack
+      slack: this.state.slack
     };
-    const id = "";
+    const id = this.state.studentId;
     console.log(object);
-    const promise = axios.put(`http://localhost:4000/students/${id}`, object);
+    const promise = axios.put(
+      `http://localhost:4000/studentCredentials/${id}`,
+      object
+    );
     promise
       .then(response => {
         console.log(response.data);
@@ -40,12 +53,6 @@ class EditStudent extends Component {
       });
   };
 
-<<<<<<< HEAD
-  render() {
-    // console.log(this.props.match.params.id);
-    return (
-      <div className="editStudent">
-=======
   gettingGithubHandles = () => {
     if (
       this.props.studentsGithub.length > 0 &&
@@ -75,45 +82,101 @@ class EditStudent extends Component {
   };
 
   pullingGithubUsersRealInfo = () => {
-    const dummyData = {};
+    console.log("hilallllll====>");
+    const handles = this.filteringHandles();
+    const token = "506937354c95f45f0a9a27068f93c885af2f2bd5";
+    for (let i = 0; i < handles.length; i++) {
+      const promise = axios.get(`https://api.github.com/users/${handles[i]}`, {
+        headers: { Authorization: `bearer ${token}` }
+      });
+      promise.then(res => {
+        console.log("res===> ", res.data);
+        this.props.collectingData({
+          FullName: res.data.name,
+          githubHandle: res.data.login,
+          githubURL: res.data.html_url,
+          location: res.data.location
+        });
+      });
+    }
   };
 
+  postingStudentCredentials() {
+    console.log("githubDummyData", this.props.githubDummyData[0]);
+    let student = "";
+    if (this.props.githubDummyData.length > 0) {
+      student = this.props.githubDummyData.filter(p => {
+        console.log("p==>", p);
+        return p.FullName === this.props.studentInfo.studentName;
+      });
+    }
+
+    const fullName = this.props.studentInfo.studentName;
+    const trello = this.props.studentInfo.trelloName;
+    let location = "";
+    let github = "";
+    let email = "";
+    if (student[0] !== null && student[0] !== undefined) {
+      location = student[0].location;
+      github = student[0].githubHandle;
+      email = student[0].location;
+    }
+    const object = {
+      fullName: fullName,
+      trello: trello,
+      github: github,
+      email: email,
+      location: location
+    };
+    console.log("sc o ===> ", object);
+    const promise = axios.post(
+      "http://localhost:4000/studentCredentials",
+      object
+    );
+    promise
+      .then(response => {
+        console.log("sc ===>", response);
+        this.setState({
+          credentials: response.data.newStudent,
+          studentId: response.data.id
+        });
+      })
+      .catch(error => console.log(error));
+  }
+
   render() {
-    // const handles = this.filteringHandles();
-    // const token = "47c075cdc8b2bd9d1c727790fc09558e85597179";
-
-    // for (let i = 0; i < handles.length; i++) {
-    //   const promise = axios.get(`https://api.github.com/users/${handles[i]}`, {
-    //     headers: { Authorization: `bearer ${token}` }
-    //   });
-
-    //   promise.then(res => {
-    //     console.log("res===> ", res.data);
-
-    //     this.props.collectingData({
-    //       FullName: res.data.name,
-    //       githubHandle: res.data.login,
-    //       githubURL: res.data.html_url,
-    //       location: res.data.location
-    //     });
-    //   });
-    // }
+    console.log("''''student,", this.state.student);
+    let student = "";
+    if (
+      this.state.credentials !== undefined &&
+      this.state.credentials !== null
+    ) {
+      student = this.state.credentials;
+    }
 
     return (
       <div className="editStudent">
-        <div>
+        <div className="studentIfo">
           <div>
             Full Name:
-            {this.props.studentInfo.studentName}
+            {student.fullName}
           </div>
-          <div>Trello: {this.props.studentInfo.trelloName}</div>
+          <div>
+            Trello:
+            {student.trello}
+          </div>
 
-          <div>Github: xxxxx</div>
-          <div>Email: xxxxx</div>
-          <div>: xxxxx</div>
+          <div>
+            Github:
+            {student.github}
+          </div>
+          <div>Email: {student.email}</div>
+          <div>
+            location:
+            {student.location}
+          </div>
         </div>
 
->>>>>>> parent of 88a0e06a... ready but still not good in streaming data
         <h1> Edit Student</h1>
         <input
           type="text"
@@ -165,7 +228,6 @@ class EditStudent extends Component {
             this.props.history.push("/projects");
           }}
         >
-          {" "}
           Submit
         </button>
       </div>
@@ -173,4 +235,31 @@ class EditStudent extends Component {
   }
 }
 
-export default EditStudent;
+const mapStateToProps = state => {
+  console.log("editstudent state ===> ", state.githubDummyDataReducer);
+  let studentsGithub = "";
+  if (state.studentInfoReducer.studentGithubInfo.githubUsers !== undefined) {
+    studentsGithub = state.studentInfoReducer.studentGithubInfo.githubUsers;
+  }
+  return {
+    studentInfo: state.studentInfoReducer.studentTrelloInfo,
+    studentsGithub: studentsGithub,
+    githubDummyData: state.githubDummyDataReducer
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    collectingData: x => {
+      dispatch({
+        type: "gitthubDummyData",
+        payload: x
+      });
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(EditStudent);

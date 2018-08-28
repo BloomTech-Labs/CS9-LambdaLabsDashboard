@@ -25,7 +25,7 @@ router.post("/", (req, res) => {
     .save()
     .then(p => {
       console.log(p);
-      res.status(200).json({ newStudent });
+      res.status(200).json({ newStudent, id: p._id });
     })
     .catch(error => {
       res.status(200).json({ msg: "... not able to post your student", error });

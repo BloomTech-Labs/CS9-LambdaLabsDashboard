@@ -7,27 +7,35 @@ const router = express.Router();
 router.get("/", (req, res) => {
   res.send("you are logged-in ");
 });
-
+/////:
 router.post("/", (req, res) => {
-  const { email, password } = req.body;
+  const { username, password } = req.body;
 
-  UserModel.findOne({ email })
+  console.log("username", username);
+
+  UserModel.findOne({ username })
     .then(p => {
-      p.checkPassWord(password)
-        .then(result => {
-          if (result) {
-            const token = makeToken(p);
-            res.status(200).json({ msg: "login successful", p, token });
-          } else {
-            res.send("Incorrect password");
-          }
-        })
-        .catch(err => {
-          res.send("Something went wrong. Please try again");
-        });
+      if (p && p.username !== "" && p.password !== "") {
+        p.checkPassWord(password)
+          .then(result => {
+            if (result) {
+              const token = makeToken(p);
+              res.status(200).json({ msg: "login successful", p, token });
+            } else {
+              res.status(401).json({ msg: "wrong password" });
+            }
+          })
+
+          .catch(err => {
+            res.status(500).json({ msg: "error happening", err });
+          });
+      } else {
+        res.status(401).json({ msg: "wrong username" });
+      }
     })
+
     .catch(err => {
-      res.send("User not found");
+      res.status(500).json({ msg: err });
     });
 });
 

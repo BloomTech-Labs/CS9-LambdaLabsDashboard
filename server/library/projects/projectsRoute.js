@@ -17,18 +17,39 @@ router.get("/", (req, res) => {
     });
 });
 
-router.post("/", noneEmpty, (req, res) => {
+router.post("/", (req, res) => {
   console.log("request ===>", req.body);
-  const obj = req.body;
-  const newProject = ProjectsModel(obj);
-  newProject
-    .save()
-    .then(p => {
-      res.status(200).json({ projectId: p._id });
-    })
-    .catch(error => {
-      res.status(200).json({ msg: "... not able to post your project", error });
-    });
+  if (req.bod === {} || req.body === null) {
+    res.status(500).json({ msg: "no empty " });
+  }
+
+  if (
+    !req.body.projectName &&
+    req.body.projectName === null &&
+    req.body.projectName === ""
+  ) {
+    res.status(500).json({ msg: "no title" });
+  }
+  if (
+    !req.body.githubHandle &&
+    req.body.githubHandle === null &&
+    req.body.githubHandle === ""
+  ) {
+    res.status(500).json({ msg: "no text" });
+  } else {
+    const obj = req.body;
+    const newProject = ProjectsModel(obj);
+    newProject
+      .save()
+      .then(p => {
+        res.status(200).json({ projectId: p._id });
+      })
+      .catch(error => {
+        res
+          .status(200)
+          .json({ msg: "... not able to post your project", error });
+      });
+  }
 });
 
 router.put("/:id", (req, res) => {
@@ -48,8 +69,7 @@ router.put("/:id", (req, res) => {
 router.get("/:id", (req, res) => {
   const { id } = req.params;
   ProjectModel.findById(id)
-    .populate("class", "-_id")
-    .populate("students", "-_id")
+
     .then(p => {
       res.status(200).json(p);
     })

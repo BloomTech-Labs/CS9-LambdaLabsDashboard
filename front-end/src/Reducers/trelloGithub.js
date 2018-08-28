@@ -1,7 +1,7 @@
 import {
   TRELLONAME,
   GITHUBHANDLER
-} from "../Components/CreateProject/CreateProject.js";
+} from "../Components/CreateProject/createProject.js";
 
 const initialState = [];
 

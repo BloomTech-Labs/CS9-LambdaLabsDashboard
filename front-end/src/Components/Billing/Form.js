@@ -70,36 +70,38 @@ class CheckoutForm extends Component {
     console.log(this.state.amount);
     return (
       <div className="payment">
-      <div className="checkout">
-        <p>Would you like to complete the purchase?</p>
-        <CardElement />
-        <form>
-          <legend>Choose Your Subscription</legend>
-          <div>
-            <input
-              name="monthly"
-              id="monthly"
-              type="checkbox"
-              checked={this.state.monthly}
-              amount="999"
-              onClick={this.onChange}
-            />
-            <label htmlFor="monthly">1 Year Subscription - $9.99</label>
-          </div>
-          <div>
-            <input
-              name="annual"
-              id="annual"
-              type="checkbox"
-              checked={this.state.annual}
-              amount="2999"
-              onClick={this.onChange}
-            />
-            <label htmlFor="annual">1 Year Premium Subscription - $29.99</label>
-          </div>
-        </form>
-        <button onClick={this.submit}>Send</button>
-      </div>
+        <div className="checkout">
+          <p>Would you like to complete the purchase?</p>
+          <CardElement />
+          <form>
+            <legend>Choose Your Subscription</legend>
+            <div>
+              <input
+                name="monthly"
+                id="monthly"
+                type="checkbox"
+                checked={this.state.monthly}
+                amount="999"
+                onClick={this.onChange}
+              />
+              <label htmlFor="monthly">1 Year Subscription - $9.99</label>
+            </div>
+            <div>
+              <input
+                name="annual"
+                id="annual"
+                type="checkbox"
+                checked={this.state.annual}
+                amount="2999"
+                onClick={this.onChange}
+              />
+              <label htmlFor="annual">
+                1 Year Premium Subscription - $29.99
+              </label>
+            </div>
+          </form>
+          <button onClick={this.submit}>Send</button>
+        </div>
       </div>
     );
   }

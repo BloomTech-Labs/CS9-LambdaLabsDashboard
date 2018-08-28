@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { toggleMenu } from '../../Actions/Navigation';
-import { logout } from '../../Actions/Navigation';
 
 class Menu extends Component {
 
@@ -17,15 +16,6 @@ class Menu extends Component {
     setTimeout(() => history.push(route), 300);
   }
 
-  logout = () => {
-    const { toggleMenu, history, logout } = this.props;
-    toggleMenu();
-    setTimeout(() => {
-      logout();
-      history.push('/');
-    }, 300);
-  }
-
   render = () => {
     const { classes } = this.props;
     return (
@@ -35,7 +25,7 @@ class Menu extends Component {
           <a onClick={() => this.navigate('/billing')}>Billing</a>
           <a onClick={() => this.navigate('/projects')}>Projects</a>
           <a onClick={() => this.navigate('/project-dashboard')}>Project Dashboard</a>
-          <button onClick={this.logout}>Logout</button>
+          <button>Logout</button>
         </div>
       </div>
     );
@@ -46,4 +36,4 @@ const mSTP = ({ Navigation }) => {
   return { classes: Navigation.menuClasses}
 }
 
-export default withRouter(connect(mSTP, { toggleMenu, logout })(Menu));
+export default withRouter(connect(mSTP, { toggleMenu })(Menu));

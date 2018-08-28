@@ -1,0 +1,27 @@
+.createProject {
+  padding-top: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin-left: 250px;
+  width: 70%;
+  margin-right: 400px;
+  background: #283344;
+  border-radius: 40px;
+}
+
+.createProject input {
+  margin: 10px;
+  border-radius: 10px;
+  height: 40px;
+}
+.createButton {
+  margin-top: 60px;
+  background: #e56d68;
+  color: aqua;
+  font-weight: bold;
+  height: 50px;
+  border-radius: 30px;
+  font-size: 40px;
+}

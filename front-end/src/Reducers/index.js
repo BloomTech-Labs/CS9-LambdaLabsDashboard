@@ -1,11 +1,12 @@
 import { combineReducers } from "redux";
 import Navigation from "./Navigation";
 import ExternalApis from "./ExternalApis";
-import { trelloGithubReducer } from "./TrelloGithub.js";
-import { editProjectReducer } from "./EditProjectReducer.js";
-import { submitProjectReducer } from "./SubmitProjectReducer.js";
-import { studentInfoReducer } from "./StudentInfoReducer";
-import { githubDummyDataReducer } from "./GithubDummyData.js";
+import { trelloGithubReducer } from "./trelloGithub.js";
+import { editProjectReducer } from "./editProjectReducer.js";
+import { submitProjectReducer } from "./submitProjectReducer.js";
+import { studentInfoReducer } from "./studentInfoReducer";
+import { githubDummyDataReducer } from "./githubDummyData.js";
+import { catchingStudents } from "./catchingStudentsToProjects.js";
 export default combineReducers({
   Navigation,
   ExternalApis,
@@ -13,5 +14,6 @@ export default combineReducers({
   editProjectReducer,
   submitProjectReducer,
   studentInfoReducer,
-  githubDummyDataReducer
+  githubDummyDataReducer,
+  catchingStudents
 });
