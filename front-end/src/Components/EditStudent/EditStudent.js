@@ -14,16 +14,24 @@ class EditStudent extends Component {
       github: "",
       dummyData: [],
       studentId: "",
-      credentials: ""
+      credentials: []
     };
   }
 
   componentWillMount() {
     this.pullingGithubUsersRealInfo();
+    setTimeout(() => {
+      this.postingStudentCredentials();
+    }, 50);
 
-    this.state.credentials === "" && this.postingStudentCredentials();
+    setTimeout(() => {
+      this.gettingCredentials();
+    }, 100);
   }
-  componentDidMount() {}
+
+  componentDidMount() {
+    //   this.gettingCredentials();
+  }
 
   editHandler = event => {
     this.setState({ [event.target.name]: event.target.value });
@@ -130,50 +138,64 @@ class EditStudent extends Component {
     };
     console.log("sc o ===> ", object);
     const promise = axios.post(
-      "http://localhost:4000/studentCredentials",
+      "http://localhost:4000/studentCredential",
       object
     );
     promise
       .then(response => {
         console.log("sc ===>", response);
+        this.setState({ studentId: response.data.newCredential._id });
+      })
+      .catch(error => console.log("eeeroro", error));
+  }
+
+  gettingCredentials() {
+    const promise2 = axios.get("http://localhost:4000/studentCredential");
+    promise2
+      .then(response => {
+        console.log("sc2 ===>", response);
         this.setState({
-          credentials: response.data.newStudent,
-          studentId: response.data.id
+          credentials: [...response.data.p]
         });
       })
       .catch(error => console.log(error));
   }
 
   render() {
-    console.log("''''student,", this.state.student);
+    console.log("''''studentid,", this.state.studentId);
+    console.log("''''credentials,", this.state.credentials);
+
     let student = "";
     if (
       this.state.credentials !== undefined &&
       this.state.credentials !== null
     ) {
-      student = this.state.credentials;
-    }
+      student = this.state.credentials.filter(s => {
+        return s._id === this.state.studentId;
+      });
 
+      console.log("std===>", student);
+    }
     return (
       <div className="editStudent">
         <div className="studentIfo">
           <div>
             Full Name:
-            {student.fullName}
+            {student[0] !== undefined && student[0].fullName}
           </div>
           <div>
             Trello:
-            {student.trello}
+            {student[0] !== undefined && student[0].trello}
           </div>
 
           <div>
             Github:
-            {student.github}
+            {student[0] !== undefined && student[0].github}
           </div>
           <div>Email: {student.email}</div>
           <div>
             location:
-            {student.location}
+            {student[0] !== undefined && student[0].location}
           </div>
         </div>
 

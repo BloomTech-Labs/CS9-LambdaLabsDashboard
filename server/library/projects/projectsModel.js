@@ -7,7 +7,6 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 const definition = {
   projectName: {
     type: String,
-    unique: true,
     required: true
   },
   githubHandle: {
@@ -18,7 +17,6 @@ const definition = {
 
   class: {
     type: String,
-    unique: true,
     required: true
   },
 

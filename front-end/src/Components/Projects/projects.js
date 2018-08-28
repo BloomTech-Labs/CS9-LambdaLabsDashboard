@@ -279,31 +279,40 @@ class Projects extends Component {
                 }
                 return (
                   <div key={s._id} className="student">
-                    <div
-                      onClick={() => {
-                        // this.state.students.map(s => {
-                        //   if (student === s.fullName) {
-                        //     this.props.studentTrelloInfo(
-                        //       s.fullName,
-                        //       s.username
-                        //     );
-                        //   }
-                        // });
-
-                        // this.props.studentTrelloInfo(
-                        //   student.fullName,
-                        //   student.username
-                        // );
-
-                        this.props.sendGithubInf(this.state.pullRequests);
-                        setTimeout(() => {
-                          this.props.history.push("/projects/EditStudent");
-                        }, 3000);
-                      }}
-                    >
+                    <div>
                       {student.users &&
                         student.users.map(st => {
-                          return <div key={st}>{st}</div>;
+                          return (
+                            <div
+                              onClick={() => {
+                                this.state.students.map(s => {
+                                  if (st === s.fullName) {
+                                    this.props.studentTrelloInfo(
+                                      s.fullName,
+                                      s.username
+                                    );
+                                  }
+                                });
+
+                                // this.props.studentTrelloInfo(
+                                //   student.fullName,
+                                //   student.username
+                                // );
+
+                                this.props.sendGithubInf(
+                                  this.state.pullRequests
+                                );
+                                setTimeout(() => {
+                                  this.props.history.push(
+                                    "/projects/EditStudent"
+                                  );
+                                }, 3000);
+                              }}
+                              key={st}
+                            >
+                              {st}
+                            </div>
+                          );
                         })}
                     </div>
                     <div />
