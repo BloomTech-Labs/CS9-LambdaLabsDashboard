@@ -13,10 +13,23 @@ class LandingPage extends Component{
       email: '',
       password: '',
       newUser: false,
-      loginErrors: "Error:"
+      loginErrors: "Error:",
+      maxHeight: window.innerHeight
     }
     this.emailReg = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
     this.nameReg = /\b[A-Z][-'a-zA-Z]+,?\s[A-Z][-'a-zA-Z]{0,19}\b/;
+  }
+
+  componentDidMount = () => {
+    window.addEventListener('resize', this.resize, true);
+  }
+
+  componentWillUnmount = () => {
+    window.removeEventListener('resize', this.resize, true);
+  }
+
+  resize = () => {
+    this.setState({ height: window.innerHeight });
   }
 
   focus = e => {
@@ -97,16 +110,18 @@ class LandingPage extends Component{
     this.setState({classes: "login login-loading login-remove"}, () => {
       setTimeout(() => {
         auth(id, token);
-        history.push('/projects');
+        history.push('/classes');
       }, 1500);
     });
   }
 
   render = () => {
     const { errors } = this.props;
-    const { classes, name, email, password, loginErrors, newUser } = this.state;
+    const { classes, name, email, password, loginErrors, newUser, maxHeight } = this.state;
     return(
-      <section className={classes}>
+      <section 
+        className={classes}
+        style={{maxHeight}}>
         <div>
           {
             newUser ? 

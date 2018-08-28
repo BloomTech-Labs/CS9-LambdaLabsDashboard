@@ -6,14 +6,14 @@ import Classes from "./Components/Classes/classes";
 import LandingPage from "./Components/LandingPage/LandingPage";
 import Projects from "./Components/Projects/projects";
 import Billing from "./Components/Billing/Billing";
-import CreateProject from "./Components/CreateProject/createProject";
+import CreateProject from "./Components/CreateProject/Create";
 import EditProject from "./Components/EditProject/editProject";
-import EditStudent from "./Components/EditStudent/editStudent";
 import Settings from "./Components/Settings/Settings";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import Menu from "./Components/Menu/Menu";
 import Header from "./Components/Header/Header";
 import { validateToken } from "./Actions/Navigation";
+import { getClasses } from './Actions/Database';
 import "./App.css";
 
 class App extends Component {
@@ -21,21 +21,30 @@ class App extends Component {
     super(props);
     this.loader = document.getElementById("appLoader");
     this.callCount = 0;
+    this.url = window.location.pathname;
   }
   
   UNSAFE_componentWillMount = () => this.props.validateToken();
 
-  UNSAFE_componentWillReceiveProps = ({ authOnLoad, history, location }) => {
+  UNSAFE_componentWillReceiveProps = ({ authOnLoad, userID, history, location, getClasses }) => {
     if(authOnLoad !== this.props.authOnLoad) {
       if(authOnLoad) {
-        if(location.pathname === "/")history.push("/projects");
-        this.removeLoader(500)
+        if(location.pathname === "/") history.push(this.url === '/' ? '/classes' : this.url);
+        this.removeLoader(500);
+        getClasses(userID);
       } else {
         if(this.callCount === 0) this.removeLoader(1000);
       }
     }
     this.callCount++;
   }
+
+  shouldComponentUpdate = ({ location, classes }) => {
+    const curProps = this.props;
+    if (location.pathname !== curProps.location.pathname) return true;
+    else if (classes !== curProps.classes) return true;
+    return false;
+  };
 
   removeLoader = delay => {
     if(this.loader !== null) {
@@ -48,13 +57,6 @@ class App extends Component {
       }, delay)
     }
   }
-
-  shouldComponentUpdate = ({ location, classes }) => {
-    const curProps = this.props;
-    if (location.pathname !== curProps.location.pathname) return true;
-    else if (classes !== curProps.classes) return true;
-    return false;
-  };
 
   render = () => {
     const { location, classes, history } = this.props;
@@ -74,7 +76,6 @@ class App extends Component {
             path="/projects/EditProject/:id"
             component={EditProject}
           />
-          <PrivateRoute exact path="/projects/EditStudent" component={EditStudent} />
           <PrivateRoute path="/settings" component={Settings} />
           <PrivateRoute path="/project-dashboard" component={Dashboard} />
         </div>
@@ -84,8 +85,8 @@ class App extends Component {
 }
 
 const mSTP = ({ Navigation }) => {
-  const { bodyClasses, authOnLoad } = Navigation;
-  return { classes: bodyClasses, authOnLoad };
+  const { bodyClasses, authOnLoad, userID } = Navigation;
+  return { classes: bodyClasses, authOnLoad, userID };
 };
 
-export default connect(mSTP, { validateToken })(App);
+export default connect(mSTP, { validateToken, getClasses })(App);

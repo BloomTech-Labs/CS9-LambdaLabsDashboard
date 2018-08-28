@@ -43,6 +43,7 @@
 			}
 		}
 		&>a {
+			text-decoration: none;
 			font-size: 1.2em;
 			cursor: pointer;
 			font-weight: 300;
@@ -60,6 +61,10 @@
 			position: relative;
 			@media #{$mq-h-1024} {
 				font-size: 1.6em;
+			}
+			&:visited {
+				text-decoration: none;
+				color: $purple;
 			}
 			&:hover {
 				color: #fff;

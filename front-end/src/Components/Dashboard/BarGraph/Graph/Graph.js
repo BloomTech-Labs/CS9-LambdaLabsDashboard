@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import BarContainer from './BarContainer/BarContainer';
+import Loader from '../../../Loader/Loader';
 
 class Graph extends PureComponent {
   render = () => {
@@ -8,6 +9,10 @@ class Graph extends PureComponent {
   	const { length } = team;
     return (
       <div className='graph-grid'>
+        {
+          team.length === 0 && !error &&
+          <Loader width={50} />
+        }
       	{
           error ? 
             <div className='error'>

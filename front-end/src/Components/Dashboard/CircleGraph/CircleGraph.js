@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import CountUp from 'react-countup';
 import BaseCircle from './BaseCircle/BaseCircle';
 import TopCircle from './TopCircle/TopCircle';
-import CountUp from 'react-countup';
+import Loader from '../../Loader/Loader';
 
 class CircleGraph extends Component {
 	constructor(props) {
@@ -18,11 +19,12 @@ class CircleGraph extends Component {
 		window.addEventListener('resize', this.resize, true);
 	}
 
-	shouldComponentUpdate = ({completeness, error}, {fontSize}) => {
+	shouldComponentUpdate = ({completeness, error, dataLength}, {fontSize}) => {
 		const curProps = this.props;
 		if(completeness !== curProps.completeness) return true;
 		else if(error !== curProps.error) return true;
 		else if(fontSize !== this.state.fontSize) return true;
+		else if(dataLength !== curProps.dataLength) return true;
 		return false;
 	}
 
@@ -36,7 +38,7 @@ class CircleGraph extends Component {
 	}
 
   render = () => {
-  	const { completeness, error, color1, color2, gradientID, measure, noSubText } = this.props; 
+  	const { dataLength, completeness, error, color1, color2, gradientID, measure, noSubText } = this.props; 
   	const { fontSize, animate } = this.state; 
     return (
       <div className='circle-graph'>
@@ -58,19 +60,24 @@ class CircleGraph extends Component {
 					<div
 						ref="stat" 
 						className='completeness'>
+						{
+							dataLength === 0 && !error &&
+							<Loader dimensions={50} />
+						}
 						<h4 style={{color: color1, fontSize}}>
 							{
-								error ? 0 :
+								error ? 0 : dataLength > 0 ?
 								<CountUp
 									start={0}
 									end={100 - (100*completeness) / (Math.PI * (2 * 200))}
 									duration={1.5}
 									useEasing={true}
 									onStart={e => false} />
+								: ""
 							}
-						%</h4>
+						{dataLength > 0 || error ? '%' : ''}</h4>
 						{
-							!noSubText &&
+							!noSubText && dataLength > 0 &&
 							<h3 style={{color: color1, fontSize: fontSize/4}}>{measure}</h3>
 						}
 					</div>
@@ -81,7 +88,8 @@ class CircleGraph extends Component {
 }
 
 const mSTP = ({ ExternalApis }) => {
-	return { error: ExternalApis.error };
+	const { error, team } = ExternalApis;
+	return { error, dataLength: team.length };
 }
 
 export default connect(mSTP)(CircleGraph);
