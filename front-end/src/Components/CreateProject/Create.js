@@ -20,7 +20,7 @@ class CreateProject extends Component {
     }
   }
 
-  shouldComponentUpdate(nextProps, {className, name, repository, trello, classes, error}) {
+  shouldComponentUpdate = (nextProps, {className, name, repository, trello, classes, error}) => {
   	const curState = this.state;
   	if(className !== curState.className) return true;
   	else if(name !== curState.name) return true;

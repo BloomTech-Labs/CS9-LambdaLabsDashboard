@@ -1,20 +1,15 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { toggleMenu } from '../../Actions/Navigation';
 import { logout } from '../../Actions/Navigation';
 
-class Menu extends Component {
+class Menu extends PureComponent {
 
-  shouldComponentUpdate = ({ menuClasses }) => {
-    if(menuClasses !== this.props.menuClasses) return true;
-    return false;
-  }
-
-  navigate = route => {
+  navigate = (route, _id) => {
     const { history, toggleMenu } = this.props;
     toggleMenu();
-    setTimeout(() => history.push(route), 300);
+    setTimeout(() => history.push({pathname: route, state: { _id }}), 300);
   }
 
   logout = () => {
@@ -34,11 +29,11 @@ class Menu extends Component {
           <a onClick={() => this.navigate('/classes')}>Classes</a>
           {
             classes.map(c => {
-              const { className } = c;
+              const { className, _id } = c;
               return (
                 <a
                   key={c} 
-                  onClick={() => this.navigate('/projects')}>{className}</a>
+                  onClick={() => this.navigate(`/projects/${className}`, _id)}>{className}</a>
               );
             })
           }
