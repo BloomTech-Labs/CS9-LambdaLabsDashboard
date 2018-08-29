@@ -1,4 +1,4 @@
-import express from 'express';
+import express from "express";
 import UserModel from "../Users/userModel.js";
 const router = express.Router();
 const stripe = require("stripe")("sk_test_4uTrPeq8JDUTDumv8qDek87x");
@@ -24,7 +24,7 @@ router.post("/", (req, res) => {
     })
     .then(customer => {
       stripe.charges.create({
-        amount: amount,
+        amount: req.body.amount,
         description: "trip",
         currency: "usd",
         customer: customer.id

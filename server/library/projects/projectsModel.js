@@ -33,6 +33,9 @@ const options = {
 
 const lambdaProjectsSchema = new Schema(definition, options);
 
-const lambdaProjectsModel = mongoose.model("LambdaProject", lambdaProjectsSchema);
+const lambdaProjectsModel = mongoose.model(
+  "LambdaProject",
+  lambdaProjectsSchema
+);
 
 module.exports = lambdaProjectsModel;

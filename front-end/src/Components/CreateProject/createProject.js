@@ -3,6 +3,7 @@ import axios from "axios";
 import { connect } from "react-redux";
 // import Projects from "../Projects/projects.js";
 // import submitProject from "../../Reducers/submitProject.js";
+import "./createProject.css";
 export const TRELLONAME = "TRELLONAME";
 export const GITHUBHANDLER = "GITHUBHANDLER";
 
@@ -15,43 +16,30 @@ class CreateProject extends Component {
       trelloName: "",
       class: "",
       dueDate: "",
-      projectId: ""
+      projectId: "",
+      clicked: false
     };
   }
 
   createProjectHandler = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
-
-  // submitProject = dispatch => {
-  //   const object = {
-  //     projectName: this.state.projectName,
-  //     githubHandle: this.state.githubHandle,
-  //     trelloName: this.state.trelloName,
-  //     class: this.state.class,
-  //     dueDate: this.state.dueDate
-  //   };
-  //   console.log(object);
-  //   const promise = axios.post("http://localhost:4000/projects", object);
-  //   return dispatch => {
-  //     promise
-  //       .then(response => {
-  //         dispatch({
-  //           type: "projectId",
-  //           payload: response.data
-  //         });
-  //       })
-  //       .catch(error => {
-  //         console.log(error);
-  //       });
-  //   };
-  // };
+  componentDidMount() {
+    if (this.clicked === true) {
+      if (
+        (this.state.projectName !== "",
+        this.state.githubHandle !== "",
+        this.state.trelloName !== "")
+      ) {
+        this.props.submitProject();
+      }
+    }
+  }
 
   render() {
     console.log("props ====>", this.props);
     return (
       <div className="createProject">
-        <h1> Create PROJECTS</h1>
         <input
           type="text"
           placeholder="ProjectName"
@@ -69,7 +57,7 @@ class CreateProject extends Component {
         />
         <input
           type="text"
-          placeholder="trelloName "
+          placeholder="trellId"
           name="trelloName"
           value={this.state.trelloName}
           onChange={this.createProjectHandler}
@@ -89,7 +77,9 @@ class CreateProject extends Component {
           onChange={this.createProjectHandler}
         />
         <button
+          className="createButton"
           onClick={() => {
+            this.setState({ clicked: true });
             this.props.submitProject(
               this.state.projectName,
               this.state.githubHandle,
@@ -98,6 +88,8 @@ class CreateProject extends Component {
               this.state.dueDate
             );
             this.props.bill(this.state.githubHandle, this.state.trelloName);
+
+            setTimeout(() => this.props.history.push("./projects"), 1000);
           }}
         >
           Submit
@@ -126,10 +118,12 @@ const mapDispatchToProps = dispatch => {
         dueDate: dueDate
       };
       console.log(object);
-      dispatch({ type: "try" });
+      dispatch({ type: "NEWPROJECT", payload: "" });
       const promise = axios.post("http://localhost:4000/projects", object);
       promise
         .then(response => {
+          console.log("createProjectResponce ====>", response);
+
           dispatch({
             type: "projectId",
             payload: response.data

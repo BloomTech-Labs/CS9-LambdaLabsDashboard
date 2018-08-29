@@ -21,11 +21,12 @@ Router.get("/", (req, res) => {
 Router.post("/", (req, res) => {
   console.log("request ===>", req.body);
   const newProject = ProjectsModel(req.body);
-  newProject.save()
+  newProject
+    .save()
     .then(project => {
       res.status(200).json({ project });
     })
-    .catch(error => res.send('Error creating project'));
+    .catch(error => res.send("Error creating project"));
 });
 
 Router.put("/:id", (req, res) => {
@@ -43,8 +44,7 @@ Router.put("/:id", (req, res) => {
 Router.get("/:id", (req, res) => {
   const { id } = req.params;
   ProjectModel.findById(id)
-    .populate("class", "-_id")
-    .populate("students", "-_id")
+
     .then(p => {
       res.status(200).json(p);
     })
@@ -65,4 +65,4 @@ Router.delete("/:id", (req, res) => {
     });
 });
 
-export default Router
+export default Router;

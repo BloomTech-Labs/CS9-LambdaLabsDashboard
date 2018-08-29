@@ -28,8 +28,9 @@ class EditStudent extends Component {
       salck: this.state.slack
     };
     console.log(object);
-    axios.post(`http://localhost:4000/students`, object)
-    .then(response => {
+    axios
+      .post(`http://localhost:4000/students`, object)
+      .then(response => {
         console.log(response.data);
       })
       .catch(error => {

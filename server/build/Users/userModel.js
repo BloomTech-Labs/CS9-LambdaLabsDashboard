@@ -1,1 +1,9 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+"use strict";var mongoose=require("mongoose"),bcrypt=require("bcrypt"),Schema=mongoose.Schema,definition={username:{type:String,unique:!0},password:{type:String}},options={timestamps:!0},userSchema=new Schema(definition,options);userSchema.pre("save",function(a){var b=this;bcrypt.hash(this.password,11).then(function(c){b.password=c,a()}).catch(function(b){a(b)})}),userSchema.methods.checkPassWord=function(a){return bcrypt.compare(a,this.password)};var userModel=mongoose.model("User",userSchema);module.exports=userModel;
+=======
+"use strict";var mongoose=require("mongoose"),bcrypt=require("bcrypt"),Schema=mongoose.Schema,definition={name:{type:String,required:!0},email:{type:String,required:!0},password:{type:String,required:!0}},options={timestamps:!0},userSchema=new Schema(definition,options);userSchema.pre("save",function(a){var b=this;bcrypt.hash(this.password,11).then(function(c){b.password=c,a()}).catch(function(b){a(b)})}),userSchema.methods.checkPassWord=function(a){return bcrypt.compare(a,this.password)};var userModel=mongoose.model("User",userSchema);module.exports=userModel;
+>>>>>>> bf5b460eecad7fb0a9442164fb900fa3b6cd4c1a
+=======
 "use strict";var mongoose=require("mongoose"),bcrypt=require("bcrypt"),Schema=mongoose.Schema,definition={name:{type:String,required:!0},email:{type:String,required:!0},password:{type:String,required:!0}},options={timestamps:!0},userSchema=new Schema(definition,options);userSchema.pre("save",function(a){var b=this;bcrypt.hash(this.password,11).then(function(c){b.password=c,a()}).catch(function(b){a(b)})}),userSchema.methods.checkPassWord=function(a){return bcrypt.compare(a,this.password)};var userModel=mongoose.model("User",userSchema);userModel.collection.dropIndex("username",function(a){}),module.exports=userModel;
+>>>>>>> d78ce657cdb712073ad7d82bbc187aa46e69a9cf

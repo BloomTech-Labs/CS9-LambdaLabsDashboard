@@ -7,7 +7,7 @@ const Schema = mongoose.Schema;
 const definition = {
   projectId: {
     type: String,
-    unique: true
+    required: true
   },
   users: {
     type: [String]

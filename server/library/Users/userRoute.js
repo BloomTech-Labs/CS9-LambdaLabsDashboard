@@ -16,28 +16,30 @@ router.get("/", (req, res) => {
     });
 });
 
-router.post("/", (req, res) => {
+router.post("/", userEmpty, (req, res) => {
   console.log("request ===>", req.body);
   const obj = req.body;
   const { name, email } = obj;
   const newUser = UserModel(obj);
-  UserModel.find({ email })
-    .then(arr => {
-      if(arr.length === 0) {
-        newUser.save()
-          .then(savedUser => {
-            const token = makeToken(savedUser);
-            const { _id } = savedUser;
-            res.status(200).json({ msg: "user posted successfully ", _id, token });
-          })
-          .catch(err => {
-            console.log(err);
-            res.send(`${name} already exists. Please login`);
-          });
-      } else {
-        res.send(`${email} already exists. Please login`);
-      }
-    })
+  UserModel.find({ email }).then(arr => {
+    if (arr.length === 0) {
+      newUser
+        .save()
+        .then(savedUser => {
+          const token = makeToken(savedUser);
+          const { _id } = savedUser;
+          res
+            .status(200)
+            .json({ msg: "user posted successfully ", _id, token });
+        })
+        .catch(err => {
+          console.log(err);
+          res.send(`${name} already exists. Please login`);
+        });
+    } else {
+      res.send(`${email} already exists. Please login`);
+    }
+  });
 });
 
 router.put("/:id", (req, res) => {

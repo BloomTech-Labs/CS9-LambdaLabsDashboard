@@ -1,118 +1,172 @@
-import React, { PureComponent } from 'react';
-import { connect } from 'react-redux';
-import BarGraph from './BarGraph/BarGraph';
-import CircleGraph from './CircleGraph/CircleGraph';
-import CircleDetails from './CircleGraph/CircleDetails/CircleDetails';
-import Team from './Team/Team';
-import StatBox from './StatBox/StatBox';
-import { getDataForProject } from '../../Actions/ExternalApis';
+import React, { Component } from "react";
+import Axios from "axios";
+import BarGraph from "./BarGraph/BarGraph";
+import CircleGraph from "./CircleGraph/CircleGraph";
+import CircleDetails from "./CircleGraph/CircleDetails/CircleDetails";
+import Team from "./Team/Team";
+import StatBox from "./StatBox/StatBox";
+import Github from "../../Helpers/Github";
+import Trello from "../../Helpers/Trello";
 
-class Dashboard extends PureComponent {
+export default class Dashboard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      project: "Labs Dashboard",
+      team: [
+        {
+          name: "Alex Figliolia",
+          github: "alexfigliolia",
+          trellos: 0,
+          merges: 0
+        },
+        {
+          name: "Boomer Boomer",
+          github: "boomer1204",
+          trellos: 0,
+          merges: 0
+        },
+        {
+          name: "Hilal Aissani",
+          github: "hillal20",
+          trellos: 0,
+          merges: 0
+        },
+        {
+          name: "Jackee Rodrich",
+          github: "JacquelynnRohrich",
+          trellos: 0,
+          merges: 0
+        },
+        {
+          name: "Amanda Moc",
+          github: "mocamanda",
+          trellos: 0,
+          merges: 0
+        },
+        {
+          name: "Yasin Shuman",
+          github: "yshuman1",
+          trellos: 0,
+          merges: 0
+        }
+      ],
+      trello: {
+        members: [],
+        todo: [],
+        inProgress: [],
+        complete: []
+      },
+      completeness: Math.PI * (2 * 199),
+      initBars: false,
+      countUp: false,
+      error: false
+    };
+    this.trelloKey = "cb548cca4f1358b69b3bee4a25ca02ec";
+    this.trelloToken =
+      "5b6ec3db4fe7211b52293adec51fefdd06444a2546ff8ca725dbc5c5ebefa114";
+    this.auth = `?key=${this.trelloKey}&token=${this.trelloToken}`;
+  }
 
-  UNSAFE_componentWillMount = () => this.props.getDataForProject('CS9-LambdaLabsDashboard', '5b70b2c75105750d2795cccb');
+  componentDidMount = () => {
+    Axios.all([
+      Axios.get(
+        `https://api.trello.com/1/boards/5b70b2c75105750d2795cccb/members${
+          this.auth
+        }`
+      ),
+      Axios.get(
+        `https://api.trello.com/1/boards/5b70b2c75105750d2795cccb/cards${
+          this.auth
+        }`
+      ),
+      Axios.get(
+        `https://api.trello.com/1/boards/5b70b2c75105750d2795cccb/lists${
+          this.auth
+        }`
+      ),
+      Axios.get(
+        "https://api.github.com/repos/Lambda-School-Labs/CS9-LambdaLabsDashboard/pulls?state=all"
+      )
+    ])
+      .then(res => this.parseData(res))
+      .catch(err => this.setState({ error: true }));
+  };
+
+  UNSAFE_componentWillMount = () =>
+    this.props.getDataForProject(
+      "CS9-LambdaLabsDashboard",
+      "5b70b2c75105750d2795cccb"
+    );
 
   render = () => {
-    const { trello, countUp, completeness } = this.props;
+    const {
+      project,
+      team,
+      completeness,
+      trello,
+      inProgress,
+      countUp,
+      initBars,
+      error
+    } = this.state;
+    // console.log(trello);
     return (
-      <div className='Dashboard'>
+      <div className="Dashboard">
         <div>
-          <div className='top-panel'>
-            <h1>Labs Dashboard</h1>
+          <div className="top-panel">
+            <h1>{project}</h1>
           </div>
-          <div className='boxes'>
-            <div className='box bar-graph-box'>
-              <BarGraph />
+          <div className="boxes">
+            <div className="box bar-graph-box">
+              <BarGraph error={error} team={team} initBars={initBars} />
             </div>
-            <div className='box circle-box'>
-              <div 
-                className='bottom'
-                style={{
-                  background: 'linear-gradient(to right, #74E0FF, #48A3FF)',
-                  display: 'flex'
-                }}></div>
-              <CircleGraph 
-                completeness={completeness}
-                color1="#74E0FF"
-                color2="#48A3FF"
-                gradientID="completeness"
-                measure="Completeness" />
-              <CircleDetails  />
+            <div className="box circle-box">
+              <CircleGraph error={error} completeness={completeness} />
+              <CircleDetails trello={trello} countUp={countUp} />
             </div>
-            <div className='box team-box'>
-              <div 
-                className='bottom'
-                style={{
-                  background: 'linear-gradient(to right, #74E0FF, #48A3FF)',
-                  display: 'flex'
-                }}></div>
-              <Team setHeight={this.setHeight} />
+            <div className="box team-box">
+              <Team team={team} setHeight={this.setHeight} />
             </div>
-            <div className='box stat-box'>
-              <div 
-                className='bottom'
-                style={{
-                  background: 'linear-gradient(to right, #FC555B, #FC2C65)'
-                }}></div>
-              <StatBox
-                color1="#FC555B"
-                color2="#FC2C65"
-                gradientID="pending"
-                trello={countUp ? trello['To Do'].cards : []}
-                title="Pending"
-                measure="Pending" />
+            <div className="box stat-box">
+              {countUp && (
+                <StatBox
+                  color="#FC4645"
+                  trello={trello["To Do"].cards}
+                  title="Pending"
+                />
+              )}
             </div>
-            <div className='box stat-box'>
-              <div 
-                className='bottom'
-                style={{
-                  background: 'linear-gradient(to right, #FD9121, #FC4026)'
-                }}></div>
-              <StatBox
-                color1="#FD9121"
-                color2="#FC4026"
-                gradientID="inProg"
-                trello={countUp ? trello['In Progress'].cards : []}
-                title="In Progress"
-                measure="In Progress" />
+            <div className="box stat-box">
+              {countUp && (
+                <StatBox
+                  color="#FC4645"
+                  trello={inProgress}
+                  title="In Progress"
+                />
+              )}
             </div>
-            <div className='box stat-box'>
-              <div 
-                className='bottom'
-                style={{
-                  background: 'linear-gradient(to right, #B478F9, #9F46FB)'
-                }}></div>
-              <StatBox
-                color1="#B478F9"
-                color2="#9F46FB"
-                gradientID="testing"
-                trello={countUp ? trello['Testing'].cards : []}
-                title="Testing"
-                measure="Testing" />
+            <div className="box stat-box">
+              {countUp && (
+                <StatBox
+                  color="#FC4645"
+                  trello={trello["Done"].cards}
+                  title="Complete"
+                />
+              )}
             </div>
-            <div className='box stat-box'>
-              <div 
-                className='bottom'
-                style={{
-                  background: 'linear-gradient(to right, #51FF61, #4CFFBE)'
-                }}></div>
-              <StatBox
-                color1="#4CFFBE"
-                color2="#51FF61"
-                gradientID="complete"
-                trello={countUp ? trello['Done'].cards : []}
-                title="Complete"
-                measure="Completed" />
+            <div className="box stat-box">
+              {countUp && (
+                <StatBox
+                  color="#FC4645"
+                  trello={trello["Done"].cards}
+                  title="Hello!!"
+                />
+              )}
             </div>
           </div>
         </div>
       </div>
     );
-  }
+  };
 }
-
-const mSTP = ({ ExternalApis }) => {
-  const { project, trello, countUp, completeness } = ExternalApis;
-  return { project, trello, countUp, completeness };
-}
-
-export default connect(mSTP, { getDataForProject })(Dashboard);

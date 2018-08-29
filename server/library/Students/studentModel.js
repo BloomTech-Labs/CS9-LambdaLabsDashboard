@@ -5,22 +5,21 @@ const Schema = mongoose.Schema;
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const definition = {
-  firstName: {
-    type: String
+  fullName: {
+    type: String,
+    unique: true,
+    required: true
   },
-  lastName: {
-    type: String
-  },
-  slack: {
-    type: String
-  },
-  trelloName: {
+  trello: {
     type: String
   },
   email: {
     type: String
   },
   github: {
+    type: String
+  },
+  location: {
     type: String
   }
 };

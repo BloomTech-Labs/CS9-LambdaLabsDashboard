@@ -1,4 +1,19 @@
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+  "main.css": "static/css/main.c798f5cc.css",
+  "main.css.map": "static/css/main.c798f5cc.css.map",
+  "main.js": "static/js/main.29b7546d.js",
+  "main.js.map": "static/js/main.29b7546d.js.map",
+=======
+  "main.css": "static/css/main.98931a7d.css",
+  "main.css.map": "static/css/main.98931a7d.css.map",
+  "main.js": "static/js/main.a6b441c8.js",
+  "main.js.map": "static/js/main.a6b441c8.js.map",
+>>>>>>> bf5b460eecad7fb0a9442164fb900fa3b6cd4c1a
+  "static/media/add.png": "static/media/add.a012db76.png",
+  "static/media/github.svg": "static/media/github.d289cc48.svg",
+=======
   "main.css": "static/css/main.f4168f9c.css",
   "main.css.map": "static/css/main.f4168f9c.css.map",
   "main.js": "static/js/main.83b5a46f.js",
@@ -11,5 +26,6 @@
   "static/media/github.svg": "static/media/github.d289cc48.svg",
   "static/media/loader.gif": "static/media/loader.1b40205d.gif",
   "static/media/plus.svg": "static/media/plus.6fbcf669.svg",
+>>>>>>> d78ce657cdb712073ad7d82bbc187aa46e69a9cf
   "static/media/user.svg": "static/media/user.c0ed390c.svg"
 }

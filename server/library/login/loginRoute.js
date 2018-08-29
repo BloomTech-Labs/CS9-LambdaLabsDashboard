@@ -7,11 +7,13 @@ const router = express.Router();
 router.get("/", (req, res) => {
   res.send("you are logged-in ");
 });
-
+/////:
 router.post("/", (req, res) => {
-  const { email, password } = req.body;
+  const { username, password } = req.body;
 
-  UserModel.findOne({ email })
+  console.log("username", username);
+
+  UserModel.findOne({ username })
     .then(p => {
       p.checkPassWord(password)
         .then(result => {
@@ -27,8 +29,9 @@ router.post("/", (req, res) => {
           res.send("Something went wrong. Please try again");
         });
     })
+
     .catch(err => {
-      res.send("User not found");
+      res.status(500).json({ msg: err });
     });
 });
 

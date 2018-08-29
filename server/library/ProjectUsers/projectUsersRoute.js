@@ -18,11 +18,13 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res, next) => {
-  if (req.body.users.length === 0 || req.body.projectId === "") {
+  if (req.body.projectId === "") {
     return res.send(" can not post empty projectusers ");
   }
   const { projectId } = req.body;
+
   console.log("request ===>", req.body);
+  console.log("projectId===>", projectId);
   ProjectUsersModel.findOne({ projectId }).then(p => {
     if (p) {
       res.send("sorry we have one already ");
@@ -33,7 +35,7 @@ router.post("/", (req, res, next) => {
         .save()
         .then(p => {
           console.log(p);
-          res.status(200).json({ p });
+          res.status(200).json({ p, msg: "greate" });
         })
         .catch(error => {
           res
@@ -59,11 +61,12 @@ router.put("/:id", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
-  const { projectId } = req.params;
-  ProjectUsersModel.findOne(projectId)
+  const id = req.params;
+  console.log("======>", id.id);
+  ProjectUsersModel.find({ projectId: id.id })
 
     .then(p => {
-      res.status(200).json(p);
+      res.status(200).json(p[0]);
     })
     .catch(err => {
       res.status(500).json({ msg: "we cant find this projectusers " });
@@ -71,15 +74,15 @@ router.get("/:id", (req, res) => {
 });
 
 router.delete("/:id", (req, res) => {
-  const id = req.params.id;
-
-  ProjectUsersModel.findById(id)
+  const id = req.params;
+  console.log("======>", id.id);
+  ProjectUsersModel.find({ projectId: id.id })
     .remove()
     .then(p => {
-      res.status(200).json({ msg: "...users  successfully deleted" });
+      res.status(200).json({ msg: "...projectusers  successfully deleted" });
     })
     .catch(err => {
-      res.status(200).json({ msg: "... not able to  delete users" });
+      res.status(200).json({ msg: "... not able to  delete projectusers" });
     });
 });
 
