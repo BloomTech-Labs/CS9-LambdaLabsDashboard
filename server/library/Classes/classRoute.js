@@ -8,7 +8,7 @@ const Router = express.Router();
 Router.get("/:userID", (req, res) => {
   const { userID } = req.params
   ClassModel.find({ userID })
-    .populate("project")
+    .populate("projects")
     .then(classes => {
       res.status(200).json({ classes });
     })

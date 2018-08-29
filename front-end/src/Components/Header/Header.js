@@ -23,12 +23,11 @@ class Header extends PureComponent {
           <Link to="/classes">Classes</Link>
           {
             classes.map(c => {
-              const { className, _id } = c;
-              console.log(_id);
+              const { className } = c;
               return (
                 <Link 
                   key={className}
-                  to={{pathname: `/projects/${className}`, state: {_id}}}>{className}</Link>  
+                  to={`/projects/${className}`}>{className}</Link>  
               );
             })
           }

@@ -80,7 +80,7 @@ class Classes extends PureComponent {
   createClass = () => {
     const { newClassName } = this.state;
     const { userID } = this.props;
-    if(newClassName.length > 2) {
+    if(newClassName.length > 2 && this.loopClasses(newClassName)) {
       this.setState({
       createClasses: 'class-create class-modal-show class-modal-enter class-modal-loading'
       }, () => {
@@ -89,6 +89,19 @@ class Classes extends PureComponent {
           .catch(err => this.setState({ newClassError: true }));
       });
     }
+  }
+
+  loopClasses = className => {
+    let open = true
+    const { classes } = this.props;
+    for(let i = 0; i < classes.length; i++) {
+      const { name } = classes[i];
+      if(name === className) {
+        open = false;
+        break;
+      }
+    }
+    return open;
   }
 
   deleteClass = () => {

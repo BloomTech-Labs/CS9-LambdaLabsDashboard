@@ -2910,6 +2910,10 @@ input[type='checkbox']:checked::before {
         margin-top: 10px;
         color: #91A7E0;
         font-weight: 400; }
+      .project > .front > .center > p {
+        color: #F66463;
+        width: 80%;
+        text-align: center; }
       .project > .front > .center > .student {
         width: 100%;
         display: flex;

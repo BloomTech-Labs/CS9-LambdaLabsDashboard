@@ -6,10 +6,10 @@ import { logout } from '../../Actions/Navigation';
 
 class Menu extends PureComponent {
 
-  navigate = (route, _id) => {
+  navigate = route => {
     const { history, toggleMenu } = this.props;
     toggleMenu();
-    setTimeout(() => history.push({pathname: route, state: { _id }}), 300);
+    setTimeout(() => history.push(route), 300);
   }
 
   logout = () => {
@@ -29,11 +29,11 @@ class Menu extends PureComponent {
           <a onClick={() => this.navigate('/classes')}>Classes</a>
           {
             classes.map(c => {
-              const { className, _id } = c;
+              const { className } = c;
               return (
                 <a
-                  key={c} 
-                  onClick={() => this.navigate(`/projects/${className}`, _id)}>{className}</a>
+                  key={className} 
+                  onClick={() => this.navigate(`/projects/${className}`)}>{className}</a>
               );
             })
           }

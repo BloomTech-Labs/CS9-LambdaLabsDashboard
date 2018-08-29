@@ -3,7 +3,7 @@ import Axios from 'axios';
 import { connect } from 'react-redux';
 import Input from '../Input/Input';
 import Check from '../../pictures/check.svg';
-import { createProject } from '../../Actions/Database'; 
+import { updateClassPayload } from '../../Actions/Database'; 
 
 const baseURL = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:4000';
 
@@ -11,13 +11,17 @@ class CreateProject extends Component {
   constructor(props) {
     super(props);
     this.state = {
-    	className: '',
     	name: '',
       repository: '',
       trello: '',
       classes: 'submit-project',
       error: false,
     }
+  }
+
+  componentDidMount = () => {
+    const { history, location } = this.props;
+    if(!location.state) history.push('/classes');
   }
 
   shouldComponentUpdate = (nextProps, {className, name, repository, trello, classes, error}) => {
@@ -36,11 +40,14 @@ class CreateProject extends Component {
   }
 
   checkState = () => {
-  	const { className, name, repository, trello } = this.state;
+  	const { name, repository, trello } = this.state;
+    const { location } = this.props;
+    const { classID, className } = location.state;
   	return className !== '' &&
   				 name !== '' &&
   				 repository !== '' &&
-  				 trello !== '';
+  				 trello !== '' &&
+           classID;
   }
 
   error = () => {
@@ -49,17 +56,24 @@ class CreateProject extends Component {
 
   submit = () => {
   	this.setState({ classes: 'submit-project submit-project-loading' }, () => {
-  		const { className, name, repository, trello } = this.state;
+  		const { name, repository, trello } = this.state;
+      const { location, history, updateClassPayload } = this.props;
+      const { classID, className } = location.state;
+      console.log(classID, name, repository, trello);
 	  	if(this.checkState()) {
-	  		Axios.post(`${baseURL}/projects`, { className, name, repository, trello })
+	  		Axios.post(`${baseURL}/projects`, { classID, name, github: repository, trello })
 					.then(res => {
 						console.log(res);
 						if(typeof res.data === 'string') {
 							this.error();
 						} else {
-							this.props.createProject(res.data.project);
+							updateClassPayload(res.data.classes);
 							this.setState({ classes: 'submit-project submit-project-loading submit-project-complete'}, () => {
-								setTimeout(() => this.setState({ classes: 'submit-project' }), 2000);
+								setTimeout(() => 
+                  this.setState({ classes: 'submit-project' }, () => {
+                    setTimeout(() => history.push(`/projects/${className}`), 500);
+                  })
+                , 2000);
 							});
 						}
 					})
@@ -71,6 +85,7 @@ class CreateProject extends Component {
   }
 
   render = () => {
+    console.log(this.props);
   	const { className, name, repository, trello, classes, error } = this.state;
     return (
       <div 
@@ -81,13 +96,6 @@ class CreateProject extends Component {
           </div>
           <div className="questionaire">
           	<h2 data-num="1">Classification</h2>
-          	<Input 
-            	labelText='1) To which class does this project belong?'
-            	type='text'
-            	placeholder='Ex: Computer Science 1'
-            	name='className'
-            	value={className}
-            	onChange={this.inputChange} />
           	<Input 
             	labelText='1) What is the name of this product?'
             	type='text'
@@ -128,4 +136,4 @@ class CreateProject extends Component {
   }
 }
 
-export default connect(null, { createProject })(CreateProject);
+export default connect(null, { updateClassPayload })(CreateProject);
