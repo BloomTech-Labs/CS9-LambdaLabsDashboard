@@ -7,7 +7,7 @@ import LandingPage from "./Components/LandingPage/LandingPage";
 import Projects from "./Components/Projects/Projects";
 import Billing from "./Components/Billing/Billing";
 import CreateProject from "./Components/CreateProject/Create";
-import EditProject from "./Components/EditProject/editProject";
+import EditProject from "./Components/EditProject/EditProject";
 import Settings from "./Components/Settings/Settings";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import Menu from "./Components/Menu/Menu";
