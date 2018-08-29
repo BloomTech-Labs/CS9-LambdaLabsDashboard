@@ -1,14 +1,20 @@
-const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
+import mongoose from "mongoose";
+import bcrypt from "bcrypt";
+
 const Schema = mongoose.Schema;
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const definition = {
   firstName: {
-    type: String,
-    unique: true
+    type: String
   },
   lastName: {
+    type: String
+  },
+  slack: {
+    type: String
+  },
+  trelloName: {
     type: String
   },
   email: {
@@ -16,17 +22,6 @@ const definition = {
   },
   github: {
     type: String
-  },
-  class: {
-    type: String
-  },
-  className: {
-    type: ObjectId,
-    ref: "Class"
-  },
-  project: {
-    type: ObjectId,
-    ref: "LambdaProject"
   }
 };
 const options = {

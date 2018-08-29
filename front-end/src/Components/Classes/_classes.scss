@@ -1,0 +1,98 @@
+.classes {
+	display: block;
+	width: 100%;
+	position: relative;
+	@media #{$mq-1070} {
+		width: calc(100% - 200px);
+	}
+	&>.center {
+		width: 90%;
+		height: auto;
+		margin: auto;
+		min-height: 70vh;
+	    @media #{$mq-1070} {
+	      width: 95%;
+	    }
+		&>h1 {
+			font-size: 3em;
+			font-weight: 200;
+			color: $purple;
+			width: 100%;
+			text-align: center;
+			margin: 2em auto 0.5em auto;
+			position: relative;
+			@media #{$mq-670} {
+				margin: 2.5em auto 1em auto;
+			}
+			@media #{$mq-1070} {
+				margin: 1em auto;
+			}
+		}
+		&>div {
+			width: 100%;
+			@include center;
+			flex-direction: column;
+			@media #{$mq-670} {
+				flex-direction: row;
+				flex-wrap: wrap;
+			}
+			&>h2 {
+				color: $purple;
+				text-align: center;
+				width: 80%;
+				margin-bottom: 50%;
+				@media #{$mq-670} {
+					margin-bottom: 25%;
+				}
+				@media #{$mq-1070} {
+					margin-bottom: 10%;
+				}
+			}
+		}
+	}
+}
+
+.classes-show {
+	&>.center {
+		&>div {
+			&>.class {
+				transform: translateY(0);
+				opacity: 1;
+			}
+		}
+	}
+	&>.create-class {
+		transform: scale(1) rotate(0deg);
+		transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+		transition-delay: 0.5s;
+	}
+}
+
+.create-class {
+	outline: none; border: none;
+	position: fixed;
+	bottom: 2.5vh; right: 2.5vh;
+	height: 50px; width: 50px;
+	background: $redish url('pictures/plus.svg') no-repeat center;
+	background-size: 65% 65%;
+	border-radius: 50%;
+	@include headerShadow;
+	z-index: 2;
+	transform: scale(0) rotate(360deg);
+	transition-timing-function: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+	transition-duration: 0.4s;
+	@media #{$mq-670} {
+		height: 70px; width: 70px;
+		bottom: 3.5vh; right: 3.5vh;
+	}
+	&:hover {
+		transition-duration: 0.3s;
+		transition-delay: 0s;
+		transform: scale(1.1);
+	}
+}
+
+@import 'Class/class.scss';
+@import 'CreateClass/create-class.scss';
+@import 'ConfirmDelete/confirm-delete.scss';
+@import 'class-modals.scss';

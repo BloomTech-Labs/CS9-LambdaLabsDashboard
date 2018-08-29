@@ -1,114 +1,107 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
 import BarGraph from './BarGraph/BarGraph';
 import CircleGraph from './CircleGraph/CircleGraph';
 import CircleDetails from './CircleGraph/CircleDetails/CircleDetails';
 import Team from './Team/Team';
+import StatBox from './StatBox/StatBox';
+import { getDataForProject } from '../../Actions/ExternalApis';
 
-export default class Dashboard extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      project: 'Labs Dashboard',
-      team: [
-        {
-          name: 'Alex Figliolia',
-          github: 'alexfigliolia',
-          merges: 7,
-          trellos: 9,
-        },
-        {
-          name: 'Steve Figliolia',
-          github: 'alexfigliolia',
-          merges: 4,
-          trellos: 7,
-        },
-        {
-          name: 'Hilal Aissani',
-          github: 'alexfigliolia',
-          merges: 7,
-          trellos: 8,
-        },
-        {
-          name: 'Jackee Rodrich',
-          github: 'alexfigliolia',
-          merges: 2,
-          trellos: 4,
-        },
-        {
-          name: 'Amanda Moc',
-          github: 'alexfigliolia',
-          merges: 9,
-          trellos: 6,
-        },
-        {
-          name: 'Yasin Shuman',
-          github: 'alexfigliolia',
-          merges: 5,
-          trellos: 3,
-        },
-        {
-          name: 'SpongeBob S.',
-          github: 'alexfigliolia',
-          merges: 5,
-          trellos: 3,
-        },
-      ],
-      trello: {
-        todo: [
-          'Write routes for joe momma',
-          'Build ui for joe momma',
-          'Build auth for joe momma'
-        ],
-        inProgress: [
-          'Login-logout',
-          'Reset password',
-          'style guide',
-          'tie my shoes'
-        ],
-        complete: [
-          'Front-end routing',
-          'Login view',
-          'Navigation view',
-          'Make some chicken'
-        ]
-      },
-      completeness: Math.PI * (2 * 199),
-      initBars: false,
-      countUp: false
-    }
-  }
+class Dashboard extends PureComponent {
 
-  componentDidMount = () => {
-    setTimeout(() => {
-      this.setState({ completeness: Math.PI * (2 * 50), initBars: true});  
-      setTimeout(() => this.setState({countUp: true}), 500);
-    }, 500);
-  }
+  UNSAFE_componentWillMount = () => this.props.getDataForProject('CS9-LambdaLabsDashboard', '5b70b2c75105750d2795cccb');
 
   render = () => {
-    const { project, team, completeness, trello, countUp, initBars } = this.state;
+    const { trello, countUp, completeness } = this.props;
     return (
       <div className='Dashboard'>
         <div>
           <div className='top-panel'>
-            <h1>{project}</h1>
+            <h1>Labs Dashboard</h1>
           </div>
           <div className='boxes'>
             <div className='box bar-graph-box'>
-              <BarGraph 
-                team={team}
-                initBars={initBars} />
+              <BarGraph />
             </div>
             <div className='box circle-box'>
-              <CircleGraph completeness={completeness} />
-              <CircleDetails 
-                trello={trello}
-                countUp={countUp} />
+              <div 
+                className='bottom'
+                style={{
+                  background: 'linear-gradient(to right, #74E0FF, #48A3FF)',
+                  display: 'flex'
+                }}></div>
+              <CircleGraph 
+                completeness={completeness}
+                color1="#74E0FF"
+                color2="#48A3FF"
+                gradientID="completeness"
+                measure="Completeness" />
+              <CircleDetails  />
             </div>
             <div className='box team-box'>
-              <Team 
-                team={team}
-                setHeight={this.setHeight} />
+              <div 
+                className='bottom'
+                style={{
+                  background: 'linear-gradient(to right, #74E0FF, #48A3FF)',
+                  display: 'flex'
+                }}></div>
+              <Team setHeight={this.setHeight} />
+            </div>
+            <div className='box stat-box'>
+              <div 
+                className='bottom'
+                style={{
+                  background: 'linear-gradient(to right, #FC555B, #FC2C65)'
+                }}></div>
+              <StatBox
+                color1="#FC555B"
+                color2="#FC2C65"
+                gradientID="pending"
+                trello={countUp ? trello['To Do'].cards : []}
+                title="Pending"
+                measure="Pending" />
+            </div>
+            <div className='box stat-box'>
+              <div 
+                className='bottom'
+                style={{
+                  background: 'linear-gradient(to right, #FD9121, #FC4026)'
+                }}></div>
+              <StatBox
+                color1="#FD9121"
+                color2="#FC4026"
+                gradientID="inProg"
+                trello={countUp ? trello['In Progress'].cards : []}
+                title="In Progress"
+                measure="In Progress" />
+            </div>
+            <div className='box stat-box'>
+              <div 
+                className='bottom'
+                style={{
+                  background: 'linear-gradient(to right, #B478F9, #9F46FB)'
+                }}></div>
+              <StatBox
+                color1="#B478F9"
+                color2="#9F46FB"
+                gradientID="testing"
+                trello={countUp ? trello['Testing'].cards : []}
+                title="Testing"
+                measure="Testing" />
+            </div>
+            <div className='box stat-box'>
+              <div 
+                className='bottom'
+                style={{
+                  background: 'linear-gradient(to right, #51FF61, #4CFFBE)'
+                }}></div>
+              <StatBox
+                color1="#4CFFBE"
+                color2="#51FF61"
+                gradientID="complete"
+                trello={countUp ? trello['Done'].cards : []}
+                title="Complete"
+                measure="Completed" />
             </div>
           </div>
         </div>
@@ -116,3 +109,10 @@ export default class Dashboard extends Component {
     );
   }
 }
+
+const mSTP = ({ ExternalApis }) => {
+  const { project, trello, countUp, completeness } = ExternalApis;
+  return { project, trello, countUp, completeness };
+}
+
+export default connect(mSTP, { getDataForProject })(Dashboard);

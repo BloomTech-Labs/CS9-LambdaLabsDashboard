@@ -1,13 +1,21 @@
 Arguments: 
+<<<<<<< HEAD
   C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js start
 
 PATH: 
   C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\jacqu\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Python37-32\Scripts;C:\Program Files (x86)\Python37-32;C:\Program Files\Docker\Docker\Resources\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\Program Files\nodejs;C:\Program Files\dotnet;C:\Program Files\Microsoft SQL Server\130\Tools\Binn;C:\Program Files\MySQL\MySQL Utilities 1.6;C:\Program Files\Git\cmd;C:\Program Files (x86)\Yarn\bin;C:\WINDOWS\System32\OpenSSH;C:\Program Files\Microsoft VS Code\bin;C:\Users\jacqu\AppData\Local\Programs\Python\Python37\Scripts;C:\Users\jacqu\AppData\Local\Programs\Python\Python37;C:\Program Files\Docker\Docker\Resources\bi;.;C:\WINDOWS\system3;.;C:\WINDOW;.;C:\WINDOWS\System32\Wbe;.;C:\WINDOWS\System32\WindowsPowerShell\v1.0;.;C:\Program Files\nodejs;.;C:\Program Files\dotnet;.;C:\Program Files\Microsoft SQL Server\130\Tools\Binn;.;C:\Program Files\MySQL\MySQL Utilities 1.6;.;C:\Program Files\Git\cm;.;C:\Program Files (x86)\Yarn\bin;.;C:\WINDOWS\System32\OpenSSH;.;C:\Program Files\MongoDB\Server\3.6\bi;.;C:\Program Files\Microsoft VS Code\bi;.;C:\Users\jacqu\AppData\Local\Yarn\bin;C:\Python34;C:\users\jacqu\appdata\roaming\python\python37\site-packages;C:\sqlite3;C:\Program Files\Heroku\bin
+=======
+  /usr/local/bin/node /usr/local/bin/yarn start
+
+PATH: 
+  /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/mongodb/bin:/usr/local/mongodb/bin
+>>>>>>> d78ce657cdb712073ad7d82bbc187aa46e69a9cf
 
 Yarn version: 
   1.5.1
 
 Node version: 
+<<<<<<< HEAD
   8.9.1
 
 Platform: 
@@ -35,6 +43,15 @@ npm manifest:
     },
     "homepage": "https://lambda-dashboard-cs9.herokuapp.com/"
   }
+=======
+  8.10.0
+
+Platform: 
+  darwin x64
+
+npm manifest: 
+  No manifest
+>>>>>>> d78ce657cdb712073ad7d82bbc187aa46e69a9cf
 
 yarn manifest: 
   No manifest
@@ -43,6 +60,7 @@ Lockfile:
   No lockfile
 
 Trace: 
+<<<<<<< HEAD
   Error: Command "start" not found.
       at new MessageError (C:\Program Files (x86)\Yarn\lib\cli.js:186:110)
       at C:\Program Files (x86)\Yarn\lib\cli.js:87307:17
@@ -54,3 +72,12 @@ Trace:
       at C:\Program Files (x86)\Yarn\lib\cli.js:95:12
       at runCommand (C:\Program Files (x86)\Yarn\lib\cli.js:87312:22)
       at Object.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:87412:14)
+=======
+  Error: Couldn't find a package.json file in "/Users/Mine/LambdaSchool/Week24 Lambda Labs/CS9-LambdaLabsDashboard"
+      at new MessageError (/usr/local/lib/node_modules/yarn/lib/cli.js:186:110)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:40048:15
+      at Generator.next (<anonymous>)
+      at step (/usr/local/lib/node_modules/yarn/lib/cli.js:98:30)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:109:13
+      at <anonymous>
+>>>>>>> d78ce657cdb712073ad7d82bbc187aa46e69a9cf

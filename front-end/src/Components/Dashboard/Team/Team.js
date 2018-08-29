@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
 import TeamMember from './TeamMember/TeamMember';
 
-export default class Team extends Component {  
+class Team extends PureComponent {  
   render = () => {
   	const { team } = this.props;
     return (
@@ -24,3 +25,9 @@ export default class Team extends Component {
     );
   }
 }
+
+const mSTP = ({ ExternalApis }) => {
+	return { team: ExternalApis.team }; 
+}
+
+export default connect(mSTP)(Team);

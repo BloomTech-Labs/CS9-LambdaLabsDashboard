@@ -2,9 +2,10 @@
 	@include center;
 	width: 80%;
 	height: auto;
+	margin-top: 2.5%;
 	@media #{$mq-670} {
-		max-width: 250px;
-		margin-top: -5%;
+		max-width: 275px;
+		margin-top: -2.5%;
 	}
 	&>.circle-center {
 		@include center;
@@ -14,6 +15,10 @@
 		cursor: pointer;
 		background: transparent;
 		border-radius: 50%;
+		margin-bottom: 1em;
+		@media #{$mq-670} {
+			margin-bottom: 0;
+		}
 		&>.circle-container {
 			@include center;
 			position: absolute;
@@ -47,10 +52,11 @@
 			&>h4 {
 				color: #74E0FF;
 				font-size: 10vh;
-				font-weight: 100;
+				font-weight: 200;
 				margin: 0;
 				@media #{$mq-670} {
 					font-size: 9vh;
+					font-weight: 100;
 				}
 			}
 		}

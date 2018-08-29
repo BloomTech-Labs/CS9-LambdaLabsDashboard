@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import "./editStudent.css";
 
 class EditStudent extends Component {
   constructor(props) {
@@ -8,8 +7,10 @@ class EditStudent extends Component {
     this.state = {
       firstName: "",
       lastName: "",
-      project: "",
-      class: ""
+      slack: "",
+      trelloName: "",
+      email: "",
+      github: ""
     };
   }
 
@@ -21,14 +22,14 @@ class EditStudent extends Component {
     const object = {
       firstName: this.state.firstName,
       lastName: this.state.lastName,
-      project: this.state.project,
-      class: this.state.class
+      email: this.state.email,
+      github: this.state.github,
+      trelloName: this.state.trelloName,
+      salck: this.state.slack
     };
-    const id = "";
     console.log(object);
-    const promise = axios.put(`http://localhost:4000/students/${id}`, object);
-    promise
-      .then(response => {
+    axios.post(`http://localhost:4000/students`, object)
+    .then(response => {
         console.log(response.data);
       })
       .catch(error => {
@@ -40,10 +41,10 @@ class EditStudent extends Component {
     // console.log(this.props.match.params.id);
     return (
       <div className="editStudent">
-        <h1> Edit Student</h1>
+        <h1> Add Student</h1>
         <input
           type="text"
-          placeholder="student Name"
+          placeholder="first  Name"
           name="firstName"
           value={this.state.firstName}
           onChange={this.editHandler}
@@ -58,17 +59,31 @@ class EditStudent extends Component {
         />
         <input
           type="text"
-          placeholder="project"
-          name="project"
-          value={this.state.project}
+          placeholder="slack name"
+          name="slack"
+          value={this.state.slack}
           onChange={this.editHandler}
         />
 
         <input
           type="text"
-          placeholder="class"
-          name="class"
-          value={this.state.class}
+          placeholder="trelloName name"
+          name="trelloName"
+          value={this.state.trelloName}
+          onChange={this.editHandler}
+        />
+        <input
+          type="text"
+          placeholder="email"
+          name="email"
+          value={this.state.email}
+          onChange={this.editHandler}
+        />
+        <input
+          type="text"
+          placeholder="github name"
+          name="github"
+          value={this.state.github}
           onChange={this.editHandler}
         />
 

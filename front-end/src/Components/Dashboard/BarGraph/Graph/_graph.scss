@@ -7,6 +7,26 @@
 	border-left: 1px solid rgba(#fff, 0.75);
 	height: 100%;
 	flex-direction: row;
+	position: relative;
+	&>.error {
+		align-self: center;
+		width: 90%;
+		text-align: center;
+		color: #fff;
+		margin: auto;
+		@include center;
+		flex-direction: column;
+		&>h3 {
+			margin-top: 0;
+			margin-bottom: 0;
+			font-weight: 700;
+			color: #EB5C59;
+			font-size: 1.75em;
+		}
+		&>p {
+			max-width: 300px;
+		}
+	}
 	&>.bar-container {
 		width: 50px;
 		height: 100%;

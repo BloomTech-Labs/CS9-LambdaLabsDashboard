@@ -1,31 +1,26 @@
-const express = require("express");
-const router = express.Router();
+import express from 'express';
 import UserModel from "../Users/userModel.js";
-const stripe = require("stripe")("sk_test_F2N15doyqIvd8Qb47d1Setor");
+const router = express.Router();
+const stripe = require("stripe")("sk_test_4uTrPeq8JDUTDumv8qDek87x");
+import authenticate from "../MiddleWare/authJWT.js";
 
-router.get("/", (req, res) => {
+router.get("/", authenticate, (req, res) => {
   res.send("you are on the charge page");
 });
 
-// router.post("/", (req, res) => {
-//   const user = UserModel.find({ username: req.body.username });
-
-//   user.then(user => {
-//     if (user) {
-//       res.json({ msg: "user exist", user });
-//     } else {
-//       res.send("there is no such user");
-//     }
-//   });
-// });
-
-router.post("/charge", (req, res) => {
-  console.log("====>", req.body);
+router.post("/", (req, res) => {
+  console.log("====>", req.body.token);
+  console.log("====>", req.body.email);
   const amount = 2000;
+  const token = req.body.token;
+  if (!token) {
+    res.send("there is no token");
+  }
+
   stripe.customers
     .create({
-      email: req.body.stripeEmail,
-      source: req.body.stripeToken
+      email: req.body.email,
+      source: req.body.token
     })
     .then(customer => {
       stripe.charges.create({
@@ -36,8 +31,7 @@ router.post("/charge", (req, res) => {
       });
     })
     .then(charge => {
-      // res.redirect("http://localhost:3000/Billing");
-      res.json(charge);
+      res.send("success");
     });
 });
 module.exports = router;

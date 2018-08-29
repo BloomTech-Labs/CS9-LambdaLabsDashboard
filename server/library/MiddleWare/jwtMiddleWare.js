@@ -1,12 +1,14 @@
-const jwt = require("jsonwebtoken");
-const keys = require("../keys");
-const secret = keys.secretKey.secretKey;
+import jwt from "jsonwebtoken";
+require('dotenv').config();
+
+const secret = process.env.SECRET_KEY;
 
 function makeToken(user) {
+  const { _id, email } = user;
   const payload = {
-    sub: user._id,
+    sub: _id,
     iat: new Date().getTime(),
-    username: user.username
+    email
   };
   const options = {
     expiresIn: "24h"
@@ -14,4 +16,5 @@ function makeToken(user) {
   const token = jwt.sign(payload, secret, options);
   return token;
 }
-module.exports = { makeToken, secret };
+
+export { makeToken, secret };

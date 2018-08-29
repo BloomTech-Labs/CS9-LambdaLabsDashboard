@@ -1,14 +1,23 @@
 import React from "react";
+<<<<<<< HEAD
 // import axios from "axios";
 import StripeCheckout from "react-stripe-checkout";
 
 // const stripe = require("stripe-client")("pk_test_dtZeEKgd6FSjpH2sFi8RAYFa");
+=======
+// import Axios from "axios";
+
+
+import Stripe from "./Stripe";
+
+>>>>>>> d78ce657cdb712073ad7d82bbc187aa46e69a9cf
 
 export default class Billing extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       monthly: false,
+<<<<<<< HEAD
       annual: false,
 
       information: {
@@ -98,6 +107,19 @@ export default class Billing extends React.Component {
           currency="USD"
           stripeKey="pk_test_dtZeEKgd6FSjpH2sFi8RAYFa"
         />
+=======
+      annual: false
+    };
+  }
+
+  render() {
+    return (
+      <div className='paymentWrapper'>
+        <div className="payment">
+          <h1>Welcome to Payments</h1>
+            <Stripe />
+        </div>
+>>>>>>> d78ce657cdb712073ad7d82bbc187aa46e69a9cf
       </div>
     );
   }

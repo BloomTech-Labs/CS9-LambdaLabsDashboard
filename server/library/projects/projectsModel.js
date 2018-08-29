@@ -1,37 +1,38 @@
-const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
+import mongoose from "mongoose";
+import bcrypt from "bcrypt";
+
 const Schema = mongoose.Schema;
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const definition = {
-  projectName: {
+  name: {
     type: String,
-    unique: true
+    required: true
   },
-  numberOfStudents: {
-    type: Number
+  github: {
+    type: String,
+    required: true
   },
-  dueDate: {
-    type: String
+  className: {
+    type: String,
+    required: true
   },
-  class: {
+  trello: {
+    type: String,
+    required: true
+  },
+  classID: {
     type: ObjectId,
-    ref: "Class"
-  },
-  students: {
-    type: ObjectId,
-    ref: "Student"
+    required: true
   }
 };
+
 const options = {
   timestamps: true
 };
 
 const lambdaProjectsSchema = new Schema(definition, options);
 
-const lambdaProjectsModel = mongoose.model(
-  "LambdaProject",
-  lambdaProjectsSchema
-);
+const lambdaProjectsModel = mongoose.model("LambdaProject", lambdaProjectsSchema);
 
 module.exports = lambdaProjectsModel;
