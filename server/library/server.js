@@ -56,7 +56,7 @@ Server.get("/", (req, res) => {
 });
 
 Server.use("/classes", classes);
-Server.use("/projects", cors(), projects);
+Server.use("/projects", projects);
 Server.use("/users", user);
 Server.use("/login", login);
 Server.use("/charge", charge);

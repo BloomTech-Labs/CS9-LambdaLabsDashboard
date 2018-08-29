@@ -9,7 +9,7 @@ import { getDataForProject } from '../../Actions/ExternalApis';
 
 class Dashboard extends PureComponent {
 
-  UNSAFE_componentWillMount = () => this.props.getDataForProject('CS9-LambdaLabsDashboard');
+  UNSAFE_componentWillMount = () => this.props.getDataForProject('CS9-LambdaLabsDashboard', '5b70b2c75105750d2795cccb');
 
   render = () => {
     const { trello, countUp, completeness } = this.props;

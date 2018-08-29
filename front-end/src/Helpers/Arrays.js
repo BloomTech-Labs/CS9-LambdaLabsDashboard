@@ -1,3 +1,5 @@
+import hsl from 'hsl-to-hex';
+
 export const arrayFilter = (arr, fn) => {
   const results = [];
   for (let i = arr.length - 1; i >= 0; i--) {
@@ -14,4 +16,12 @@ export const arrayMap = (arr, fn) => {
     res.unshift(fn(item, i));
   }
   return res;
+}
+
+export const generateColors = (index, length) => {
+  const hueDelta = 360 / length;
+  const hue = index * hueDelta;
+  const color1 = hsl(hue, 86, 60);
+  const color2 = hsl(hue, 86, 70);
+  return { color1, color2 };
 }
