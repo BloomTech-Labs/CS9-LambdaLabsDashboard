@@ -62,15 +62,24 @@ router.put("/:id", (req, res) => {
 
 router.delete("/:id", (req, res) => {
   const id = req.params.id;
-
-  CredentialsModel.findById(id)
-    .remove()
-    .then(p => {
-      res.status(200).json({ msg: "..Credential  successfully deleted" });
-    })
-    .catch(err => {
-      res.status(200).json({ msg: "... not able to  delete Credential " });
-    });
+  console.log("===>", id);
+  if (id === "kkkk") {
+    console.log(id);
+    CredentialsModel.find({})
+      .deleteMany({})
+      .then(p => {
+        res.send("deleted");
+      });
+  } else {
+    CredentialsModel.findById(id)
+      .remove()
+      .then(p => {
+        res.status(200).json({ msg: "..Credential  successfully deleted" });
+      })
+      .catch(err => {
+        res.status(200).json({ msg: "... not able to  delete Credential " });
+      });
+  }
 });
 
 module.exports = router;

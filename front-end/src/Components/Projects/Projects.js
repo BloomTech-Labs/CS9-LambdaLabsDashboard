@@ -246,9 +246,23 @@ class Projects extends Component {
         // this.fetchingData();
       })
       .catch(error => {});
+    this.deleteUsersCredentials();
   };
+  deleteUsersCredentials() {
+    const promise = axios.delete(
+      "http://localhost:4000/studentCredential/kkkk"
+    );
+    promise
+      .then(p => {
+        console.log("credentials deleted ===>", p);
+      })
+      .catch(err => {
+        err;
+      });
+  }
 
   displayProjects() {
+    let ST = "";
     let student = "";
     let data = this.state.projects;
     if (data === undefined) {
@@ -263,7 +277,7 @@ class Projects extends Component {
             <div>
               <span>Total Students:</span>
               {
-                this.state.backStudents
+                this.state.students
                   .length /*|| this.state.backupStudents.length}*/
               }
             </div>
@@ -277,47 +291,92 @@ class Projects extends Component {
                 if (s.projectId === project._id) {
                   student = s;
                 }
-                return (
-                  <div key={s._id} className="student">
-                    <div>
-                      {student.users &&
-                        student.users.map(st => {
-                          return (
-                            <div
-                              onClick={() => {
-                                this.state.students.map(s => {
-                                  if (st === s.fullName) {
-                                    this.props.studentTrelloInfo(
-                                      s.fullName,
-                                      s.username
+                if (student.users) {
+                  return (
+                    <div key={s._id} className="student">
+                      <div>
+                        {student.users &&
+                          student.users.length !== 0 &&
+                          student.users.map(st => {
+                            if (st !== null && st !== undefined) {
+                              ST = st;
+
+                              return (
+                                <div
+                                  onClick={() => {
+                                    this.state.students.map(s => {
+                                      if (st === s.fullName) {
+                                        this.props.studentTrelloInfo(
+                                          s.fullName,
+                                          s.username
+                                        );
+                                      }
+                                    });
+
+                                    // this.props.studentTrelloInfo(
+                                    //   student.fullName,
+                                    //   student.username
+                                    // );
+
+                                    this.props.sendGithubInf(
+                                      this.state.pullRequests
                                     );
-                                  }
-                                });
+                                    setTimeout(() => {
+                                      this.props.history.push(
+                                        "/projects/EditStudent"
+                                      );
+                                    }, 3000);
+                                  }}
+                                  key={st}
+                                >
+                                  {ST}
+                                </div>
+                              );
+                            } else if (
+                              st === null ||
+                              st === undefined ||
+                              st === ""
+                            ) {
+                              return <div> No Students </div>;
+                            }
 
-                                // this.props.studentTrelloInfo(
-                                //   student.fullName,
-                                //   student.username
-                                // );
+                            // return (
+                            //   <div
+                            //     onClick={() => {
+                            //       this.state.students.map(s => {
+                            //         if (st === s.fullName) {
+                            //           this.props.studentTrelloInfo(
+                            //             s.fullName,
+                            //             s.username
+                            //           );
+                            //         }
+                            //       });
 
-                                this.props.sendGithubInf(
-                                  this.state.pullRequests
-                                );
-                                setTimeout(() => {
-                                  this.props.history.push(
-                                    "/projects/EditStudent"
-                                  );
-                                }, 3000);
-                              }}
-                              key={st}
-                            >
-                              {st}
-                            </div>
-                          );
-                        })}
+                            //       // this.props.studentTrelloInfo(
+                            //       //   student.fullName,
+                            //       //   student.username
+                            //       // );
+
+                            //       this.props.sendGithubInf(
+                            //         this.state.pullRequests
+                            //       );
+                            //       setTimeout(() => {
+                            //         this.props.history.push(
+                            //           "/projects/EditStudent"
+                            //         );
+                            //       }, 3000);
+                            //     }}
+                            //     key={st}
+                            //   >
+                            //     {ST}
+                            //   </div>
+                            // );
+                          })}
+                      </div>
+                      <div />
                     </div>
-                    <div />
-                  </div>
-                );
+                  );
+                }
               })}
             </div>
             <div className="buttons">
@@ -459,12 +518,6 @@ const mapDispatchToProps = dispatch => {
         }
       });
     }
-    // sendingStudentsToProjects: x => {
-    //   dispatch({
-    //     type: "databaseStudents",
-    //     payload: x
-    //   });
-    // }
   };
 };
 

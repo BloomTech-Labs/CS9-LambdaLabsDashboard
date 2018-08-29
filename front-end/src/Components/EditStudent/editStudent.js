@@ -19,10 +19,9 @@ class EditStudent extends Component {
   }
 
   componentWillMount() {
-    this.pullingGithubUsersRealInfo();
-    setTimeout(() => {
-      this.postingStudentCredentials();
-    }, 50);
+    // setTimeout(() => {
+    this.postingStudentCredentials();
+    // }, 50);
 
     setTimeout(() => {
       this.gettingCredentials();
@@ -31,6 +30,7 @@ class EditStudent extends Component {
 
   componentDidMount() {
     //   this.gettingCredentials();
+    this.pullingGithubUsersRealInfo();
   }
 
   editHandler = event => {
@@ -49,7 +49,7 @@ class EditStudent extends Component {
     const id = this.state.studentId;
     console.log(object);
     const promise = axios.put(
-      `http://localhost:4000/studentCredentials/${id}`,
+      `http://localhost:4000/studentCredential/${id}`,
       object
     );
     promise
@@ -110,7 +110,7 @@ class EditStudent extends Component {
   };
 
   postingStudentCredentials() {
-    console.log("githubDummyData", this.props.githubDummyData[0]);
+    console.log("=====>githubDummyData", this.props.githubDummyData[0]);
     let student = "";
     if (this.props.githubDummyData.length > 0) {
       student = this.props.githubDummyData.filter(p => {
@@ -118,7 +118,7 @@ class EditStudent extends Component {
         return p.FullName === this.props.studentInfo.studentName;
       });
     }
-
+    console.log("st1===>", student);
     const fullName = this.props.studentInfo.studentName;
     const trello = this.props.studentInfo.trelloName;
     let location = "";
@@ -162,8 +162,11 @@ class EditStudent extends Component {
   }
 
   render() {
-    console.log("''''studentid,", this.state.studentId);
-    console.log("''''credentials,", this.state.credentials);
+    // console.log("''''studentid,", this.state.studentId);
+    // console.log("''''credentials,", this.state.credentials);
+    console.log("studentInfo===>", this.props.studentInfo);
+    console.log("studentsGithub===>", this.props.studentsGithub);
+    console.log("githubDummyData===>", this.props.githubDummyData);
 
     let student = "";
     if (
@@ -258,7 +261,11 @@ class EditStudent extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log("editstudent state ===> ", state.githubDummyDataReducer);
+  console.log(
+    "githubDummyDataReducer state ===> ",
+    state.githubDummyDataReducer
+  );
+  console.log("studentInfoReducer state ===> ", state.studentInfoReducer);
   let studentsGithub = "";
   if (state.studentInfoReducer.studentGithubInfo.githubUsers !== undefined) {
     studentsGithub = state.studentInfoReducer.studentGithubInfo.githubUsers;

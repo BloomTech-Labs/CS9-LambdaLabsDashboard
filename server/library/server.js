@@ -19,6 +19,9 @@ import ProjectUsers from "./ProjectUsers/projectUsersRoute.js";
 import ExternalApiRoutes from "./ExternalApis/ExternalApiRoutes";
 import ValidateTokenRoute from "./Token/ValidateTokenRoute";
 import StudentCredential from "./Credentials/credentialsRoute.js";
+import facebookRoute from "./Facebook/facebookRoute.js";
+import facebookRedirect from "./Facebook/facebookRedirect.js";
+
 require("dotenv").config();
 const Server = express();
 const sessionOptions = {
@@ -62,6 +65,10 @@ Server.use("/projectUsers", ProjectUsers);
 Server.use("/externalApis", ExternalApiRoutes);
 Server.use("/token", ValidateTokenRoute);
 Server.use("/studentCredential", StudentCredential);
+
+Server.use("/facebook", facebookRoute);
+
+Server.use("/auth/facebook/callback", facebookRedirect);
 Server.use("*", staticFiles);
 
 // const googleRoute = require("./google/googleRoute.js");
