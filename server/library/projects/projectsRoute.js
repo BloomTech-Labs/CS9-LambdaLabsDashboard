@@ -1,10 +1,11 @@
-const express = require("express");
-const router = express.Router();
+import express from "express";
 import ProjectsModel from "./projectsModel.js";
 import { noneEmpty } from "../MiddleWare/middleWare.js";
 import authenticate from "../MiddleWare/authJWT.js";
 
-router.get("/", (req, res) => {
+const Router = express.Router();
+
+Router.get("/", (req, res) => {
   console.log(req.body);
   ProjectsModel.find({})
     // .populate("class", "-_id")
@@ -17,46 +18,20 @@ router.get("/", (req, res) => {
     });
 });
 
-router.post("/", (req, res) => {
+Router.post("/", (req, res) => {
   console.log("request ===>", req.body);
-  if (req.bod === {} || req.body === null) {
-    res.status(500).json({ msg: "no empty " });
-  }
-
-  if (
-    !req.body.projectName &&
-    req.body.projectName === null &&
-    req.body.projectName === ""
-  ) {
-    res.status(500).json({ msg: "no title" });
-  }
-  if (
-    !req.body.githubHandle &&
-    req.body.githubHandle === null &&
-    req.body.githubHandle === ""
-  ) {
-    res.status(500).json({ msg: "no text" });
-  } else {
-    const obj = req.body;
-    const newProject = ProjectsModel(obj);
-    newProject
-      .save()
-      .then(p => {
-        res.status(200).json({ projectId: p._id });
-      })
-      .catch(error => {
-        res
-          .status(200)
-          .json({ msg: "... not able to post your project", error });
-      });
-  }
+  const newProject = ProjectsModel(req.body);
+  newProject
+    .save()
+    .then(project => {
+      res.status(200).json({ project });
+    })
+    .catch(error => res.send("Error creating project"));
 });
 
-router.put("/:id", (req, res) => {
+Router.put("/:id", (req, res) => {
   const { id } = req.params;
   const obj = req.body;
-  console.log(obj);
-  console.log(id);
   ProjectsModel.findByIdAndUpdate(id, obj, { new: true })
     .then(p => {
       res.status(200).json({ msg: "project updated successfully", p });
@@ -66,7 +41,7 @@ router.put("/:id", (req, res) => {
     });
 });
 
-router.get("/:id", (req, res) => {
+Router.get("/:id", (req, res) => {
   const { id } = req.params;
   ProjectModel.findById(id)
 
@@ -78,9 +53,8 @@ router.get("/:id", (req, res) => {
     });
 });
 
-router.delete("/:id", (req, res) => {
+Router.delete("/:id", (req, res) => {
   const id = req.params.id;
-
   ProjectsModel.findById(id)
     .remove()
     .then(p => {
@@ -91,4 +65,4 @@ router.delete("/:id", (req, res) => {
     });
 });
 
-module.exports = router;
+export default Router;

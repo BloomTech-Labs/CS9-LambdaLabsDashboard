@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import BarContainer from './BarContainer/BarContainer';
+import Loader from '../../../Loader/Loader';
 
 export default class Graph extends PureComponent {
   render = () => {
@@ -7,6 +8,10 @@ export default class Graph extends PureComponent {
   	const { length } = team;
     return (
       <div className='graph-grid'>
+        {
+          team.length === 0 && !error &&
+          <Loader width={50} />
+        }
       	{
           error ? 
             <div className='error'>

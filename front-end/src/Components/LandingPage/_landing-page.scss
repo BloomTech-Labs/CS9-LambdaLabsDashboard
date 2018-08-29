@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .login {
   position: relative;
   height: 100vh;
@@ -195,6 +196,200 @@
       }
     }
   }
+=======
+.login{
+	position: fixed;
+	top: 0; left: 0;
+	height: 100vh;
+	width: 100%;
+	@include center;
+	z-index: 9876;
+	transition-duration: 0.4s;
+	background: url(./pictures/bg.jpg) no-repeat center;
+	background-size: cover;
+	&::after {
+		content: '';
+		position: absolute;
+		top: 0; left: 0;
+		height: 100%; width: 100%;
+		background: rgba(#000, 0.85);
+		z-index:2;
+	}
+	&>div {
+		@include center;
+		flex-direction: column;
+		width: 100%;
+		z-index: 4;
+		&>h1 {
+			color: #fff;
+			font-weight: 100;
+			font-size: 3.5em;
+			margin: 0;
+			margin-bottom: 20px;
+			@include center;
+			@media #{$mq-375} {
+				font-size: 4.25em;
+			}
+			@media #{$mq-iphoneX} {
+				font-size: 5em;
+			}
+			&>span {
+				transition-duration: 0.2s;
+			}
+		}
+		&>h2 {
+			margin: 0px;
+			margin-bottom: 20px;
+			color: #fff;
+			font-weight: 200;
+			font-size: 1em;
+			max-width: 85%;
+			text-align: center;
+		}
+		&>div {
+			@include center;
+			flex-direction: column;
+			width: 100%;
+			font-size: 1.25em;
+			&>div {
+				@include center;
+				flex-direction: column;
+				justify-content: space-between;
+				width: 80%;
+				max-width: 450px;
+				margin-bottom: 5px;
+				position: relative;
+				&::after {
+					content: "";
+					position: absolute;
+					bottom: 20px;
+					left: 0;
+					height: 1px;
+					width: 100%;
+					background: rgba(#fff, 0.5);
+					transition-timing-function: ease-out;
+				}
+				&::before {
+					content: "";
+					position: absolute;
+					bottom: 20px;
+					left: 50%;
+					height: 2px;
+					width: 0%;
+					background: #fff;
+					transition-duration: 0.4s;
+					z-index: 2;
+					transition-timing-function: ease-out;
+				}
+				&>label {
+					align-self: flex-start;
+					color: #fff;
+					margin-left: 2.5%;
+					transform: translateY(-100%);
+					transition-duration: 0.2s;
+					font-weight: 200;
+					@media #{$mq-670} {
+						margin-left: 5px;
+					}
+				}
+				&>input {
+					width: 100%;
+					margin: 0;
+					padding: 5px;
+					outline: none;
+					background: transparent;
+					border: none;
+					border-radius: 0;
+					color: #fff;
+					padding: 5px;
+					font-weight: 200;
+				}
+			}
+			&>.focused {
+				&::before {
+					width: 100%;
+					left: 0%;
+				}
+				&>label {
+					transform: translateY(-220%) translateX(-10px) scale(0.8);
+				}
+			}
+			&>button {
+				margin-top: 10px;
+				height: 40px;
+				width: 80%;
+				max-width: 450px;
+				border: 1px solid rgba(#fff, 0.5);
+				color: #fff;
+				background: transparent;
+				font-weight: 200;
+				position: relative;
+				outline: none;
+				transition-duration: 0.3s;
+				&::after {
+					content: "";
+					position: absolute;
+					top: 0;
+					left: 0;
+					height: 100%;
+					width: 100%;
+					transform: scaleX(0);
+					transition-duration: 0.4s;
+					border-top: 1px solid #fff;
+					border-bottom: 1px solid #fff;
+					transition-timing-function: ease-out;
+				}
+				&::before {
+					content: "";
+					position: absolute;
+					top: 0;
+					left: 0;
+					height: 100%;
+					width: 100%;
+					transform: scaleY(0);
+					transition-duration: 0.4s;
+					border-right: 1px solid #fff;
+					border-left: 1px solid #fff;
+					transition-timing-function: ease-out;
+				}
+				&:hover::after {
+					transform: scaleX(1);
+				}
+				&:hover::before {
+					transform: scaleY(1);
+				}
+				&>img {
+					position: absolute;
+					top: 10%;
+					left: 10%;
+					height: 80%;
+					width: 80%;
+					transform: scale(0);
+					transition-duration: 0.3s;
+				}
+			}
+			&>h2 {
+				font-weight: 200;
+				font-size: 1em;
+				color: #fff;
+				&>a {
+					text-decoration: none;
+					cursor: pointer;
+					position: relative;
+					&::after {
+						content: "";
+						position: absolute;
+						bottom: 0;
+						left: 0;
+						width: 100%;
+						height: 1px;
+						background: #fff;
+					}
+				}
+			}
+		}
+	}
+>>>>>>> d78ce657cdb712073ad7d82bbc187aa46e69a9cf
 }
 
 .login-loading {

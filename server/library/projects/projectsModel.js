@@ -5,30 +5,28 @@ const Schema = mongoose.Schema;
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const definition = {
-  projectName: {
+  name: {
     type: String,
     required: true
   },
-  githubHandle: {
-    type: String,
-    unique: true,
-    required: true
-  },
-
-  class: {
+  github: {
     type: String,
     required: true
   },
-
-  trelloName: {
+  className: {
     type: String,
-    unique: true,
     required: true
   },
-  dueDate: {
-    type: String
+  trello: {
+    type: String,
+    required: true
+  },
+  classID: {
+    type: ObjectId,
+    required: true
   }
 };
+
 const options = {
   timestamps: true
 };

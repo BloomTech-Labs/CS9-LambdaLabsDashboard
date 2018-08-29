@@ -10,47 +10,41 @@ const gha = {
   headers: { Authorization: `bearer ${process.env.GITHUB_TOKEN}` }
 };
 
-export default async repository => {
+export default async (repository, boardID) => {
   const batchData = await Axios.all([
+    Axios.get(`https://api.trello.com/1/boards/${boardID}/members${auth}`),
+    Axios.get(`https://api.trello.com/1/boards/${boardID}/cards${auth}`),
+    Axios.get(`https://api.trello.com/1/boards/${boardID}/lists${auth}`),
     Axios.get(
-      `https://api.trello.com/1/boards/5b70b2c75105750d2795cccb/members${auth}`
-    ),
-    Axios.get(
-      `https://api.trello.com/1/boards/5b70b2c75105750d2795cccb/cards${auth}`
-    ),
-    Axios.get(
-      `https://api.trello.com/1/boards/5b70b2c75105750d2795cccb/lists${auth}`
-    ),
-    Axios.get(
-      "https://api.github.com/repos/Lambda-School-Labs/CS9-LambdaLabsDashboard/pulls?state=closed&page=1",
+      `https://api.github.com/repos/Lambda-School-Labs/${repository}/pulls?state=closed&page=1`,
       gha
     ),
     Axios.get(
-      "https://api.github.com/repos/Lambda-School-Labs/CS9-LambdaLabsDashboard/pulls?state=closed&page=2",
+      `https://api.github.com/repos/Lambda-School-Labs/${repository}/pulls?state=closed&page=2`,
       gha
     ),
     Axios.get(
-      "https://api.github.com/repos/Lambda-School-Labs/CS9-LambdaLabsDashboard/pulls?state=closed&page=3",
+      `https://api.github.com/repos/Lambda-School-Labs/${repository}/pulls?state=closed&page=3`,
       gha
     ),
     Axios.get(
-      "https://api.github.com/repos/Lambda-School-Labs/CS9-LambdaLabsDashboard/pulls?state=closed&page=4",
+      `https://api.github.com/repos/Lambda-School-Labs/${repository}/pulls?state=closed&page=4`,
       gha
     ),
     Axios.get(
-      "https://api.github.com/repos/Lambda-School-Labs/CS9-LambdaLabsDashboard/pulls?state=closed&page=5",
+      `https://api.github.com/repos/Lambda-School-Labs/${repository}/pulls?state=closed&page=5`,
       gha
     ),
     Axios.get(
-      "https://api.github.com/repos/Lambda-School-Labs/CS9-LambdaLabsDashboard/pulls?state=closed&page=6",
+      `https://api.github.com/repos/Lambda-School-Labs/${repository}/pulls?state=closed&page=6`,
       gha
     ),
     Axios.get(
-      "https://api.github.com/repos/Lambda-School-Labs/CS9-LambdaLabsDashboard/pulls?state=closed&page=7",
+      `https://api.github.com/repos/Lambda-School-Labs/${repository}/pulls?state=closed&page=7`,
       gha
     ),
     Axios.get(
-      "https://api.github.com/repos/Lambda-School-Labs/CS9-LambdaLabsDashboard/contributors",
+      `https://api.github.com/repos/Lambda-School-Labs/${repository}/contributors`,
       gha
     )
   ]);
