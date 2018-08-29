@@ -160,76 +160,76 @@ export default class projects extends Component {
     this.state = {
     	classes: 'projects',
     	projects: [
-    		{
-    			name: 'Labs Dashboard',
-    			students: [
-    				'Alex Figliolia',
-    				'Alex Figliolia',
-    				'Alex Figliolia',
-    				'Alex Figliolia',
-    				'Alex Figliolia',
-    			]
-    		},
-    		{
-    			name: 'Labs Dashboard',
-    			students: [
-    				'Alex Figliolia',
-    				'Alex Figliolia',
-    				'Alex Figliolia',
-    				'Alex Figliolia',
-    				'Alex Figliolia',
-    			]
-    		},
-    		{
-    			name: 'Labs Dashboard',
-    			students: [
-    				'Alex Figliolia',
-    				'Alex Figliolia',
-    				'Alex Figliolia',
-    				'Alex Figliolia',
-    				'Alex Figliolia',
-    			]
-    		},
-    		{
-    			name: 'Labs Dashboard',
-    			students: [
-    				'Alex Figliolia',
-    				'Alex Figliolia',
-    				'Alex Figliolia',
-    				'Alex Figliolia',
-    				'Alex Figliolia',
-    			]
-    		},
-    		{
-    			name: 'Labs Dashboard',
-    			students: [
-    				'Alex Figliolia',
-    				'Alex Figliolia',
-    				'Alex Figliolia',
-    				'Alex Figliolia',
-    				'Alex Figliolia',
-    			]
-    		},
-    		{
-    			name: 'Labs Dashboard',
-    			students: [
-    				'Alex Figliolia',
-    				'Alex Figliolia',
-    				'Alex Figliolia',
-    				'Alex Figliolia',
-    				'Alex Figliolia',
-    			]
-    		},
-    		{
-    			name: 'Labs Dashboard',
-    			students: [
-    				'Alex Figliolia',
-    				'Alex Figliolia',
-    				'Alex Figliolia',
-    				'Alex Figliolia',
-    				'Alex Figliolia',
-    			]
-    		},
+    		// {
+    		// 	name: 'Labs Dashboard',
+    		// 	students: [
+    		// 		'Alex Figliolia',
+    		// 		'Alex Figliolia',
+    		// 		'Alex Figliolia',
+    		// 		'Alex Figliolia',
+    		// 		'Alex Figliolia',
+    		// 	]
+    		// },
+    		// {
+    		// 	name: 'Labs Dashboard',
+    		// 	students: [
+    		// 		'Alex Figliolia',
+    		// 		'Alex Figliolia',
+    		// 		'Alex Figliolia',
+    		// 		'Alex Figliolia',
+    		// 		'Alex Figliolia',
+    		// 	]
+    		// },
+    		// {
+    		// 	name: 'Labs Dashboard',
+    		// 	students: [
+    		// 		'Alex Figliolia',
+    		// 		'Alex Figliolia',
+    		// 		'Alex Figliolia',
+    		// 		'Alex Figliolia',
+    		// 		'Alex Figliolia',
+    		// 	]
+    		// },
+    		// {
+    		// 	name: 'Labs Dashboard',
+    		// 	students: [
+    		// 		'Alex Figliolia',
+    		// 		'Alex Figliolia',
+    		// 		'Alex Figliolia',
+    		// 		'Alex Figliolia',
+    		// 		'Alex Figliolia',
+    		// 	]
+    		// },
+    		// {
+    		// 	name: 'Labs Dashboard',
+    		// 	students: [
+    		// 		'Alex Figliolia',
+    		// 		'Alex Figliolia',
+    		// 		'Alex Figliolia',
+    		// 		'Alex Figliolia',
+    		// 		'Alex Figliolia',
+    		// 	]
+    		// },
+    		// {
+    		// 	name: 'Labs Dashboard',
+    		// 	students: [
+    		// 		'Alex Figliolia',
+    		// 		'Alex Figliolia',
+    		// 		'Alex Figliolia',
+    		// 		'Alex Figliolia',
+    		// 		'Alex Figliolia',
+    		// 	]
+    		// },
+    		// {
+    		// 	name: 'Labs Dashboard',
+    		// 	students: [
+    		// 		'Alex Figliolia',
+    		// 		'Alex Figliolia',
+    		// 		'Alex Figliolia',
+    		// 		'Alex Figliolia',
+    		// 		'Alex Figliolia',
+    		// 	]
+    		// },
     	]
     }
   }
@@ -239,8 +239,10 @@ export default class projects extends Component {
   enter = () => this.setState({ classes: 'projects projects-show' });
 
   render = () => {
+    console.log(this.props);
   	const { classes, projects } = this.state;
-  	const { className, history } = this.props;
+  	const { match, history } = this.props;
+    const { className } = match.params;
     const { length } = projects;
     return (
       <div className={classes}>
