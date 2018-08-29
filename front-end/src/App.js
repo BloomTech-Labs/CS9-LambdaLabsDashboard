@@ -68,14 +68,10 @@ class App extends Component {
         <div className={classes}>
           <Route exact path="/" component={LandingPage} />
           <PrivateRoute exact path="/classes" component={Classes} />
-          <PrivateRoute exact path="/projects" component={Projects} />
+          <PrivateRoute exact path="/projects/:className" component={Projects} />
           <PrivateRoute exact path="/billing" component={Billing} />
           <PrivateRoute exact path="/createProject" component={CreateProject} />
-          <PrivateRoute
-            exact
-            path="/projects/EditProject/:id"
-            component={EditProject}
-          />
+          <PrivateRoute exact path="/projects/EditProject/:id" component={EditProject} />
           <PrivateRoute path="/settings" component={Settings} />
           <PrivateRoute path="/project-dashboard" component={Dashboard} />
         </div>
