@@ -25,7 +25,7 @@ import Dashboard from "./Components/Dashboard/Dashboard";
 import Menu from "./Components/Menu/Menu";
 import Header from "./Components/Header/Header";
 import { validateToken } from "./Actions/Navigation";
-import { getClasses } from './Actions/Database';
+import { getClasses } from "./Actions/Database";
 import "./App.css";
 
 class App extends Component {
@@ -35,21 +35,28 @@ class App extends Component {
     this.callCount = 0;
     this.url = window.location.pathname;
   }
-  
+
   UNSAFE_componentWillMount = () => this.props.validateToken();
 
-  UNSAFE_componentWillReceiveProps = ({ authOnLoad, userID, history, location, getClasses }) => {
-    if(authOnLoad !== this.props.authOnLoad) {
-      if(authOnLoad) {
-        if(location.pathname === "/") history.push(this.url === '/' ? '/classes' : this.url);
+  UNSAFE_componentWillReceiveProps = ({
+    authOnLoad,
+    userID,
+    history,
+    location,
+    getClasses
+  }) => {
+    if (authOnLoad !== this.props.authOnLoad) {
+      if (authOnLoad) {
+        if (location.pathname === "/")
+          history.push(this.url === "/" ? "/classes" : this.url);
         this.removeLoader(500);
         getClasses(userID);
       } else {
-        if(this.callCount === 0) this.removeLoader(1000);
+        if (this.callCount === 0) this.removeLoader(1000);
       }
     }
     this.callCount++;
-  }
+  };
 
 <<<<<<< HEAD
     shouldComponentUpdate = ({ location, classes }) => {
@@ -104,16 +111,16 @@ export default connect(mSTP)(App);
   };
 
   removeLoader = delay => {
-    if(this.loader !== null) {
+    if (this.loader !== null) {
       setTimeout(() => {
         this.loader.classList.add("app-loader-hidden");
         setTimeout(() => {
           this.loader.remove();
           this.loader = null;
         }, 600);
-      }, delay)
+      }, delay);
     }
-  }
+  };
 
   render = () => {
     const { location, classes, history } = this.props;
@@ -125,10 +132,18 @@ export default connect(mSTP)(App);
         <div className={classes}>
           <Route exact path="/" component={LandingPage} />
           <PrivateRoute exact path="/classes" component={Classes} />
-          <PrivateRoute exact path="/projects/:className" component={Projects} />
+          <PrivateRoute
+            exact
+            path="/projects/:className"
+            component={Projects}
+          />
           <PrivateRoute exact path="/billing" component={Billing} />
           <PrivateRoute exact path="/createProject" component={CreateProject} />
-          <PrivateRoute exact path="/projects/EditProject/:id" component={EditProject} />
+          <PrivateRoute
+            exact
+            path="/projects/EditProject/:id"
+            component={EditProject}
+          />
           <PrivateRoute path="/settings" component={Settings} />
           <PrivateRoute path="/project-dashboard" component={Dashboard} />
         </div>
@@ -142,5 +157,12 @@ const mSTP = ({ Navigation }) => {
   return { classes: bodyClasses, authOnLoad, userID };
 };
 
+<<<<<<< HEAD
 export default connect(mSTP, { validateToken, getClasses })(App);
 >>>>>>> d78ce657cdb712073ad7d82bbc187aa46e69a9cf
+=======
+export default connect(
+  mSTP,
+  { validateToken, getClasses }
+)(App);
+>>>>>>> 2a3641a1adf19a60d3cfea39d22eeba446edf445
