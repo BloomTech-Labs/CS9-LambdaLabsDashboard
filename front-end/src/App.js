@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Route } from "react-router-dom";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
+<<<<<<< HEAD
 import Classes from "./Components/Classes/classes";
 <<<<<<< HEAD
 import LandingPage from "./Components/LandingPage/landingPage";
@@ -11,9 +12,14 @@ import SignUp from './Components/SignUp';
 import LandingPage from "./Components/LandingPage/LandingPage";
 >>>>>>> d78ce657cdb712073ad7d82bbc187aa46e69a9cf
 import Projects from "./Components/Projects/projects";
+=======
+import Classes from "./Components/Classes/Classes";
+import LandingPage from "./Components/LandingPage/LandingPage";
+import Projects from "./Components/Projects/Projects";
+>>>>>>> 8023cfb2cc4d5ae6d4e11e3fa30c056b9e8b9269
 import Billing from "./Components/Billing/Billing";
 import CreateProject from "./Components/CreateProject/Create";
-import EditProject from "./Components/EditProject/editProject";
+import EditProject from "./Components/EditProject/EditProject";
 import Settings from "./Components/Settings/Settings";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import Menu from "./Components/Menu/Menu";
