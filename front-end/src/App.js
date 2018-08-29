@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Route } from "react-router-dom";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
-import Classes from "./Components/Classes/classes";
+import Classes from "./Components/Classes/Classes";
 import LandingPage from "./Components/LandingPage/LandingPage";
 import Projects from "./Components/Projects/projects";
 import Billing from "./Components/Billing/Billing";
