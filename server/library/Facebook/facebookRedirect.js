@@ -1,7 +1,7 @@
 import express from "express";
 const router = express.Router();
 import passport from "passport";
-import passportSetup from "./passport-setup-facebook.js";
+import passportSetup from "./facebookPassport.js";
 
 router.get("/", passport.authenticate("facebook"), (req, res) => {
   console.log("facebook redirecting.....!!!");
