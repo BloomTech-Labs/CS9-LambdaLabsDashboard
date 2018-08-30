@@ -24,7 +24,6 @@ class Projects extends PureComponent {
   componentDidMount() {
     const { currentClass } = this.props;
     if(currentClass) this.setCurrentState(currentClass);
-    // setTimeout(this.enter, 500);
   }
 
   UNSAFE_componentWillReceiveProps = ({ currentClass, match }) => {
@@ -41,8 +40,6 @@ class Projects extends PureComponent {
       if(currentClass) this.setCurrentState(currentClass);
     });
   }
-
-  // enter = () => this.setState({ classes: 'projects projects-show' });
 
   setCurrentState = currentClass => {
     const { projects, length, _id } = this.getLength(currentClass);
@@ -103,7 +100,8 @@ class Projects extends PureComponent {
       					);
       				}) 
               : 
-              <h2>{`Create a project to gain insites on ${className}'s progress`}</h2>
+              !loader ? <h2>{`Create a project to gain insites on ${className}'s progress`}</h2>
+              : ""
       			}
       		</div>
       	</div>

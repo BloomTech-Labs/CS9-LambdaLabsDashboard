@@ -5,7 +5,6 @@
 	min-height: 175px;
 	transform: translateY(50px);
 	opacity: 0;
-	transition-duration: 0.4s;
 	perspective: 700px;
 	@media #{$mq-670} {
 		width: auto;
@@ -59,6 +58,7 @@
 .project-show {
 	opacity: 1;
 	transform: translateY(0px);
+	transition-duration: 0.4s;
 }
 
 .top-border {

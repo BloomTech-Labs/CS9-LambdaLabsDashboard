@@ -9,6 +9,7 @@ export default class YAxis extends Component {
 
   render = () => {
   	const { maxStat } = this.props; 
+    console.log(maxStat);
     return (
       <div className='y-axis'>
         {

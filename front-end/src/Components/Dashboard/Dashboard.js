@@ -9,7 +9,7 @@ import { getDataForProject } from '../../Actions/ExternalApis';
 
 class Dashboard extends PureComponent {
 
-  UNSAFE_componentWillMount = () => {
+  componentDidMount = () => {
     const { history, location, getDataForProject } = this.props;
     if(!location.state) history.push('/classes');
     else {
@@ -20,7 +20,7 @@ class Dashboard extends PureComponent {
 
   render = () => {
     const { trello, countUp, completeness, location } = this.props;
-    const name = location.state ? location.state.name : ''
+    const name = location.state ? location.state.name : '';
     return (
       <div className='Dashboard'>
         <div>
