@@ -9,11 +9,9 @@ class BarGraph extends PureComponent {
 
   getMaxStat = () => {
     const { team } = this.props;
-    console.log(team);
     let tMax = 0, gMax = 0;
     for(let i = 0; i<team.length; i++) {
       const { trellos, merges } = team[i];
-      console.log(trellos, merges);
       if(trellos > tMax) tMax = trellos;
       if(merges > gMax) gMax = merges;
     }
@@ -22,7 +20,7 @@ class BarGraph extends PureComponent {
 
   render = () => {
   	const { team } = this.props;
-    const maxStat = Math.round(this.getMaxStat() / 10) * 10;
+    const maxStat = Math.ceil(this.getMaxStat() / 5) * 5;
     return (
       <div className='bar-graph'>
         <h2>Student Contributions</h2>
