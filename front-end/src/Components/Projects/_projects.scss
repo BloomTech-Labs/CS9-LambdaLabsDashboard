@@ -1,12 +1,12 @@
 .projects {
   width: 100%;
   position: relative;
+  min-height: 100vh;
   @media #{$mq-1070} {
     width: calc(100% - 200px);
   }
   &>div {
     width: 90%;
-    @include center;
     flex-direction: column;
     height: auto;
     margin: auto;
@@ -19,41 +19,48 @@
       font-weight: 200;
       color: $purple;
       width: 100%;
+      @include gradientText;
       text-align: center;
       margin: 2em auto 0.5em auto;
       position: relative;
       @media #{$mq-670} {
-        margin: 2.75em auto 1em auto;
+        margin: 2.5em auto 1em auto;
       }
       @media #{$mq-1070} {
-        margin: 1.75em auto 1em auto;
+        margin: 2em auto 1em auto;
       }
     }
     &>div {
       width: 100%;
       @include center;
       flex-direction: column;
+      position: relative;
       @media #{$mq-670} {
         flex-direction: row;
         flex-wrap: wrap;
+      }
+      &>h2 {
+        color: $purple;
+        text-align: center;
+        width: 80%;
+        margin-bottom: 50%;
+        @media #{$mq-670} {
+          margin-bottom: 25%;
+        }
+        @media #{$mq-1070} {
+          margin-bottom: 10%;
+        }
       }
     }
   }
 }
 
 .projects-show {
-  &>div {
-    &>div {
-      &>.project {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-  }
   &>.create-project-button {
     transform: scale(1) rotate(0deg);
     transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
     transition-delay: 0.5s;
+    transition-duration: 0.4s;
   }
 }
 
@@ -71,7 +78,6 @@
   z-index: 2;
   transform: scale(0) rotate(360deg);
   transition-timing-function: cubic-bezier(0.6, -0.28, 0.735, 0.045);
-  transition-duration: 0.4s;
   @media #{$mq-670} {
     height: 70px; width: 70px;
     bottom: 3.5vh; right: 3.5vh;

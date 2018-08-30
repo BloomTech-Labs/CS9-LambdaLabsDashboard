@@ -2,9 +2,10 @@
 	@include center;
 	width: 90%;
 	margin: 1em;
+	min-height: 175px;
 	transform: translateY(50px);
 	opacity: 0;
-	transition-duration: 0.4s;
+	perspective: 700px;
 	@media #{$mq-670} {
 		width: auto;
 		min-width: 250px;
@@ -26,9 +27,18 @@
 			flex-direction: column;
 			padding: 5% 0;
 			&>h2 {
+				cursor: pointer;
 				margin-top: 10px;
 				color: $purple;
 				font-weight: 400;
+				&:hover {
+					color: lighten($purple, 15%);
+				}
+			}
+			&>p {
+				color: $redish;
+				width: 80%;
+				text-align: center;
 			}
 			&>.student {
 				width: 100%;
@@ -43,6 +53,12 @@
 		}
 
 	}
+}
+
+.project-show {
+	opacity: 1;
+	transform: translateY(0px);
+	transition-duration: 0.4s;
 }
 
 .top-border {

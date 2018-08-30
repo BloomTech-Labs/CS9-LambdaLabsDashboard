@@ -20,7 +20,7 @@ class BarGraph extends PureComponent {
 
   render = () => {
   	const { team } = this.props;
-    const maxStat = Math.round(this.getMaxStat() / 10) * 10;
+    const maxStat = Math.ceil(this.getMaxStat() / 5) * 5;
     return (
       <div className='bar-graph'>
         <h2>Student Contributions</h2>

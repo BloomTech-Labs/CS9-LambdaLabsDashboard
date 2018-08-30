@@ -9,15 +9,23 @@ import { getDataForProject } from '../../Actions/ExternalApis';
 
 class Dashboard extends PureComponent {
 
-  UNSAFE_componentWillMount = () => this.props.getDataForProject('CS9-LambdaLabsDashboard', '5b70b2c75105750d2795cccb');
+  componentDidMount = () => {
+    const { history, location, getDataForProject } = this.props;
+    if(!location.state) history.push('/classes');
+    else {
+      const { github, trello } = location.state; 
+      getDataForProject(github, trello); 
+    }
+  }
 
   render = () => {
-    const { trello, countUp, completeness } = this.props;
+    const { trello, countUp, completeness, location } = this.props;
+    const name = location.state ? location.state.name : '';
     return (
       <div className='Dashboard'>
         <div>
           <div className='top-panel'>
-            <h1>Labs Dashboard</h1>
+            <h1>{name}</h1>
           </div>
           <div className='boxes'>
             <div className='box bar-graph-box'>
