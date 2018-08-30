@@ -2251,7 +2251,8 @@ input[type='checkbox']:checked::before {
 .classes {
   display: block;
   width: 100%;
-  position: relative; }
+  position: relative;
+  min-height: 100vh; }
   @media (min-width: 1070px) {
     .classes {
       width: calc(100% - 200px); } }
@@ -2268,6 +2269,12 @@ input[type='checkbox']:checked::before {
       font-weight: 200;
       color: #91A7E0;
       width: 100%;
+      background: #f68084;
+      /* fallback for old browsers */
+      background: -webkit-linear-gradient(to top, #a6c0fe, #f68084);
+      background: linear-gradient(to top, #a6c0fe, #f68084);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       text-align: center;
       margin: 2em auto 0.5em auto;
       position: relative; }
@@ -2276,7 +2283,7 @@ input[type='checkbox']:checked::before {
           margin: 2.5em auto 1em auto; } }
       @media (min-width: 1070px) {
         .classes > .center > h1 {
-          margin: 1em auto; } }
+          margin: 2em auto 1em auto; } }
     .classes > .center > div {
       width: 100%;
       display: flex;
@@ -2375,7 +2382,7 @@ input[type='checkbox']:checked::before {
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      padding: 5% 0; }
+      padding: 10% 0 5% 0; }
       .class > .front > div > h2 {
         font-weight: 600;
         color: #91A7E0;
@@ -2389,11 +2396,14 @@ input[type='checkbox']:checked::before {
         width: 100%;
         text-align: center;
         line-height: 1.5;
-        font-weight: 700;
+        font-weight: 400;
         width: 95%; }
-      .class > .front > div > div {
+      .class > .front > div > .class-project {
         margin: 10px 0;
-        color: #91A7E0; }
+        color: #91A7E0;
+        cursor: pointer; }
+        .class > .front > div > .class-project:hover {
+          color: #cdd7f1; }
     .class > .front > .top-border {
       position: absolute;
       top: 0;
@@ -2823,15 +2833,13 @@ input[type='checkbox']:checked::before {
 
 .projects {
   width: 100%;
-  position: relative; }
+  position: relative;
+  min-height: 100vh; }
   @media (min-width: 1070px) {
     .projects {
       width: calc(100% - 200px); } }
   .projects > div {
     width: 90%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
     height: auto;
     margin: auto;
@@ -2844,29 +2852,43 @@ input[type='checkbox']:checked::before {
       font-weight: 200;
       color: #91A7E0;
       width: 100%;
+      background: #f68084;
+      /* fallback for old browsers */
+      background: -webkit-linear-gradient(to top, #a6c0fe, #f68084);
+      background: linear-gradient(to top, #a6c0fe, #f68084);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       text-align: center;
       margin: 2em auto 0.5em auto;
       position: relative; }
       @media (min-width: 670px) {
         .projects > div > h1 {
-          margin: 2.75em auto 1em auto; } }
+          margin: 2.5em auto 1em auto; } }
       @media (min-width: 1070px) {
         .projects > div > h1 {
-          margin: 1.75em auto 1em auto; } }
+          margin: 2em auto 1em auto; } }
     .projects > div > div {
       width: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
-      flex-direction: column; }
+      flex-direction: column;
+      position: relative; }
       @media (min-width: 670px) {
         .projects > div > div {
           flex-direction: row;
           flex-wrap: wrap; } }
-
-.projects-show > div > div > .project {
-  transform: translateY(0);
-  opacity: 1; }
+      .projects > div > div > h2 {
+        color: #91A7E0;
+        text-align: center;
+        width: 80%;
+        margin-bottom: 50%; }
+        @media (min-width: 670px) {
+          .projects > div > div > h2 {
+            margin-bottom: 25%; } }
+        @media (min-width: 1070px) {
+          .projects > div > div > h2 {
+            margin-bottom: 10%; } }
 
 .projects-show > .create-project-button {
   transform: scale(1) rotate(0deg);
@@ -2879,9 +2901,11 @@ input[type='checkbox']:checked::before {
   align-items: center;
   width: 90%;
   margin: 1em;
+  min-height: 175px;
   transform: translateY(50px);
   opacity: 0;
-  transition-duration: 0.4s; }
+  transition-duration: 0.4s;
+  perspective: 700px; }
   @media (min-width: 670px) {
     .project {
       width: auto;
@@ -2907,9 +2931,12 @@ input[type='checkbox']:checked::before {
       flex-direction: column;
       padding: 5% 0; }
       .project > .front > .center > h2 {
+        cursor: pointer;
         margin-top: 10px;
         color: #91A7E0;
         font-weight: 400; }
+        .project > .front > .center > h2:hover {
+          color: #cdd7f1; }
       .project > .front > .center > p {
         color: #F66463;
         width: 80%;
@@ -2924,6 +2951,10 @@ input[type='checkbox']:checked::before {
           margin: 5px;
           font-size: 1em;
           font-weight: 400; }
+
+.project-show {
+  opacity: 1;
+  transform: translateY(0px); }
 
 .top-border {
   position: absolute;

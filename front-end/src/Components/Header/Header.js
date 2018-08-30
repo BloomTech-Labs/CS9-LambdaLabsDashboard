@@ -32,7 +32,6 @@ class Header extends PureComponent {
             })
           }
           <Link to="/billing">Billing</Link>
-          <Link to="/project-dashboard">Project Dashboard</Link>
         </nav>
         <button onClick={this.logout}>Logout</button>
       </div>

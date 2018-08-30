@@ -16,6 +16,7 @@ const definition = {
   },
   projects: [{ type: ObjectId, ref: 'LambdaProject' }]
 };
+
 const options = {
   timestamps: true
 };
@@ -24,4 +25,4 @@ const classSchema = new Schema(definition, options);
 
 const classModel = mongoose.model("Class", classSchema, "Class");
 
-module.exports = classModel;
+export default classModel;

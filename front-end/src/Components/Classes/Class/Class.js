@@ -31,6 +31,13 @@ class Class extends PureComponent {
     this.setState({ newName: value });
   }
 
+  navigate = (name, github, trello, history) => {
+    history.push({ 
+      pathname: `/project/${name.replace(/\s+/g, '-').toLowerCase()}`, 
+      state: { github, trello, name },
+    });
+  }
+
   changeName = () => {
     const { newName } = this.state;
     const { _id, userID, updateClassPayload } = this.props;
@@ -60,7 +67,7 @@ class Class extends PureComponent {
 
   render = () => {
     const { classes, trans, newName, error } = this.state;
-  	const { index, name, projects, _id, openConfirmDelete, color1, color2 } = this.props;
+  	const { index, name, projects, _id, openConfirmDelete, color1, color2, history } = this.props;
     return (
       <div 
         className={classes}
@@ -75,9 +82,13 @@ class Class extends PureComponent {
             <h2>{name}</h2>
             {
               projects.length > 0 ?
-              projects.map(project => {
+              projects.map((project, i) => {
+                const { name, github, trello } = project;
                 return (
-                  <div key={project}>{project}</div>
+                  <div 
+                    key={`${name}-${i}`}
+                    className='class-project'
+                    onClick={() => this.navigate(name, github, trello, history)}>{name}</div>
                 );
               })
               : <p>{`There are no projects in ${name}`}</p>

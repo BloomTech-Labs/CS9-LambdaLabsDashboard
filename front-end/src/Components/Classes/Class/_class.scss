@@ -32,7 +32,7 @@
 		&>div {
 			@include center;
 			flex-direction: column;
-			padding: 5% 0;
+			padding: 10% 0 5% 0;
 			&>h2 {
 				font-weight: 600;
 				color: $purple;
@@ -47,12 +47,16 @@
 				width: 100%;
 				text-align: center;
 				line-height: 1.5;
-				font-weight: 700;
+				font-weight: 400;
 				width: 95%;
 			}
-			&>div {
+			&>.class-project {
 				margin: 10px 0;
 				color: $purple;
+				cursor: pointer;
+				&:hover {
+					color: lighten($purple, 15%);
+				}
 			}
 		}
 		&>.top-border {

@@ -2,12 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Route } from "react-router-dom";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
-import Classes from "./Components/Classes/classes";
+import Classes from "./Components/Classes/Classes";
 import LandingPage from "./Components/LandingPage/LandingPage";
-import Projects from "./Components/Projects/projects";
+import Projects from "./Components/Projects/Projects";
 import Billing from "./Components/Billing/Billing";
-import CreateProject from "./Components/CreateProject/Create";
-import EditProject from "./Components/EditProject/editProject";
+import CreateProject from "./Components/CreateProject/CreateProject";
 import Settings from "./Components/Settings/Settings";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import Menu from "./Components/Menu/Menu";
@@ -71,9 +70,8 @@ class App extends Component {
           <PrivateRoute exact path="/projects/:className" component={Projects} />
           <PrivateRoute exact path="/billing" component={Billing} />
           <PrivateRoute exact path="/createProject" component={CreateProject} />
-          <PrivateRoute exact path="/projects/EditProject/:id" component={EditProject} />
           <PrivateRoute path="/settings" component={Settings} />
-          <PrivateRoute path="/project-dashboard" component={Dashboard} />
+          <PrivateRoute path="/project/:project" component={Dashboard} />
         </div>
       </div>
     );
