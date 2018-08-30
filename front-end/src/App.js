@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Route } from "react-router-dom";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
+import Billing from "./Components/Billing/Billing";
 import Classes from "./Components/Classes/Classes";
 import LandingPage from "./Components/LandingPage/LandingPage";
 import Projects from "./Components/Projects/Projects";
@@ -23,10 +24,17 @@ class App extends Component {
 
   UNSAFE_componentWillMount = () => this.props.validateToken();
 
-  UNSAFE_componentWillReceiveProps = ({ authOnLoad, userID, history, location, getClasses }) => {
+  UNSAFE_componentWillReceiveProps = ({
+    authOnLoad,
+    userID,
+    history,
+    location,
+    getClasses
+  }) => {
     if (authOnLoad !== this.props.authOnLoad) {
       if (authOnLoad) {
-        if (location.pathname === "/") history.push(this.url === "/" ? "/classes" : this.url);
+        if (location.pathname === "/")
+          history.push(this.url === "/" ? "/classes" : this.url);
         this.removeLoader(500);
         getClasses(userID);
       } else {
@@ -65,9 +73,14 @@ class App extends Component {
         <div className={classes}>
           <Route exact path="/" component={LandingPage} />
           <PrivateRoute exact path="/classes" component={Classes} />
-          <PrivateRoute exact path="/projects/:className" component={Projects} />
+          <PrivateRoute
+            exact
+            path="/projects/:className"
+            component={Projects}
+          />
           <PrivateRoute exact path="/createProject" component={CreateProject} />
           <PrivateRoute path="/project/:project" component={Dashboard} />
+          <PrivateRoute exact path="/billing" component={Billing} />
         </div>
       </div>
     );
@@ -79,4 +92,7 @@ const mSTP = ({ Navigation }) => {
   return { classes: bodyClasses, authOnLoad, userID };
 };
 
-export default connect(mSTP, { validateToken, getClasses })(App);
+export default connect(
+  mSTP,
+  { validateToken, getClasses }
+)(App);
