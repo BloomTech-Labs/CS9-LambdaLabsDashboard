@@ -1,147 +1,137 @@
-import React, { Component } from "react";
-import axios from "axios";
-import { connect } from "react-redux";
-// import Projects from "../Projects/projects.js";
-// import submitProject from "../../Reducers/submitProject.js";
-export const TRELLONAME = "TRELLONAME";
-export const GITHUBHANDLER = "GITHUBHANDLER";
+import React, { Component } from 'react';
+import Axios from 'axios';
+import { connect } from 'react-redux';
+import Input from '../Input/Input';
+import Check from '../../pictures/check.svg';
+import { updateClassPayload } from '../../Actions/Database'; 
+
+const baseURL = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:4000';
 
 class CreateProject extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      projectName: "",
-      githubHandle: "",
-      trelloName: "",
-      class: "",
-      dueDate: "",
-      projectId: ""
-    };
+    	name: '',
+      repository: '',
+      trello: '',
+      classes: 'submit-project',
+      error: false,
+    }
   }
 
-  createProjectHandler = event => {
-    this.setState({ [event.target.name]: event.target.value });
-  };
+  componentDidMount = () => {
+    const { history, location } = this.props;
+    if(!location.state) history.push('/classes');
+  }
 
-  // submitProject = dispatch => {
-  //   const object = {
-  //     projectName: this.state.projectName,
-  //     githubHandle: this.state.githubHandle,
-  //     trelloName: this.state.trelloName,
-  //     class: this.state.class,
-  //     dueDate: this.state.dueDate
-  //   };
-  //   console.log(object);
-  //   const promise = axios.post("http://localhost:4000/projects", object);
-  //   return dispatch => {
-  //     promise
-  //       .then(response => {
-  //         dispatch({
-  //           type: "projectId",
-  //           payload: response.data
-  //         });
-  //       })
-  //       .catch(error => {
-  //         console.log(error);
-  //       });
-  //   };
-  // };
+  shouldComponentUpdate = (nextProps, {className, name, repository, trello, classes, error}) => {
+  	const curState = this.state;
+  	if(className !== curState.className) return true;
+  	else if(name !== curState.name) return true;
+  	else if(repository !== curState.repository) return true;
+  	else if(trello !== curState.trello) return true;
+  	else if(classes !== curState.classes) return true;
+  	else if(error !== curState.error) return true;
+  	return false;
+  }
 
-  render() {
-    console.log("props ====>", this.props);
+  inputChange = (name, value) => {
+  	this.setState({[name]: value });
+  }
+
+  checkState = () => {
+  	const { name, repository, trello } = this.state;
+    const { location } = this.props;
+    const { classID, className } = location.state;
+  	return className !== '' &&
+  				 name !== '' &&
+  				 repository !== '' &&
+  				 trello !== '' &&
+           classID;
+  }
+
+  error = () => {
+  	this.setState({ classes: 'submit-project', error: true });
+  }
+
+  submit = () => {
+  	this.setState({ classes: 'submit-project submit-project-loading' }, () => {
+  		const { name, repository, trello } = this.state;
+      const { location, history, updateClassPayload } = this.props;
+      const { classID, className } = location.state;
+	  	if(this.checkState()) {
+	  		Axios.post(`${baseURL}/projects`, { classID, name, github: repository, trello })
+					.then(res => {
+						console.log(res);
+						if(typeof res.data === 'string') {
+							this.error();
+						} else {
+							updateClassPayload(res.data.classes);
+							this.setState({ classes: 'submit-project submit-project-loading submit-project-complete'}, () => {
+								setTimeout(() => 
+                  this.setState({ classes: 'submit-project' }, () => {
+                    setTimeout(() => history.push(`/projects/${className}`), 250);
+                  })
+                , 2000);
+							});
+						}
+					})
+					.catch(err => this.error());
+		  } else {
+		  	this.error();
+		  }
+  	});
+  }
+
+  render = () => {
+  	const { name, repository, trello, classes, error } = this.state;
     return (
-      <div className="createProject">
-        <h1> Create PROJECTS</h1>
-        <input
-          type="text"
-          placeholder="ProjectName"
-          name="projectName"
-          value={this.state.projectName}
-          onChange={this.createProjectHandler}
-        />
-
-        <input
-          type="text"
-          placeholder="githubHandle "
-          name="githubHandle"
-          value={this.state.githubHandle}
-          onChange={this.createProjectHandler}
-        />
-        <input
-          type="text"
-          placeholder="trelloName "
-          name="trelloName"
-          value={this.state.trelloName}
-          onChange={this.createProjectHandler}
-        />
-        <input
-          type="text"
-          placeholder="class"
-          name="class"
-          value={this.state.class}
-          onChange={this.createProjectHandler}
-        />
-        <input
-          type="text"
-          placeholder="dueDate"
-          name="dueDate"
-          value={this.state.dueDate}
-          onChange={this.createProjectHandler}
-        />
-        <button
-          onClick={() => {
-            this.props.submitProject(
-              this.state.projectName,
-              this.state.githubHandle,
-              this.state.trelloName,
-              this.state.class,
-              this.state.dueDate
-            );
-            this.props.bill(this.state.githubHandle, this.state.trelloName);
-          }}
-        >
-          Submit
-        </button>
+      <div 
+        className="create-project">
+        <div>
+          <div className='title'>
+          	<h1>Please answer a few questions about your project</h1>
+          </div>
+          <div className="questionaire">
+          	<h2 data-num="1">Classification</h2>
+          	<Input 
+            	labelText='1) What is the name of this product?'
+            	type='text'
+            	placeholder='Ex: Project Manager'
+            	name='name'
+            	value={name}
+            	onChange={this.inputChange} />
+            <h2 data-num="2">Linked Accounts</h2>
+            <Input 
+            	labelText='1) What is the name of your github repository'
+            	type='text'
+            	placeholder='Ex: My-Repository'
+            	name='repository'
+            	value={repository}
+            	onChange={this.inputChange} />
+            <Input 
+            	labelText='2) What is your trello board ID?'
+            	subText='Where do I find this?'
+            	type='text'
+            	placeholder='Ex: 1d2gd34dasf5768'
+            	name='trello'
+            	value={trello}
+            	onChange={this.inputChange} />
+            {
+              error && 
+                <h2 data-num="X">Please check your inputs and try again</h2>
+            }
+            <button 
+              className={classes} 
+              onClick={this.submit}>
+                Submit
+                <img src={Check} alt="Configure new project" />
+            </button>
+          </div>
+        </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
-  console.log("create  satate ===>", state);
-  return {};
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    bill: (githubHandle, trelloName) => {
-      dispatch({ type: "hilal", payload: { trelloName, githubHandle } });
-    },
-    submitProject: (projectName, githubHandle, trelloName, Class, dueDate) => {
-      const object = {
-        projectName: projectName,
-        githubHandle: githubHandle,
-        trelloName: trelloName,
-        class: Class,
-        dueDate: dueDate
-      };
-      console.log(object);
-      dispatch({ type: "try" });
-      const promise = axios.post("http://localhost:4000/projects", object);
-      promise
-        .then(response => {
-          dispatch({
-            type: "projectId",
-            payload: response.data
-          });
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    }
-  };
-};
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CreateProject);
+export default connect(null, { updateClassPayload })(CreateProject);

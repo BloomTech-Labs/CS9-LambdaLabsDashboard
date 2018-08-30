@@ -5,10 +5,7 @@ import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 import Classes from "./Components/Classes/Classes";
 import LandingPage from "./Components/LandingPage/LandingPage";
 import Projects from "./Components/Projects/Projects";
-import Billing from "./Components/Billing/Billing";
-import CreateProject from "./Components/CreateProject/Create";
-import EditProject from "./Components/EditProject/EditProject";
-import Settings from "./Components/Settings/Settings";
+import CreateProject from "./Components/CreateProject/CreateProject";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import Menu from "./Components/Menu/Menu";
 import Header from "./Components/Header/Header";
@@ -26,17 +23,10 @@ class App extends Component {
 
   UNSAFE_componentWillMount = () => this.props.validateToken();
 
-  UNSAFE_componentWillReceiveProps = ({
-    authOnLoad,
-    userID,
-    history,
-    location,
-    getClasses
-  }) => {
+  UNSAFE_componentWillReceiveProps = ({ authOnLoad, userID, history, location, getClasses }) => {
     if (authOnLoad !== this.props.authOnLoad) {
       if (authOnLoad) {
-        if (location.pathname === "/")
-          history.push(this.url === "/" ? "/classes" : this.url);
+        if (location.pathname === "/") history.push(this.url === "/" ? "/classes" : this.url);
         this.removeLoader(500);
         getClasses(userID);
       } else {
@@ -75,20 +65,9 @@ class App extends Component {
         <div className={classes}>
           <Route exact path="/" component={LandingPage} />
           <PrivateRoute exact path="/classes" component={Classes} />
-          <PrivateRoute
-            exact
-            path="/projects/:className"
-            component={Projects}
-          />
-          <PrivateRoute exact path="/billing" component={Billing} />
+          <PrivateRoute exact path="/projects/:className" component={Projects} />
           <PrivateRoute exact path="/createProject" component={CreateProject} />
-          <PrivateRoute
-            exact
-            path="/projects/EditProject/:id"
-            component={EditProject}
-          />
-          <PrivateRoute path="/settings" component={Settings} />
-          <PrivateRoute path="/project-dashboard" component={Dashboard} />
+          <PrivateRoute path="/project/:project" component={Dashboard} />
         </div>
       </div>
     );
@@ -100,7 +79,4 @@ const mSTP = ({ Navigation }) => {
   return { classes: bodyClasses, authOnLoad, userID };
 };
 
-export default connect(
-  mSTP,
-  { validateToken, getClasses }
-)(App);
+export default connect(mSTP, { validateToken, getClasses })(App);

@@ -1,8 +1,7 @@
 import mongoose from "mongoose";
-import bcrypt from "bcrypt";
 
 const Schema = mongoose.Schema;
-const ObjectId = mongoose.Schema.Types.ObjectId;
+const ObjectId = Schema.Types.ObjectId;
 
 const definition = {
   name: {
@@ -13,16 +12,13 @@ const definition = {
     type: String,
     required: true
   },
-  className: {
-    type: String,
-    required: true
-  },
   trello: {
     type: String,
     required: true
   },
   classID: {
     type: ObjectId,
+    ref: 'Class',
     required: true
   }
 };
@@ -33,6 +29,6 @@ const options = {
 
 const lambdaProjectsSchema = new Schema(definition, options);
 
-const lambdaProjectsModel = mongoose.model("LambdaProject", lambdaProjectsSchema);
+const lambdaProjectsModel = mongoose.model("LambdaProject", lambdaProjectsSchema, "LambdaProject");
 
 module.exports = lambdaProjectsModel;

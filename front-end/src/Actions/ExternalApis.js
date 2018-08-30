@@ -15,7 +15,6 @@ export const getDataForProject = (repository, boardID) => {
       }
     })
     .catch(err => {
-      console.log(err);
       dispatch(handleError(err))
     });
 	}

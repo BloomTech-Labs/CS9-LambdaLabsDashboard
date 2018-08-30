@@ -81,14 +81,29 @@ class Classes extends PureComponent {
     const { newClassName } = this.state;
     const { userID } = this.props;
     if(newClassName.length > 2) {
-      this.setState({
-      createClasses: 'class-create class-modal-show class-modal-enter class-modal-loading'
-      }, () => {
-        Axios.post(`${baseURL}/classes`, { className: newClassName, userID })
-          .then(res => this.UIAction('createClasses', res))
-          .catch(err => this.setState({ newClassError: true }));
-      });
+      if(this.loopClasses(newClassName)) {
+        this.setState({
+          createClasses: 'class-create class-modal-show class-modal-enter class-modal-loading'
+        }, () => {
+          Axios.post(`${baseURL}/classes`, { className: newClassName, userID })
+            .then(res => this.UIAction('createClasses', res))
+            .catch(err => this.setState({ newClassError: true }));
+        });
+      }
     }
+  }
+
+  loopClasses = name => {
+    let open = true
+    const { classes } = this.props;
+    for(let i = 0; i < classes.length; i++) {
+      const { className } = classes[i];
+      if(name === className) {
+        open = false;
+        break;
+      }
+    }
+    return open;
   }
 
   deleteClass = () => {
@@ -128,7 +143,7 @@ class Classes extends PureComponent {
 
   render = () => {
     const { deleteClasses, createClasses, currentClass, containerClasses, loader, newClassName, newClassError } = this.state;
-    const { classes, userID } = this.props;
+    const { classes, userID, history } = this.props;
     const { length } = classes;
     return (
       <div className={containerClasses}>
@@ -169,6 +184,7 @@ class Classes extends PureComponent {
                     userID={userID}
                     color1={color1}
                     color2={color2}
+                    history={history}
                     openConfirmDelete={this.openConfirmDelete} />
                 );
               })

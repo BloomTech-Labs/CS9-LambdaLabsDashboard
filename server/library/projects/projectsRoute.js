@@ -1,5 +1,6 @@
 import express from "express";
 import ProjectsModel from "./projectsModel.js";
+import ClassModel from '../Classes/classModel';
 import { noneEmpty } from "../MiddleWare/middleWare.js";
 import authenticate from "../MiddleWare/authJWT.js";
 
@@ -20,10 +21,18 @@ Router.get("/", (req, res) => {
 
 Router.post("/", (req, res) => {
   console.log("request ===>", req.body);
+  const { classID } = req.body;
   const newProject = ProjectsModel(req.body);
   newProject.save()
     .then(project => {
-      res.status(200).json({ project });
+      ClassModel.findByIdAndUpdate(classID, { $push: { projects: project._id }})
+        .then(update => {
+          const { userID } = update;
+          ClassModel.find({ userID })
+            .then(classes => res.status(200).json({ classes }))
+            .catch(err => res.send('Error creating project'));
+        })
+        .catch(err => res.send('Error creating project'));
     })
     .catch(error => res.send('Error creating project'));
 });
