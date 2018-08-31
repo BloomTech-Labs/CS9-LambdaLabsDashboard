@@ -1,26 +1,15 @@
 .create-project {
-	// height: calc(100% - 50px);
 	width: 100%;
 	background: $darkergray;
 	z-index: 9;
-	// transform: translateY(-100%);
-	// opacity: 0;
-	// visibility: hidden;
-	// overflow-y: scroll;
-	// -webkit-overflow-scrolling: touch;
 	transition-duration: 0.5s;
 	text-align: center;
-	@media #{$mq-800} {
-		top: 80px;
-		height: calc(100% - 80px);
-	}
-	@media #{$mq-1150} {
-		top: 0px;
-		left: 200px;
-		height: 100%;
+	position: relative;
+	@media #{$mq-1070} {
 		width: calc(100% - 200px);
+		margin-left: 200px;
 	}
-	&>div {
+	&>.center {
 		display: block;
 		width: 95%;
 		min-height: 100%;
@@ -31,6 +20,9 @@
 		position: relative;
 		@media #{$mq-670} {
 	    	margin-top: 120px;
+	    }
+	    @media #{$mq-1070} {
+	    	margin-top: 70px;
 	    }
 		&>.title {
 			width: 100%;
@@ -46,7 +38,7 @@
 			    @media #{$mq-670} {
 			    	font-size: 2.25em;
 			    }
-			    @media #{$mq-1150} {
+			    @media #{$mq-1070} {
 			    	font-size: 2.5em;
 			    	max-width: 550px;
 			    }
@@ -212,147 +204,5 @@
 	}
 }
 
-.checkboxes {
-	@include center;
-	width: 100%;
-	&>input {
-		height: 40px;
-		width: 40px;
-		margin-right: 10px;
-		margin-left: 10px;
-		margin-top: 10px;
-		margin-bottom: 20px;
-	}
-	&>input:first-of-type {
-		margin-right: 30px;
-	}
-}
-.outstanding-input {
-	width: 100%;
-	@include center;
-	flex-direction: column;
-	// margin-top: 40px;
-	&>input {
-		align-self: flex-start;
-		margin: 0;
-		width: 100%;
-		max-width:380px;
-		border: none;
-		height: 40px;
-		padding-left: 5px;
-		margin-bottom: 20px;
-		align-self: flex-start;
-		outline: none;
-		border-radius: 0;
-		background: transparent;
-		border-bottom: 1px solid $redish;
-		color:#fff;
-	}
-	&>legend{
-		margin-top: 0;
-	}
-}
 
-input[type='checkbox'] {
-    -webkit-appearance:none;
-    outline: none;
-    width:30px;
-    height:30px;
-    background:white;
-    border-radius:5px;
-    border: none;
-    height: 40px;
-	width: 40px;
-	margin-right: 10px;
-	margin-left: 10px;
-	margin-top: 10px;
-	margin-bottom: 20px;
-	background-size: 0%;
-	background-position: 50% 50%;
-	transition-duration: 0.3s;
-	position: relative;
-	border-radius: 3px;
-	overflow: hidden;
-	&::after {
-    	content: "";
-    	position: absolute;
-    	top: 0%;
-    	left: 0%;
-    	height: 100%;
-    	width: 100%;
-    	background: $redish;
-    	border-radius: 3px;
-    	border-radius: 50%;
-    	transform: scale(0);
-    	transition-duration: 0.3s;
-    }
-    &::before {
-    	content: "";
-    	position: absolute;
-    	top: 0%;
-    	left: 0%;
-    	height: 100%;
-    	width: 100%;
-    	z-index: 2;
-    	// background: url('cross.svg') no-repeat center;
-    	background-size: 80%;
-    	transform: scale(0);
-    	transition-duration: 0.1s;
-    	transition-delay: 0s;
-    }
-}
-
-input[type='checkbox']:checked {
-    &::after {
-    	transform: scale(2);
-    }
-    &::before {
-    	transform: scale(1);
-    	transition-delay: 0.1s;
-    }
-}
-
-.closer {
-	position: fixed;
-	top: 60px;
-	width: 50px;
-	height: 50px;
-	right: 10px;
-	z-index: 389700;
-	// background: rgba(#fff, 0) url('close.svg') no-repeat center;
-	background-size: 70% 70%;
-	border: none;
-	outline: none;
-	border: 1px solid $redish;
-	border-radius: 50%;
-	@include headerShadow;
-	transform: scale(0);
-	transition-duration: 0.3s;
-	@media #{$mq-670} {
-		top: 100px;
-		right: 20px;
-		background-size: 80% 80%;
-		height: 60px;
-		width: 60px;
-	}
-	@media #{$mq-1070} {
-		top: 5%;
-		right: 5%
-	}
-	@media #{$mq-1700} {
-		top: 17.5%;
-		right: 22.5%;
-	}
-}
-
-.closer-show {
-	transform: scale(1);
-	transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-	transition-delay: 0.3s;
-}
-
-.property-setup-show {
-	opacity: 1;
-	visibility: visible;
-	transform: translateY(0%);
-}
+@import 'TrelloID/trello-id.scss';

@@ -2,10 +2,11 @@ import express from "express";
 import UserModel from "./userModel.js";
 import { makeToken, secret } from "../MiddleWare/jwtMiddleWare.js";
 import { userEmpty } from "../MiddleWare/middleWare.js";
-const router = express.Router();
 import authenticate from "../MiddleWare/authJWT.js";
 
-router.get("/", (req, res) => {
+const Router = express.Router();
+
+Router.get("/", (req, res) => {
   console.log(req.body);
   UserModel.find({})
     .then(users => {
@@ -16,7 +17,7 @@ router.get("/", (req, res) => {
     });
 });
 
-router.post("/", (req, res) => {
+Router.post("/", (req, res) => {
   console.log("request ===>", req.body);
   const obj = req.body;
   const { name, email } = obj;
@@ -40,7 +41,7 @@ router.post("/", (req, res) => {
     })
 });
 
-router.put("/:id", (req, res) => {
+Router.put("/:id", (req, res) => {
   const { id } = req.params;
   const obj = req.body;
   console.log(obj);
@@ -54,9 +55,8 @@ router.put("/:id", (req, res) => {
     });
 });
 
-router.delete("/:id", (req, res) => {
+Router.delete("/:id", (req, res) => {
   const id = req.params.id;
-
   UserModel.findById(id)
     .remove()
     .then(p => {
@@ -67,4 +67,4 @@ router.delete("/:id", (req, res) => {
     });
 });
 
-module.exports = router;
+module.exports = Router;

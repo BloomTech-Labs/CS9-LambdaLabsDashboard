@@ -20,7 +20,7 @@ export default class TopCircle extends Component {
 				strokeLinecap="round"
 				style={{
 					strokeDasharray: Math.PI * (2 * 200),
-					strokeDashoffset: completeness
+					strokeDashoffset: isNaN(completeness) ? 0 : completeness
 				}} />
     );
   }

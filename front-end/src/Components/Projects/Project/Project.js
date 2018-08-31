@@ -15,7 +15,7 @@ export default class Project extends PureComponent {
   componentDidMount = () => {
     setTimeout(() => {
       this.setState({ classes: 'project project-show' });
-    }, 500);
+    }, 250);
   }
 
   componentWillUnmount = () => {
@@ -30,11 +30,8 @@ export default class Project extends PureComponent {
   }
 
   navigate = () => {
-    const { name, github, trello, history } = this.props;
-    history.push({ 
-      pathname: `/project/${name.replace(/\s+/g, '-').toLowerCase()}`, 
-      state: { github, trello, name },
-    });
+    const { github, trello, history, name } = this.props;
+    history.push(`/project/${trello}/${github}/${name}`);
   }
 
   render = () => {

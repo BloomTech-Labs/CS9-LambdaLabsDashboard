@@ -9,13 +9,15 @@
 	opacity: 0;
 	transition-duration: 0.4s;
 	perspective: 700px;
+	max-width: 380px;
 	@media #{$mq-670} {
-		width: auto;
-		min-width: 250px;
-		max-width: 350px;
+		width: 42.5%;
+		margin: 1.5em 3%; 
+		align-self: flex-start;
 	}
 	@media #{$mq-1070} {
-		margin: 1.25em;
+		margin: 1em;
+		max-width: 300px;
 	}
 	&>.front {
 		height: 100%;
@@ -33,12 +35,18 @@
 			@include center;
 			flex-direction: column;
 			padding: 10% 0 5% 0;
+			width: 100%;
+			overflow: hidden;
 			&>h2 {
 				font-weight: 600;
 				color: $purple;
 				margin-top: 0;
 				width: 95%;
 				text-align: center;
+				cursor: pointer;
+				&:hover {
+					color: lighten($purple, 15%);
+				}
 			}
 			&>p {
 				color: $redish;
@@ -49,14 +57,6 @@
 				line-height: 1.5;
 				font-weight: 400;
 				width: 95%;
-			}
-			&>.class-project {
-				margin: 10px 0;
-				color: $purple;
-				cursor: pointer;
-				&:hover {
-					color: lighten($purple, 15%);
-				}
 			}
 		}
 		&>.top-border {
@@ -161,16 +161,16 @@
 				transform: scaleX(1);
 			}
 			::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-			  color: #8E9090;
+			  color: #BEC0C8;
 			}
 			::-moz-placeholder { /* Firefox 19+ */
-			  color: #8E9090;
+			  color: #BEC0C8;
 			}
 			:-ms-input-placeholder { /* IE 10+ */
-			  color: #8E9090;
+			  color: #BEC0C8;
 			}
 			:-moz-placeholder { /* Firefox 18- */
-			  color: #8E9090;
+			  color: #BEC0C8;
 			}
 			&>h3 {
 				margin: 0;
@@ -226,3 +226,5 @@
 		transform: scale(1);
 	}
 }
+
+@import 'ClassProject/class-project.scss';

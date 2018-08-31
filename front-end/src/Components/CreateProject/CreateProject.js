@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Axios from 'axios';
 import { connect } from 'react-redux';
 import Input from '../Input/Input';
+import TrelloID from './TrelloID/TrelloID';
 import Check from '../../pictures/check.svg';
 import { updateClassPayload } from '../../Actions/Database'; 
 
@@ -16,15 +17,17 @@ class CreateProject extends Component {
       trello: '',
       classes: 'submit-project',
       error: false,
+      trelloIDClasses: 'trello-id'
     }
   }
 
   componentDidMount = () => {
     const { history, location } = this.props;
     if(!location.state) history.push('/classes');
+    else window.scrollTo(0, 0);
   }
 
-  shouldComponentUpdate = (nextProps, {className, name, repository, trello, classes, error}) => {
+  shouldComponentUpdate = (nextProps, {className, name, repository, trello, classes, error, trelloIDClasses}) => {
   	const curState = this.state;
   	if(className !== curState.className) return true;
   	else if(name !== curState.name) return true;
@@ -32,6 +35,7 @@ class CreateProject extends Component {
   	else if(trello !== curState.trello) return true;
   	else if(classes !== curState.classes) return true;
   	else if(error !== curState.error) return true;
+    else if(trelloIDClasses !== curState.trelloIDClasses) return true;
   	return false;
   }
 
@@ -70,7 +74,7 @@ class CreateProject extends Component {
 							this.setState({ classes: 'submit-project submit-project-loading submit-project-complete'}, () => {
 								setTimeout(() => 
                   this.setState({ classes: 'submit-project' }, () => {
-                    setTimeout(() => history.push(`/projects/${className}`), 250);
+                    setTimeout(() => history.push(`/projects/${className}`), 100);
                   })
                 , 2000);
 							});
@@ -83,12 +87,32 @@ class CreateProject extends Component {
   	});
   }
 
+  openFindTrelloID = () => {
+    this.setState({ trelloIDClasses: 'trello-id class-modal-show '}, () => {
+      setTimeout(() => {
+        this.setState({ trelloIDClasses: 'trello-id class-modal-show class-modal-enter' });
+      }, 100);
+    })
+  }
+
+  closeFindTrelloID = () => {
+    this.setState({ trelloIDClasses: 'trello-id class-modal-show class-modal-enter class-modal-close' }, () => {
+      setTimeout(() => {
+        this.setState({ trelloIDClasses: 'trello-id' });
+      }, 500);
+    })
+  }
+
   render = () => {
-  	const { name, repository, trello, classes, error } = this.state;
+  	const { name, repository, trello, classes, error, trelloIDClasses } = this.state;
     return (
       <div 
+        ref="container"
         className="create-project">
-        <div>
+        <TrelloID 
+          classes={trelloIDClasses}
+          close={this.closeFindTrelloID} />
+        <div className='center'>
           <div className='title'>
           	<h1>Please answer a few questions about your project</h1>
           </div>
@@ -111,7 +135,8 @@ class CreateProject extends Component {
             	onChange={this.inputChange} />
             <Input 
             	labelText='2) What is your trello board ID?'
-            	subText='Where do I find this?'
+            	subText='Find my trello ID'
+              clickSubText={this.openFindTrelloID}
             	type='text'
             	placeholder='Ex: 1d2gd34dasf5768'
             	name='trello'

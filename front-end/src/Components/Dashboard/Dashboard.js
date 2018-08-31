@@ -10,17 +10,19 @@ import { getDataForProject } from '../../Actions/ExternalApis';
 class Dashboard extends PureComponent {
 
   componentDidMount = () => {
-    const { history, location, getDataForProject } = this.props;
-    if(!location.state) history.push('/classes');
+    window.scrollTo(0, 0);
+    const { history, match, getDataForProject } = this.props;
+    const { githubRepo, trelloID } = match.params; 
+    if(!githubRepo || !trelloID) history.push('/classes');
     else {
-      const { github, trello } = location.state; 
-      getDataForProject(github, trello); 
+      const { githubRepo, trelloID } = match.params; 
+      getDataForProject(githubRepo, trelloID); 
     }
   }
 
   render = () => {
-    const { trello, countUp, completeness, location } = this.props;
-    const name = location.state ? location.state.name : '';
+    const { trello, countUp, completeness, match } = this.props;
+    const { name } = match.params;
     return (
       <div className='Dashboard'>
         <div>
