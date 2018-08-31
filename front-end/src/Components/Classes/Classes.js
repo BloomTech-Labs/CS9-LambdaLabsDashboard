@@ -21,15 +21,16 @@ class Classes extends PureComponent {
       currentID: '',
       loader: true,
       newClassName: '',
-      newClassError: false
+      newClassError: false,
     };
   }
 
   componentDidMount = () => {
     const { userID, updateClassPayload } = this.props; 
+    window.scrollTo(0, 0);
     Axios.get(`${baseURL}/classes/${userID}`)
       .then(res => {
-        console.log(res.data);
+        console.log(res);
         if(typeof res.data !== 'string') {
           updateClassPayload(res.data.classes);
           this.enter();
@@ -162,7 +163,10 @@ class Classes extends PureComponent {
           inputChange={this.inputChange} />
         <button 
           className='create-class'
-          onClick={this.openCreateClass}></button>
+          onClick={this.openCreateClass}>
+            <div className='hor'></div>
+            <div className='vert'></div>
+          </button>
         <div className='center'>
           <h1>Classes</h1>
           {
@@ -170,6 +174,7 @@ class Classes extends PureComponent {
           }
           <div>
             {
+              !loader &&
               length > 0 ? 
               classes.map((c, i) => {
                 const { className, projects, _id } = c;

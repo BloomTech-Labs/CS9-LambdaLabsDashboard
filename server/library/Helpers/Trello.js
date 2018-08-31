@@ -1,8 +1,9 @@
 export default class Trello {
-	constructor(team, members, cards, lists) {
+	constructor(team, members, cards, lists, rebuild) {
 		this.teamStats = team;
 		this.team = members;
-		this.lists = this.parseLists(lists)
+		this.lists = this.parseLists(lists);
+		this.rebuild = rebuild;
 		return this.parseCards(cards);
 	}
 	parseLists(lists) {
@@ -35,7 +36,7 @@ export default class Trello {
 			const { id, fullName } = this.team[i];
 			if(idMembers.includes(id)) {
 				totalFound++;
-				if(fullName in this.teamStats) {
+				if(this.rebuild && fullName in this.teamStats) {
 					this.teamStats[fullName].trellos += 1;
 				}
 				if(totalFound === length) break;
@@ -60,7 +61,8 @@ export default class Trello {
 		const total = complete+inProgress+pending;
 		const completeness = (complete/total)*100;
 		const circ = Math.PI * (2 * (200 - ((completeness*200)/100)));
-		return { updatedTeamStats: this.rebuildTeamObject(), totalCards: total, inProgress: this.getInProgress(), trello: this.lists, completeness: circ };
+		if(this.rebuild) return { updatedTeamStats: this.rebuildTeamObject(), totalCards: total, inProgress: this.getInProgress(), trello: this.lists, completeness: circ };
+		return { completeness, circ };
 	}
 	rebuildTeamObject() {
 		const res = [];

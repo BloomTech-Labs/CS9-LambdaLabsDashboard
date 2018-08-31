@@ -3,6 +3,7 @@ import { Redirect, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 class PrivateRoute extends Component {
+
   render = () => {
   	const { component: CurrentRoute, location, auth, userID, ...rest } = this.props;
     return (

@@ -1,6 +1,8 @@
 import express from "express";
 import Axios from 'axios';
 import ClassModel from "./classModel.js";
+import { fetchClassProgress } from '../ExternalApis/BatchRequests';
+import { loopClassesToReturnTrelloBoardIDs } from '../Helpers/Arrays';
 require('dotenv').config();
 
 const Router = express.Router();
@@ -12,8 +14,37 @@ Router.get("/:userID", (req, res) => {
   const { userID } = req.params
   ClassModel.find({ userID })
     .populate("projects")
+    .lean()
     .then(classes => {
-      res.status(200).json({ classes });
+      let lastX = 0, lastY = 0;
+      for(let i = 0; i < classes.length; i++) {
+        for(let j = 0; j < classes[i].projects.length; j++) {
+          const boardID = classes[i].projects[j].trello;
+          lastX = i; lastY = j;
+          fetchClassProgress(boardID)
+            .then(api => {
+              if(typeof api !== 'boolean') {
+                const { completeness, circ } = api;
+                classes[i].projects[j].completeness = completeness;
+                classes[i].projects[j].circ = circ;
+              } else {
+                classes[i].projects[j].circ = 0;
+                classes[i].projects[j].completeness = 0;
+              }
+              if(lastX === i && lastY === j) {
+                res.status(200).json({ classes });
+              }
+            })
+            .catch(err => {
+              classes[i].projects[j].circ = 0;
+              classes[i].projects[j].completeness = 0;
+              if(lastX === i && lastY === j) {
+                res.status(200).json({ classes });
+              }
+            })
+        }
+      }
+      // res.status(200).json({ classes });
     })
     .catch(error => res.send('error'));
 });

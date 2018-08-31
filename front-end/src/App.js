@@ -67,7 +67,7 @@ class App extends Component {
           <PrivateRoute exact path="/classes" component={Classes} />
           <PrivateRoute exact path="/projects/:className" component={Projects} />
           <PrivateRoute exact path="/createProject" component={CreateProject} />
-          <PrivateRoute path="/project/:project" component={Dashboard} />
+          <PrivateRoute path="/project/:trelloID/:githubRepo/:name" component={Dashboard} />
         </div>
       </div>
     );
