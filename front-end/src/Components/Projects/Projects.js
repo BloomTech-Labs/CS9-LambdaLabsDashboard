@@ -21,7 +21,8 @@ class Projects extends PureComponent {
     }
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
+    window.scrollTo(0, 0);
     const { currentClass } = this.props;
     if(currentClass) this.setCurrentState(currentClass);
   }
@@ -72,7 +73,10 @@ class Projects extends PureComponent {
       <div className={classes}>
         <button 
           onClick={() => history.push({ pathname: '/createProject', state: { classID: _id, className }})}
-          className='create-project-button'></button>
+          className='create-project-button'>
+            <div className='hor'></div>
+            <div className='vert'></div>
+          </button>
       	<div>
       		<h1>{className}</h1>
       		<div>

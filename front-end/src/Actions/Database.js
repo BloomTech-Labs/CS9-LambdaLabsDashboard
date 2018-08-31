@@ -18,7 +18,6 @@ export const getClasses = userID => {
 	return (dispatch, getState) => {
 		Axios.get(`${baseURL}/classes/${getState().Navigation.userID}`)
 			.then(res => {
-				console.log(res.data);
 				if(typeof res.data === 'string') {
 
 				} else {

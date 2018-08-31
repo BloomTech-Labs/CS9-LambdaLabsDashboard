@@ -1,4 +1,5 @@
 import Axios from 'axios';
+
 const baseURL = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:4000';
 
 export const toggleMenu = () => {
@@ -23,7 +24,6 @@ const checkValidity = token => {
 	return dispatch => {
 		Axios.post(`${baseURL}/token`, {token})
 			.then(res => {
-				console.log(res);
 				const { auth, _id } = res.data;
 				if(auth && _id) dispatch({ type: 'AUTH_ON_LOAD', auth, _id });
 				else dispatch({ type: 'AUTH_ON_LOAD', auth });

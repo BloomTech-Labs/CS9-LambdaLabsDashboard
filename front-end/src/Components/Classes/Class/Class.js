@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import Axios from 'axios';
 import { connect } from 'react-redux';
 import Input from '../../Input/Input';
+import ClassProject from './ClassProject/ClassProject';
 import { updateClassPayload } from '../../../Actions/Database';
 import CheckIcon from '../../../pictures/check.svg';
 
@@ -32,10 +33,7 @@ class Class extends PureComponent {
   }
 
   navigate = (name, github, trello, history) => {
-    history.push({ 
-      pathname: `/project/${name.replace(/\s+/g, '-').toLowerCase()}`, 
-      state: { github, trello, name },
-    });
+    history.push(`/project/${trello}/${github}/${name}`);
   }
 
   changeName = () => {
@@ -68,6 +66,7 @@ class Class extends PureComponent {
   render = () => {
     const { classes, trans, newName, error } = this.state;
   	const { index, name, projects, _id, openConfirmDelete, color1, color2, history } = this.props;
+    const { length } = projects;
     return (
       <div 
         className={classes}
@@ -79,16 +78,17 @@ class Class extends PureComponent {
               background: `linear-gradient(to right, ${color1}, ${color2})`
             }} />
           <div>
-            <h2>{name}</h2>
+            <h2 onClick={() => history.push(`/projects/${name}`)}>{name}</h2>
             {
-              projects.length > 0 ?
+              length > 0 ?
               projects.map((project, i) => {
-                const { name, github, trello } = project;
                 return (
-                  <div 
-                    key={`${name}-${i}`}
-                    className='class-project'
-                    onClick={() => this.navigate(name, github, trello, history)}>{name}</div>
+                  <ClassProject 
+                    key={i}
+                    index={i}
+                    {...project}
+                    history={history}
+                    length={length} />
                 );
               })
               : <p>{`There are no projects in ${name}`}</p>

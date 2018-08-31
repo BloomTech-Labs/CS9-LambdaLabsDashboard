@@ -9,7 +9,9 @@ class CheckoutForm extends Component {
       complete: false,
       monthly: false,
       annual: false,
-      amount: ""
+      amount: "",
+      email: "",
+      name: ""
     };
   }
 
@@ -18,8 +20,8 @@ class CheckoutForm extends Component {
     ev.preventDefault();
     let token = this.props.stripe
       .createToken({
-        name: "trip ",
-        email: "hilal@gmail.com"
+        name: this.state.name,
+        email: this.state.email
       })
       .then(token => {
         console.log("amount", amount);
@@ -64,6 +66,10 @@ class CheckoutForm extends Component {
     }
   };
 
+  eventHandler = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
   render() {
     console.log("monthly", this.state.monthly);
     console.log("annually", this.state.annual);
@@ -76,6 +82,20 @@ class CheckoutForm extends Component {
           <form>
             <legend>Choose Your Subscription</legend>
             <div>
+              <input
+                type="text"
+                placeholder="name"
+                name="name"
+                value={this.state.name}
+                onChange={this.eventHandler}
+              />
+              <input
+                type="text"
+                placeholder="email"
+                name="email"
+                value={this.state.email}
+                onChange={this.eventHandler}
+              />
               <input
                 name="monthly"
                 id="monthly"
