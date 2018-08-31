@@ -12,7 +12,6 @@ export default class ClassProject extends PureComponent {
   render = () => {
   	const { name, github, trello, index, length, completeness } = this.props;
   	const { color1, color2 } = generateColors(index, length);
-  	console.log(completeness);
     return (
       <div 
         className='class-project'
