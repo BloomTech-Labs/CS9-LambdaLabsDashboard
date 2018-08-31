@@ -53,6 +53,10 @@ fieldset {
   align-items: center;
 }
 
+.checkout {
+  width: 50%;
+
+}
 .payment {
   border: 1px solid black;
   padding: 40px 40px;
@@ -67,7 +71,7 @@ fieldset {
 }
 
 .StripeElement {
-  background-color: white;
+  background-color: purple;
   height: 40px;
   padding: 10px 12px;
   border-radius: 4px;
