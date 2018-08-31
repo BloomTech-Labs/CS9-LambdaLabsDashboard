@@ -79,7 +79,7 @@ class App extends Component {
             component={Projects}
           />
           <PrivateRoute exact path="/createProject" component={CreateProject} />
-          <PrivateRoute path="/project/:project" component={Dashboard} />
+          <PrivateRoute path="/project/:trelloID/:githubRepo/:name" component={Dashboard} />
           <PrivateRoute exact path="/billing" component={Billing} />
         </div>
       </div>

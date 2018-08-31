@@ -19,12 +19,14 @@ class CircleGraph extends Component {
 		window.addEventListener('resize', this.resize, true);
 	}
 
-	shouldComponentUpdate = ({completeness, error, dataLength}, {fontSize}) => {
+	shouldComponentUpdate = ({completeness, error, dataLength}, {fontSize, animate}) => {
 		const curProps = this.props;
+		const curState = this.state;
 		if(completeness !== curProps.completeness) return true;
 		else if(error !== curProps.error) return true;
-		else if(fontSize !== this.state.fontSize) return true;
+		else if(fontSize !== curState.fontSize) return true;
 		else if(dataLength !== curProps.dataLength) return true;
+		else if(animate !== curState.animate) return true;
 		return false;
 	}
 
@@ -38,10 +40,12 @@ class CircleGraph extends Component {
 	}
 
   render = () => {
-  	const { dataLength, completeness, error, color1, color2, gradientID, measure, noSubText } = this.props; 
+  	const { dataLength, completeness, error, color1, color2, gradientID, measure, noSubText, dimensions } = this.props; 
   	const { fontSize, animate } = this.state; 
     return (
-      <div className='circle-graph'>
+      <div 
+      	className='circle-graph'
+      	style={dimensions ? { height: dimensions, width: dimensions } : {}}>
 				<div className='circle-center'>
 					<svg 
 						className='circle-container'
@@ -87,9 +91,9 @@ class CircleGraph extends Component {
   }
 }
 
-const mSTP = ({ ExternalApis }) => {
+const mSTP = ({ ExternalApis }, { dataLength }) => {
 	const { error, team } = ExternalApis;
-	return { error, dataLength: team.length };
+	return { error, dataLength: dataLength ? dataLength : team.length };
 }
 
 export default connect(mSTP)(CircleGraph);

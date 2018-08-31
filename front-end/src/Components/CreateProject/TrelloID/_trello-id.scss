@@ -1,7 +1,7 @@
-.class-create {
+.trello-id {
 	position: fixed;
 	top: 0; right: 0;
-	height: 100%;
+	height: 100vh;
 	width: 100%;
 	display: none;
 	z-index: 5;
@@ -25,32 +25,28 @@
 			transform: scale(0);
 			transition-duration: 0.3s;
 			@include headerShadow;
-			&>.title-input {
-				width: 80%;
+			&>div {
 				@include center;
 				flex-direction: column;
-				margin-top: 5px;
-				&>h2 {
-					width: 80%;
-					text-align: center;
-					margin-bottom: 0.5em;
+				width: 85%;
+				padding: 10% 0;
+				& label, h3, h4 {
 					color: #E7E9F0;
-					font-size: 1.5em;
-				}
-				&>p {
-					color: $redish;
-					font-weight: 700;
-					margin: 0.25em auto;
-					text-align: center;
-				}
-				& label {
-					color: #E7E9F0;
-					margin: 20px 0 2.5px 0;
+					margin: 0px 0 2.5px 0;
 					@include center;
 					align-self: flex-start;
 					margin-bottom: 10px;
 					font-size: 1.15em;
 					line-height: 1.4;
+				}
+				& h3, & h4 {
+					font-size: 1em;
+					font-weight: 200;
+				}
+				& h4 {
+					font-size: 0.9em;
+					font-style: italic;
+					margin-bottom: 20px;
 				}
 				&>.input {
 					width: 100%;
@@ -97,33 +93,21 @@
 				:-moz-placeholder { /* Firefox 18- */
 				  color: #BEC0C8;
 				}
-			}
-			&>.buttons {
-				width: 100%;
-				@include center;
-				flex-direction: row;
-				margin-bottom: 20px;
-				&>button {
-					outline: none; border: none;
-					margin: 0; padding: 0;
-					height: 37.5px;
-					width: 40%; max-width: 200px;
-					margin: 2.5%;
-					background: $redish;
-					color: #fff;
-					font-weight: 600;
-					border-radius: 2.5px;
-					@include buttonShadow;
-					position: relative;
-					transition-duration: 0.3s;
-					&:last-of-type {
-						background: #5BD070;
-						&>img {
-							position: absolute;
-							height:60%; width: 60%;
-							top: 20%; left: 20%;
-							transform: scale(0);
-							transition-duration: 0.3s;
+				&>.buttons {
+					@include center;
+					width: 100%;
+					justify-content: space-between;
+					&>button {
+						outline: none; border: none;
+						border-radius: 5px;
+						width: 45%; height: 40px;
+						max-width: 250px;
+						background: $redish;
+						color: #fff;
+						font-weight: 700;
+						@include buttonShadow;
+						&:last-of-type {
+							background: #5BD070;
 						}
 					}
 				}
