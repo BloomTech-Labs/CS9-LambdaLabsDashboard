@@ -3117,7 +3117,8 @@ $scale: 0.8; // icon scale 68/68 default
     width: 95%;
     height: auto;
     margin: auto;
-    min-height: 70vh; }
+    min-height: 100vh;
+    position: relative; }
     @media (min-width: 1070px) {
       .settings > .center {
         width: 95%; } }

@@ -11,7 +11,8 @@
 		width: 95%;
 		height: auto;
 		margin: auto;
-		min-height: 70vh;
+		min-height: 100vh;
+		position: relative;
 	    @media #{$mq-1070} {
 	      width: 95%;
 	    }

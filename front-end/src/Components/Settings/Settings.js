@@ -138,7 +138,9 @@ class Settings extends Component {
       <div className='settings'>
       	<div className='center'>
       		<h1>Settings</h1>
-      		<h2>You can update the settings of your choosing below</h2>
+      		<h2 style={{
+            marginBottom: userEmail !== '' ? '20px' : '50px'
+          }}>You can update the settings of your choosing below</h2>
       		{
       			userEmail !== '' ? 
       			<div>
