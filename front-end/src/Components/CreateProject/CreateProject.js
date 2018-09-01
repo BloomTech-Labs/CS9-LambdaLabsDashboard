@@ -74,9 +74,9 @@ class CreateProject extends Component {
 							this.setState({ classes: 'submit-project submit-project-loading submit-project-complete'}, () => {
 								setTimeout(() => 
                   this.setState({ classes: 'submit-project' }, () => {
-                    setTimeout(() => history.push(`/projects/${className}`), 100);
+                    setTimeout(() => history.push(`/projects/${className}`), 400);
                   })
-                , 2000);
+                , 1000);
 							});
 						}
 					})

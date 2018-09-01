@@ -36,7 +36,7 @@ export default class Project extends PureComponent {
 
   render = () => {
     const { classes, trans } = this.state;
-  	const { index, name, students, color1, color2, loader } = this.props;
+  	const { index, name, students, color1, color2, loader, openConfirmDelete, id } = this.props;
     return (
       <div 
         className={classes}
@@ -47,6 +47,12 @@ export default class Project extends PureComponent {
             style={{
               background: `linear-gradient(to right, ${color1}, ${color2})`
             }}/>
+          <button 
+            //onClick={this.flip}
+            className='edit'></button>
+          <button
+            onClick={() => openConfirmDelete(name, id)} 
+            className='delete'></button>
           <div className='center'>
             <h2 onClick={this.navigate}>{name}</h2>
             {

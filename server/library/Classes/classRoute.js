@@ -14,38 +14,34 @@ Router.get("/:userID", (req, res) => {
   const { userID } = req.params
   ClassModel.find({ userID })
     .populate("projects")
-    // .lean()
-    .then(classes => res.status(200).json({ classes }))
-      // let lastX = 0, lastY = 0;
-      // for(let i = 0; i < classes.length; i++) {
-      //   for(let j = 0; j < classes[i].projects.length; j++) {
-      //     const boardID = classes[i].projects[j].trello;
-      //     lastX = i; lastY = j;
-      //     fetchClassProgress(boardID)
-      //       .then(api => {
-      //         if(typeof api !== 'boolean') {
-      //           const { completeness, circ } = api;
-      //           classes[i].projects[j].completeness = completeness;
-      //           classes[i].projects[j].circ = circ;
-      //         } else {
-      //           classes[i].projects[j].circ = 0;
-      //           classes[i].projects[j].completeness = 0;
-      //         }
-      //         if(lastX === i && lastY === j) {
-      //           res.status(200).json({ classes });
-      //         }
-      //       })
-      //       .catch(err => {
-      //         classes[i].projects[j].circ = 0;
-      //         classes[i].projects[j].completeness = 0;
-      //         if(lastX === i && lastY === j) {
-      //           res.status(200).json({ classes });
-      //         }
-      //       })
-      //   }
-      // }
-      // res.status(200).json({ classes });
-    // })
+    .lean()
+    .then(classes => {
+      let lastX = 0, lastY = 0;
+      const requests = [];
+      for(let i = 0; i < classes.length; i++) {
+        for(let j = 0; j < classes[i].projects.length; j++) {
+          const boardID = classes[i].projects[j].trello;
+          lastX = i; lastY = j;
+          requests.push(fetchClassProgress(boardID));
+        }
+      }
+      const { length } = requests;
+      let decrement = length;
+      Promise.all(requests).then(api => {
+        for(let i = 0; i < classes.length; i++) {
+          if(decrement === 0) break;
+          const { projects } = classes[i];
+          for(let j = 0; j < projects.length; j++) {
+            if(decrement === 0) break;
+            const { circ, completeness } = api[length - decrement];
+            projects[j].circ = circ;
+            projects[j].completeness = completeness;
+            decrement--;
+          }
+        }
+        res.status(200).json({ classes });
+      })
+    })
     .catch(error => res.send('error'));
 });
 

@@ -8,9 +8,11 @@ export default class Input extends Component {
 	  };
 	}
 
-	shouldComponentUpdate = ({ value }, { classes }) => {
-		if(value !== this.props.value) return true;
+	shouldComponentUpdate = ({ value, placeholder }, { classes }) => {
+		const curProps = this.props;
+		if(value !== curProps.value) return true;
 		else if(classes !== this.state.classes) return true;
+		else if(placeholder !== curProps.placeholder) return true;
 		return false;
 	}
 

@@ -6,19 +6,6 @@ import authenticate from "../MiddleWare/authJWT.js";
 
 const Router = express.Router();
 
-Router.get("/", (req, res) => {
-  console.log(req.body);
-  ProjectsModel.find({})
-    // .populate("class", "-_id")
-    // .populate("students", "-_id")
-    .then(projects => {
-      res.status(200).json({ projects: projects });
-    })
-    .catch(error => {
-      res.status(500).json({ msg: error });
-    });
-});
-
 Router.post("/", (req, res) => {
   console.log("request ===>", req.body);
   const { classID } = req.body;
@@ -29,6 +16,7 @@ Router.post("/", (req, res) => {
         .then(update => {
           const { userID } = update;
           ClassModel.find({ userID })
+            .populate("projects")
             .then(classes => res.status(200).json({ classes }))
             .catch(err => res.send('Error creating project'));
         })
@@ -62,12 +50,14 @@ Router.get("/:id", (req, res) => {
     });
 });
 
-Router.delete("/:id", (req, res) => {
-  const id = req.params.id;
-  ProjectsModel.findById(id)
-    .remove()
+Router.delete("/:id/:userID", (req, res) => {
+  const { id, userID } = req.params;
+  ProjectsModel.findById(id).remove()
     .then(p => {
-      res.status(200).json({ msg: "...project successfully deleted" });
+      ClassModel.find({ userID })
+        .populate("projects")
+        .then(classes => res.status(200).json({ classes }))
+        .catch(err => res.send('Error creating project'));
     })
     .catch(err => {
       res.status(200).json({ msg: "... not able to  delete project" });

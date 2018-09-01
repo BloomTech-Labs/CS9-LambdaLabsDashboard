@@ -24,6 +24,8 @@ export default (state=initialState, action) => {
 			return Object.assign({}, state, { completeness, initBars: true, countUp: true });
     case 'ERROR':
       return Object.assign({}, state, { error: true });
+    case 'RESET_API_DATA':
+      return Object.assign({}, state, initialState);
 		default:
 			return state;
 	}
