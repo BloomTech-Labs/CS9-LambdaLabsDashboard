@@ -41,7 +41,7 @@
 			margin-bottom: 20px;
 			font-weight: 400;
 		}
-		&>div {
+		&>.input-container {
 			width: 90%;
 			@include center;
 			flex-direction: column;

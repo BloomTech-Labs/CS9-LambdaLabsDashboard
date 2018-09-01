@@ -143,7 +143,7 @@ class Settings extends Component {
           }}>You can update the settings of your choosing below</h2>
       		{
       			userEmail !== '' ? 
-      			<div>
+      			<div className='input-container'>
 	      			{
 	      				error !== '' && <h2>{error}</h2>
 	      			}
