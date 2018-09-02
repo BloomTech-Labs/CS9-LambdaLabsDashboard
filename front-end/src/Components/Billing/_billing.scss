@@ -60,5 +60,11 @@
     border: 1px solid black;
     padding: 40px 40px;
     border-radius: 40px;
+  & .Input{
+    background-color: yellow;
+    &> .InputElement {
+      background: green;
+    }
   }
+}
 }
