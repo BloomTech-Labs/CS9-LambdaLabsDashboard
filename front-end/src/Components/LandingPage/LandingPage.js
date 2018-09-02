@@ -86,7 +86,7 @@ class LandingPage extends Component {
 
   login = () => {
     const { newUser, name, email, password } = this.state;
-    const baseURL = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:4000';
+    const baseURL = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:4001';
     const location = newUser ? '/users' : '/login';
     const body = newUser ? { name, email, password } : { email, password };
     Axios.post(`${baseURL}${location}`, body)
