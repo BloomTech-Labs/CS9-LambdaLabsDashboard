@@ -18,7 +18,7 @@ class CheckoutForm extends Component {
   submit = ev => {
     let amount = this.state.monthly ? 999 : 2999;
     ev.preventDefault();
-    let token = this.props.stripe
+    this.props.stripe
       .createToken({
         name: this.state.name,
         email: this.state.email
