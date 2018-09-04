@@ -6,7 +6,7 @@
   @media #{$mq-1070} {
     width: calc(100% - 200px);
   }
-  &>div {
+  &>.center {
     width: 90%;
     flex-direction: column;
     height: auto;
@@ -43,10 +43,12 @@
       &>h2 {
         color: $purple;
         text-align: center;
-        width: 80%;
         margin-bottom: 50%;
+        width: 90%;
+        font-weight: 300;
         @media #{$mq-670} {
           margin-bottom: 25%;
+          width: 80%;
         }
         @media #{$mq-1070} {
           margin-bottom: 10%;

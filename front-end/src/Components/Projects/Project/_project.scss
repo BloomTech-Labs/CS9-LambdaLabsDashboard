@@ -24,10 +24,31 @@
 		border-radius: 5px;
 		background: lighten($darkgray, 5%);
 		@include headerShadow;
+		&>button {
+			outline: none; border: none;
+			background: url('pictures/edit.svg') no-repeat center;
+			background-size: 45% 45%;
+			position: absolute;
+			top: 15px; left: 5px;
+			height: 32.5px; width: 32.5px;
+			@include center;
+			border-right: 1px solid $purple;
+			border-bottom: 1px solid $purple;
+		}
+		&>.delete {
+			top: auto;
+			bottom: 5px;
+			background: url('pictures/delete.svg') no-repeat center;
+			background-size: 45% 45%;
+			border-right: 1px solid $redish;
+			border-top: 1px solid $redish;
+			border-bottom: none;
+		}
 		&>.center {
 			@include center;
 			flex-direction: column;
 			padding: 5% 0;
+			width: 90%;
 			&>h2 {
 				cursor: pointer;
 				margin-top: 10px;

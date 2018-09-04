@@ -34,8 +34,9 @@ class Classes extends PureComponent {
         if(typeof res.data !== 'string') {
           updateClassPayload(res.data.classes);
           this.enter();
-        }
-      });
+        } else this.enter();
+      })
+      .catch(err => this.enter());
   }
 
   enter = () => this.setState({ containerClasses: 'classes classes-show', loader: false });
@@ -194,7 +195,7 @@ class Classes extends PureComponent {
                 );
               })
               :
-              <h2>Create a class to begin tracking your team's progress</h2>
+              !loader && <h2>Create a class to begin tracking your team's progress</h2>
             }
           </div>
         </div>
