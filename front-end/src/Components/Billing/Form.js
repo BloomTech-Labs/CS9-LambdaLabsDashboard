@@ -13,27 +13,23 @@ class CheckoutForm extends Component {
       complete: false,
       monthly: false,
       annual: false,
-      amount: "",
-      email: "",
-      name: ""
-    };
+    }
   }
-
+  
   submit = ev => {
-    ev.preventDefault();
-    const { monthly, name, email } = this.state;
-    const { userID, stripe, updateUserInfo } = this.props;
+    const { monthly } = this.state;
+    const { userID, userName, userEmail, stripe, updateUserInfo } = this.props;
     const amount = monthly ? 999 : 2999;
-    stripe.createToken({ name, email })
+    stripe.createToken({ name: userName, email: userEmail })
       .then(res1 => {
         const { token } = res1;
         const { id, email } = token;
-        Axios.post(`${baseURL}/charge/${userID}`, { name, email, amount, id })
+        Axios.post(`${baseURL}/charge/${userID}`, { name: userName, email, amount, id })
           .then(res2 => updateUserInfo(res2))
           .catch(err => this.setState({ error: true }));
       })
       .catch(err => this.setState({ error: true}));
-  };
+  }
 
   onChange = e => {
     if (e.target.name === "annual") {
@@ -41,59 +37,34 @@ class CheckoutForm extends Component {
     } else {
       this.setState({ annual: false, monthly: true });
     }
-  };
-
-  eventHandler = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
+  }
 
   render() {
     return (
       <div className="payment">
         <div className="checkout">
-          <p>Would you like to complete the purchase?</p>
-          <CardElement />
-          <form>
-            <legend>Choose Your Subscription</legend>
-            <div>
-              <input
-                type="text"
-                placeholder="name"
-                name="name"
-                value={this.state.name}
-                onChange={this.eventHandler}
-              />
-              <input
-                type="text"
-                placeholder="email"
-                name="email"
-                value={this.state.email}
-                onChange={this.eventHandler}
-              />
-              <input
-                name="monthly"
-                id="monthly"
-                type="checkbox"
-                checked={this.state.monthly}
-                amount="999"
-                onClick={this.onChange}
-              />
-              <label htmlFor="monthly">1 Year Subscription - $9.99</label>
-            </div>
-            <div>
-              <input
-                name="annual"
-                id="annual"
-                type="checkbox"
-                checked={this.state.annual}
-                amount="2999"
-                onClick={this.onChange}
-              />
-              <label htmlFor="annual">
-                1 Year Premium Subscription - $29.99
-              </label>
-            </div>
-          </form>
+          <p>Please enter your payment details</p>
+          <CardElement style={{
+            base: {
+              color: '#32325d',
+              fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
+              fontSmoothing: 'antialiased',
+              fontSize: '16px',
+              '::placeholder': {
+                color: '#95A1AE'
+              },
+              ':-webkit-autofill': {
+                color: '#32325d',
+              },
+            },
+            invalid: {
+              color: '#fa755a',
+              iconColor: '#fa755a',
+              ':-webkit-autofill': {
+                color: '#fa755a',
+              },
+            }
+          }}/>
           <button onClick={this.submit}>Send</button>
         </div>
       </div>
@@ -101,8 +72,10 @@ class CheckoutForm extends Component {
   }
 }
 
-const mSTP = ({ Navigation }) => {
-  return { userID: Navigation.userID };
+const mSTP = ({ Navigation, Database }) => {
+  const { userID } = Navigation;
+  const { userName, userEmail } = Database;
+  return { userID, userName, userEmail };
 }
 
 export default connect(mSTP, { updateUserInfo })(injectStripe(CheckoutForm));

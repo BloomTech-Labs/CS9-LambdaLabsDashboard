@@ -22,7 +22,7 @@ class Menu extends PureComponent {
   }
 
   render = () => {
-    const { menuClasses, classes } = this.props;
+    const { menuClasses, classes, subscribed } = this.props;
     return (
       <div className={menuClasses}>
         <div>
@@ -38,7 +38,9 @@ class Menu extends PureComponent {
             })
           }
           <a onClick={() => this.navigate('/settings')}>Settings</a>
-          <a onClick={() => this.navigate('/billing')}>Billing</a>
+          {
+            !subscribed && <a onClick={() => this.navigate('/billing')}>Billing</a>
+          }
           <button onClick={this.logout}>Logout</button>
         </div>
       </div>
@@ -48,8 +50,8 @@ class Menu extends PureComponent {
 
 const mSTP = ({ Navigation, Database }) => {
   const { menuClasses } = Navigation;
-  const { classes } = Database;
-  return { menuClasses, classes}
+  const { classes, subscribed } = Database;
+  return { menuClasses, classes, subscribed }
 }
 
 export default withRouter(connect(mSTP, { toggleMenu, logout })(Menu));
