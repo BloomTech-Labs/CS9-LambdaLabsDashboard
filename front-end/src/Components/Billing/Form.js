@@ -77,10 +77,9 @@ class CheckoutForm extends Component {
     return (
       <div className="payment">
         <div className="checkout">
-          <p>Would you like to complete the purchase?</p>
+          <h1>Choose Your Subscription</h1>
           <CardElement />
           <form>
-            <legend>Choose Your Subscription</legend>
             <div>
               <input
                 type="text"
@@ -89,6 +88,7 @@ class CheckoutForm extends Component {
                 value={this.state.name}
                 onChange={this.eventHandler}
               />
+              <br />
               <input
                 type="text"
                 placeholder="email"
@@ -96,6 +96,7 @@ class CheckoutForm extends Component {
                 value={this.state.email}
                 onChange={this.eventHandler}
               />
+              <br />
               <input
                 name="monthly"
                 id="monthly"
@@ -120,7 +121,9 @@ class CheckoutForm extends Component {
               </label>
             </div>
           </form>
-          <button onClick={this.submit}>Send</button>
+          <button classname="yasbtn" onClick={this.submit}>
+            Send
+          </button>
         </div>
       </div>
     );
