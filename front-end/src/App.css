@@ -1908,7 +1908,9 @@ $scale: 0.8; // icon scale 68/68 default
   align-items: center;
   color: #b14646; }
   .paymentWrapper > .payment {
-    background-color: white;
+    display: block;
+    background-color: #263346;
+    color: white;
     border: 1px solid black;
     padding: 40px 40px;
     border-radius: 40px; }
