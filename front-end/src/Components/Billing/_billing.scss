@@ -1,73 +1,16 @@
-// .Billing {
-//   border: 2px;
-//   border-collapse: #000;
-//   line-height: 2.5;
-//   padding: 0 20px;
-//   font-size: 1rem;
-//   text-align: center;
-//   color: #000;
-//   text-shadow: 1px 1px 1px #000;
-//   border-radius: 10px;
-//   background-color: rgba(0, 0, 255, 1);
-//   margin-left: 50%;
-//   background-image: linear-gradient(
-//     to top left,
-//     rgba(0, 0, 0, 0.2),
-//     rgba(0, 0, 0, 0.2) 30%,
-//     rgba(0, 0, 0, 0)
-//   );
-//   box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
-//     inset -2px -2px 3px rgba(0, 0, 0, 0.6);
-//   // width: 100%;
-//   //   @media #{$mq-1070} {
-//   //       width: calc(100% - 200px);
-//   //   }
-// }
-
-// .styled:hover {
-//   background-color: rgba(0, 255, 255, 1);
-// }
-
-// .styled:active {
-//   box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6),
-//     inset 2px 2px 3px rgba(0, 0, 0, 0.6);
-// }
-
-// legend {
-//   background-color: #000;
-//   color: #fff;
-//   padding: 3px 6px;
-// }
-
-// input {
-//   margin: 0.4rem;
-// }
-
-// fieldset {
-//   margin: auto;
-//   width: 35%;
-// }
-
 .paymentWrapper {
   width: calc(100% - 200px);
-  // min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: rgb(177, 70, 70);
 
   & > .payment {
     display: block;
-    background-color: #263346;
-    color: white;
-    border: 1px solid black;
+    background-color: #ffffff;
+    color: #263346;
+    border: 1px solid #263346;
     padding: 40px 40px;
     border-radius: 40px;
-    & .Input {
-      background-color: yellow;
-      & > .InputElement {
-        background: green;
-      }
-    }
+    // font-family: Segoe UI;
   }
 }
