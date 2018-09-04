@@ -16,7 +16,6 @@ router.post("/", (req, res) => {
   if (!token) {
     res.send("there is no token");
   }
-
   stripe.customers
     .create({
       email: req.body.email,
