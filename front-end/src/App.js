@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Route } from "react-router-dom";
+import Axios from 'axios';
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 import Billing from "./Components/Billing/Billing";
 import Classes from "./Components/Classes/Classes";
@@ -22,6 +23,13 @@ class App extends Component {
     this.callCount = 0;
     this.url = window.location.pathname;
     this.props.validateToken()
+  }
+
+  componentDidMount = () => {
+    const trelloKey = "cb548cca4f1358b69b3bee4a25ca02ec";
+const trelloToken = "5b6ec3db4fe7211b52293adec51fefdd06444a2546ff8ca725dbc5c5ebefa114";
+const auth = `?key=${trelloKey}&token=${trelloToken}`;
+    Axios.get(`https://trello.com/b/QK2SVHqH/dreamnexus.json${auth}`).then(res => console.log(res));
   }
 
   UNSAFE_componentWillReceiveProps = ({
