@@ -17,7 +17,7 @@ class Graph extends PureComponent {
           error ? 
             <div className='error'>
               <h3 className='error'>Error!</h3> 
-              <p>Please check your internet connection and try again</p>
+              <p>Please check your project configuration</p>
             </div>
           :
         		team.map((dude, i) => {

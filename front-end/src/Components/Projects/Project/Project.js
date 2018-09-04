@@ -18,20 +18,12 @@ export default class Project extends PureComponent {
     }, 250);
   }
 
-  componentWillUnmount = () => {
-    this.setState({ classes: 'project' });
-  }
+  componentWillUnmount = () => this.setState({ classes: 'project' });
 
-  navigate = (name, github, trello) => {
-    this.props.history.push({ 
-      pathname: `/project/${name.replace(/\s+/g, '-').toLowerCase()}`, 
-      state: { github, trello, name },
-    });
-  }
-
-  navigate = () => {
-    const { github, trello, history, name } = this.props;
-    history.push(`/project/${trello}/${github}/${name}`);
+  navigate = (e, edit=false) => {
+    const { id, github, trelloID, trelloURL, history, name, className } = this.props;
+    if(edit) history.push({ pathname: `/editProject/${id}`, state: { edit: true, className, github, trelloURL, name }});
+    else history.push(`/project/${trelloID}/${github}/${name}`);
   }
 
   render = () => {
@@ -48,13 +40,13 @@ export default class Project extends PureComponent {
               background: `linear-gradient(to right, ${color1}, ${color2})`
             }}/>
           <button 
-            //onClick={this.flip}
+            onClick={e => this.navigate(e, true)}
             className='edit'></button>
           <button
             onClick={() => openConfirmDelete(name, id)} 
             className='delete'></button>
           <div className='center'>
-            <h2 onClick={this.navigate}>{name}</h2>
+            <h2 onClick={e => this.navigate(e)}>{name}</h2>
             {
               students.length > 0 &&
               students.map(student => {

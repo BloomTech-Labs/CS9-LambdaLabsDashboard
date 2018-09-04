@@ -50,6 +50,21 @@ export const fetchClassProgress = async boardID => {
   }
 }
 
+export const getBoardID = async trelloURL => {
+  let id, error;
+  try {
+    const boardData = await Axios.get(`${trelloURL}.json${auth}`)
+    if(boardData) {
+      ({ id } = boardData.data);
+      error = false;
+    }
+  } catch(e) {
+    id = null;
+    error = true;
+  }
+  return { id, error };
+}
+
 const handleError = error => {
   return false;
 }

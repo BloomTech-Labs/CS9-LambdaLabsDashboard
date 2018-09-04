@@ -5,8 +5,8 @@ import { generateColors } from '../../../../Helpers/Arrays';
 export default class ClassProject extends PureComponent {
 
 	navigate = () => {
-		const { history, name, trello, github } = this.props;
-    history.push(`/project/${trello}/${github}/${name}`);
+		const { history, name, trelloID, github } = this.props;
+    history.push(`/project/${trelloID}/${github}/${name}`);
   }
 
   render = () => {

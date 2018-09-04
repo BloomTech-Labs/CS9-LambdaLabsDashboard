@@ -24,27 +24,13 @@ class Settings extends Component {
     this.props.getUserInfo();
   }
 
-  inputChange = (name, value) => {
-  	this.setState({ [name]: value });
-  }
-
-  getMonthsRemaining = () => {
-  	const { subscriptionDate } = this.props;
-  	const startDate = new Date(subscriptionDate).getFullYear();
-  	const today = new Date().getFullYear(); 
-  	let diff = (today - startDate)*12;
-  	diff += today.getMonth();
-  	diff -= startDate.getMonth() + 1;
-  	return diff <= 0 ? 0 : diff;
-  }
+  inputChange = (name, value) => this.setState({ [name]: value });
 
   checkField = (field, prop) => {
   	return field !== this.props[prop] && field.length > 0 ? field : false;
   }
 
-  checkPassword = password => {
-  	return password.length > 4 ? password : false;
-  }
+  checkPassword = password => password.length > 4 ? password : false;
 
   validateName = (name, updated, update) => {
   	if (this.nameReg.test(name)) {
@@ -133,7 +119,7 @@ class Settings extends Component {
 
   render = () => {
   	const { name, email, password, newPassword, classes, error } = this.state;
-  	const { userName, userEmail, subscribed } = this.props;
+  	const { userName, userEmail } = this.props;
     return (
       <div className='settings'>
       	<div className='center'>
@@ -178,15 +164,6 @@ class Settings extends Component {
 		            	value={password}
 		            	onChange={this.inputChange} />
 	            }
-	            {
-	            	subscribed &&
-	            	<div className='subscription'>
-	            		<div>
-	            			<h3>Subscription:</h3>
-	            			<h4>{`You have ${this.getMonthsRemaining} months remaining`}</h4>
-	            		</div>
-	            	</div>
-	            }
 	            <button
 	            	className={classes} 
 	            	onClick={this.submit}>
@@ -205,8 +182,8 @@ class Settings extends Component {
 
 const mSTP = ({ Navigation, Database }) => {
 	const { userID } = Navigation;
-	const { userName, userEmail, subscribed, subscriptionDate } = Database;
-	return { userID, userName, userEmail, subscribed, subscriptionDate }; 
+	const { userName, userEmail } = Database;
+	return { userID, userName, userEmail }; 
 }
 
 export default connect(mSTP, { getUserInfo, updateUserInfo })(Settings);

@@ -20,9 +20,9 @@ Router.get("/:userID", (req, res) => {
       const requests = [];
       for(let i = 0; i < classes.length; i++) {
         for(let j = 0; j < classes[i].projects.length; j++) {
-          const boardID = classes[i].projects[j].trello;
+          const { trelloID } = classes[i].projects[j];
           lastX = i; lastY = j;
-          requests.push(fetchClassProgress(boardID));
+          requests.push(fetchClassProgress(trelloID));
         }
       }
       const { length } = requests;
@@ -41,6 +41,7 @@ Router.get("/:userID", (req, res) => {
         }
         res.status(200).json({ classes });
       })
+      .catch(error => res.send('error'));
     })
     .catch(error => res.send('error'));
 });
@@ -69,8 +70,9 @@ Router.get("/projects/:id", async (req, res) => {
       const { projects } = c;
       const requests = [];
       for(let i = 0; i < projects.length; i++) {
-        const { trello } = projects[i];
-        requests.push(Axios.get(`https://api.trello.com/1/boards/${trello}/members${auth}`))
+        const { trelloID } = projects[i];
+        console.log(trelloID);
+        requests.push(Axios.get(`https://api.trello.com/1/boards/${trelloID}/members${auth}`))
       }
       Axios.all(requests)
         .then(resolve => {

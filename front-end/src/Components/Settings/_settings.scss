@@ -111,6 +111,20 @@
 			&>.input-focus::after {
 				transform: scaleX(1);
 			}
+			&>.subscription {
+				width: 100%;
+				@include center;
+				&>div {
+					width: 95%;
+					@include center;
+					flex-direction: column;
+					&>h4 {
+						text-align: center;
+						color: $purple;
+						font-size: 1.1em;
+					}
+				}
+			}
 			&>.submit {
 				margin-top: 30px;
 				outline: none; border: none;

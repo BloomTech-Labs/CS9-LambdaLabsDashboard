@@ -64,8 +64,13 @@ class Projects extends PureComponent {
   getStudents = id => {
     Axios.get(`${baseURL}/classes/projects/${id}`)
       .then(res => {
-        const { results: students } = res.data;
-        this.setState({ students, studentLoader: false, loader: false, classes: 'projects projects-show' });
+        console.log(res);
+        if('error' in res.data) {
+          this.setState({ studentLoader: false, loader: false, classes: 'projects projects-show' });
+        } else {
+          const { results: students } = res.data;
+          this.setState({ students, studentLoader: false, loader: false, classes: 'projects projects-show' });
+        }
       })
       .catch(err => this.setState({ students: [], studentLoader: false, loader: false, classes: 'projects projects-show' }));
   }
@@ -148,19 +153,21 @@ class Projects extends PureComponent {
       			{
               projects && projects.length > 0 && !loader ? 
       				projects.map((project, i) => {
-      					const { name, github, trello, _id } = project;
+      					const { name, github, trelloID, trelloURL, _id } = project;
                 const { color1, color2 } = generateColors(i, length);
                 const members = students.length > 0 ? students[i] : [];
       					return (
       						<Project 
       							key={`${name}-${i}`}
+                    className={className}
       							index={i}
                     history={history}
                     color1={color1}
                     color2={color2}
       							name={name}
                     github={github}
-                    trello={trello}
+                    trelloID={trelloID}
+                    trelloURL={trelloURL}
       							students={members}
                     loader={studentLoader}
                     id={_id}
