@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { CardElement, injectStripe } from "react-stripe-elements";
 import axios from "axios";
-
+import { connect } from "react-redux";
 class CheckoutForm extends Component {
   constructor(props) {
     super(props);
@@ -34,7 +34,8 @@ class CheckoutForm extends Component {
         let response = axios.post("http://localhost:4000/charge", object);
         response
           .then(res => {
-            console.log(res);
+            console.log(" charge response ===>", res);
+            res.data === "success" ? this.props.payBill(res.data) : null;
           })
           .catch(err => {
             console.log(err);
@@ -42,14 +43,6 @@ class CheckoutForm extends Component {
       });
   };
 
-  // onChange = event => {
-  //   console.log(event.target.id);
-  //   alert("hello");
-  //   this.setState({
-  //     [event.target.name]: true,
-  //     amount: event.target.id
-  //   });
-  // };
   onChange = event => {
     console.log(event.target.id);
     const { name } = event.target;
@@ -126,5 +119,20 @@ class CheckoutForm extends Component {
     );
   }
 }
+const mapStateToProps = state => {
+  console.log("state===>", state);
+  return {};
+};
 
-export default injectStripe(CheckoutForm);
+const mapDispatchToProps = dispatch => {
+  return {
+    payBill: () => {
+      dispatch({ type: "paid", payload: "paid" });
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(injectStripe(CheckoutForm));

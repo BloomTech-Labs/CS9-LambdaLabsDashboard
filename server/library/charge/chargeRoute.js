@@ -31,6 +31,7 @@ router.post("/", (req, res) => {
     })
     .then(charge => {
       res.send("success");
+      res.redirect("http://localhost:3000/projects");
     });
 });
 module.exports = router;
