@@ -1,6 +1,10 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
 import { CardElement, injectStripe } from "react-stripe-elements";
-import axios from "axios";
+import Axios from "axios";
+import { updateUserInfo } from '../../Actions/Database'; 
+
+const baseURL = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:4000';
 
 class CheckoutForm extends Component {
   constructor(props) {
@@ -16,64 +20,34 @@ class CheckoutForm extends Component {
   }
 
   submit = ev => {
-    let amount = this.state.monthly ? 999 : 2999;
     ev.preventDefault();
-    this.props.stripe
-      .createToken({
-        name: this.state.name,
-        email: this.state.email
+    const { monthly, name, email } = this.state;
+    const { userID, stripe, updateUserInfo } = this.props;
+    const amount = monthly ? 999 : 2999;
+    stripe.createToken({ name, email })
+      .then(res1 => {
+        const { token } = res1;
+        const { id, email } = token;
+        Axios.post(`${baseURL}/charge/${userID}`, { name, email, amount, id })
+          .then(res2 => updateUserInfo(res2))
+          .catch(err => this.setState({ error: true }));
       })
-      .then(token => {
-        console.log("amount", amount);
-        console.log(token);
-        const object = {
-          token: token.token.id,
-          email: token.token.email,
-          amount: amount
-        };
-        let response = axios.post("http://localhost:4000/charge", object);
-        response
-          .then(res => {
-            console.log(res);
-          })
-          .catch(err => {
-            console.log(err);
-          });
-      });
+      .catch(err => this.setState({ error: true}));
   };
 
-  // onChange = event => {
-  //   console.log(event.target.id);
-  //   alert("hello");
-  //   this.setState({
-  //     [event.target.name]: true,
-  //     amount: event.target.id
-  //   });
-  // };
-  onChange = event => {
-    console.log(event.target.id);
-    const { name } = event.target;
-    if (name === "annual") {
-      this.setState({
-        annual: true,
-        monthly: false
-      });
+  onChange = e => {
+    if (e.target.name === "annual") {
+      this.setState({ annual: true, monthly: false });
     } else {
-      this.setState({
-        annual: false,
-        monthly: true
-      });
+      this.setState({ annual: false, monthly: true });
     }
   };
 
-  eventHandler = event => {
-    this.setState({ [event.target.name]: event.target.value });
+  eventHandler = e => {
+    this.setState({ [e.target.name]: e.target.value });
   };
 
   render() {
-    console.log("monthly", this.state.monthly);
-    console.log("annually", this.state.annual);
-    console.log(this.state.amount);
     return (
       <div className="payment">
         <div className="checkout">
@@ -127,4 +101,8 @@ class CheckoutForm extends Component {
   }
 }
 
-export default injectStripe(CheckoutForm);
+const mSTP = ({ Navigation }) => {
+  return { userID: Navigation.userID };
+}
+
+export default connect(mSTP, { updateUserInfo })(injectStripe(CheckoutForm));
