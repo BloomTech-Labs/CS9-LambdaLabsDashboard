@@ -78,7 +78,15 @@ class CheckoutForm extends Component {
       <div className="payment">
         <div className="checkout">
           <h1>Choose Your Subscription</h1>
-          <CardElement />
+          <CardElement
+            className="payment"
+            onChange={this.handleCardFieldChange}
+            style={{
+              base: { fontSize: "18px",
+                      fontFamily: '"Open Sans", sans-serif',
+                      lineHeight: "40px" }
+            }}
+          />
           <form>
             <div>
               <input

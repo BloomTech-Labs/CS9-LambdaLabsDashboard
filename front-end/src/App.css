@@ -1905,19 +1905,15 @@ $scale: 0.8; // icon scale 68/68 default
   width: calc(100% - 200px);
   display: flex;
   justify-content: center;
-  align-items: center;
-  color: #b14646; }
+  align-items: center; }
   .paymentWrapper > .payment {
     display: block;
-    background-color: #263346;
-    color: white;
-    border: 1px solid black;
+    background-color: #ffffff;
+    color: #263346;
+    border: 1px solid #263346;
     padding: 40px 40px;
-    border-radius: 40px; }
-    .paymentWrapper > .payment .Input {
-      background-color: yellow; }
-      .paymentWrapper > .payment .Input > .InputElement {
-        background: green; }
+    border-radius: 40px;
+    font-family: Segoe UI; }
 
 .login {
   position: fixed;
