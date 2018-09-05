@@ -96,7 +96,12 @@ $mq-iphoneX: 'only screen and (device-width : 375px) and (device-height : 812px)
 	background: #e53935;  /* fallback for old browsers */
 	background: -webkit-linear-gradient(to left, #e35d5b, #e53935);  /* Chrome 10-25, Safari 5.1-6 */
 	background: linear-gradient(to left, #e35d5b, #e53935); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
 
+@mixin backgroundBurger {
+	background: #74E0FF;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #74E0FF, #48A3FF);
+	background: linear-gradient(to right, #74E0FF, #48A3FF);
 }
 
 @mixin gradientText {

@@ -16,8 +16,8 @@ class Burger extends Component {
             <svg id='svb' x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enableBackground="new 0 0 64 64" xmlSpace="preserve">
               <defs>
                 <linearGradient id="linear" x1="25%" y1="0%" x2="75%" y2="0%">
-                  <stop offset="0%"   stopColor="#a6c0fe"/>
-                  <stop offset="100%" stopColor="#f68084"/>
+                  <stop offset="0%"   stopColor="#74E0FF"/>
+                  <stop offset="100%" stopColor="#48A3FF"/>
                 </linearGradient>
               </defs>
               <path 

@@ -430,6 +430,22 @@ body {
         justify-content: flex-start;
         height: 100%;
         overflow-y: scroll; } }
+    .header > div > img {
+      height: 42.5px;
+      width: 42.5px;
+      margin-left: 10px;
+      border-radius: 50%;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); }
+      @media (min-width: 670px) {
+        .header > div > img {
+          height: 67.5px;
+          width: 67.5px; } }
+      @media (min-width: 1070px) {
+        .header > div > img {
+          height: 125px;
+          width: 125px;
+          margin: 0;
+          margin-top: 1.5em; } }
     .header > div > h1 {
       cursor: pointer;
       font-size: 2em;
@@ -479,44 +495,6 @@ body {
             width: 0%; }
           .header > div > h1:hover::before {
             width: 100%; } }
-    .header > div > a {
-      display: none; }
-      @media (min-width: 1070px) {
-        .header > div > a {
-          display: initial;
-          border: none;
-          border-top: none;
-          font-size: 1.5em;
-          padding: 0;
-          color: #FD9A77;
-          margin-top: 40px;
-          cursor: pointer;
-          font-weight: 200; } }
-    .header > div > a:nth-of-type(2) {
-      display: none; }
-      @media (min-width: 1070px) {
-        .header > div > a:nth-of-type(2) {
-          display: initial;
-          border: none;
-          border-top: none;
-          font-size: 1.5em;
-          padding: 0;
-          color: #5DA59E;
-          margin-top: 20px;
-          cursor: pointer;
-          font-weight: 200; } }
-    .header > div > a:nth-of-type(3) {
-      display: none; }
-      @media (min-width: 1070px) {
-        .header > div > a:nth-of-type(3) {
-          display: initial;
-          border: none;
-          border-top: none;
-          font-size: 1.6em;
-          padding: 0;
-          color: #F66463;
-          margin-top: 20px;
-          font-weight: 200; } }
     .header > div > .header-links {
       display: none; }
       @media (min-width: 800px) {
@@ -535,20 +513,17 @@ body {
           padding: 0 20px; } }
       @media (min-width: 1070px) {
         .header > div > .header-links {
-          margin: 0;
-          flex-direction: column;
-          justify-content: center;
-          margin-top: 20px;
+          display: block;
           height: auto;
           width: 95%;
           padding: 0px;
           max-width: none;
-          max-height: 95%;
+          max-height: 90%;
+          overflow-x: hidden;
           overflow-y: scroll;
-          padding-top: 0px;
-          margin-left: auto;
-          margin-right: auto; } }
+          margin: 20px auto 20px auto; } }
       .header > div > .header-links > a {
+        display: block;
         font-size: 1.5em;
         margin: 0px 15px;
         color: #91A7E0;
@@ -559,9 +534,11 @@ body {
         text-decoration: none; }
         @media (min-width: 1070px) {
           .header > div > .header-links > a {
-            margin: 10px 0;
+            margin: 20px 0;
             font-size: 1.5em;
-            white-space: initial; } }
+            white-space: initial; }
+            .header > div > .header-links > a:first-of-type {
+              margin-top: 0; } }
         .header > div > .header-links > a:hover {
           color: #fff; }
         .header > div > .header-links > a::first-letter {
@@ -594,7 +571,7 @@ body {
           overflow: hidden; } }
       @media (min-width: 1070px) {
         .header > div > button {
-          margin: 20px 0px;
+          margin: 0 0 20px 0;
           padding: 15px 30px; } }
 
 #burg {
@@ -661,10 +638,10 @@ $scale: 0.8; // icon scale 68/68 default
   height: 4px;
   width: 36px;
   border-radius: 2px;
-  background: #f68084;
+  background: #74E0FF;
   /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #a6c0fe, #f68084);
-  background: linear-gradient(to right, #a6c0fe, #f68084); }
+  background: -webkit-linear-gradient(to right, #74E0FF, #48A3FF);
+  background: linear-gradient(to right, #74E0FF, #48A3FF); }
 
 #top {
   top: 19px;
@@ -703,10 +680,10 @@ $scale: 0.8; // icon scale 68/68 default
   transform: scaleX(0) translateX(3px);
   transform-origin: 50% 50%;
   transition: all 0.5s;
-  background: #f68084;
+  background: #74E0FF;
   /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #a6c0fe, #f68084);
-  background: linear-gradient(to right, #a6c0fe, #f68084); }
+  background: -webkit-linear-gradient(to right, #74E0FF, #48A3FF);
+  background: linear-gradient(to right, #74E0FF, #48A3FF); }
 
 /* // End values (animation done by transitions) */
 /* .hamburglar.is-closed { */

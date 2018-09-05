@@ -12,7 +12,7 @@ import Menu from "./Components/Menu/Menu";
 import Header from "./Components/Header/Header";
 import Settings from './Components/Settings/Settings';
 import { validateToken } from "./Actions/Navigation";
-import { getClasses, getUserInfo } from "./Actions/Database";
+import { getClasses, getUserInfo, resetUserData } from "./Actions/Database";
 import "./App.css";
 
 class App extends Component {
@@ -31,16 +31,16 @@ class App extends Component {
     location,
     getClasses,
     getUserInfo,
+    resetUserData
   }) => {
-    if (authOnLoad !== this.props.authOnLoad) {
-      if (authOnLoad) {
-        if (location.pathname === "/")
-          history.push(this.url === "/" ? "/classes" : this.url);
+    if(authOnLoad !== this.props.authOnLoad) {
+      if(authOnLoad) {
+        if(location.pathname === "/") history.push(this.url === "/" ? "/classes" : this.url);
         this.removeLoader(500);
         getClasses(userID);
-        getUserInfo();
       } else {
-        if (this.callCount === 0) this.removeLoader(1000);
+        if(this.callCount === 0) this.removeLoader(1000);
+        resetUserData();
       }
     }
     this.callCount++;
@@ -92,4 +92,4 @@ const mSTP = ({ Navigation }) => {
   return { classes: bodyClasses, authOnLoad, userID };
 };
 
-export default connect(mSTP, { validateToken, getClasses, getUserInfo })(App);
+export default connect(mSTP, { validateToken, getClasses, getUserInfo, resetUserData })(App);
