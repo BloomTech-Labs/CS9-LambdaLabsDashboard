@@ -29,13 +29,15 @@ class Classes extends PureComponent {
   componentDidMount = () => {
     const { userID, updateClassPayload } = this.props;
     window.scrollTo(0, 0);
-    Axios.get(`${baseURL}/classes/${userID}`).then(res => {
-      console.log(res);
-      if (typeof res.data !== "string") {
-        updateClassPayload(res.data.classes);
-        this.enter();
-      }
-    });
+    Axios.get(`${baseURL}/classes/${userID}`)
+      .then(res => {
+        console.log(res);
+        if (typeof res.data !== "string") {
+          updateClassPayload(res.data.classes);
+          this.enter();
+        } else this.enter();
+      })
+      .catch(err => this.enter());
   };
 
   enter = () =>
@@ -198,7 +200,6 @@ class Classes extends PureComponent {
     } = this.state;
     const { classes, userID, history } = this.props;
     const { length } = classes;
-    console.log("====>length", length);
     return (
       <div className={containerClasses}>
         <ConfirmDelete
@@ -209,8 +210,8 @@ class Classes extends PureComponent {
         />
         <CreateClass
           classes={createClasses}
-          userID={userID}
           length={length}
+          userID={userID}
           className={newClassName}
           error={newClassError}
           createClass={this.createClass}
@@ -225,41 +226,39 @@ class Classes extends PureComponent {
           <h1>Classes</h1>
           {loader && <Loader dimensions={75} />}
           <div>
-            {!loader && length > 0 ? (
-              classes.map((c, i) => {
-                const { className, projects, _id } = c;
-                const { color1, color2 } = generateColors(i, length);
-                return (
-                  <Class
-                    key={`${c}-${i}`}
-                    index={i}
-                    name={className}
-                    projects={projects}
-                    _id={_id}
-                    userID={userID}
-                    color1={color1}
-                    color2={color2}
-                    history={history}
-                    openConfirmDelete={this.openConfirmDelete}
-                  />
-                );
-              })
-            ) : (
-              <h2>Create a class to begin tracking your team's progress</h2>
-            )}
+            {!loader && length > 0
+              ? classes.map((c, i) => {
+                  const { className, projects, _id } = c;
+                  const { color1, color2 } = generateColors(i, length);
+                  return (
+                    <Class
+                      key={`${c}-${i}`}
+                      index={i}
+                      name={className}
+                      projects={projects}
+                      _id={_id}
+                      userID={userID}
+                      color1={color1}
+                      color2={color2}
+                      history={history}
+                      openConfirmDelete={this.openConfirmDelete}
+                    />
+                  );
+                })
+              : !loader && (
+                  <h2>Create a class to begin tracking your team's progress</h2>
+                )}
           </div>
         </div>
       </div>
     );
   };
 }
-
 const mSTP = ({ Database, Navigation }) => {
   const { classes } = Database;
   const { userID } = Navigation;
   return { classes, userID };
 };
-
 export default connect(
   mSTP,
   { updateClassPayload }

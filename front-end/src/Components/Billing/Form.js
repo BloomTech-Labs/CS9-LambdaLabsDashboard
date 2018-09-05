@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { CardElement, injectStripe } from "react-stripe-elements";
 import axios from "axios";
 import { connect } from "react-redux";
+import { withRouter } from "react-router";
 class CheckoutForm extends Component {
   constructor(props) {
     super(props);
@@ -34,8 +35,9 @@ class CheckoutForm extends Component {
         let response = axios.post("http://localhost:4000/charge", object);
         response
           .then(res => {
-            console.log(" charge response ===>", res);
-            res.data === "success" ? this.props.payBill(res.data) : null;
+            console.log(res);
+            this.props.payBill();
+            this.props.history.push("/classes");
           })
           .catch(err => {
             console.log(err);
@@ -43,6 +45,14 @@ class CheckoutForm extends Component {
       });
   };
 
+  // onChange = event => {
+  //   console.log(event.target.id);
+  //   alert(“hello”);
+  //   this.setState({
+  //     [event.target.name]: true,
+  //     amount: event.target.id
+  //   });
+  // };
   onChange = event => {
     console.log(event.target.id);
     const { name } = event.target;
@@ -70,10 +80,12 @@ class CheckoutForm extends Component {
     return (
       <div className="payment">
         <div className="checkout">
-          <p>Would you like to complete the purchase?</p>
+          <h1>Choose Your Subscription</h1>
+
           <CardElement />
+          <hr />
+          <br />
           <form>
-            <legend>Choose Your Subscription</legend>
             <div>
               <input
                 type="text"
@@ -82,6 +94,8 @@ class CheckoutForm extends Component {
                 value={this.state.name}
                 onChange={this.eventHandler}
               />
+              <br />
+
               <input
                 type="text"
                 placeholder="email"
@@ -89,6 +103,9 @@ class CheckoutForm extends Component {
                 value={this.state.email}
                 onChange={this.eventHandler}
               />
+              <br />
+              <br />
+
               <input
                 name="monthly"
                 id="monthly"
@@ -113,7 +130,11 @@ class CheckoutForm extends Component {
               </label>
             </div>
           </form>
-          <button onClick={this.submit}>Send</button>
+          <br />
+
+          <button className="yasbtn" onClick={this.submit}>
+            Send
+          </button>
         </div>
       </div>
     );
@@ -135,4 +156,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(injectStripe(CheckoutForm));
+)(injectStripe(withRouter(CheckoutForm)));

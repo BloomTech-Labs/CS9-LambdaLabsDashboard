@@ -16,10 +16,12 @@ class CreateClass extends Component {
       classes,
       createClass,
       className,
+      length,
       error,
       inputChange,
       closeCreateClass
     } = this.props;
+    console.log("===>length", length);
     return (
       <div className={classes}>
         <div>
@@ -48,8 +50,25 @@ class CreateClass extends Component {
               </div>
             </div>
           )}
-
-          {this.props.length > 5 && this.props.history.push("/billing")}
+          {this.props.length >= 5 && (
+            <div>
+              <div className="title-input">
+                <h2>
+                  You did pass the maximum of 5 free classes please click bellow
+                  to go to the payment page{" "}
+                </h2>
+              </div>
+              <div className="buttons">
+                <button
+                  onClick={() => {
+                    this.props.history.push("/billing");
+                  }}
+                >
+                  payment
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     );

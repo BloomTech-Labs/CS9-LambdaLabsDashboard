@@ -26,3 +26,26 @@ export const getClasses = userID => {
 			})
 	}
 }
+
+export const getUserInfo = userID => {
+	return (dispatch, getState) => {
+		Axios.get(`${baseURL}/users/${getState().Navigation.userID}`)
+			.then(res => {
+				const { data } = res;
+				if(typeof data === 'string') {
+
+				} else {
+					const { userName, userEmail, subscribed, subscriptionDate } = data;
+					dispatch({ type: 'GET_USER_INFO', userName, userEmail, subscribed, subscriptionDate })
+				}
+			})
+	}
+}
+
+export const updateUserInfo = user => {
+	return { type: 'UPDATE_USER_INFO', user };
+}
+
+export const resetUserData = () => {
+	return { type: 'RESET_STATE' };
+}

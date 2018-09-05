@@ -19,11 +19,13 @@ class Class extends PureComponent {
     };
   }
 
+  componentDidMount = () => this.setState({ classes: 'class class-show' });
+
   flip = () => {
     this.setState(ps => {
       return {
         trans: false,
-        classes: ps.classes === 'class' ? 'class class-flip' : 'class'
+        classes: ps.classes === 'class class-show' ? 'class class-show class-flip' : 'class class-show'
       }
     })
   }
@@ -75,7 +77,7 @@ class Class extends PureComponent {
           <div 
             className='top-border'
             style={{
-              background: `linear-gradient(to right, ${color1}, ${color2})`
+              background: `linear-gradient(to right, ${color1}, ${color2})`,
             }} />
           <div>
             <h2 onClick={() => history.push(`/projects/${name}`)}>{name}</h2>

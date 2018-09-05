@@ -39,6 +39,7 @@ class StatBox extends PureComponent {
               error={error} />
           </div>
           {
+            trello.length > 0 ? 
             trello.map((card, index) => {
               const { name } = card;
               return (
@@ -48,7 +49,12 @@ class StatBox extends PureComponent {
                   <h3>{name}</h3>
                 </div>
               );
-            })
+            }) 
+            : countUp &&
+            <h3 style={{ 
+              color: color1, 
+              textAlign: 'center' 
+            }}>{`There are no items ${title}`}</h3>
           }
       	</div>
       </div>

@@ -34,3 +34,7 @@ const initializeProjectData = (project, team, trello, totalCards, inProgress) =>
 const animateDashboard = completeness => {
   return { type: 'ANIMATE_DASHBOARD', completeness };
 } 
+
+export const resetAPIData = () => {
+  return { type: 'RESET_API_DATA' };
+}

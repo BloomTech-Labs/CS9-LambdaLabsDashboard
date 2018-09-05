@@ -10,7 +10,7 @@ const gha = {headers: {'Authorization': `bearer ${process.env.GITHUB_TOKEN}`}};
 
 export const fetchDashboardData = async (repository, boardID) => {
   try {
-    const batchData = await Axios.all([
+    const batchData = await Promise.all([
       Axios.get(`https://api.trello.com/1/boards/${boardID}/members${auth}`),
       Axios.get(`https://api.trello.com/1/boards/${boardID}/cards${auth}`),
       Axios.get(`https://api.trello.com/1/boards/${boardID}/lists${auth}`),
@@ -32,7 +32,7 @@ export const fetchDashboardData = async (repository, boardID) => {
 
 export const fetchClassProgress = async boardID => {
   try {
-    const batchData = await Axios.all([
+    const batchData = await Promise.all([
       Axios.get(`https://api.trello.com/1/boards/${boardID}/members${auth}`),
       Axios.get(`https://api.trello.com/1/boards/${boardID}/cards${auth}`),
       Axios.get(`https://api.trello.com/1/boards/${boardID}/lists${auth}`)
@@ -48,6 +48,21 @@ export const fetchClassProgress = async boardID => {
   } catch(error) {
     return false;
   }
+}
+
+export const getBoardID = async trelloURL => {
+  let id, error;
+  try {
+    const boardData = await Axios.get(`${trelloURL}.json${auth}`)
+    if(boardData) {
+      ({ id } = boardData.data);
+      error = false;
+    }
+  } catch(e) {
+    id = null;
+    error = true;
+  }
+  return { id, error };
 }
 
 const handleError = error => {

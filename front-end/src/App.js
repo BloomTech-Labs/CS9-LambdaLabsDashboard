@@ -10,6 +10,7 @@ import CreateProject from "./Components/CreateProject/CreateProject";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import Menu from "./Components/Menu/Menu";
 import Header from "./Components/Header/Header";
+import Settings from './Components/Settings/Settings';
 import { validateToken } from "./Actions/Navigation";
 import { getClasses } from "./Actions/Database";
 import "./App.css";
@@ -20,9 +21,8 @@ class App extends Component {
     this.loader = document.getElementById("appLoader");
     this.callCount = 0;
     this.url = window.location.pathname;
+    this.props.validateToken()
   }
-
-  UNSAFE_componentWillMount = () => this.props.validateToken();
 
   UNSAFE_componentWillReceiveProps = ({
     authOnLoad,
@@ -73,14 +73,12 @@ class App extends Component {
         <div className={classes}>
           <Route exact path="/" component={LandingPage} />
           <PrivateRoute exact path="/classes" component={Classes} />
-          <PrivateRoute
-            exact
-            path="/projects/:className"
-            component={Projects}
-          />
+          <PrivateRoute exact path="/projects/:className" component={Projects} />
           <PrivateRoute exact path="/createProject" component={CreateProject} />
+          <PrivateRoute exact path="/editProject/:id" component={CreateProject} />
           <PrivateRoute path="/project/:trelloID/:githubRepo/:name" component={Dashboard} />
           <PrivateRoute exact path="/billing" component={Billing} />
+          <PrivateRoute exact path="/settings" component={Settings} />
         </div>
       </div>
     );

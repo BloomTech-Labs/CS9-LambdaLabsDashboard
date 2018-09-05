@@ -8,7 +8,7 @@ export default class ConfirmDelete extends Component {
       <div className={classes}>
       	<div>
       		<div>
-	      		<h4>{`Are you sure you want to delete ${currentClass}?`}</h4>
+	      		<h4>Are you sure you want to delete <span style={{textDecoration: 'underline'}}>{currentClass}</span>?</h4>
 	      		<div className='buttons'>
 	      			<button onClick={closeConfirmDelete}>Cancel</button>
 	      			<button onClick={deleteClass}>

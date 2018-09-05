@@ -150,10 +150,6 @@
 			:-moz-placeholder { /* Firefox 18- */
 			  color: #8E9090;
 			}
-			&>.mcheck {
-				margin-top: 20px;
-				margin-bottom: 20px;
-			}
 			&>.submit-project {
 				outline: none;
 				border: none;
@@ -203,6 +199,3 @@
 		}
 	}
 }
-
-
-@import 'TrelloID/trello-id.scss';

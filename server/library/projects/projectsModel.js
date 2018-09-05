@@ -12,7 +12,11 @@ const definition = {
     type: String,
     required: true
   },
-  trello: {
+  trelloID: {
+    type: String,
+    required: true
+  },
+  trelloURL: {
     type: String,
     required: true
   },

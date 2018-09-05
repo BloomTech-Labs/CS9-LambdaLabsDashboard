@@ -37,6 +37,7 @@ class Menu extends PureComponent {
               );
             })
           }
+          <a onClick={() => this.navigate('/settings')}>Settings</a>
           <a onClick={() => this.navigate('/billing')}>Billing</a>
           <button onClick={this.logout}>Logout</button>
         </div>

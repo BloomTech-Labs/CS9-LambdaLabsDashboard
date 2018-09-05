@@ -2,15 +2,26 @@ import express from "express";
 import UserModel from "./userModel.js";
 import { makeToken, secret } from "../MiddleWare/jwtMiddleWare.js";
 import { userEmpty } from "../MiddleWare/middleWare.js";
+import { updatePassword } from '../Helpers/User';
 import authenticate from "../MiddleWare/authJWT.js";
 
 const Router = express.Router();
 
-Router.get("/", (req, res) => {
-  console.log(req.body);
-  UserModel.find({})
-    .then(users => {
-      res.status(200).json({ users });
+const validateField = field => {
+  return field === null || field === undefined;
+}
+
+Router.get("/:id", (req, res) => {
+  const { id } = req.params;
+  UserModel.findById(id)
+    .then(user => {
+      const { name, email, subscribed, subscribedDate } = user;
+      res.status(200).json({ 
+        userName: name, 
+        userEmail: email,
+        subscribed: validateField(subscribed) ? false : subscribed, 
+        subscribedDate: validateField(subscribedDate) ? null : subscribedDate
+      });
     })
     .catch(error => {
       res.status(500).json({ msg: error });
@@ -44,15 +55,23 @@ Router.post("/", (req, res) => {
 Router.put("/:id", (req, res) => {
   const { id } = req.params;
   const obj = req.body;
-  console.log(obj);
-  console.log(id);
-  UserModel.findByIdAndUpdate(id, obj, { new: true })
-    .then(p => {
-      res.status(200).json({ msg: "user updated successfully", p });
-    })
-    .catch(err => {
-      res.status(500).json({ msg: "... not able to update your user" });
-    });
+  if('password' in obj) {
+    updatePassword(obj, res, id);
+  } else {
+    UserModel.findByIdAndUpdate(id, obj, { new: true })
+      .then(p => {
+        const { name, email, subscribed, subscribedDate } = p;
+        res.status(200).json({ 
+          userName: name, 
+          userEmail: email,
+          subscribed: validateField(subscribed) ? false : subscribed, 
+          subscribedDate: validateField(subscribedDate) ? null : subscribedDate
+        });
+      })
+      .catch(err => {
+        res.status(500).json({ msg: "... not able to update your user" });
+      });
+  }
 });
 
 Router.delete("/:id", (req, res) => {
