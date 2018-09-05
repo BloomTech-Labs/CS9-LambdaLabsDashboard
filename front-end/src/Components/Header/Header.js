@@ -34,7 +34,7 @@ class Header extends PureComponent {
             }
             <Link to="/settings">Settings</Link>
             {
-              subscribed && <Link to="/billing">Billing</Link>
+              !subscribed && <Link to="/billing">Billing</Link>
             }
           </nav>
           <button onClick={this.logout}>Logout</button>

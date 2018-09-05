@@ -14,15 +14,51 @@
     @include center;
     margin-top: 0;
   }
-  & > .payment {
-    display: block;
-    width: 90%;
+}
+
+.payment {
+  display: block;
+  width: 90%;
+  margin: auto;
+  background-color: $darkgray;
+  color: #fff;
+  padding: 20px 0;
+  border-radius: 5px;
+  @include headerShadow;
+  &>.checkout {
     margin: auto;
-    background-color: #ffffff;
-    color: #263346;
-    border: 1px solid #263346;
-    padding: 40px;
-    border-radius: 40px;
+    width: 90%;
+    @include center;
+    flex-direction: column;
+    &>div {
+      width: 90%;
+    }
+    &>h2 {
+      text-align: center;
+      font-weight: 200;
+    }
+    & form {
+      width: 100%;
+    }
+    & label {
+      font-size: 1.25em;
+      font-weight: 200;
+    }
+    & input, 
+    & .StripeElement {
+      width: 100%;
+      margin-bottom: 15px;
+    }
+    &>button {
+      outline: none; border: none;
+      border-radius: 2.5px;
+      @include buttonShadow;
+      width: 70%;
+      max-width: 250px;
+      background: $redish;
+      height: 45px;
+      margin: 30px auto 20px auto;
+    }
   }
 }
 

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 // import { connect } from 'react-redux';
 import { StripeProvider, Elements } from "react-stripe-elements";
 import Form from "./Form";
-import Options from './Options/Options';
+import Options from "./Options/Options";
 
 export default class Billing extends Component {
   constructor(props) {
@@ -10,35 +10,34 @@ export default class Billing extends Component {
     this.state = {
       yearly: false,
       monthly: false,
-      price: ''
+      price: ""
     };
   }
 
   select = (price, title) => {
     window.scrollTo(0, 0);
     this.setState({ [title.toLowerCase()]: true });
-  }
+  };
 
   render = () => {
     // const { subscribed } = this.props;
     const { yearly, monthly } = this.state;
     return (
       <div className="payment-wrapper">
-        {
-          yearly || monthly ?
-            <div className="payment">
-              <StripeProvider apiKey="pk_test_dtZeEKgd6FSjpH2sFi8RAYFa">
-                <Elements>
-                  <Form />
-                </Elements>
-              </StripeProvider>
-            </div>
-          :
-            <Options select={this.select} />
-        }
+        {yearly || monthly ? (
+          <div>
+            <StripeProvider apiKey="pk_test_dtZeEKgd6FSjpH2sFi8RAYFa">
+              <Elements>
+                <Form />
+              </Elements>
+            </StripeProvider>
+          </div>
+        ) : (
+          <Options select={this.select} />
+        )}
       </div>
     );
-  }
+  };
 }
 
 // const mSTP = ({ Database }) => {
