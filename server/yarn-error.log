@@ -1,17 +1,14 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn start
-
-PATH: 
-  /Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/usr/local/share/dotnet:/opt/X11/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Applications/Postgres.app/Contents/Versions/latest/bin:/Applications/Xamarin Workbooks.app/Contents/SharedSupport/path-bin:/Users/hilalaissani/apache-maven-3.5.2/bin
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js start
 
 Yarn version: 
   1.5.1
 
 Node version: 
-  8.9.4
+  8.9.1
 
 Platform: 
-  darwin x64
+  win32 x64
 
 npm manifest: 
   {
@@ -3419,15 +3416,11 @@ Lockfile:
 
 Trace: 
   Error: Command failed.
-  Exit code: 127
-  Command: sh
-  Arguments: -c nodemon library/server.js --exec babel-node NODE_ENV=development
-  Directory: /Users/hilalaissani/Lamda-1/lambdalabs/CS9-LambdaLabsDashboard/server
   Output:
   
-      at ProcessTermError.MessageError (/usr/local/lib/node_modules/yarn/lib/cli.js:186:110)
-      at new ProcessTermError (/usr/local/lib/node_modules/yarn/lib/cli.js:226:113)
-      at ChildProcess.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:30281:17)
+      at ProcessTermError.MessageError (C:\Program Files (x86)\Yarn\lib\cli.js:186:110)
+      at new ProcessTermError (C:\Program Files (x86)\Yarn\lib\cli.js:226:113)
+      at ChildProcess.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:30281:17)
       at emitTwo (events.js:126:13)
       at ChildProcess.emit (events.js:214:7)
       at maybeClose (internal/child_process.js:925:16)
