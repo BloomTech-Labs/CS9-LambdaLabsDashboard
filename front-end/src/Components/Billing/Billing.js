@@ -1,22 +1,48 @@
-import React from "react";
-import Stripe from "./Stripe";
+import React, { Component } from "react";
+// import { connect } from 'react-redux';
+import { StripeProvider, Elements } from "react-stripe-elements";
+import Form from "./Form";
+import Options from './Options/Options';
 
-export default class Billing extends React.Component {
+export default class Billing extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      yearly: false,
       monthly: false,
-      annual: false
+      price: ''
     };
   }
 
-  render() {
+  select = (price, title) => {
+    window.scrollTo(0, 0);
+    this.setState({ [title.toLowerCase()]: true });
+  }
+
+  render = () => {
+    // const { subscribed } = this.props;
+    const { yearly, monthly } = this.state;
     return (
-      <div className="paymentWrapper">
-        <div className="payment">
-          <Stripe />
-        </div>
+      <div className="payment-wrapper">
+        {
+          yearly || monthly ?
+            <div className="payment">
+              <StripeProvider apiKey="pk_test_dtZeEKgd6FSjpH2sFi8RAYFa">
+                <Elements>
+                  <Form />
+                </Elements>
+              </StripeProvider>
+            </div>
+          :
+            <Options select={this.select} />
+        }
       </div>
     );
   }
 }
+
+// const mSTP = ({ Database }) => {
+//   return { subscribed: Database.subscribed };
+// }
+
+// export default connect(mSTP)(Billing);

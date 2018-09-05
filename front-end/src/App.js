@@ -12,7 +12,7 @@ import Menu from "./Components/Menu/Menu";
 import Header from "./Components/Header/Header";
 import Settings from './Components/Settings/Settings';
 import { validateToken } from "./Actions/Navigation";
-import { getClasses } from "./Actions/Database";
+import { getClasses, getUserInfo } from "./Actions/Database";
 import "./App.css";
 
 class App extends Component {
@@ -21,7 +21,7 @@ class App extends Component {
     this.loader = document.getElementById("appLoader");
     this.callCount = 0;
     this.url = window.location.pathname;
-    this.props.validateToken()
+    this.props.validateToken();
   }
 
   UNSAFE_componentWillReceiveProps = ({
@@ -29,7 +29,8 @@ class App extends Component {
     userID,
     history,
     location,
-    getClasses
+    getClasses,
+    getUserInfo,
   }) => {
     if (authOnLoad !== this.props.authOnLoad) {
       if (authOnLoad) {
@@ -37,6 +38,7 @@ class App extends Component {
           history.push(this.url === "/" ? "/classes" : this.url);
         this.removeLoader(500);
         getClasses(userID);
+        getUserInfo();
       } else {
         if (this.callCount === 0) this.removeLoader(1000);
       }
@@ -90,7 +92,4 @@ const mSTP = ({ Navigation }) => {
   return { classes: bodyClasses, authOnLoad, userID };
 };
 
-export default connect(
-  mSTP,
-  { validateToken, getClasses }
-)(App);
+export default connect(mSTP, { validateToken, getClasses, getUserInfo })(App);

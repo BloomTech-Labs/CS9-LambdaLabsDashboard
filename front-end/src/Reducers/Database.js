@@ -4,7 +4,7 @@ const initialState = {
 	userName: '',
 	userEmail: '',
 	subscribed: false,
-	subscriptionDate: null
+	subscribedDate: null
 }
 
 export default (state=initialState, action) => {
@@ -14,8 +14,8 @@ export default (state=initialState, action) => {
 		case 'UPDATE_CLASS_PAYLOAD':
 			return Object.assign({}, state, { classes: action.classes });
 		case 'GET_USER_INFO':
-			const { userName, userEmail, subscribed, subscriptionDate } = action; 
-			return Object.assign({}, state, { userName, userEmail, subscribed, subscriptionDate });
+			const { userName, userEmail, subscribed, subscribedDate } = action; 
+			return Object.assign({}, state, { userName, userEmail, subscribed, subscribedDate });
 		case 'UPDATE_USER_INFO':
 			return Object.assign({}, state, action.user);
 		case 'RESET_STATE':
