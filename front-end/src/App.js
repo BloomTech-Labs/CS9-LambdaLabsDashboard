@@ -13,6 +13,7 @@ import Header from "./Components/Header/Header";
 import { validateToken } from "./Actions/Navigation";
 import { getClasses } from "./Actions/Database";
 import "./App.css";
+import Main from './Components/Main/Main'
 
 class App extends Component {
   constructor(props) {
@@ -81,6 +82,7 @@ class App extends Component {
           <PrivateRoute exact path="/createProject" component={CreateProject} />
           <PrivateRoute path="/project/:trelloID/:githubRepo/:name" component={Dashboard} />
           <PrivateRoute exact path="/billing" component={Billing} />
+          <PrivateRoute exact path="/main" component={Main} />
         </div>
       </div>
     );

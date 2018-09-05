@@ -3083,3 +3083,64 @@ $scale: 0.8; // icon scale 68/68 default
     transition-duration: 0.3s;
     transition-delay: 0s;
     transform: scale(1.1); }
+
+.title {
+  color: white;
+  position: relative;
+  font-size: 46px;
+  font-weight: 900;
+  text-decoration-line: solid;
+  text-align: flex-start;
+  object-position: center;
+  object-fit: contain;
+  /* background-image: url(https://uploads.codesandbox.io/uploads/user/f0f73c0c-ea9c-4de0-ade1-384cf36dce3f/3SjT-man-pointing-at-laptop-screen-analytics_4460x446.jpg); */
+  background-position: center;
+  background-size: cover;
+  /* height: 45vh; */
+  height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("./pictures/man-pointing-at-laptop-screen-analytics_4460x446.jpg"); }
+
+.title {
+  color: white;
+  padding-left: 12px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-weight: bolder; }
+
+.container {
+  text-align: center; }
+
+div.gallery {
+  border: 1px solid #ccc; }
+
+div.gallery:hover {
+  border: 1px solid #777; }
+
+div.gallery img {
+  width: 100%;
+  height: auto; }
+
+div.desc {
+  padding: 15px;
+  text-align: center; }
+
+* {
+  box-sizing: border-box; }
+
+.responsive {
+  padding: 0 6px;
+  float: left;
+  width: 24.99999%; }
+
+@media only screen and (max-width: 700px) {
+  .responsive {
+    width: 49.99999%;
+    margin: 6px 0; } }
+
+@media only screen and (max-width: 500px) {
+  .responsive {
+    width: 100%; } }
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both; }
