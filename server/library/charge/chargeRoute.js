@@ -16,7 +16,6 @@ router.post("/", (req, res) => {
   if (!token) {
     res.send("there is no token");
   }
-
   stripe.customers
     .create({
       email: req.body.email,
@@ -32,6 +31,7 @@ router.post("/", (req, res) => {
     })
     .then(charge => {
       res.send("success");
+      res.redirect("http://localhost:3000/projects");
     });
 });
 module.exports = router;
