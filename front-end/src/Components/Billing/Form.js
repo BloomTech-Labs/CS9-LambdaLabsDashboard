@@ -39,7 +39,7 @@ class CheckoutForm extends Component {
     }
   }
 
-  render() {
+  render = () => {
     return (
       <div className="payment">
         <div className="checkout">

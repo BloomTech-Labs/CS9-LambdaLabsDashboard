@@ -24,7 +24,7 @@ export default class Options extends Component {
 							}
 						</ul>
 					</div>
-					<button onClick={() => select(price, title)}>Purchase</button>
+					<button onClick={() => select(price, title)}>Subscribe</button>
 				</div>
 			</div>
     );

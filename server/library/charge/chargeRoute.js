@@ -17,17 +17,16 @@ Router.post("/:userID", (req, res) => {
   if(!id) return res.send("there is no token");
   stripe.customers.create({ email, id })
     .then(customer => {
-      console.log(customer);
       stripe.charges.create({ 
         amount,
         description: name,
         currency: "usd",
         customer: customer.id
-      });
+      })
     })
     .then(charge => {
       const update = { subscribed: true, subscribedDate: new Date() };
-      UserModel.findByIdAndUpdate(userID, update, {new: true})
+      UserModel.findByIdAndUpdate(userID, update, { new: true })
         .then(user => {
           const { name, email, subscribed, subscribedDate } = user;
           res.json({ name, email, subscribed, subscribedDate });

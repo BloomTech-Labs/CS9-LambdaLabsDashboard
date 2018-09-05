@@ -21,7 +21,7 @@ class App extends Component {
     this.loader = document.getElementById("appLoader");
     this.callCount = 0;
     this.url = window.location.pathname;
-    this.props.validateToken()
+    this.props.validateToken();
   }
 
   UNSAFE_componentWillReceiveProps = ({
@@ -38,7 +38,7 @@ class App extends Component {
           history.push(this.url === "/" ? "/classes" : this.url);
         this.removeLoader(500);
         getClasses(userID);
-        getUserInfo()
+        getUserInfo();
       } else {
         if (this.callCount === 0) this.removeLoader(1000);
       }
