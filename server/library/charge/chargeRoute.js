@@ -11,27 +11,32 @@ Router.get("/", authenticate, (req, res) => {
 
 Router.post("/:userID", (req, res) => {
   const { userID } = req.params;
-  const { name, email, amount, id } = req.body;
-  console.log("====>", id);
+  const { name, email, amount, id, token } = req.body;
   console.log("====>", email);
-  if(!id) return res.send("there is no token");
-  stripe.customers.create({ email, id })
+  console.log("====>", token);
+  if (!token) {
+    res.send("there is no token");
+  }
+  stripe.customers
+    .create({ email: email, source: token })
     .then(customer => {
-      stripe.charges.create({ 
+      stripe.charges.create({
         amount,
         description: name,
         currency: "usd",
         customer: customer.id
-      })
+      });
     })
     .then(charge => {
+      // res.send("successfully");
+
       const update = { subscribed: true, subscribedDate: new Date() };
       UserModel.findByIdAndUpdate(userID, update, { new: true })
         .then(user => {
           const { name, email, subscribed, subscribedDate } = user;
           res.json({ name, email, subscribed, subscribedDate });
         })
-        .catch(err => res.send('error'))
+        .catch(err => res.send("error"));
     })
     .catch(err => res.send(err));
 });
