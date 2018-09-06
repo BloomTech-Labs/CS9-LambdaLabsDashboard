@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const definition = {
-  username: String,
+  userEmail: String,
   facebookId: String
 };
 

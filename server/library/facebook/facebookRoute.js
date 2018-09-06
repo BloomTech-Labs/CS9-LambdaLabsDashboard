@@ -5,7 +5,7 @@ import passportSetup from "./facebookPassport.js";
 router.get(
   "/",
   passport.authenticate("facebook", {
-    scope: "read_stream"
+    scope: ["email"]
   })
 );
 
