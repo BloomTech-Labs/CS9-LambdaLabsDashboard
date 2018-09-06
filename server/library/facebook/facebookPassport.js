@@ -1,47 +1,44 @@
 const passport = require("passport");
-const GoogleStrategy = require("passport-google-oauth20");
+const FacebookStrategy = require("passport-facebook").Strategy;
 const keys = require("../keys.js");
-const GoogleUser = require("../google/googleModel.js");
-const { makeToken } = require("../MiddleWare/jwtMiddleWare.js");
+const FacebookUser = require("./facebookModel.js");
 
 passport.serializeUser((user, done) => {
   done(null, user.id);
 }); // this function is after creating the user
 
 passport.deserializeUser((id, done) => {
-  GoogleUser.findById(id).then(p => {
+  FacebookUser.findById(id).then(p => {
     done(null, p);
   });
 });
 
 passport.use(
-  new GoogleStrategy(
+  new FacebookStrategy(
     {
-      callbackURL: "/auth/google/callback",
-      clientID: keys.google.clientID,
-      clientSecret: keys.google.clientSecret
+      callbackURL: "auth/facebook/callback",
+      clientID: keys.facebook.clientID,
+      clientSecret: keys.facebook.clientSecret
     },
     (accessToken, refreshToken, profile, done) => {
-      GoogleUser.findOne({ googleId: profile.id })
+      FacebookUser.findOne({ facebookId: profile.id })
         .then(p => {
           if (p) {
             console.log("existing user", p);
-
             done(null, p);
           } else {
             const obj = {
-              username: profile.displayName,
-              googleId: profile.id
+              userEmail: profile.email[0].value,
+              facebookId: profile.id
             };
-            const newGoogleUser = new GoogleUser(obj);
-            newGoogleUser.save().then(p => {
+            const newFacebookUser = new FacebookUser(obj);
+            newFacebookUser.save().then(p => {
               console.log("new user:", p);
 
               don(null, p);
             });
           }
         })
-
         .catch(err => {
           console.log("err:", err);
         });
