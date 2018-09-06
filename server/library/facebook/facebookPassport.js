@@ -28,7 +28,7 @@ passport.use(
             done(null, p);
           } else {
             const obj = {
-              username: profile.displayName,
+              userEmail: profile.email[0].value,
               facebookId: profile.id
             };
             const newFacebookUser = new FacebookUser(obj);
