@@ -71,7 +71,7 @@ Server.use("/auth/google/callback", googleRedirect);
 Server.use("/google", googleRoute);
 Server.use("/externalApis", ExternalApiRoutes);
 Server.use("/token", ValidateTokenRoute);
-// Server.use("*", staticFiles);
+Server.use("*", staticFiles);
 
 // const googleRoute = require("./google/googleRoute.js");
 // // Server.use("/google", googleRoute);
