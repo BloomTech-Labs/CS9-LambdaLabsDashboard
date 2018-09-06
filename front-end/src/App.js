@@ -72,7 +72,7 @@ class App extends Component {
         {notLandingPage && <Menu />}
         {notLandingPage && <Header history={history} />}
         <div className={classes}>
-          <Route exact path="/" component={LandingPage} />
+          <Route exact path="/" component={Main} />
           <PrivateRoute exact path="/classes" component={Classes} />
           <PrivateRoute
             exact
@@ -82,7 +82,7 @@ class App extends Component {
           <PrivateRoute exact path="/createProject" component={CreateProject} />
           <PrivateRoute path="/project/:trelloID/:githubRepo/:name" component={Dashboard} />
           <PrivateRoute exact path="/billing" component={Billing} />
-          <PrivateRoute exact path="/main" component={Main} />
+          <Route exact path="/login" component={LandingPage} />
         </div>
       </div>
     );

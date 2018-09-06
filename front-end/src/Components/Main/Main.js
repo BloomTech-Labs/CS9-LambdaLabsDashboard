@@ -1,63 +1,62 @@
 import React, { Component } from 'react';
-import {Button, Jumbotron} from 'react-bootstrap';
+
 
 class Main extends Component {
     state = {}
     render() {
         return (
-            <div>
-                <Jumbotron>
-                    <h1 className="title">Lambda Labs Dashboard</h1></Jumbotron>
-                <h1 className="container">
-                    Too many sites to track your team's contributions?
-                </h1>
-                <p className="container">
-                    {" "}
-                    Our Dashboard can help you out!
-                    <p>Track your teams contributions using Trello Board and GitHub to see activity on one page</p>
-                </p>
-                <p className="container">
-                    <Button>Check out our pricing options</Button>
-                </p>
-                <div class="responsive">
-                    <div class="gallery">
-                        <a target="_blank" href="./pictures/dashboardcontributions.png">
-                            <img src="./pictures/dashboardcontributions.png" alt="Cinque Terre" width="600" height="400" />
-                        </a>
-                        <div class="desc">Add a description of the image here</div>
+            <div className="main-container">
+                <header>
+                    <nav class="navbar navbar-expand-lg navbar-dark mdb-color darken-3 fixed-top">
+                        <a class="navbar-brand" href="#"><img src="../src/pictures/logo.png" height="30" alt=""></img></a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="basicExampleNav">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="#">Home
+                                        <span class="sr-only">(current)</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Features</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Pricing</a>
+                                </li>
+                            </ul>
+                            {/* <form class="form-inline">
+                                <div class="md-form mt-0">
+                                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"></input>
+                                </div>
+                            </form> */}
+                        </div>
+                    </nav>
+                    <div id="intro" class="view">
+                        <div class="mask">
+                        </div>
                     </div>
-                </div>
-
-
-                <div class="responsive">
-                    <div class="gallery">
-                        <a target="_blank" href="./pictures/dashboardcontributions.png" >
-                            <img src="./pictures/dashboardcontributions.png" alt="Cinque Terre" width="600" height="400" />
-                        </a>
-                        <div class="desc">Add a description of the image here</div>
+                </header>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-7">
+                        </div>
+                        <div class="col-md-5">
+                        </div>
                     </div>
-                </div>
-
-                <div class="responsive">
-                    <div class="gallery">
-                        <a target="_blank" href="./pictures/dashboardcontributions.png" >
-                            <img src="C:/dev/CS9-LambdaLabsDashboard/front-end/src/pictures/dashboardcontributions.png" alt="Cinque Terre" width="600" height="400" />
-                        </a>
-                        <div class="desc">Add a description of the image here</div>
-                    </div>
-                </div>
-
-                <div class="responsive">
-                    <div class="gallery">
-                        <a target="_blank" href="./pictures/dashboardcontributions.png" >
-                            <img src="C:/dev/CS9-LambdaLabsDashboard/front-end/src/pictures/dashboardcontributions.png" alt="Cinque Terre" width="600" height="400" />
-                        </a>
-                        <div class="desc">Add a description of the image here</div>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-12">
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                        </div>
                     </div>
                 </div>
             </div>
         );
-    };
-};
-
+    }
+}
 export default Main;
