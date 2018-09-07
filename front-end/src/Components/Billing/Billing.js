@@ -28,7 +28,7 @@ export default class Billing extends Component {
           <div>
             <StripeProvider apiKey="pk_test_dtZeEKgd6FSjpH2sFi8RAYFa">
               <Elements>
-                <Form />
+                <Form history={this.props.history} />
               </Elements>
             </StripeProvider>
           </div>

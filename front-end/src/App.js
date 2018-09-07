@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 import Billing from "./Components/Billing/Billing";
 import Classes from "./Components/Classes/Classes";
@@ -11,6 +11,7 @@ import Dashboard from "./Components/Dashboard/Dashboard";
 import Menu from "./Components/Menu/Menu";
 import Header from "./Components/Header/Header";
 import Settings from './Components/Settings/Settings';
+import NotFound from './Components/NotFound/NotFound';
 import { validateToken } from "./Actions/Navigation";
 import { getClasses, getUserInfo, resetUserData } from "./Actions/Database";
 import "./App.css";
@@ -41,6 +42,7 @@ class App extends Component {
       } else {
         if(this.callCount === 0) this.removeLoader(1000);
         resetUserData();
+        history.push('/');
       }
     }
     this.callCount++;
@@ -73,14 +75,17 @@ class App extends Component {
         {notLandingPage && <Menu />}
         {notLandingPage && <Header history={history} />}
         <div className={classes}>
-          <Route exact path="/" component={LandingPage} />
-          <PrivateRoute exact path="/classes" component={Classes} />
-          <PrivateRoute exact path="/projects/:className" component={Projects} />
-          <PrivateRoute exact path="/createProject" component={CreateProject} />
-          <PrivateRoute exact path="/editProject/:id" component={CreateProject} />
-          <PrivateRoute path="/project/:trelloID/:githubRepo/:name" component={Dashboard} />
-          <PrivateRoute exact path="/billing" component={Billing} />
-          <PrivateRoute exact path="/settings" component={Settings} />
+          <Switch>
+            <Route exact path="/" component={LandingPage} />
+            <PrivateRoute exact path="/classes" component={Classes} />
+            <PrivateRoute exact path="/projects/:className" component={Projects} />
+            <PrivateRoute exact path="/createProject" component={CreateProject} />
+            <PrivateRoute exact path="/editProject/:id" component={CreateProject} />
+            <PrivateRoute path="/project/:trelloID/:githubRepo/:name" component={Dashboard} />
+            <PrivateRoute exact path="/billing" component={Billing} />
+            <PrivateRoute exact path="/settings" component={Settings} />
+            <Route component={NotFound} />
+          </Switch>
         </div>
       </div>
     );

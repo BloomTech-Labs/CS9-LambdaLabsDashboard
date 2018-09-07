@@ -19,7 +19,7 @@ class CheckoutForm extends Component {
 
   submit = ev => {
     const { monthly } = this.state;
-    const { userID, userName, userEmail, stripe, updateUserInfo } = this.props;
+    const { userID, userName, userEmail, stripe, updateUserInfo, history } = this.props;
     const amount = monthly ? 999 : 2999;
     stripe
       .createToken({ name: userName, email: userEmail })
@@ -33,7 +33,10 @@ class CheckoutForm extends Component {
           amount,
           token: id
         })
-          .then(res2 => updateUserInfo(res2))
+          .then(res2 => {
+            updateUserInfo(res2);
+            history.push('classes');
+          })
           .catch(err => this.setState({ error: true }));
       })
       .catch(err => this.setState({ error: true }));

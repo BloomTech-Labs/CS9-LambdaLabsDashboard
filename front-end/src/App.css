@@ -3376,3 +3376,106 @@ $scale: 0.8; // icon scale 68/68 default
           transform: scale(1);
           transition-delay: 0.25s;
           transition-duration: 0.3s; }
+
+.not-found {
+  width: 100%;
+  min-height: 100vh;
+  margin-top: 80px; }
+  @media (min-height: 1024px) {
+    .not-found {
+      margin-top: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center; } }
+  @media (min-width: 670px) {
+    .not-found {
+      margin-top: 110px; } }
+  @media (min-width: 1070px) {
+    .not-found {
+      width: calc(100% - 200px); } }
+  .not-found > div {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    flex-direction: column; }
+    .not-found > div > img {
+      height: 150px;
+      width: 150px;
+      border-radius: 50%;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); }
+    .not-found > div > h1 {
+      color: #91A7E0; }
+    .not-found > div > h2 {
+      color: #91A7E0;
+      text-align: center; }
+    .not-found > div > .link-options {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      border-top: 1px solid #4DAEEC; }
+      .not-found > div > .link-options > h3 {
+        color: #4DAEEC;
+        text-align: center; }
+      .not-found > div > .link-options > .links {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-bottom: 50px; }
+        .not-found > div > .link-options > .links > button {
+          outline: none;
+          border: none;
+          color: #4DAEEC;
+          background: transparent;
+          font-size: 1.25em;
+          font-weight: 900;
+          margin: 0.6em;
+          height: 45px;
+          width: 120px;
+          position: relative;
+          overflow: hidden;
+          transition-duration: 0.2s;
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
+          .not-found > div > .link-options > .links > button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            border-top: 1px solid #4DAEEC;
+            border-bottom: 1px solid #4DAEEC;
+            transform: scaleX(0);
+            transform-origin: 0% 50%;
+            transition-duration: 0.2s; }
+          .not-found > div > .link-options > .links > button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+            border-right: 1px solid #4DAEEC;
+            border-left: 1px solid #4DAEEC;
+            transform: scaleY(0);
+            transform-origin: 50% 0%;
+            transition-duration: 0.2s; }
+          .not-found > div > .link-options > .links > button:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+            transform: scale(1.1); }
+            .not-found > div > .link-options > .links > button:hover::after {
+              transform: scaleX(1); }
+            .not-found > div > .link-options > .links > button:hover::before {
+              transform: scaleY(1);
+              transition-delay: 0.1s;
+              opacity: 1; }
