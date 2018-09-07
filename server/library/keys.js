@@ -16,5 +16,9 @@ module.exports = {
   github: {
     clientID: "a2e375d1ba8a3f4a2947",
     clientSecret: "96d68b6d2e87c7802ab3000ccf21cc9a2642e574"
+  },
+  twitter: {
+    clientID: "3Ft8kbRn27DpQipZaWnVlJ10t",
+    clientSecret: "3dKQiHvURl871lwx7iZtZdiute8kdzENQzZp5MDBvJaWbXjQJF"
   }
 };

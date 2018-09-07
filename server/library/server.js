@@ -22,14 +22,22 @@ import trelloRoute from "./trello/trelloRoute.js";
 import githubRedirect from "./github/githubRedirect.js";
 import githubRoute from "./github/githubRoute.js";
 
+import twitterRedirect from "./twitter/twitterRedirect.js";
+import twitterRoute from "./twitter/twitterRoute.js";
+
 import ExternalApiRoutes from "./ExternalApis/ExternalApiRoutes";
 import ValidateTokenRoute from "./Token/ValidateTokenRoute";
 require("dotenv").config();
 const Server = express();
+
 const sessionOptions = {
   maxAge: 24 * 60 * 60 * 1000,
   keys: [process.env.cookieKey]
 };
+Server.use(cookieSession(sessionOptions));
+Server.use(passport.initialize());
+Server.use(passport.session());
+
 const staticFiles = express.static(
   path.join(__dirname, "../../front-end/build")
 );
@@ -85,6 +93,9 @@ Server.use("/trello", trelloRoute);
 
 Server.use("/auth/github/callback", githubRedirect);
 Server.use("/github", githubRoute);
+
+Server.use("/auth/twitter/callback", twitterRedirect);
+Server.use("/twitter", twitterRoute);
 
 Server.use("/externalApis", ExternalApiRoutes);
 Server.use("/token", ValidateTokenRoute);
