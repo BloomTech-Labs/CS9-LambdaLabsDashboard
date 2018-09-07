@@ -1,8 +1,8 @@
 {
-  "main.css": "static/css/main.40e17fac.css",
-  "main.css.map": "static/css/main.40e17fac.css.map",
-  "main.js": "static/js/main.bfc9d362.js",
-  "main.js.map": "static/js/main.bfc9d362.js.map",
+  "main.css": "static/css/main.6ba3b92e.css",
+  "main.css.map": "static/css/main.6ba3b92e.css.map",
+  "main.js": "static/js/main.31c9d83d.js",
+  "main.js.map": "static/js/main.31c9d83d.js.map",
   "static/media/arrow.svg": "static/media/arrow.28555438.svg",
   "static/media/bg.jpg": "static/media/bg.fa23355e.jpg",
   "static/media/check.svg": "static/media/check.fa9b4dd4.svg",
@@ -10,5 +10,6 @@
   "static/media/edit.svg": "static/media/edit.5b006fbc.svg",
   "static/media/github.svg": "static/media/github.d289cc48.svg",
   "static/media/loader.gif": "static/media/loader.1b40205d.gif",
+  "static/media/mergelogo.png": "static/media/mergelogo.96c431a5.png",
   "static/media/user.svg": "static/media/user.c0ed390c.svg"
 }

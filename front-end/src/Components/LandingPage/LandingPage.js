@@ -189,7 +189,7 @@ class LandingPage extends Component {
             </div>
             <button
               onClick={this.submit}>
-              Login
+              {newUser ? 'Sign Up' : 'Login'}
               <img src={CheckIcon} alt="logging in" />
             </button>
             {

@@ -1,0 +1,107 @@
+.not-found {
+	// @include center;
+	width: 100%;
+	min-height: 100vh;
+	margin-top: 80px;
+	@media #{$mq-h-1024} {
+		margin-top: 0;
+		@include center;
+	}
+	@media #{$mq-670} {
+		margin-top: 110px;
+	}
+ 	@media #{$mq-1070} {
+		width: calc(100% - 200px);
+	}
+	&>div {
+		width: 90%;
+		@include center;
+		margin: auto;
+		flex-direction: column;
+		&>img {
+			height: 150px;
+			width: 150px;
+			border-radius: 50%;
+			@include headerShadow;
+		}
+		&>h1 {
+			color: $purple;
+		}
+		&>h2 {
+			color: $purple;
+			text-align: center;
+		}
+		&>.link-options {
+			@include center;
+			flex-direction: column;
+			border-top: 1px solid #4DAEEC;
+			&>h3 {
+				color: #4DAEEC;
+				text-align: center;
+			}
+			&>.links {
+				width: 100%;
+				@include center;
+				flex-direction: row;
+				flex-wrap: wrap;
+				margin-bottom: 50px;
+				&>button {
+					outline: none; border: none;
+					color: #4DAEEC;
+					background: transparent;
+					font-size: 1.25em;
+					font-weight: 900;
+					margin: 0.6em;
+					height: 45px; width: 120px;
+					// border: 1px solid #4DAEEC;
+					position: relative;
+					overflow: hidden;
+					transition-duration: 0.2s;
+					@include buttonShadow;
+					&::after {
+						content: '';
+						position: absolute;
+						top: 0;
+						left: 0;
+						height: 100%;
+						width: 100%;
+						// background: #4DAEEC;
+						border-top: 1px solid #4DAEEC;
+						border-bottom: 1px solid #4DAEEC;
+						transform: scaleX(0);
+						transform-origin: 0% 50%;
+						transition-duration: 0.2s;
+					}
+					&::before {
+						content: '';
+						position: absolute;
+						top: 0;
+						left: 0;
+						height: 100%;
+						width: 100%;
+						color: #fff;
+						@include center;
+						z-index: 2;
+						border-right: 1px solid #4DAEEC;
+						border-left: 1px solid #4DAEEC;
+						transform: scaleY(0);
+						transform-origin: 50% 0%;
+						transition-duration: 0.2s;
+					}
+					&:hover {
+						@include headerShadow;
+						transform: scale(1.1);
+						&::after {
+							transform: scaleX(1);
+						}
+						&::before {
+							transform: scaleY(1);
+							transition-delay: 0.1s;
+							opacity: 1;
+						}
+					}
+				}
+			}
+		}
+	}
+}

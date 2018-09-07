@@ -3,6 +3,24 @@ import { connect } from 'react-redux';
 import CircleGraph from '../CircleGraph/CircleGraph';
 
 class StatBox extends PureComponent {
+
+  getCardMembers = ids => {
+    const { team } = this.props;
+    const { length } = ids;
+    const res = [];
+    for(let i = 0; i < length; i++) {
+      const id = ids[i];
+      for(let j = 0; j < team.length; j++) {
+        const { name, trelloID } = team[j];
+        if(trelloID === id) {
+          res.push(name);
+          break;
+        }
+      }
+    }
+    return res;
+  }
+
   render = () => {
   	const { 
       title, 
@@ -41,12 +59,30 @@ class StatBox extends PureComponent {
           {
             trello.length > 0 ? 
             trello.map((card, index) => {
-              const { name } = card;
+              const { name, idMembers } = card;
+              const members = this.getCardMembers(idMembers)
+              const { length } = members;
               return (
                 <div 
                   className='card-info'
                   key={name}>
                   <h3>{name}</h3>
+                  {
+                    length > 0 &&
+                    <div>
+                      {
+                        members.map((user, i) => {
+                          return (
+                            <h4 
+                              key={user}
+                              style={{
+                                transitionDelay: `${(length/10) + ((i * 5)/100)}s`
+                              }}>{user}</h4>
+                          )
+                        })
+                      }
+                    </div>
+                  }
                 </div>
               );
             }) 
@@ -63,8 +99,8 @@ class StatBox extends PureComponent {
 }
 
 const mSTP = ({ ExternalApis }) => {
-  const { error, countUp, totalCards } = ExternalApis;
-  return { error, countUp, total: totalCards };
+  const { error, countUp, totalCards, team } = ExternalApis;
+  return { error, countUp, total: totalCards, team };
 }
 
 export default connect(mSTP)(StatBox);

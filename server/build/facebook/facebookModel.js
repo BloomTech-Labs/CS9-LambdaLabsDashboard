@@ -1,0 +1,1 @@
+"use strict";var mongoose=require("mongoose"),Schema=mongoose.Schema,definition={userEmail:String,facebookId:String},facebookSchema=new Schema(definition),facebookModel=mongoose.model("FacebookUsers",facebookSchema);module.exports=facebookModel;
