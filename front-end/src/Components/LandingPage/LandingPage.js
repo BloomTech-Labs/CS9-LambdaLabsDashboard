@@ -192,6 +192,7 @@ class LandingPage extends Component {
               Login
               <img src={CheckIcon} alt="logging in" />
             </button>
+            <a href="http://localhost:4000/google">Google</a>
             {
               newUser ?
                 <h2>Already have an account? <a onClick={this.isNewUser}>Login</a></h2>
