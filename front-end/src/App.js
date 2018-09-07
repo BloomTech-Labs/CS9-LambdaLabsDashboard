@@ -14,7 +14,6 @@ import Settings from './Components/Settings/Settings';
 import { validateToken } from "./Actions/Navigation";
 import { getClasses, getUserInfo } from "./Actions/Database";
 import "./App.css";
-import Main from './Components/Main/Main'
 
 class App extends Component {
   constructor(props) {
@@ -74,14 +73,13 @@ class App extends Component {
         {notLandingPage && <Menu />}
         {notLandingPage && <Header history={history} />}
         <div className={classes}>
-          <Route exact path="/" component={Main} />
+          <Route exact path="/" component={LandingPage} />
           <PrivateRoute exact path="/classes" component={Classes} />
           <PrivateRoute exact path="/projects/:className" component={Projects} />
           <PrivateRoute exact path="/createProject" component={CreateProject} />
           <PrivateRoute exact path="/editProject/:id" component={CreateProject} />
           <PrivateRoute path="/project/:trelloID/:githubRepo/:name" component={Dashboard} />
           <PrivateRoute exact path="/billing" component={Billing} />
-          <Route exact path="/login" component={LandingPage} />
           <PrivateRoute exact path="/settings" component={Settings} />
         </div>
       </div>
