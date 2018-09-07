@@ -16,6 +16,11 @@ import googleRedirect from "./google/googleRedirect.js";
 import googleRoute from "./google/googleRoute.js";
 import facebookRedirect from "./facebook/facebookRedirect.js";
 import facebookRoute from "./facebook/facebookRoute.js";
+import trelloRedirect from "./trello/trelloRedirect.js";
+import trelloRoute from "./trello/trelloRoute.js";
+
+import githubRedirect from "./github/githubRedirect.js";
+import githubRoute from "./github/githubRoute.js";
 
 import ExternalApiRoutes from "./ExternalApis/ExternalApiRoutes";
 import ValidateTokenRoute from "./Token/ValidateTokenRoute";
@@ -75,9 +80,15 @@ Server.use("/google", googleRoute);
 Server.use("/auth/facebook/callback", facebookRedirect);
 Server.use("/facebook", facebookRoute);
 
+Server.use("/auth/trello/callback", trelloRedirect);
+Server.use("/trello", trelloRoute);
+
+Server.use("/auth/github/callback", githubRedirect);
+Server.use("/github", githubRoute);
+
 Server.use("/externalApis", ExternalApiRoutes);
 Server.use("/token", ValidateTokenRoute);
-// Server.use("*", staticFiles);
+Server.use("*", staticFiles);
 
 Server.listen(port, () => {
   console.log(`\n=== server is running on ${port} ==`);
