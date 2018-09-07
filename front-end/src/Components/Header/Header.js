@@ -13,7 +13,7 @@ class Header extends PureComponent {
   }
 
   render = () => {
-    const { classes } = this.props;
+    const { classes, subscribed } = this.props;
     return (
       <header className="header">
       <div>
@@ -31,7 +31,10 @@ class Header extends PureComponent {
               );
             })
           }
-          <Link to="/billing">Billing</Link>
+          <Link to="/settings">Settings</Link>
+          {
+            subscribed && <Link to="/billing">Billing</Link>
+          }
         </nav>
         <button onClick={this.logout}>Logout</button>
       </div>
@@ -41,8 +44,8 @@ class Header extends PureComponent {
 }
 
 const mSTP = ({ Database }) => {
-  const { classes } = Database;
-  return { classes }; 
+  const { classes, subscribed } = Database;
+  return { classes, subscribed }; 
 }
 
 export default connect(mSTP, { logout })(Header);

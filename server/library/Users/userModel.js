@@ -14,6 +14,14 @@ const definition = {
   password: {
     type: String,
     required: true
+  },
+  subscribed: {
+    type: Boolean,
+    default: false
+  },
+  subscribedDate: {
+    type: Date,
+    default: null
   }
 };
 
@@ -24,8 +32,7 @@ const options = {
 const userSchema = new Schema(definition, options);
 
 userSchema.pre("save", function(next) {
-  bcrypt
-    .hash(this.password, 11)
+  bcrypt.hash(this.password, 11)
     .then(hash => {
       this.password = hash;
       next();
@@ -35,8 +42,8 @@ userSchema.pre("save", function(next) {
     });
 });
 
-userSchema.methods.checkPassWord = function(guestPassWord) {
-  return bcrypt.compare(guestPassWord, this.password);
+userSchema.methods.checkPassWord = function(guessedPassWord) {
+  return bcrypt.compare(guessedPassWord, this.password);
 };
 
 const userModel = mongoose.model("User", userSchema);

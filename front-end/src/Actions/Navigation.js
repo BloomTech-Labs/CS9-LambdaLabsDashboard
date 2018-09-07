@@ -1,4 +1,6 @@
 import Axios from 'axios';
+import { resetUserData } from './Database';
+import { resetAPIData } from './ExternalApis';
 
 const baseURL = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:4000';
 
@@ -13,7 +15,11 @@ export const auth = (id, token) => {
 
 export const logout = () => {
 	localStorage.removeItem('token');
-	return { type: 'LOG_OUT' };
+	return dispatch => {
+		dispatch(resetUserData);
+		dispatch(resetAPIData);
+		dispatch({ type: 'LOG_OUT' });
+	}
 }
 
 export const storeUserId = id => {

@@ -10,8 +10,13 @@ import Reducer from "./Reducers";
 import 'font-awesome/css/font-awesome.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import 'mdbreact/dist/css/mdb.css';
+import logger from "redux-logger";
 
-const store = createStore(Reducer, applyMiddleware(thunk));
+const store = createStore(
+  Reducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  applyMiddleware(thunk, logger)
+);
 
 const Root = withRouter(props => <App {...props} />);
 

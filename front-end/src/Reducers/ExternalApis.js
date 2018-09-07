@@ -18,12 +18,14 @@ export default (state=initialState, action) => {
 	switch(action.type) {
 		case 'INITIALIZE_PROJECT_DATA':
 			const { project, team, trello, totalCards, inProgress } = action;
-			return Object.assign({}, state, { project, team, trello, totalCards, inProgress });
+			return Object.assign({}, state, { project, team, trello, totalCards, inProgress, error: false });
 		case 'ANIMATE_DASHBOARD':
 			const { completeness } = action; 
 			return Object.assign({}, state, { completeness, initBars: true, countUp: true });
     case 'ERROR':
       return Object.assign({}, state, { error: true });
+    case 'RESET_API_DATA':
+      return Object.assign({}, state, initialState);
 		default:
 			return state;
 	}

@@ -3,8 +3,8 @@
 
 html,
 body {
-  font-family: -apple-system, BlinkMacSystemFont, “Segoe UI”, Roboto, Helvetica,
-    Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, “Segoe UI”, Roboto, Helvetica, Arial, sans-serif;
+  background: $darkergray;
 }
 
 ::-webkit-scrollbar { 
@@ -46,4 +46,5 @@ body {
 @import 'components/Loader/loader.scss';
 @import 'components/Classes/classes.scss';
 @import 'components/Projects/projects.scss';
-@import 'components/Main/Main.scss'
+@import 'components/Main/Main.scss';
+@import 'Components/Settings/settings.scss';

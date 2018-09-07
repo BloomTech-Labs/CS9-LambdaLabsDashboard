@@ -30,7 +30,7 @@ class LandingPage extends Component {
   }
 
   resize = () => {
-    this.setState({ height: window.innerHeight });
+    this.setState({ maxHeight: window.innerHeight });
   }
 
   focus = e => {

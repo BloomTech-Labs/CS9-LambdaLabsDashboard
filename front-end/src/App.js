@@ -10,8 +10,9 @@ import CreateProject from "./Components/CreateProject/CreateProject";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import Menu from "./Components/Menu/Menu";
 import Header from "./Components/Header/Header";
+import Settings from './Components/Settings/Settings';
 import { validateToken } from "./Actions/Navigation";
-import { getClasses } from "./Actions/Database";
+import { getClasses, getUserInfo } from "./Actions/Database";
 import "./App.css";
 import Main from './Components/Main/Main'
 
@@ -21,16 +22,16 @@ class App extends Component {
     this.loader = document.getElementById("appLoader");
     this.callCount = 0;
     this.url = window.location.pathname;
+    this.props.validateToken();
   }
-
-  UNSAFE_componentWillMount = () => this.props.validateToken();
 
   UNSAFE_componentWillReceiveProps = ({
     authOnLoad,
     userID,
     history,
     location,
-    getClasses
+    getClasses,
+    getUserInfo,
   }) => {
     if (authOnLoad !== this.props.authOnLoad) {
       if (authOnLoad) {
@@ -38,6 +39,7 @@ class App extends Component {
           history.push(this.url === "/" ? "/classes" : this.url);
         this.removeLoader(500);
         getClasses(userID);
+        getUserInfo();
       } else {
         if (this.callCount === 0) this.removeLoader(1000);
       }
@@ -74,15 +76,13 @@ class App extends Component {
         <div className={classes}>
           <Route exact path="/" component={Main} />
           <PrivateRoute exact path="/classes" component={Classes} />
-          <PrivateRoute
-            exact
-            path="/projects/:className"
-            component={Projects}
-          />
+          <PrivateRoute exact path="/projects/:className" component={Projects} />
           <PrivateRoute exact path="/createProject" component={CreateProject} />
+          <PrivateRoute exact path="/editProject/:id" component={CreateProject} />
           <PrivateRoute path="/project/:trelloID/:githubRepo/:name" component={Dashboard} />
           <PrivateRoute exact path="/billing" component={Billing} />
           <Route exact path="/login" component={LandingPage} />
+          <PrivateRoute exact path="/settings" component={Settings} />
         </div>
       </div>
     );
@@ -94,7 +94,4 @@ const mSTP = ({ Navigation }) => {
   return { classes: bodyClasses, authOnLoad, userID };
 };
 
-export default connect(
-  mSTP,
-  { validateToken, getClasses }
-)(App);
+export default connect(mSTP, { validateToken, getClasses, getUserInfo })(App);

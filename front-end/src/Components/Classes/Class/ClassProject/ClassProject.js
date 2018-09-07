@@ -5,12 +5,12 @@ import { generateColors } from '../../../../Helpers/Arrays';
 export default class ClassProject extends PureComponent {
 
 	navigate = () => {
-		const { history, name, trello, github } = this.props;
-    history.push(`/project/${trello}/${github}/${name}`);
+		const { history, name, trelloID, github } = this.props;
+    history.push(`/project/${trelloID}/${github}/${name}`);
   }
 
   render = () => {
-  	const { name, github, trello, index, length, completeness } = this.props;
+  	const { name, index, length, completeness } = this.props;
   	const { color1, color2 } = generateColors(index, length);
     return (
       <div 
@@ -25,8 +25,8 @@ export default class ClassProject extends PureComponent {
             measure={completeness}
             gradientID={`${color1}${color2}`}
             dataLength={100}
-            color2={color2}
-            color1={color1}
+            color1={color2}
+            color2={color1}
             noSubText={true}
             completeness={
               true ? 

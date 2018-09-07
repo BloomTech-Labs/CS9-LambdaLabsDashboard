@@ -18,7 +18,7 @@ export default (state=initialState, action) => {
 		case 'AUTH':
 			return Object.assign({}, state, { auth: true, userID: action.id });
 		case 'LOG_OUT':
-			return Object.assign({}, state, { auth: false, userID: null });
+			return Object.assign({}, state, initialState);
 		case 'STORE_USER_ID':
 			return Object.assign({}, state, { userID: action.id });
 		case 'AUTH_ON_LOAD':
