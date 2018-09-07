@@ -1560,11 +1560,43 @@ $scale: 0.8; // icon scale 68/68 default
       padding: 10px;
       background: #304159;
       border-radius: 5px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      position: relative;
+      overflow: hidden; }
       .statistic > div > .card-info > h3 {
         margin: 0;
         font-size: 14px;
         font-weight: 500; }
+      .statistic > div > .card-info > div {
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: auto;
+        background: rgba(32, 43, 60, 0.75);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        transform: translateX(100%);
+        transition-duration: 0.3s;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        background: #74E0FF;
+        /* fallback for old browsers */
+        background: -webkit-linear-gradient(to bottom, #74E0FF, #48A3FF);
+        background: linear-gradient(to bottom, #74E0FF, #48A3FF); }
+        .statistic > div > .card-info > div > h4 {
+          color: #fff;
+          font-size: 0.6em;
+          padding: 0px 10px;
+          transform: translateX(100%);
+          opacity: 0;
+          transition-duration: 0.2s; }
+      .statistic > div > .card-info:hover > div {
+        transform: translateX(0%); }
+        .statistic > div > .card-info:hover > div > h4 {
+          transform: translateX(0%);
+          opacity: 1; }
 
 .create-project {
   width: 100%;
@@ -1781,11 +1813,12 @@ $scale: 0.8; // icon scale 68/68 default
   display: block;
   width: 90%;
   margin: auto;
-  background-color: #263346;
+  background-color: #2f3f57;
   color: #fff;
   padding: 20px 0;
   border-radius: 5px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); }
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  max-width: 400px; }
   .payment > .checkout {
     margin: auto;
     width: 90%;
@@ -1797,7 +1830,13 @@ $scale: 0.8; // icon scale 68/68 default
       width: 90%; }
     .payment > .checkout > h2 {
       text-align: center;
-      font-weight: 200; }
+      font-weight: 200;
+      margin-bottom: 30px; }
+    .payment > .checkout > h3 {
+      text-align: center;
+      color: #F66463;
+      margin-bottom: 30px;
+      margin-top: -15px; }
     .payment > .checkout form {
       width: 100%; }
     .payment > .checkout label {
@@ -1807,16 +1846,41 @@ $scale: 0.8; // icon scale 68/68 default
     .payment > .checkout .StripeElement {
       width: 100%;
       margin-bottom: 15px; }
-    .payment > .checkout > button {
+    .payment > .checkout > .pay {
       outline: none;
       border: none;
+      margin: 0;
+      padding: 0;
+      height: 45px;
+      width: 70%;
+      max-width: 200px;
+      margin: 2.5%;
+      margin: 20px auto 20px auto;
+      background: #5BD070;
+      color: #fff;
+      font-weight: 600;
       border-radius: 2.5px;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-      width: 70%;
-      max-width: 250px;
-      background: #F66463;
-      height: 45px;
-      margin: 30px auto 20px auto; }
+      position: relative;
+      transition-duration: 0.3s; }
+      .payment > .checkout > .pay > img {
+        position: absolute;
+        height: 60%;
+        width: 60%;
+        top: 20%;
+        left: 20%;
+        transform: scale(0);
+        transition-duration: 0.3s; }
+    .payment > .checkout > .pay-loading {
+      width: 45px;
+      background: #5BD070 url("pictures/loader.gif") no-repeat center;
+      background-size: 37.5px 37.5px;
+      border-radius: 50%;
+      color: transparent; }
+    .payment > .checkout > .pay-success {
+      background: #5BD070; }
+      .payment > .checkout > .pay-success > img {
+        transform: scale(1); }
 
 .StripeElement {
   background-color: white;
@@ -1877,13 +1941,10 @@ $scale: 0.8; // icon scale 68/68 default
         display: flex;
         justify-content: center;
         align-items: center;
-        background: green;
-        background: #FDC830;
+        background: #74E0FF;
         /* fallback for old browsers */
-        background: -webkit-linear-gradient(to left, #F37335, #FDC830);
-        /* Chrome 10-25, Safari 5.1-6 */
-        background: linear-gradient(to left, #F37335, #FDC830);
-        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background: -webkit-linear-gradient(to bottom, #74E0FF, #48A3FF);
+        background: linear-gradient(to bottom, #74E0FF, #48A3FF);
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
         .options > div > .option > .price > .circle {
           height: 175px;
@@ -1892,49 +1953,58 @@ $scale: 0.8; // icon scale 68/68 default
           display: flex;
           justify-content: center;
           align-items: center;
-          background: green;
           box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-          background: #FDC830;
+          background: #74E0FF;
           /* fallback for old browsers */
-          background: -webkit-linear-gradient(to left, #F37335, #FDC830);
-          /* Chrome 10-25, Safari 5.1-6 */
-          background: linear-gradient(to left, #F37335, #FDC830);
-          /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }
+          background: -webkit-linear-gradient(to bottom, #74E0FF, #48A3FF);
+          background: linear-gradient(to bottom, #74E0FF, #48A3FF); }
           .options > div > .option > .price > .circle > h3 {
             color: #fff;
             font-weight: 200;
             font-size: 45px; }
       .options > div > .option:last-of-type > .price {
-        background: #e53935;
+        background: #A770EF;
         /* fallback for old browsers */
-        background: -webkit-linear-gradient(to left, #e35d5b, #e53935);
+        background: -webkit-linear-gradient(to bottom, #FDB99B, #CF8BF3, #A770EF);
         /* Chrome 10-25, Safari 5.1-6 */
-        background: linear-gradient(to left, #e35d5b, #e53935);
+        background: linear-gradient(to bottom, #FDB99B, #CF8BF3, #A770EF);
         /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }
         .options > div > .option:last-of-type > .price > .circle {
-          background: #e53935;
+          background: #A770EF;
           /* fallback for old browsers */
-          background: -webkit-linear-gradient(to left, #e35d5b, #e53935);
+          background: -webkit-linear-gradient(to bottom, #FDB99B, #CF8BF3, #A770EF);
           /* Chrome 10-25, Safari 5.1-6 */
-          background: linear-gradient(to left, #e35d5b, #e53935);
+          background: linear-gradient(to bottom, #FDB99B, #CF8BF3, #A770EF);
           /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }
           .options > div > .option:last-of-type > .price > .circle > h3 {
             font-size: 40px; }
       .options > div > .option:last-of-type > .center > button {
-        background: #e53935;
+        background: #A770EF;
         /* fallback for old browsers */
-        background: -webkit-linear-gradient(to left, #e35d5b, #e53935);
+        background: -webkit-linear-gradient(to bottom, #FDB99B, #CF8BF3, #A770EF);
         /* Chrome 10-25, Safari 5.1-6 */
-        background: linear-gradient(to left, #e35d5b, #e53935);
+        background: linear-gradient(to bottom, #FDB99B, #CF8BF3, #A770EF);
         /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }
       .options > div > .option:last-of-type > .center > h2 {
-        color: #FC474F; }
+        background: #A770EF;
+        /* fallback for old browsers */
+        background: -webkit-linear-gradient(to bottom, #FDB99B, #CF8BF3, #A770EF);
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to bottom, #FDB99B, #CF8BF3, #A770EF);
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent; }
         .options > div > .option:last-of-type > .center > h2::after {
           content: "";
           position: absolute;
           bottom: calc(50% - 1.25px);
           left: -50px;
-          background: #FC474F;
+          background: #A770EF;
+          /* fallback for old browsers */
+          background: -webkit-linear-gradient(to bottom, #FDB99B, #CF8BF3, #A770EF);
+          /* Chrome 10-25, Safari 5.1-6 */
+          background: linear-gradient(to bottom, #FDB99B, #CF8BF3, #A770EF);
+          /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
           width: 40px;
           height: 2.5px; }
         .options > div > .option:last-of-type > .center > h2::before {
@@ -1942,7 +2012,12 @@ $scale: 0.8; // icon scale 68/68 default
           position: absolute;
           bottom: calc(50% - 1.25px);
           right: -50px;
-          background: #FC474F;
+          background: #A770EF;
+          /* fallback for old browsers */
+          background: -webkit-linear-gradient(to bottom, #FDB99B, #CF8BF3, #A770EF);
+          /* Chrome 10-25, Safari 5.1-6 */
+          background: linear-gradient(to bottom, #FDB99B, #CF8BF3, #A770EF);
+          /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
           width: 40px;
           height: 2.5px; }
       .options > div > .option > .center {
@@ -1953,7 +2028,12 @@ $scale: 0.8; // icon scale 68/68 default
         margin-top: 160px;
         padding-bottom: 20px; }
         .options > div > .option > .center > h2 {
-          color: #FEAF45;
+          background: #74E0FF;
+          /* fallback for old browsers */
+          background: -webkit-linear-gradient(to bottom, #74E0FF, #48A3FF);
+          background: linear-gradient(to bottom, #74E0FF, #48A3FF);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
           font-size: 2em;
           font-weight: 900;
           margin: 0;
@@ -1963,7 +2043,10 @@ $scale: 0.8; // icon scale 68/68 default
             position: absolute;
             bottom: calc(50% - 1.25px);
             left: -50px;
-            background: #FEAF45;
+            background: #74E0FF;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to bottom, #74E0FF, #48A3FF);
+            background: linear-gradient(to bottom, #74E0FF, #48A3FF);
             width: 40px;
             height: 2.5px; }
           .options > div > .option > .center > h2::before {
@@ -1971,7 +2054,10 @@ $scale: 0.8; // icon scale 68/68 default
             position: absolute;
             bottom: calc(50% - 1.25px);
             right: -50px;
-            background: #FEAF45;
+            background: #74E0FF;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to bottom, #74E0FF, #48A3FF);
+            background: linear-gradient(to bottom, #74E0FF, #48A3FF);
             width: 40px;
             height: 2.5px; }
         .options > div > .option > .center > .desc {
@@ -1999,23 +2085,24 @@ $scale: 0.8; // icon scale 68/68 default
           border-radius: 2.5px;
           width: 80%;
           height: 50px;
-          background: #FDC830;
+          background: #74E0FF;
           /* fallback for old browsers */
-          background: -webkit-linear-gradient(to left, #F37335, #FDC830);
-          /* Chrome 10-25, Safari 5.1-6 */
-          background: linear-gradient(to left, #F37335, #FDC830);
-          /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+          background: -webkit-linear-gradient(to bottom, #74E0FF, #48A3FF);
+          background: linear-gradient(to bottom, #74E0FF, #48A3FF);
           text-transform: uppercase;
           font-weight: 900;
           margin-bottom: 15px;
           margin-top: 15px;
-          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); }
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+          transition-duration: 0.3s; }
           @media (min-width: 670px) {
             .options > div > .option > .center > button {
               width: 80%; } }
           @media (min-width: 1070px) {
             .options > div > .option > .center > button {
               width: 100%; } }
+          .options > div > .option > .center > button:hover {
+            transform: translateY(-2.5px); }
 
 .login {
   position: fixed;

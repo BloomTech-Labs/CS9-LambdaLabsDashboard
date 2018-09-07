@@ -20,11 +20,12 @@
   display: block;
   width: 90%;
   margin: auto;
-  background-color: $darkgray;
+  background-color: lighten($darkgray, 5%);
   color: #fff;
   padding: 20px 0;
   border-radius: 5px;
   @include headerShadow;
+  max-width: 400px;
   &>.checkout {
     margin: auto;
     width: 90%;
@@ -36,6 +37,13 @@
     &>h2 {
       text-align: center;
       font-weight: 200;
+      margin-bottom: 30px;
+    }
+    &>h3 {
+      text-align: center;
+      color: $redish;
+      margin-bottom: 30px;
+      margin-top: -15px;
     }
     & form {
       width: 100%;
@@ -49,15 +57,40 @@
       width: 100%;
       margin-bottom: 15px;
     }
-    &>button {
+    &>.pay {
       outline: none; border: none;
+      margin: 0; padding: 0;
+      height: 45px;
+      width: 70%; max-width: 200px;
+      margin: 2.5%;
+      margin: 20px auto 20px auto;
+      background: #5BD070;
+      color: #fff;
+      font-weight: 600;
       border-radius: 2.5px;
       @include buttonShadow;
-      width: 70%;
-      max-width: 250px;
-      background: $redish;
-      height: 45px;
-      margin: 30px auto 20px auto;
+      position: relative;
+      transition-duration: 0.3s;
+      &>img {
+        position: absolute;
+        height:60%; width: 60%;
+        top: 20%; left: 20%;
+        transform: scale(0);
+        transition-duration: 0.3s;
+      }
+    }
+    &>.pay-loading {
+      width: 45px; 
+      background: #5BD070 url('pictures/loader.gif') no-repeat center;
+      background-size: 37.5px 37.5px;
+      border-radius: 50%;
+      color: transparent;
+    }
+    &>.pay-success {
+      background: #5BD070;
+      &>img {
+        transform: scale(1);
+      }
     }
   }
 }

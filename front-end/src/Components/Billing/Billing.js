@@ -16,19 +16,20 @@ export default class Billing extends Component {
 
   select = (price, title) => {
     window.scrollTo(0, 0);
-    this.setState({ [title.toLowerCase()]: true });
+    this.setState({ [title.toLowerCase()]: true, price });
   };
 
   render = () => {
-    // const { subscribed } = this.props;
-    const { yearly, monthly } = this.state;
+    const { yearly, monthly, price } = this.state;
     return (
       <div className="payment-wrapper">
         {yearly || monthly ? (
           <div>
             <StripeProvider apiKey="pk_test_dtZeEKgd6FSjpH2sFi8RAYFa">
               <Elements>
-                <Form history={this.props.history} />
+                <Form 
+                  price={price}
+                  history={this.props.history} />
               </Elements>
             </StripeProvider>
           </div>

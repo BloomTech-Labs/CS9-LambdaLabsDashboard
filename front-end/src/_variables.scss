@@ -10,6 +10,7 @@ $size : 50vmin;
 $duration : 1.5s;
 $axis : 70deg;
 $easing : ease-in-out;
+$offerBlue: #74E0FF;
 /*======MEDIA QUERIES======*/
 $mq-375 : '(min-width: 375px)';
 $mq-410 : '(min-width: 410px)';
@@ -80,22 +81,35 @@ $mq-iphoneX: 'only screen and (device-width : 375px) and (device-height : 812px)
 	background: -webkit-linear-gradient(to bottom, #74E0FF, #48A3FF);
 	background: linear-gradient(to bottom, #74E0FF, #48A3FF);
 }
+
+@mixin trelloText {
+	@include backgroundTrello;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 @mixin backgroundGit {
 	background: #A770EF;  /* fallback for old browsers */
 	background: -webkit-linear-gradient(to bottom, #FDB99B, #CF8BF3, #A770EF);  /* Chrome 10-25, Safari 5.1-6 */
 	background: linear-gradient(to bottom, #FDB99B, #CF8BF3, #A770EF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
+@mixin gitText {
+	@include backgroundGit;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 @mixin backgroundOffer1 {
 	background: #FDC830;  /* fallback for old browsers */
-	background: -webkit-linear-gradient(to left, #F37335, #FDC830);  /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to left, #F37335, #FDC830); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background: -webkit-linear-gradient(to right, #33C6FF, #529EFF);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #33C6FF, #529EFF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 @mixin backgroundOffer2 {
 	background: #e53935;  /* fallback for old browsers */
-	background: -webkit-linear-gradient(to left, #e35d5b, #e53935);  /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to left, #e35d5b, #e53935); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background: -webkit-linear-gradient(to left, #FD7959, #FD613D);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to left, #FD7959, #FD613D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 @mixin backgroundBurger {

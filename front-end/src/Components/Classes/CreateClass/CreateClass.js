@@ -3,13 +3,14 @@ import Input from "../../Input/Input";
 import CheckIcon from "../../../pictures/check.svg";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
+
 class CreateClass extends Component {
 
   shouldComponentUpdate = ({ classes, className, error }) => {
     const curProps = this.props;
-    if (classes !== curProps.classes) return true;
-    else if (className !== curProps.className) return true;
-    else if (error !== curProps.error) return true;
+    if(classes !== curProps.classes) return true;
+    else if(className !== curProps.className) return true;
+    else if(error !== curProps.error) return true;
     return false;
   };
 

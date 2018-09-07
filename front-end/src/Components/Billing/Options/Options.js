@@ -19,6 +19,7 @@ export default class Options extends Component {
       				"No creation limits",
       				"24 hour support available"
       			]}
+            stripePrice={999}
             select={select} />
       		<Option 
       			price="$99.99"
@@ -29,6 +30,7 @@ export default class Options extends Component {
       				"No creation limits",
       				"24 hour support available"
       			]}
+            stripePrice={9999}
             select={select} />
       	</div>
       </div>
