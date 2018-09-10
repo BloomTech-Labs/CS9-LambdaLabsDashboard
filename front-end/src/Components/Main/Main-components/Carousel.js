@@ -13,13 +13,15 @@ class CarouselPage extends Component {
           showIndicators={true}
           thumbnails
           className="z-depth-1"
+          
         >
           <CarouselInner>
             <CarouselItem itemId="1">
               <img
-                className="d-block w-60"
+                className="mask d-block w-60"
                 src="./favicon/fav/contribution.png"
                 alt="Contributions"
+                justify-content="center"
               />
             </CarouselItem>
             <CarouselItem itemId="2">
