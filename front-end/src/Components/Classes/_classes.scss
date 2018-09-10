@@ -1,122 +1,128 @@
 .classes {
-	display: block;
-	width: 100%;
-	position: relative;
-  	min-height: 100vh;
-  	margin-bottom: 50px;
-	@media #{$mq-1070} {
-		width: calc(100% - 200px);
-	}
-	&>.center {
-		width: 95%;
-		height: auto;
-		margin: auto;
-		min-height: 70vh;
-	    @media #{$mq-1070} {
-	      width: 95%;
-	    }
-		&>h1 {
-			font-size: 3em;
-			font-weight: 200;
-			color: $purple;
-			width: 100%;
-			@include gradientText;
-			text-align: center;
-			margin: 2em auto 0.5em auto;
-			position: relative;
-			@media #{$mq-670} {
-				margin: 2.5em auto 1em auto;
-			}
-			@media #{$mq-1070} {
-				margin: 2em auto 1em auto;
-			}
-		}
-		&>div {
-			width: 100%;
-			@include center;
-			flex-direction: column;
-			@media #{$mq-670} {
-				flex-direction: row;
-				flex-wrap: wrap;
-			}
-			&>h2 {
-				color: $purple;
-				text-align: center;
-				width: 80%;
-				margin-bottom: 50%;
-				@media #{$mq-670} {
-					margin-bottom: 25%;
-				}
-				@media #{$mq-1070} {
-					margin-bottom: 10%;
-				}
-			}
-		}
-	}
+  display: block;
+  width: 100%;
+  position: relative;
+  min-height: 100vh;
+  margin-bottom: 50px;
+  @media #{$mq-1070} {
+    width: calc(100% - 200px);
+    margin-left: 200px;
+  }
+  & > .center {
+    width: 95%;
+    height: auto;
+    margin: auto;
+    min-height: 70vh;
+    @media #{$mq-1070} {
+      width: 95%;
+    }
+    & > h1 {
+      font-size: 3em;
+      font-weight: 200;
+      color: $purple;
+      width: 100%;
+      @include gradientText;
+      text-align: center;
+      margin: 2em auto 0.5em auto;
+      position: relative;
+      @media #{$mq-670} {
+        margin: 2.5em auto 1em auto;
+      }
+      @media #{$mq-1070} {
+        margin: 2em auto 1em auto;
+      }
+    }
+    & > div {
+      width: 100%;
+      @include center;
+      flex-direction: column;
+      @media #{$mq-670} {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+      & > h2 {
+        color: $purple;
+        text-align: center;
+        width: 80%;
+        margin-bottom: 50%;
+        @media #{$mq-670} {
+          margin-bottom: 25%;
+        }
+        @media #{$mq-1070} {
+          margin-bottom: 10%;
+        }
+      }
+    }
+  }
 }
 
 .classes-show {
-	&>.create-class {
-		transform: scale(1);
-		transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-		transition-delay: 0.5s;
-		&>.vert {
-			transform: scaleX(1);
-			transition-delay: 0.9s;
-			transition-duration: 0.2s;
-		}
-		&>.hor {
-			transform: scaleY(1);
-			transition-delay: 1.15s;
-			transition-duration: 0.2s;
-		}
-	}
+  & > .create-class {
+    transform: scale(1);
+    transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition-delay: 0.5s;
+    & > .vert {
+      transform: scaleX(1);
+      transition-delay: 0.9s;
+      transition-duration: 0.2s;
+    }
+    & > .hor {
+      transform: scaleY(1);
+      transition-delay: 1.15s;
+      transition-duration: 0.2s;
+    }
+  }
 }
 
 .create-class {
-	outline: none; border: none;
-	position: fixed;
-	bottom: 2.5vh; right: 2.5vh;
-	height: 50px; width: 50px;
-	background: $redish;
-	border-radius: 50%;
-	@include headerShadow;
-	z-index: 2;
-	transform: scale(0);
-	transition-timing-function: cubic-bezier(0.6, -0.28, 0.735, 0.045);
-	transition-duration: 0.4s;
-	&>.hor,
-	&>.vert {
-		background: #fff;
-		position: absolute;
-		border-radius: 2.5px;
-	}
-	&>.hor {
-		width: 35%;
-		height: 3.5px;
-		top: calc(50% - 1.75px);
-		left: 32.5%;
-		transform: scaleX(0);
-	}
-	&>.vert {
-		height: 35%;
-		width: 3.5px;
-		left: calc(50% - 1.75px);
-		top: 32.5%;
-		transform: scaleY(0);
-	}
-	@media #{$mq-670} {
-		height: 70px; width: 70px;
-		bottom: 3.5vh; right: 3.5vh;
-	}
-	&:hover {
-		transition-duration: 0.3s;
-		transition-delay: 0s;
-		transform: scale(1.1);
-	}
+  outline: none;
+  border: none;
+  position: fixed;
+  bottom: 2.5vh;
+  right: 2.5vh;
+  height: 50px;
+  width: 50px;
+  background: $redish;
+  border-radius: 50%;
+  @include headerShadow;
+  z-index: 2;
+  transform: scale(0);
+  transition-timing-function: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  transition-duration: 0.4s;
+  & > .hor,
+  & > .vert {
+    background: #fff;
+    position: absolute;
+    border-radius: 2.5px;
+  }
+  & > .hor {
+    width: 35%;
+    height: 3.5px;
+    top: calc(50% - 1.75px);
+    left: 32.5%;
+    transform: scaleX(0);
+  }
+  & > .vert {
+    height: 35%;
+    width: 3.5px;
+    left: calc(50% - 1.75px);
+    top: 32.5%;
+    transform: scaleY(0);
+  }
+  @media #{$mq-670} {
+    height: 70px;
+    width: 70px;
+    bottom: 3.5vh;
+    right: 3.5vh;
+  }
+  &:hover {
+    transition-duration: 0.3s;
+    transition-delay: 0s;
+    transform: scale(1.1);
+  }
 }
 
-@import 'Class/class.scss';
-@import 'CreateClass/create-class.scss';
-@import 'ConfirmDelete/confirm-delete.scss';
-@import 'class-modals.scss';
+@import "Class/class.scss";
+@import "CreateClass/create-class.scss";
+@import "ConfirmDelete/confirm-delete.scss";
+@import "class-modals.scss";

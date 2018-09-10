@@ -467,7 +467,7 @@ body {
           margin: 0;
           margin-top: 20px; }
           .header > div > h1::after {
-            content: '';
+            content: "";
             position: absolute;
             bottom: 0;
             right: 0;
@@ -479,7 +479,7 @@ body {
             height: 2px;
             transition-duration: 0.2s; }
           .header > div > h1::before {
-            content: '';
+            content: "";
             position: absolute;
             bottom: 0;
             left: 0;
@@ -561,7 +561,10 @@ body {
           border: none;
           color: #fff;
           padding: 15px 20px;
-          background: #F66463;
+          background: #74E0FF;
+          /* fallback for old browsers */
+          background: -webkit-linear-gradient(to bottom, #74E0FF, #48A3FF);
+          background: linear-gradient(to bottom, #74E0FF, #48A3FF);
           margin: 0px 15px;
           box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
           font-weight: 100;
@@ -718,7 +721,7 @@ $scale: 0.8; // icon scale 68/68 default
 .menu {
   height: calc(100% - 50px);
   width: 75%;
-  background: #2F405A;
+  background: #2f405a;
   position: fixed;
   top: 50px;
   right: 0;
@@ -816,7 +819,10 @@ $scale: 0.8; // icon scale 68/68 default
       color: #fff;
       margin: 15px 0 20px 0;
       margin-top: 20px;
-      background: #F66463;
+      background: #74E0FF;
+      /* fallback for old browsers */
+      background: -webkit-linear-gradient(to bottom, #74E0FF, #48A3FF);
+      background: linear-gradient(to bottom, #74E0FF, #48A3FF);
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
       width: 80%;
       height: 50px;
@@ -849,7 +855,8 @@ $scale: 0.8; // icon scale 68/68 default
   width: 100%; }
   @media (min-width: 1070px) {
     .Dashboard {
-      width: calc(100% - 200px); } }
+      width: calc(100% - 200px);
+      margin-left: 200px; } }
   .Dashboard > div {
     display: flex;
     justify-content: center;
@@ -1623,7 +1630,8 @@ $scale: 0.8; // icon scale 68/68 default
         margin-top: 120px; } }
     @media (min-width: 1070px) {
       .create-project > .center {
-        margin-top: 70px; } }
+        margin-top: 70px;
+        margin-left: 200px; } }
     .create-project > .center > .title {
       width: 100%;
       display: flex;
@@ -1764,7 +1772,7 @@ $scale: 0.8; // icon scale 68/68 default
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
         border-radius: 2.5px;
         position: relative;
-        transition: color 0.1s 0s, width 0.3s 0s, border-radius 0.2s 0.05s, box-shadow 0.3s 0s; }
+        transition: color 0.1s 0s, width 0.3s 0s, border-radius 0.2s 0.05s, box-shadow 0.3s 0s; }
         .create-project > .center > .questionaire > .submit-project > img {
           position: absolute;
           height: 60%;
@@ -1790,7 +1798,7 @@ $scale: 0.8; // icon scale 68/68 default
 
 .payment-wrapper {
   width: 100%;
-  margin-top: 120px;
+  margin-top: 0px;
   min-height: 100vh; }
   @media (min-width: 670px) {
     .payment-wrapper {
@@ -1798,6 +1806,7 @@ $scale: 0.8; // icon scale 68/68 default
   @media (min-width: 1070px) {
     .payment-wrapper {
       width: calc(100% - 200px);
+      margin-left: 200px;
       margin-top: 0;
       display: flex;
       justify-content: center;
@@ -1856,7 +1865,7 @@ $scale: 0.8; // icon scale 68/68 default
       max-width: 200px;
       margin: 2.5%;
       margin: 20px auto 20px auto;
-      background: #5BD070;
+      background: #5bd070;
       color: #fff;
       font-weight: 600;
       border-radius: 2.5px;
@@ -1873,12 +1882,12 @@ $scale: 0.8; // icon scale 68/68 default
         transition-duration: 0.3s; }
     .payment > .checkout > .pay-loading {
       width: 45px;
-      background: #5BD070 url("pictures/loader.gif") no-repeat center;
+      background: #5bd070 url("pictures/loader.gif") no-repeat center;
       background-size: 37.5px 37.5px;
       border-radius: 50%;
       color: transparent; }
     .payment > .checkout > .pay-success {
-      background: #5BD070; }
+      background: #5bd070; }
       .payment > .checkout > .pay-success > img {
         transform: scale(1); }
 
@@ -2393,7 +2402,7 @@ $scale: 0.8; // icon scale 68/68 default
 .load .path {
   stroke-dasharray: 1,200;
   stroke-dashoffset: 0;
-  animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+  animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
   stroke-linecap: round; }
 
 @keyframes rotate {
@@ -2434,7 +2443,8 @@ $scale: 0.8; // icon scale 68/68 default
   margin-bottom: 50px; }
   @media (min-width: 1070px) {
     .classes {
-      width: calc(100% - 200px); } }
+      width: calc(100% - 200px);
+      margin-left: 200px; } }
   .classes > .center {
     width: 95%;
     height: auto;
@@ -3098,7 +3108,8 @@ $scale: 0.8; // icon scale 68/68 default
     min-height: 70vh; }
     @media (min-width: 1070px) {
       .projects > .center {
-        width: 95%; } }
+        width: 95%;
+        margin-left: 200px; } }
     .projects > .center > h1 {
       font-size: 3em;
       font-weight: 200;
@@ -3336,7 +3347,8 @@ header,
   margin-bottom: 50px; }
   @media (min-width: 1070px) {
     .settings {
-      width: calc(100% - 200px); } }
+      width: calc(100% - 200px);
+      margin-left: 200px; } }
   .settings > .center {
     width: 95%;
     height: auto;
@@ -3392,7 +3404,7 @@ header,
         font-weight: 400;
         margin: 10px; }
       .settings > .center > .input-container label {
-        color: #E7E9F0;
+        color: #e7e9f0;
         margin: 20px 0 2.5px 0;
         display: flex;
         justify-content: center;
@@ -3411,7 +3423,7 @@ header,
         border-bottom: 1px solid rgba(255, 255, 255, 0.75);
         position: relative; }
         .settings > .center > .input-container > .input::after {
-          content: '';
+          content: "";
           position: absolute;
           bottom: 0;
           left: 0;
@@ -3433,16 +3445,16 @@ header,
           position: relative; }
         .settings > .center > .input-container > .input ::-webkit-input-placeholder {
           /* Chrome/Opera/Safari */
-          color: #8E9090; }
+          color: #8e9090; }
         .settings > .center > .input-container > .input ::-moz-placeholder {
           /* Firefox 19+ */
-          color: #8E9090; }
+          color: #8e9090; }
         .settings > .center > .input-container > .input :-ms-input-placeholder {
           /* IE 10+ */
-          color: #8E9090; }
+          color: #8e9090; }
         .settings > .center > .input-container > .input :-moz-placeholder {
           /* Firefox 18- */
-          color: #8E9090; }
+          color: #8e9090; }
       .settings > .center > .input-container > .input-focus::after {
         transform: scaleX(1); }
       .settings > .center > .input-container > .subscription {
@@ -3510,7 +3522,8 @@ header,
       margin-top: 110px; } }
   @media (min-width: 1070px) {
     .not-found {
-      width: calc(100% - 200px); } }
+      width: calc(100% - 200px);
+      margin-left: 200px; } }
   .not-found > div {
     width: 90%;
     display: flex;
@@ -3533,9 +3546,9 @@ header,
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      border-top: 1px solid #4DAEEC; }
+      border-top: 1px solid #4daeec; }
       .not-found > div > .link-options > h3 {
-        color: #4DAEEC;
+        color: #4daeec;
         text-align: center; }
       .not-found > div > .link-options > .links {
         width: 100%;
@@ -3548,7 +3561,7 @@ header,
         .not-found > div > .link-options > .links > button {
           outline: none;
           border: none;
-          color: #4DAEEC;
+          color: #4daeec;
           background: transparent;
           font-size: 1.25em;
           font-weight: 900;
@@ -3560,19 +3573,19 @@ header,
           transition-duration: 0.2s;
           box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
           .not-found > div > .link-options > .links > button::after {
-            content: '';
+            content: "";
             position: absolute;
             top: 0;
             left: 0;
             height: 100%;
             width: 100%;
-            border-top: 1px solid #4DAEEC;
-            border-bottom: 1px solid #4DAEEC;
+            border-top: 1px solid #4daeec;
+            border-bottom: 1px solid #4daeec;
             transform: scaleX(0);
             transform-origin: 0% 50%;
             transition-duration: 0.2s; }
           .not-found > div > .link-options > .links > button::before {
-            content: '';
+            content: "";
             position: absolute;
             top: 0;
             left: 0;
@@ -3583,8 +3596,8 @@ header,
             justify-content: center;
             align-items: center;
             z-index: 2;
-            border-right: 1px solid #4DAEEC;
-            border-left: 1px solid #4DAEEC;
+            border-right: 1px solid #4daeec;
+            border-left: 1px solid #4daeec;
             transform: scaleY(0);
             transform-origin: 50% 0%;
             transition-duration: 0.2s; }

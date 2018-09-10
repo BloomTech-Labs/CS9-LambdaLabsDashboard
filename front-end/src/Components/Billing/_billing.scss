@@ -1,12 +1,13 @@
 .payment-wrapper {
   width: 100%;
-  margin-top: 120px;
+  margin-top: 0px;
   min-height: 100vh;
   @media #{$mq-670} {
     margin-top: 140px;
   }
   @media #{$mq-1070} {
     width: calc(100% - 200px);
+    margin-left: 200px;
     margin-top: 0;
     @include center;
   }
@@ -25,20 +26,20 @@
   border-radius: 5px;
   @include headerShadow;
   max-width: 400px;
-  &>.checkout {
+  & > .checkout {
     margin: auto;
     width: 90%;
     @include center;
     flex-direction: column;
-    &>div {
+    & > div {
       width: 90%;
     }
-    &>h2 {
+    & > h2 {
       text-align: center;
       font-weight: 200;
       margin-bottom: 30px;
     }
-    &>h3 {
+    & > h3 {
       text-align: center;
       color: $redish;
       margin-bottom: 30px;
@@ -51,43 +52,48 @@
       font-size: 1.25em;
       font-weight: 200;
     }
-    & input, 
+    & input,
     & .StripeElement {
       width: 100%;
       margin-bottom: 15px;
     }
-    &>.pay {
-      outline: none; border: none;
-      margin: 0; padding: 0;
+    & > .pay {
+      outline: none;
+      border: none;
+      margin: 0;
+      padding: 0;
       height: 45px;
-      width: 70%; max-width: 200px;
+      width: 70%;
+      max-width: 200px;
       margin: 2.5%;
       margin: 20px auto 20px auto;
-      background: #5BD070;
+      background: #5bd070;
       color: #fff;
       font-weight: 600;
       border-radius: 2.5px;
       @include buttonShadow;
       position: relative;
       transition-duration: 0.3s;
-      &>img {
+      & > img {
         position: absolute;
-        height:60%; width: 60%;
-        top: 20%; left: 20%;
+        height: 60%;
+        width: 60%;
+        top: 20%;
+        left: 20%;
         transform: scale(0);
         transition-duration: 0.3s;
       }
     }
-    &>.pay-loading {
-      width: 45px; 
-      background: #5BD070 url('pictures/loader.gif') no-repeat center;
+    & > .pay-loading {
+      width: 45px;
+      background: #5bd070 url("pictures/loader.gif") no-repeat center;
       background-size: 37.5px 37.5px;
       border-radius: 50%;
       color: transparent;
     }
-    &>.pay-success {
-      background: #5BD070;
-      &>img {
+    & > .pay-success {
+      background: #5bd070;
+      & > img {
         transform: scale(1);
       }
     }
@@ -117,4 +123,4 @@
   background-color: #fefde5 !important;
 }
 
-@import 'Options/options.scss';
+@import "Options/options.scss";
