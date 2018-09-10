@@ -4,13 +4,28 @@ import { CardBody, CardTitle, Button, CardImage, Card } from "mdbreact";
 class Main extends Component {
   state = {};
   render() {
-    return <div class="main-container">
+    return (
+      <div class="main-container">
         <header>
           <nav class="navbar navbar-expand-lg navbar-dark mdb-color darken-4 fixed-top">
             <a class="navbar-brand" href="#">
-              <img src="./favicon/fav/logo.png" width="75px" height="75px" position="inherit" alt="" />
+              <img
+                src="./favicon/fav/logo.png"
+                width="75px"
+                height="75px"
+                position="inherit"
+                alt=""
+              />
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#basicExampleNav"
+              aria-controls="basicExampleNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
               <span class="navbar-toggler-icon" />
             </button>
             <div class="collapse navbar-collapse" id="basicExampleNav">
@@ -27,14 +42,27 @@ class Main extends Component {
                 </li> */}
               </ul>
               <form class="form-inline my-1">
-                <a href="/Signin" class="btn btn-blue" type="submit">
+                <button
+                  href="/Signin"
+                  className="btn btn-black"
+                  type="submit"
+                  onClick={() => {
+                    this.props.history.push("/signin");
+                  }}
+                >
                   Sign In
-                </a>
+                </button>
               </form>
             </div>
           </nav>
           <Card reverse>
-            <CardImage cascade className="img-fluid" src="./favicon/fav/team.jpg" height="100vh" width="100%" />
+            <CardImage
+              cascade
+              className="img-fluid"
+              src="./favicon/fav/team.jpg"
+              height="100vh"
+              width="100%"
+            />
             <CardBody cascade>
               <CardTitle>
                 <div className="card-body text-center">
@@ -51,7 +79,12 @@ class Main extends Component {
           </div>
           <div class="col-lg-12 col-md-6">
             <div className="image-dash">
-              <img src="./favicon/fav/dashboard.png" class="img-fluid" dashboard alt="" />
+              <img
+                src="./favicon/fav/dashboard.png"
+                class="img-fluid"
+                dashboard
+                alt=""
+              />
 
               {/* <a href="/billing" class=" btn blue btn-rounded">
               Subscription Options
@@ -59,7 +92,8 @@ class Main extends Component {
             </div>
           </div>
         </header>
-      </div>;
+      </div>
+    );
   }
 }
 export default Main;
