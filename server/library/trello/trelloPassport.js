@@ -59,7 +59,7 @@ passport.use(
             newTrelloUser.save().then(p => {
               console.log("new user:", p);
 
-              don(null, p);
+              done(null, p);
             });
           }
         })

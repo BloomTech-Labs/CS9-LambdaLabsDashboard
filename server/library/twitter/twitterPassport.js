@@ -1,44 +1,48 @@
 const passport = require("passport");
-const FacebookStrategy = require("passport-facebook").Strategy;
+const twitterStrategy = require("passport-twitter");
 const keys = require("../keys.js");
-const FacebookUser = require("./facebookModel.js");
+const twitterUser = require("./twitterModel.js");
+const { makeToken } = require("../MiddleWare/jwtMiddleWare.js");
 
 passport.serializeUser((user, done) => {
   done(null, user.id);
 }); // this function is after creating the user
 
 passport.deserializeUser((id, done) => {
-  FacebookUser.findById(id).then(p => {
+  twitterUser.findById(id).then(p => {
     done(null, p);
   });
 });
 
 passport.use(
-  new FacebookStrategy(
+  new twitterStrategy(
     {
-      callbackURL: "auth/facebook/callback",
-      clientID: keys.facebook.clientID,
-      clientSecret: keys.facebook.clientSecret
+      callbackURL: "/auth/twitter/callback",
+      consumerKey: keys.twitter.clientID,
+      consumerSecret: keys.twitter.clientSecret
     },
     (accessToken, refreshToken, profile, done) => {
-      FacebookUser.findOne({ facebookId: profile.id })
+      twitterUser
+        .findOne({ twitterId: profile.id })
         .then(p => {
           if (p) {
             console.log("existing user", p);
+
             done(null, p);
           } else {
             const obj = {
-              userEmail: profile.email[0].value,
-              facebookId: profile.id
+              username: profile.displayName,
+              twitterId: profile.id
             };
-            const newFacebookUser = new FacebookUser(obj);
-            newFacebookUser.save().then(p => {
+            const newTwitterUser = new twitterUser(obj);
+            newTwitterUser.save().then(p => {
               console.log("new user:", p);
 
               done(null, p);
             });
           }
         })
+
         .catch(err => {
           console.log("err:", err);
         });
