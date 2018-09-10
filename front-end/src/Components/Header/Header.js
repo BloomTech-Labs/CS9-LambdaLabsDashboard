@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Burger from './Burger/Burger';
 import { logout } from '../../Actions/Navigation';
+import Logo from '../../pictures/mergelogo.png';
 
 class Header extends PureComponent {
 
@@ -16,29 +17,29 @@ class Header extends PureComponent {
     const { classes, subscribed } = this.props;
     return (
       <header className="header">
-      <div className="logo">
-        <img src="./favicon/fav/logo.png" height="100px" alt="logo" />
-        <Burger />
-        <nav className="header-links">
-          <Link to="/classes">Classes</Link>
-          {
-            classes.map(c => {
-              const { className } = c;
-              return (
-                <Link 
-                  key={className}
-                  to={`/projects/${className}`}>{className}</Link>  
-              );
-            })
-          }
-          <Link to="/settings">Settings</Link>
-          {
-            subscribed && <Link to="/billing">Billing</Link>
-          }
-        </nav>
-        <button onClick={this.logout}>Logout</button>
-      </div>
-    </header>
+        <div>
+          <img src={Logo} alt="logo" />
+          <Burger />
+          <nav className="header-links">
+            <Link to="/classes">Classes</Link>
+            {
+              classes.map(c => {
+                const { className } = c;
+                return (
+                  <Link 
+                    key={className}
+                    to={`/projects/${className}`}>{className}</Link>  
+                );
+              })
+            }
+            <Link to="/settings">Settings</Link>
+            {
+              !subscribed && <Link to="/billing">Billing</Link>
+            }
+          </nav>
+          <button onClick={this.logout}>Logout</button>
+        </div>
+      </header>
     );
   }
 }

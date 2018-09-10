@@ -82,10 +82,42 @@
 			background: #304159;
 			border-radius: 5px;
 			@include buttonShadow;
+			position: relative;
+			overflow: hidden;
 			&>h3 {
 				margin: 0;
 				font-size: 14px;
 				font-weight: 500;
+			}
+			&>div {
+				height: 100%;
+				position: absolute;
+				top: 0; right: 0;
+				width: auto;
+				background: rgba($darkergray, 0.75);
+				@include buttonShadow;
+				transform: translateX(100%);
+				transition-duration: 0.3s;
+				@include center; 
+				flex-direction: row;
+				@include backgroundTrello;
+				&>h4 {
+					color: #fff;
+					font-size: 0.6em;
+					padding: 0px 10px;
+					transform: translateX(100%);
+					opacity: 0;
+					transition-duration: 0.2s;
+				}
+			}
+			&:hover {
+				&>div {
+					transform: translateX(0%);
+					&>h4 {
+						transform: translateX(0%);
+						opacity: 1;
+					}
+				}
 			}
 		}
 	}

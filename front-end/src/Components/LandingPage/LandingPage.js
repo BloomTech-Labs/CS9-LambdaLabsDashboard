@@ -169,8 +169,9 @@ class LandingPage extends Component {
                   )} />
               <label htmlFor="password">Password</label>
             </div>
-            <button onClick={this.submit}>
-              Sign In
+            <button
+              onClick={this.submit}>
+              {newUser ? 'Sign Up' : 'Login'}
               <img src={CheckIcon} alt="logging in" />
             </button>
             {newUser ? <h2>
