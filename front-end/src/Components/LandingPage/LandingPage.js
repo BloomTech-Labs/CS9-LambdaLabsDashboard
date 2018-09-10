@@ -3,7 +3,7 @@ import Axios from 'axios';
 import { connect } from 'react-redux';
 import { auth } from '../../Actions/Navigation';
 import CheckIcon from '../../pictures/check.svg';
-// import {Main} from '/Main/Main.js'
+// import {Main} from '../Main/Main.js'
 
 class LandingPage extends Component {
   constructor(props) {
@@ -190,7 +190,7 @@ class LandingPage extends Component {
             </div>
             <button
               onClick={this.submit}>
-              Login
+              {newUser ? 'Sign Up' : 'Login'}
               <img src={CheckIcon} alt="logging in" />
             </button>
             {

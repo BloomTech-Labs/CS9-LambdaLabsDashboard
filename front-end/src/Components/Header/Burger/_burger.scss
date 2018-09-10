@@ -42,7 +42,7 @@ $scale: 0.8; // icon scale 68/68 default
   height: 4px;
   width: 36px;
   border-radius: 2px;
-  @include backgroundRight;
+  @include backgroundBurger;
 }
 #top {
   top: 19px;
@@ -85,7 +85,7 @@ $scale: 0.8; // icon scale 68/68 default
     transform: scaleX(0) translateX(3px);
     transform-origin: 50% 50%;
     transition: all 0.5s;
-    @include backgroundRight;
+    @include backgroundBurger;
 }
 
 
