@@ -1,6 +1,7 @@
 import express from "express";
 import Axios from 'axios';
 import ClassModel from "./classModel.js";
+import ProjectModel from '../projects/projectsModel';
 import { fetchClassProgress } from '../ExternalApis/BatchRequests';
 import { loopClassesToReturnTrelloBoardIDs } from '../Helpers/Arrays';
 require('dotenv').config();
@@ -71,7 +72,6 @@ Router.get("/projects/:id", async (req, res) => {
       const requests = [];
       for(let i = 0; i < projects.length; i++) {
         const { trelloID } = projects[i];
-        console.log(trelloID);
         requests.push(Axios.get(`https://api.trello.com/1/boards/${trelloID}/members${auth}`))
       }
       Axios.all(requests)
@@ -106,12 +106,18 @@ Router.put("/:userID/:id", (req, res) => {
 
 Router.delete("/:id/:userID", (req, res) => {
   const { id, userID } = req.params;
-  ClassModel.findById(id).remove()
-    .then(p => {
-      ClassModel.find({ userID })
-        .populate("projects")
-        .then(classes => res.status(200).json({classes}))
-        .catch(notClasses => res.send('error'));
+  ClassModel.findById(id)
+    .then(c => {
+      const { projects } = c;
+      ProjectModel.remove({ _id: { $in: projects }})
+        .then(p => {
+          ClassModel.findById(id).remove().then(d => {
+            ClassModel.find({ userID })
+              .populate("projects")
+              .then(classes => res.status(200).json({classes}))
+              .catch(notClasses => res.send('error'));
+          })
+        })
     })
     .catch(err => {
       res.send('error');

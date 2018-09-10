@@ -5,7 +5,7 @@ export default class Options extends Component {
 	shouldComponentUpdate = () => false;
 
   render = () => {
-  	const { price, title, list, select } = this.props;
+  	const { price, title, list, select, stripePrice } = this.props;
     return (
       <div className='option'>
 				<div className='price'>
@@ -24,7 +24,7 @@ export default class Options extends Component {
 							}
 						</ul>
 					</div>
-					<button onClick={() => select(price, title)}>Subscribe</button>
+					<button onClick={() => select(stripePrice, title)}>Subscribe</button>
 				</div>
 			</div>
     );

@@ -29,6 +29,23 @@
 			height: 100%;
 			overflow-y: scroll;
 		}
+		&>img {
+			height: 42.5px;
+			width: 42.5px;
+			margin-left: 10px;
+			border-radius: 50%;
+			@include headerShadow;
+			@media #{$mq-670} {
+				height: 67.5px;
+				width: 67.5px;
+			}
+			@media #{$mq-1070} {
+				height: 125px;
+				width: 125px;
+				margin: 0;
+				margin-top: 1.5em;
+			}
+		}
 		&>h1 {
 			cursor: pointer;
 			font-size: 2em;
@@ -74,47 +91,6 @@
 				}
 			}
 		}
-		&>a {
-			display: none;
-			@media #{$mq-1070} {
-				display: initial;
-				border: none;
-				border-top: none;
-				font-size: 1.5em;
-				padding: 0;
-				color: #FD9A77;
-				margin-top: 40px;
-				cursor: pointer;
-				font-weight: 200;
-			}
-		}
-		&>a:nth-of-type(2) {
-			display: none;
-			@media #{$mq-1070} {
-				display: initial;
-				border: none;
-				border-top: none;
-				font-size: 1.5em;
-				padding: 0;
-				color: #5DA59E;
-				margin-top: 20px;
-				cursor: pointer;
-				font-weight: 200;
-			}
-		}
-		&>a:nth-of-type(3) {
-			display: none;
-			@media #{$mq-1070} {
-				display: initial;
-				border: none;
-				border-top: none;
-				font-size: 1.6em;
-				padding: 0;
-				color: $redish;
-				margin-top: 20px;
-				font-weight: 200;
-			}
-		}
 		&>.header-links {
 			display: none;
 			@media #{$mq-800} {
@@ -130,21 +106,18 @@
 				padding: 0 20px;
 			}
 			@media #{$mq-1070} {
-				margin: 0;
-				flex-direction: column;
-				justify-content: center;
-				margin-top: 20px;
+				display: block;
 				height: auto;
 				width: 95%;
 				padding: 0px;
 				max-width: none;
-				max-height: 95%;
+				max-height: 90%;
+				overflow-x: hidden;
 				overflow-y: scroll;
-				padding-top: 0px;
-				margin-left: auto;
-				margin-right: auto;
+				margin: 20px auto 20px auto;
 			}
 			&>a {
+				display: block;
 				font-size: 1.5em;
 				margin: 0px 15px;
 				color: $purple;
@@ -154,9 +127,12 @@
 				white-space: nowrap;
 				text-decoration: none;
 				@media #{$mq-1070} {
-					margin: 10px 0;
+					margin: 20px 0;
 					font-size: 1.5em;
 					white-space: initial;
+					&:first-of-type {
+						margin-top: 0;
+					}
 				}
 				&:hover{
 					color: #fff;
@@ -194,7 +170,7 @@
 				overflow: hidden;
 			}
 			@media #{$mq-1070} {
-				margin: 20px 0px;
+				margin: 0 0 20px 0;
 				padding: 15px 30px;
 				// margin-bottom: 20px;
 			}

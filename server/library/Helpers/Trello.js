@@ -38,10 +38,22 @@ export default class Trello {
 				totalFound++;
 				if(this.rebuild && fullName in this.teamStats) {
 					this.teamStats[fullName].trellos += 1;
+					if(!this.teamStats[fullName]) this.teamStats[fullName].trelloID = id;
 				}
 				if(totalFound === length) break;
 			}
 		}
+	}
+	getTrelloID(name) {
+		let trelloID;
+		for(let i = 0; i < this.team.length; i++) {
+			const { fullName, id } = this.team[i];
+			if(name === fullName) {
+				trelloID = id;
+				break;
+			}
+		}
+		return trelloID ? trelloID : null;
 	}
 	parseCards(cards) {
 		let pending = 0, inProgress = 0, complete = 0;
@@ -72,6 +84,7 @@ export default class Trello {
 			userObj.github = this.teamStats[name].github;
 			userObj.merges = this.teamStats[name].merges;
 			userObj.trellos = this.teamStats[name].trellos;
+			userObj.trelloID = this.getTrelloID(name);
 			res.push(userObj);
 		}
 		return res;
