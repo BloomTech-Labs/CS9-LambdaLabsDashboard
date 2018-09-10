@@ -146,7 +146,16 @@ class Settings extends Component {
 	            	placeholder={userEmail}
 	            	name='email'
 	            	value={email}
-	            	onChange={this.inputChange} />
+									onChange={this.inputChange} />
+								<Input 
+		            	labelText='Old password:'
+		            	type='password'
+		            	placeholder="Old password"
+		            	name='password'
+		            	value={password}
+									onChange={this.inputChange} />
+									newPassword !== '' &&
+							{
 	            <Input 
 	            	labelText='New password:'
 	            	type='password'
@@ -154,16 +163,7 @@ class Settings extends Component {
 	            	name='newPassword'
 	            	value={newPassword}
 	            	onChange={this.inputChange} />
-	            {
-	            	newPassword !== '' &&
-	            	<Input 
-		            	labelText='Old password:'
-		            	type='password'
-		            	placeholder="Old password"
-		            	name='password'
-		            	value={password}
-		            	onChange={this.inputChange} />
-	            }
+	            	            }
 	            <button
 	            	className={classes} 
 	            	onClick={this.submit}>

@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-
+import CarouselPage from "./Main-components/Carousel.js"
 class Main extends Component {
   state = {};
   render() {
     return <div class="main-container">
-        <header>
+      <header>
+        
           <nav class="navbar navbar-expand-lg navbar-dark mdb-color darken-3 fixed-top">
             <a class="navbar-brand" href="#">
               <img src="./favicon/fav/logo.png" width="75px" height="75px" position="inherit" alt="" />
@@ -37,7 +38,7 @@ class Main extends Component {
                 </li>
               </ul>
               <form class="form-inline my-1">
-                <a href="/login" class="btn btn-blue" type="submit">
+                <a href="/Signin" class="btn btn-blue" type="submit">
                   Sign In
                 </a>
               </form>
@@ -51,7 +52,7 @@ class Main extends Component {
               </div>
               <div class="card-body text-center">
                 <h1 class="card-title ">
-                  <strong>Want to track a teams contributions</strong>
+                  <strong>Want to track a team's contributions?</strong>
                 </h1>
                 <div class="col-lg-12 col-md-6">
                   <p class="card-text">
@@ -85,7 +86,8 @@ class Main extends Component {
                 </div>
               </div>
             </div>
-          </div>
+        </div>
+        <CarouselPage/>
           {/* <div id="intro" class="view">
             <div class="mask" />
           </div> */} */}

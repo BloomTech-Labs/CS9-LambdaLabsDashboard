@@ -16,8 +16,8 @@ class Header extends PureComponent {
     const { classes, subscribed } = this.props;
     return (
       <header className="header">
-      <div>
-        <h1>LABS</h1>
+      <div className="logo">
+        <img src="./favicon/fav/logo.png" height="100px" alt="logo" />
         <Burger />
         <nav className="header-links">
           <Link to="/classes">Classes</Link>

@@ -10,7 +10,7 @@
       homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
     -->
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
-  <link rel="shortcut icon" href="./favicon/fav/apple-icon-precomposed.png">
+  <link rel="shortcut icon" href="/favicon/fav/logo.png">
   <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -44,7 +44,8 @@
       height: 100%;
       width: 100%;
       position: absolute;
-      background: $darkred;
+      /* background-image: url(".favicon/fav/logo.png"); */
+      background-color: black;
       top: 0;
       left: 0;
       transform: scaleY(0);
@@ -96,7 +97,7 @@
       stroke-dasharray: 1, 200;
       stroke-dashoffset: 0;
       animation: dash 1.5s ease-in-out infinite,
-      color 6s ease-in-out infinite;
+        color 6s ease-in-out infinite;
       stroke-linecap: round;
     }
 
@@ -111,10 +112,12 @@
         stroke-dasharray: 1, 200;
         stroke-dashoffset: 0;
       }
+
       50% {
         stroke-dasharray: 89, 200;
         stroke-dashoffset: -35px;
       }
+
       100% {
         stroke-dasharray: 89, 200;
         stroke-dashoffset: -124px;
@@ -122,16 +125,20 @@
     }
 
     @keyframes color {
+
       100%,
       0% {
         stroke: #fff;
       }
+
       40% {
         stroke: #fff;
       }
+
       66% {
         stroke: #fff;
       }
+
       80%,
       90% {
         stroke: #fff;

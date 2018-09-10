@@ -15,6 +15,9 @@ import { validateToken } from "./Actions/Navigation";
 import { getClasses, getUserInfo } from "./Actions/Database";
 import "./App.css";
 import Main from './Components/Main/Main'
+import 'font-awesome/css/font-awesome.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'mdbreact/dist/css/mdb.css';
 
 class App extends Component {
   constructor(props) {
@@ -81,7 +84,7 @@ class App extends Component {
           <PrivateRoute exact path="/editProject/:id" component={CreateProject} />
           <PrivateRoute path="/project/:trelloID/:githubRepo/:name" component={Dashboard} />
           <PrivateRoute exact path="/billing" component={Billing} />
-          <Route exact path="/login" component={LandingPage} />
+          <Route exact path="/Signin" component={LandingPage} />
           <PrivateRoute exact path="/settings" component={Settings} />
         </div>
       </div>
