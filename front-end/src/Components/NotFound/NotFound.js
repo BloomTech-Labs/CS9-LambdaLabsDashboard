@@ -6,7 +6,7 @@ class NotFound extends Component {
   navigate = route => {
   	this.props.history.push(route);
   }
-   render = () => {
+  render = () => {
   	const { lastClass } = this.props;
     return (
       <div className='not-found'>

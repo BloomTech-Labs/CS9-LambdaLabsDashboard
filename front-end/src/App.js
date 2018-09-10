@@ -16,8 +16,10 @@ import NotFound from './Components/NotFound/NotFound';
 import { validateToken } from "./Actions/Navigation";
 import { getClasses, getUserInfo, resetUserData } from "./Actions/Database";
 import "./App.css";
-// import Main from './Components/Main/Main';
-
+import Main from './Components/Main/Main';
+import 'font-awesome/css/font-awesome.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'mdbreact/dist/css/mdb.css';
 class App extends Component {
   constructor(props) {
     super(props);
@@ -77,14 +79,24 @@ class App extends Component {
         {notLandingPage && <Menu />}
         {notLandingPage && <Header history={history} />}
         <div className={classes}>
+          {/* <Route exact path="/" component={Main} />
+          <PrivateRoute exact path="/classes" component={Classes} />
+          <PrivateRoute exact path="/projects/:className" component={Projects} />
+          <PrivateRoute exact path="/createProject" component={CreateProject} />
+          <PrivateRoute exact path="/editProject/:id" component={CreateProject} />
+          <PrivateRoute path="/project/:trelloID/:githubRepo/:name" component={Dashboard} />
+          <PrivateRoute exact path="/billing" component={Billing} />
+          <Route exact path="/Signin" component={LandingPage} />
+          <PrivateRoute exact path="/settings" component={Settings} /> */}
           <Switch>
-            <Route exact path="/" component={LandingPage} />
+            <Route exact path="/" component={Main} />
+            <Route exact path="/Signin" component={LandingPage} />
             <PrivateRoute exact path="/classes" component={Classes} />
             <PrivateRoute exact path="/projects/:className" component={Projects} />
             <PrivateRoute exact path="/createProject" component={CreateProject} />
             <PrivateRoute exact path="/editProject/:id" component={CreateProject} />
             <PrivateRoute path="/project/:trelloID/:githubRepo/:name" component={Dashboard} />
-            <PrivateRoute exact path="/billing" component={Billing} />
+            <Route exact path="/billing" component={Billing} />
             <PrivateRoute exact path="/settings" component={Settings} />
             <Route component={NotFound} />
           </Switch>

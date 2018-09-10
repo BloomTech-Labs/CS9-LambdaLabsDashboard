@@ -5,124 +5,35 @@ header,
   height: 100%;
 }
 
-// #card_id,
-// .mask {
-//   mask-image: url('/favicon/fav/laptop.png');
-//   height: 55vh;
-// }
-#text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  font-size: 50px;
-  color: white;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-}
-.overlay {
-  max-width: 100%;
-  height: 81vh;
-  mask: contain;
-  color: white;
+.App>.body-container {
+  display: block;
 }
 
-
-
-#text>#overlay {
-  color: white;
-  position: absolute;
+.image-dash {
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }
 
-.card>.card-image {
-  padding-bottom: 20px;
-  height: 15vh;
-  color: black;
-  
+.App> .body-container{
+  height: 55vh;
 }
 
-.mask {
-  background-color: transparent;
-}
-
-// body>.main-container {
-//   background-image: url("/favicon/fav/dashboardcontributions.png");
-//   background-size: cover;
-//   background-size: cover;
-//   -o-background-size: cover;
-//   //   background-color: transparent;
-// }
-// body>.row {
-//   position: right;
-//   background-color: mdb-color darken-3;
-//   ;
-// }
-// .body-container>.card>.card-image {
-//   background-color: mdb-color darken-3;
-//   background-image: url("/favicon/fav/dashboardcontributions.png");
-//   position: inherit;
-// }
-// .title {
-// }
-// #classicformpage, .main-container {
-//     width: 100%;
-//     background-color: white;
-//     object-position: center;
-//     object-fit: contain;
-//     /* background-image: url(https://uploads.codesandbox.io/uploads/user/f0f73c0c-ea9c-4de0-ade1-384cf36dce3f/3SjT-man-pointing-at-laptop-screen-analytics_4460x446.jpg); */
-//     background-position: center;
-//     background-size: cover;
-//     /* height: 45vh; */
-//     height: 100vh;
-//     background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("./pictures/man-pointing-at-laptop-screen-analytics_4460x446.jpg");
-// }
-// .title {
-//     color: white;
-//     padding-left: 12px;
-//     font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-//     font-weight: bolder;
-// }
-// // .body-container {
-// //     position: fixed;
-// //     width: 100%;
-// // }
-// .container {
-//     text-align: center;
-// }
-// div.gallery {
-//     border: 1px solid #ccc;
-// }
-// div.gallery:hover {
-//     border: 1px solid #777;
-// }
-// div.gallery img {
-//     width: 100%;
-//     height: auto;
-// }
-// div.desc {
-//     padding: 15px;
-//     text-align: center;
-// }
-// * {
-//     box-sizing: border-box;
-// }
-// .responsive {
-//     padding: 0 6px;
-//     float: left;
-//     width: 24.99999%;
-// }
 @media only screen and (max-width: 700px) {
-    .responsive {
-        width: 49.99999%;
-        margin: 6px 0;
-    }
+  .responsive {
+    width: 49.99999%;
+    margin: 6px 0;
+  }
 }
+
 @media only screen and (max-width: 500px) {
-    .responsive {
-        width: 100%;
-    }
+  .responsive {
+    width: 100%;
+  }
 }
+
 .clearfix:after {
-    content: "";
-    display: table;
-    clear: both;
+  content: "";
+  display: table;
+  clear: both;
 }
