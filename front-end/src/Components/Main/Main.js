@@ -127,14 +127,15 @@ class Main extends Component {
               <h2>Checkout Merge</h2>
             </h1>
           </div> */}
-          {/* <div class="col-lg-12 col-md-6"> */}
+          <div class="col-lg-12 col-md-6">
             <div className="image-dash">
               <img src="./favicon/fav/dashboard.png" class="img-fluid" dashboard alt="" />
-            </div>
-            <a href="/billing" class=" btn blue btn-rounded">
+            
+            {/* <a href="/billing" class=" btn blue btn-rounded">
               Subscription Options
-            </a>
-          {/* </div> */}
+            </a>*/}
+            </div> 
+          </div>
         </header>
       </div>;
   }
