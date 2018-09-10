@@ -7,6 +7,9 @@ import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import Reducer from "./Reducers";
+import 'font-awesome/css/font-awesome.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css'; 
+import 'mdbreact/dist/css/mdb.css';
 import logger from "redux-logger";
 
 const store = createStore(

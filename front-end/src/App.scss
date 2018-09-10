@@ -37,13 +37,14 @@ body {
 	}
 }
 
-@import 'Components/Header/header.scss';
-@import 'Components/Menu/menu.scss';
-@import 'Components/Dashboard/dashboard.scss';
-@import 'Components/CreateProject/CreateProject';
-@import 'Components/Billing/billing.scss';
-@import 'Components/LandingPage/landing-page.scss';
-@import 'Components/Loader/loader.scss';
-@import 'Components/Classes/classes.scss';
-@import 'Components/Projects/projects.scss';
+@import 'components/Header/header.scss';
+@import 'components/Menu/menu.scss';
+@import 'components/Dashboard/dashboard.scss';
+@import 'components/CreateProject/CreateProject';
+@import 'components/Billing/billing.scss';
+@import 'components/LandingPage/landing-page.scss';
+@import 'components/Loader/loader.scss';
+@import 'components/Classes/classes.scss';
+@import 'components/Projects/projects.scss';
+@import 'components/Main/Main.scss';
 @import 'Components/Settings/settings.scss';

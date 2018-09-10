@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Lambda-School-Labs/CS9-LambdaLabsDashboard/issues"
   },
-  "homepage": "https://lambda-dashboard-cs9.herokuapp.com/"
+  "homepage": "https://lambda-dashboard-cs9.herokuapp.com/",
+  "dependencies": {
+    "react-media": "^1.8.0"
+  }
 }
