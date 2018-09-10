@@ -6,7 +6,7 @@
   @media #{$mq-1070} {
     width: calc(100% - 200px);
   }
-  &>.center {
+  & > .center {
     width: 90%;
     flex-direction: column;
     height: auto;
@@ -14,8 +14,9 @@
     min-height: 70vh;
     @media #{$mq-1070} {
       width: 95%;
+      margin-left: 200px;
     }
-    &>h1 {
+    & > h1 {
       font-size: 3em;
       font-weight: 200;
       color: $purple;
@@ -31,7 +32,7 @@
         margin: 2em auto 1em auto;
       }
     }
-    &>div {
+    & > div {
       width: 100%;
       @include center;
       flex-direction: column;
@@ -40,7 +41,7 @@
         flex-direction: row;
         flex-wrap: wrap;
       }
-      &>h2 {
+      & > h2 {
         color: $purple;
         text-align: center;
         margin-bottom: 50%;
@@ -59,17 +60,17 @@
 }
 
 .projects-show {
-  &>.create-project-button {
+  & > .create-project-button {
     transform: scale(1);
     transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
     transition-delay: 0.5s;
     transition-duration: 0.4s;
-    &>.vert {
+    & > .vert {
       transform: scaleX(1);
       transition-delay: 0.9s;
       transition-duration: 0.2s;
     }
-    &>.hor {
+    & > .hor {
       transform: scaleY(1);
       transition-delay: 1.15s;
       transition-duration: 0.2s;
@@ -77,13 +78,16 @@
   }
 }
 
-@import 'Project/project.scss';
+@import "Project/project.scss";
 
 .create-project-button {
-  outline: none; border: none;
+  outline: none;
+  border: none;
   position: fixed;
-  bottom: 2.5vh; right: 2.5vh;
-  height: 50px; width: 50px;
+  bottom: 2.5vh;
+  right: 2.5vh;
+  height: 50px;
+  width: 50px;
   background: $redish;
   border-radius: 50%;
   @include headerShadow;
@@ -91,23 +95,25 @@
   transform: scale(0);
   transition-timing-function: cubic-bezier(0.6, -0.28, 0.735, 0.045);
   @media #{$mq-670} {
-    height: 70px; width: 70px;
-    bottom: 3.5vh; right: 3.5vh;
+    height: 70px;
+    width: 70px;
+    bottom: 3.5vh;
+    right: 3.5vh;
   }
-  &>.hor,
-  &>.vert {
+  & > .hor,
+  & > .vert {
     background: #fff;
     position: absolute;
     border-radius: 2.5px;
   }
-  &>.hor {
+  & > .hor {
     width: 35%;
     height: 3.5px;
     top: calc(50% - 1.75px);
     left: 32.5%;
     transform: scaleX(0);
   }
-  &>.vert {
+  & > .vert {
     height: 35%;
     width: 3.5px;
     left: calc(50% - 1.75px);

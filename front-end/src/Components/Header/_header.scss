@@ -1,204 +1,204 @@
 .header {
-	width: 100%;
-	height: 50px;
-	@include center;
-	position: fixed;
-	top: 0;
-	left: 0;
-	@include headerShadow;
-	z-index: 400;
-	background: #263346;
-	transition-duration: 0.225s;
-	transform: translate3d(0, 0, 0);
-	@media #{$mq-670} {
-		height: 80px;
-	}
-	@media #{$mq-1070} {
-		height: 100%;
-		width: 200px;
-		@include rightShadow;
-	}
-	&>div {
-		height: 100%;
-		@include center;
-		justify-content: space-between;
-		width: 100%;
-		@media #{$mq-1070} {
-			flex-direction: column;
-			justify-content: flex-start;
-			height: 100%;
-			overflow-y: scroll;
-		}
-		&>img {
-			height: 42.5px;
-			width: 42.5px;
-			margin-left: 10px;
-			border-radius: 50%;
-			@include headerShadow;
-			@media #{$mq-670} {
-				height: 67.5px;
-				width: 67.5px;
-			}
-			@media #{$mq-1070} {
-				height: 125px;
-				width: 125px;
-				margin: 0;
-				margin-top: 1.5em;
-			}
-		}
-		&>h1 {
-			cursor: pointer;
-			font-size: 2em;
-			font-weight: 200;
-			@include backgroundTop;
-		    -webkit-background-clip: text;
-		    -webkit-text-fill-color: transparent;
-		    margin: 0;
-		    margin-left: 10px;
-		    position: relative;
-		    @media #{$mq-670} {
-				font-size: 3em;
-			}
-			@media #{$mq-1070} {
-				margin: 0;
-				margin-top: 20px;
-				&::after {
-					content: '';
-					position: absolute;
-					bottom: 0;
-					right: 0;
-					@include backgroundRight;
-					width: 100%;
-					height: 2px;
-					transition-duration: 0.2s;
-				}
-				&::before {
-					content: '';
-					position: absolute;
-					bottom: 0;
-					left: 0;
-					@include backgroundRight;
-					width: 0%;
-					height: 2px;
-					transition-duration: 0.2s;
-					transition-delay: 0.2s;
-				}
-				&:hover::after {
-					width: 0%;
-				}
-				&:hover::before {
-					width: 100%;
-				}
-			}
-		}
-		&>.header-links {
-			display: none;
-			@media #{$mq-800} {
-				@include center;
-				flex-direction: row;
-				margin-right: 10px;
-				width: auto;
-				max-width: 60%;
-				overflow-x: scroll;
-				overflow-y: hidden;
-				height: 80px;
-				justify-content: flex-start;
-				padding: 0 20px;
-			}
-			@media #{$mq-1070} {
-				display: block;
-				height: auto;
-				width: 95%;
-				padding: 0px;
-				max-width: none;
-				max-height: 90%;
-				overflow-x: hidden;
-				overflow-y: scroll;
-				margin: 20px auto 20px auto;
-			}
-			&>a {
-				display: block;
-				font-size: 1.5em;
-				margin: 0px 15px;
-				color: $purple;
-				cursor: pointer;
-				font-weight: 200;
-				text-align: center;
-				white-space: nowrap;
-				text-decoration: none;
-				@media #{$mq-1070} {
-					margin: 20px 0;
-					font-size: 1.5em;
-					white-space: initial;
-					&:first-of-type {
-						margin-top: 0;
-					}
-				}
-				&:hover{
-					color: #fff;
-				}
-				&::first-letter{
-					text-transform: capitalize;
-				}
-			}
-			&>.selected{
-				color:#fff;
-			}
-			&>.new-property {
-				color: $redish;
-			}
-		}
-		&>a:last-of-type {
-			color: $purple;
-			margin: 0;
-		}
-		&>button {
-			display: none;
-			@media #{$mq-800} {
-				@include center;
-				outline: none;
-				border: none;
-				color: #fff;
-				padding: 15px 20px;
-				background: $redish;
-				margin: 0px 15px;
-				@include buttonShadow;
-				font-weight: 100;
-				font-size: 0.8em;
-				border-radius: 2.5px;
-				position: relative;
-				overflow: hidden;
-			}
-			@media #{$mq-1070} {
-				margin: 0 0 20px 0;
-				padding: 15px 30px;
-				// margin-bottom: 20px;
-			}
-		}
-	}
+  width: 100%;
+  height: 50px;
+  @include center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  @include headerShadow;
+  z-index: 400;
+  background: #263346;
+  transition-duration: 0.225s;
+  transform: translate3d(0, 0, 0);
+  @media #{$mq-670} {
+    height: 80px;
+  }
+  @media #{$mq-1070} {
+    height: 100%;
+    width: 200px;
+    @include rightShadow;
+  }
+  & > div {
+    height: 100%;
+    @include center;
+    justify-content: space-between;
+    width: 100%;
+    @media #{$mq-1070} {
+      flex-direction: column;
+      justify-content: flex-start;
+      height: 100%;
+      overflow-y: scroll;
+    }
+    & > img {
+      height: 42.5px;
+      width: 42.5px;
+      margin-left: 10px;
+      border-radius: 50%;
+      @include headerShadow;
+      @media #{$mq-670} {
+        height: 67.5px;
+        width: 67.5px;
+      }
+      @media #{$mq-1070} {
+        height: 125px;
+        width: 125px;
+        margin: 0;
+        margin-top: 1.5em;
+      }
+    }
+    & > h1 {
+      cursor: pointer;
+      font-size: 2em;
+      font-weight: 200;
+      @include backgroundTop;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 0;
+      margin-left: 10px;
+      position: relative;
+      @media #{$mq-670} {
+        font-size: 3em;
+      }
+      @media #{$mq-1070} {
+        margin: 0;
+        margin-top: 20px;
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          @include backgroundRight;
+          width: 100%;
+          height: 2px;
+          transition-duration: 0.2s;
+        }
+        &::before {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          @include backgroundRight;
+          width: 0%;
+          height: 2px;
+          transition-duration: 0.2s;
+          transition-delay: 0.2s;
+        }
+        &:hover::after {
+          width: 0%;
+        }
+        &:hover::before {
+          width: 100%;
+        }
+      }
+    }
+    & > .header-links {
+      display: none;
+      @media #{$mq-800} {
+        @include center;
+        flex-direction: row;
+        margin-right: 10px;
+        width: auto;
+        max-width: 60%;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        height: 80px;
+        justify-content: flex-start;
+        padding: 0 20px;
+      }
+      @media #{$mq-1070} {
+        display: block;
+        height: auto;
+        width: 95%;
+        padding: 0px;
+        max-width: none;
+        max-height: 90%;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        margin: 20px auto 20px auto;
+      }
+      & > a {
+        display: block;
+        font-size: 1.5em;
+        margin: 0px 15px;
+        color: $purple;
+        cursor: pointer;
+        font-weight: 200;
+        text-align: center;
+        white-space: nowrap;
+        text-decoration: none;
+        @media #{$mq-1070} {
+          margin: 20px 0;
+          font-size: 1.5em;
+          white-space: initial;
+          &:first-of-type {
+            margin-top: 0;
+          }
+        }
+        &:hover {
+          color: #fff;
+        }
+        &::first-letter {
+          text-transform: capitalize;
+        }
+      }
+      & > .selected {
+        color: #fff;
+      }
+      & > .new-property {
+        color: $redish;
+      }
+    }
+    & > a:last-of-type {
+      color: $purple;
+      margin: 0;
+    }
+    & > button {
+      display: none;
+      @media #{$mq-800} {
+        @include center;
+        outline: none;
+        border: none;
+        color: #fff;
+        padding: 15px 20px;
+        @include backgroundTrello;
+        margin: 0px 15px;
+        @include buttonShadow;
+        font-weight: 100;
+        font-size: 0.8em;
+        border-radius: 2.5px;
+        position: relative;
+        overflow: hidden;
+      }
+      @media #{$mq-1070} {
+        margin: 0 0 20px 0;
+        padding: 15px 30px;
+        // margin-bottom: 20px;
+      }
+    }
+  }
 }
 
 #burg {
-	height: 50px;
-	width: 50px;
-	@media #{$mq-670} {
-		@include center;
-		height: 80px;
-		width: 80px;
-	}
-	@media #{$mq-800} {
-		display: none;
-	}
+  height: 50px;
+  width: 50px;
+  @media #{$mq-670} {
+    @include center;
+    height: 80px;
+    width: 80px;
+  }
+  @media #{$mq-800} {
+    display: none;
+  }
 }
 
 .header-move {
-	transition-duration: 0.3s;
-	@media #{$mq-800} {
-		transform: translateY(300px);
-	}
-	@media #{$mq-1070} {
-		transform: translateX(400px);
-	}
+  transition-duration: 0.3s;
+  @media #{$mq-800} {
+    transform: translateY(300px);
+  }
+  @media #{$mq-1070} {
+    transform: translateX(400px);
+  }
 }
 
-@import 'Burger/burger.scss';
+@import "Burger/burger.scss";

@@ -6,6 +6,8 @@
 	width: 100%;
 	@media #{$mq-1070} {
 		width: calc(100% - 200px);
+		    margin-left: 200px;
+
 	}
 	&>div {
 		@include center;
