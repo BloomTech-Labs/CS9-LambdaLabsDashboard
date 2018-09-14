@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 import Billing from "./Components/Billing/Billing";
 import Classes from "./Components/Classes/Classes";

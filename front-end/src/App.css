@@ -3365,6 +3365,9 @@ header,
   display: table;
   clear: both; }
 
+.rounded-circle {
+  border-radius: 50% !important; }
+
 .settings {
   display: block;
   width: 100%;
