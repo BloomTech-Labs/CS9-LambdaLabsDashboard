@@ -1,14 +1,14 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/YARN START
+  /usr/local/bin/node /usr/local/bin/yarn start
 
 PATH: 
-  /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/mongodb/bin:/usr/local/mongodb/bin
+  /Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/usr/local/share/dotnet:/opt/X11/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Applications/Postgres.app/Contents/Versions/latest/bin:/Applications/Xamarin Workbooks.app/Contents/SharedSupport/path-bin:/Users/hilalaissani/apache-maven-3.5.2/bin
 
 Yarn version: 
   1.5.1
 
 Node version: 
-  10.8.0
+  8.9.4
 
 Platform: 
   darwin x64
@@ -50,6 +50,7 @@ npm manifest:
       "passport-github": "^1.1.0",
       "passport-google-oauth20": "^1.0.0",
       "passport-trello": "^0.1.5",
+      "passport-twitter": "^1.0.4",
       "stripe": "^6.7.0"
     },
     "devDependencies": {
@@ -2685,7 +2686,7 @@ Lockfile:
     dependencies:
       passport-oauth2 "1.x.x"
   
-  passport-oauth1@^1.0.1:
+  passport-oauth1@1.x.x, passport-oauth1@^1.0.1:
     version "1.1.0"
     resolved "https://registry.yarnpkg.com/passport-oauth1/-/passport-oauth1-1.1.0.tgz#a7de988a211f9cf4687377130ea74df32730c918"
     dependencies:
@@ -2711,6 +2712,13 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/passport-trello/-/passport-trello-0.1.5.tgz#cc98ce493a4827a6335490acd2c0d995580fd039"
     dependencies:
       passport-oauth1 "^1.0.1"
+  
+  passport-twitter@^1.0.4:
+    version "1.0.4"
+    resolved "https://registry.yarnpkg.com/passport-twitter/-/passport-twitter-1.0.4.tgz#01a799e1f760bf2de49f2ba5fba32282f18932d7"
+    dependencies:
+      passport-oauth1 "1.x.x"
+      xtraverse "0.1.x"
   
   passport@^0.4.0:
     version "0.4.0"
@@ -3438,6 +3446,16 @@ Lockfile:
     version "3.0.0"
     resolved "https://registry.yarnpkg.com/xdg-basedir/-/xdg-basedir-3.0.0.tgz#496b2cc109eca8dbacfe2dc72b603c17c5870ad4"
   
+  xmldom@0.1.x:
+    version "0.1.27"
+    resolved "https://registry.yarnpkg.com/xmldom/-/xmldom-0.1.27.tgz#d501f97b3bdb403af8ef9ecc20573187aadac0e9"
+  
+  xtraverse@0.1.x:
+    version "0.1.0"
+    resolved "https://registry.yarnpkg.com/xtraverse/-/xtraverse-0.1.0.tgz#b741bad018ef78d8a9d2e83ade007b3f7959c732"
+    dependencies:
+      xmldom "0.1.x"
+  
   yallist@^2.1.2:
     version "2.1.2"
     resolved "https://registry.yarnpkg.com/yallist/-/yallist-2.1.2.tgz#1c11f9218f076089a47dd512f93c6699a6a81d52"
@@ -3447,14 +3465,17 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/yallist/-/yallist-3.0.2.tgz#8452b4bb7e83c7c188d8041c1a837c773d6d8bb9"
 
 Trace: 
-  Error: Command "START" not found.
-      at new MessageError (/usr/local/lib/node_modules/yarn/lib/cli.js:186:110)
-      at /usr/local/lib/node_modules/yarn/lib/cli.js:87307:17
-      at Generator.next (<anonymous>)
-      at step (/usr/local/lib/node_modules/yarn/lib/cli.js:98:30)
-      at /usr/local/lib/node_modules/yarn/lib/cli.js:116:14
-      at new Promise (<anonymous>)
-      at new F (/usr/local/lib/node_modules/yarn/lib/cli.js:23451:28)
-      at /usr/local/lib/node_modules/yarn/lib/cli.js:95:12
-      at runCommand (/usr/local/lib/node_modules/yarn/lib/cli.js:87312:22)
-      at Object.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:87412:14)
+  Error: Command failed.
+  Exit code: 127
+  Command: sh
+  Arguments: -c nodemon library/server.js --exec babel-node NODE_ENV=development
+  Directory: /Users/hilalaissani/Lamda-1/lambdalabs/CS9-LambdaLabsDashboard/server
+  Output:
+  
+      at ProcessTermError.MessageError (/usr/local/lib/node_modules/yarn/lib/cli.js:186:110)
+      at new ProcessTermError (/usr/local/lib/node_modules/yarn/lib/cli.js:226:113)
+      at ChildProcess.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:30281:17)
+      at emitTwo (events.js:126:13)
+      at ChildProcess.emit (events.js:214:7)
+      at maybeClose (internal/child_process.js:925:16)
+      at Process.ChildProcess._handle.onexit (internal/child_process.js:209:5)
